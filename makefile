@@ -18,28 +18,28 @@ build:
 
 # S'assure de l'existence tout les programmes finaux (application, test, etc.)
 # Par exemple : all: build/test build/appli
-all: application test
+all: build/test_exe build/application_exe
 
-test.o: test.cpp | build
+build/test.o: test.cpp | build
 	$(CC) $(CCFLAGS) -c test.cpp -o build/test.o
 
-application.o: application.cpp | build
+build/application.o: application.cpp | build
 	$(CC) $(CCFLAGS) -c application.cpp -o build/application.o
 
-application_exe: application.o menu.o | build
-	$(CC) $(CCFLAGS) -o build/application build/application.o build/menu.o
+build/application_exe: build/application.o build/menu.o | build
+	$(CC) $(CCFLAGS) -o build/application_exe build/application.o build/menu.o
 
-test_exe: test.o menu.o | build
-	$(CC) $(CCFLAGS) -o build/test build/test.o build/menu.o
+build/test_exe: build/test.o build/menu.o | build
+	$(CC) $(CCFLAGS) -o build/test_exe build/test.o build/menu.o
 
-menu.o: lib/menu/menu.h lib/menu/menu.cpp | build
+build/menu.o: lib/menu/menu.h lib/menu/menu.cpp | build
 	$(CC) $(CCFLAGS) -c lib/menu/menu.cpp -o build/menu.o
 
 # Lance le programme de test.
-check: test_exe
-	./build/test
+check: build/test_exe
+	./build/test_exe
 
 # Lance l'application.
-application : application_exe
-	./build/application
+application : build/application_exe
+	./build/application_exe
 
