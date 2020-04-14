@@ -60,6 +60,7 @@ int main()
          TEST(g_friends(g, 6, 5) == false);
          TEST(g_friends(g, 3, 2) == true);
          TEST(g_friends(g, 5, 4) == true);
+         TEST(g_friends(g, 5, 2) == true);
     }
     
     // Tests de la fonction g_bestie.
@@ -81,9 +82,9 @@ int main()
     {
         TEST(g_linked(g, 1, 1) == false);
         TEST(g_linked(g, 2, 2) == false);
-        TEST(g_linked(g, 2, 6) == false);
+        TEST(g_linked(g, 2, 6) == true);
         TEST(g_linked(g, 5, 4) == true);
-        TEST(g_linked(g, 4, 2) == false);
+        TEST(g_linked(g, 4, 1) == false);
         TEST(g_linked(g, 6, 4) == true);
     }
     
