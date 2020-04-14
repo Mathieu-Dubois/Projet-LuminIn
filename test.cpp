@@ -1,5 +1,5 @@
 #include <iostream>
-#include "lib/groupe/groupe.h"
+#include "lib/bibliotheques.h"
 
 #include <signal.h>
 #include <stddef.h>
