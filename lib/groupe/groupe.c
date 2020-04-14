@@ -6,10 +6,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <malloc.h>
 
 groupe* g_open(FILE *db)
 {
-    groupe *g = malloc(sizeof(groupe));
+    groupe *g = (groupe*)malloc(sizeof(groupe));
     int amis[20][5];
     int ami, i,j;
     personne data;
@@ -31,35 +32,26 @@ groupe* g_open(FILE *db)
     char poubelle[100]; //On tej la première ligne
     fscanf(db, "%s\n", poubelle);
     //Lecture du fichier
-    while(fscanf(db, "%d,%128[^,],%128[^,],%128[^,],%128[^,]", &data.index, data.nom, data.prenom, data.courriel, data.adresse) == 5)
+    while(fscanf(db, "%d,%128[^,],%128[^,],%128[^,],%d", &data.index, data.nom, data.prenom, data.courriel, data.adresse) == 5)
     {
-        personne *p = malloc(sizeof(personne));
+        personne *p = (personne*)malloc(sizeof(personne));
         *p = data;
         for (int i = 0 ; i < 5 ; i++){
             p->amis[i] = NULL;
         }
         //Maintenant on gère competences et entreprise
         int comp = 0;
-        while(fscanf(db, "%128[^;][^,]", &data.competence[comp]) == 1) comp++;
-        int test = 0;
-        do{
-            test = fscanf(db, "%d\n", &data.entreprise);
-        } while (test == 0);
-
-        l_append(&g->personnes, l_make_node((personne *)p));
+        fscanf(db, "%c", poubelle);
+        while(fscanf(db, "%128[^,;];", p->competence[comp]) == 1) comp++;//Probleme Mickey car n'a qu'une competence
+        fscanf(db, "%c", poubelle);//on enleve une virgule
         
         j = 0;
-        char poub[1];
-        fscanf(db, "%c", poub);
-        int code = 1;
-        while(code == 1 && fscanf(db, "%d", &ami)==1){ //Attention il prend le num du debut de l'autre ligne
+        while(fscanf(db, "%d;", &ami)==1){ 
             amis[i][j] = ami;
-            if (fscanf(db, "%c", poub)){
-                if (poub[0] != '\n')  j++;
-                else code = 0;
-            } 
-            
+            j++;
         }
+        fscanf(db, ",%d\n", p->entreprise);
+        l_append(&g->personnes, l_make_node((personne *)p)); //Ca n'a pas l'air de linker
         i++;
     }
 
@@ -68,7 +60,8 @@ groupe* g_open(FILE *db)
     node *parcours = g->personnes;
     personne* parcourami, *tmpami;
     int compt=0;
-    for (int i = 0 ; i < 20 ; i++){
+    i = 0;
+    while(tmp != NULL){
         compt = 0;
         for (int j = 0 ; j < 5 ; j++){
             if (amis[i][j] != -1){
@@ -85,6 +78,7 @@ groupe* g_open(FILE *db)
             }
         }
         tmp = tmp->next;
+        i++;
     }
     return g;
 }
@@ -158,6 +152,7 @@ bool g_oneway(groupe* g, int const index_a, int const index_b)
 {
     personne* a = g_index(g,index_a);
     personne* b = g_index(g,index_b);
+    if (a == NULL || b == NULL) return false;
     int i;
     bool res1=false,res2=false;
     for(i=0;i<5;i++){
@@ -218,7 +213,7 @@ int g_distance(groupe* g, int const index_a, int const index_b)
         personne* b = g_index(g,index_b);
         personne* tmp = g_index(g,index_a); 
         personne* aprev = g_index(g,index_b); 
-        int i,j,l,k;
+        int i,l,k;
          
         while(1){
             int p=0;  
@@ -269,8 +264,13 @@ void g_remove(groupe* g, int const index)
     int flag=0;
     tmpami = ami->amis[compt];
     while (tmp != NULL){
+        compt = 0;
+        tmpami = ami->amis[compt];
         while (tmpami != NULL){
-            if (tmpami->index == index) flag = 1; //On supprime des relation d'ami
+            if (tmpami->index == index){
+                flag = 1; //On supprime des relation d'ami
+                ami->amis[compt] = NULL;
+            } 
             if (tmpami->index != index && flag == 1){ //On écrase
                 ami->amis[compt-1] = tmpami;
                 tmpami = NULL;

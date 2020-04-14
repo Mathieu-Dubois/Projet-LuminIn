@@ -2,19 +2,18 @@
 #include <assert.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <malloc.h>
 
 node* l_make_node(void* data)
 {
-  node* node;
+  node* noeud = (node*)malloc(sizeof(node));
+  assert(noeud);
 
-  node = malloc( sizeof(node) );
-  assert(node);
+  noeud->previous = NULL;
+  noeud->next = NULL;
+  noeud->data = data;
 
-  node->previous = NULL;
-  node->next = NULL;
-  node->data = data;
-
-   return node;
+   return noeud;
 }
 
 void l_free_node(node* n)

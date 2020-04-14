@@ -13,10 +13,10 @@ typedef struct personne
     char nom[128];
     char prenom[128];
     char courriel[128];
-    char adresse[128];
+    int adresse[128];
     char competence[5][128];
     struct personne *amis[MAX_AMIS];
-    char entreprise[128];
+    int entreprise[128];
 } personne;
 
 typedef struct groupe
