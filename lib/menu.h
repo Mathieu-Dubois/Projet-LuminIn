@@ -1,5 +1,4 @@
-#ifndef __MENU_H__
-#define __MENU_H__
+#pragma once
 
 void MenuPrincipal() ;
 void MenuEntreprise() ;
@@ -9,6 +8,3 @@ void MenuEmploye() ;
 
 void A_Implementer() ;
 
-
-
-#endif
