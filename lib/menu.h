@@ -16,6 +16,8 @@ int SeConnecterEntreprise(groupeEntreprises *groupeEntr) ;
 // Permet à l'utilisateur de renseigner les informations de son entreprise (nom, code postal, adresse mail)
 int CreerEntreprise(groupeEntreprises *groupeEntr) ;
 
+// Affiche le menu d'une entreprise une fois qu'elle s'est connectée
+int ProfilEntreprise(groupeEntreprises *groupeEntr, int index) ;
 
 
 int MenuChercheur(groupeEntreprises *groupeEntr) ;

@@ -110,24 +110,36 @@ int main()
 
     
     // Lecture de la DB vers une liste en mémoire.
+    groupeEntreprises *gE ;
     {
-        groupeEntreprises *gE;
         FILE *dbE = fopen("entreprises.csv", "r");
         gE = g_openEntreprisesCSV(dbE);
         fclose(dbE);
     }
 
-    // Tests des fonctiosn g_openEntreprisesCSV et gEntreprise_size.
+    // Test des fonctiosn g_openEntreprisesCSV et gEntreprise_size.
     {
         TEST(gE != NULL);
         TEST(gEntreprise_size(gE) == 5);
     }
     
-    //Test de la fonction LastEntreprise.
+    // Test de la fonction LastEntreprise et ajout AjoutEntreprise
     {
-        TEST(LastEntreprise(gE) == 5) ;  
+        TEST(LastEntreprise(gE) == 5) ;
+        char nom[40] = "Netflix" ;
+        char code[10] = "45789" ;
+        char mail[128] = "netflixandchill@gmail.com" ;
+        AjoutEntreprise(gE,nom,code,mail) ;
+        TEST(LastEntreprise(gE) == 6) ;
     }
 
+    // Test de la fonction g_indexEntreprise
+    {
+        TEST(strcmp(g_indexEntreprise(gE, 1)->nom, "Disney") == 0);
+        TEST(strcmp(g_indexEntreprise(gE, 1)->code_postal, "77700") == 0);
+        TEST(strcmp(g_indexEntreprise(gE, 2)->courriel, "emplois@google.com") == 0);
+        TEST(strcmp(g_indexEntreprise(gE, 3)->nom, "Amazon") == 0);
+    }
 
 
 

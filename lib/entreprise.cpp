@@ -47,7 +47,8 @@ void AfficherEntreprises(groupeEntreprises* g)
         entreprise *e = (entreprise*)tmp->data ;
         while (e!= NULL && tmp != NULL)
         {
-            cout << e->index << " - " << e->nom << " - " << e->code_postal << " - " << e->courriel << endl ;
+            // cout << e->index << " - " << e->nom << " - " << e->code_postal << " - " << e->courriel << endl ;
+            cout << e->index << " - " << e->nom  << endl ;
             tmp = tmp->next ;
             if(tmp != NULL) e = (entreprise*)tmp->data ;
             
@@ -59,7 +60,7 @@ int AjoutEntreprise(groupeEntreprises *groupeEntr, char nom[40], char code_posta
 {
     
     int index(0) ; // Contiendra l'index de la nouvelle entreprise à ajouter
-    
+
     index = LastEntreprise(groupeEntr) ; // On récupère l'index de la dernière entreprise du groupe
     entreprise *nouveau = (entreprise*)malloc(sizeof(entreprise)) ;
     nouveau->index = index + 1 ;
@@ -86,6 +87,23 @@ int LastEntreprise(groupeEntreprises* g)
 
     return index ;
 }
+
+entreprise* g_indexEntreprise(groupeEntreprises* g, int const index)
+{
+    assert(index <= gEntreprise_size(g)) ;
+    assert(index > 0) ;
+    if (g->entreprise == NULL) return NULL;
+    node *tmp = g->entreprise;
+    entreprise *e = (entreprise*)tmp->data;
+    while (e->index != index && e != NULL && tmp->next !=NULL){
+        tmp = tmp -> next;
+        e = (entreprise*)tmp->data;
+    } 
+    if (e->index == index) return e;
+    return NULL;
+}
+
+
 
 
 // void MenuEntreprise()

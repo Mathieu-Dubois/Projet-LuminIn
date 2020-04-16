@@ -250,9 +250,9 @@ int SeConnecterEntreprise(groupeEntreprises *groupeEntr)
         break;
     }
 
-    cout << "choix : " << choixID ;  
-    cout << "taille :" << taille ;
-    cout << "coucou" << endl ;
+
+    return ProfilEntreprise(groupeEntr, (int)choixID - 48) ;
+    
 
     return 0;
 }
@@ -275,10 +275,10 @@ int CreerEntreprise(groupeEntreprises *groupeEntr)
 
     do
     {
-        cout << "Code Postal : " ;
+        cout << "Code Postal (5 chiffres) : " ;
         cin >> code_postal ;
         if(!regex_match(code_postal, regex("[\\d]{1,5}"))) cout << "Merci de renseigner un code postal valide." << endl ;
-    } while (!regex_match(code_postal, regex("[\\d]{1,5}"))); // Format code postal : chiffres uniquement (jusqu'a 5)
+    } while (!regex_match(code_postal, regex("[\\d]{5}"))); // Format code postal : 5 chiffres uniquement
     
     do
     {
@@ -314,9 +314,30 @@ int CreerEntreprise(groupeEntreprises *groupeEntr)
             break;
         }
         
-
-  
-
     return 0 ;
 }
 
+int ProfilEntreprise(groupeEntreprises *groupeEntr, int index)
+{
+    char choix(0) ;
+
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
+        cout << "Profil de : " << g_indexEntreprise(groupeEntr, index)->nom << endl << endl ;
+        cout << "Vous voulez :" << endl ;        
+        cout << "1. Supprimer le profil de votre entreprise" << endl ;
+        cout << "2. Créer le profil d'un poste à pourvoir" << endl ;                            
+        cout << "3. Supprimer le profil d'un poste maintenant pourvu" << endl ;
+        cout << "4. Faire une recherche parmi les chercheurs d'emploi" << endl << endl ;
+        cout << "m. Retourner au menu principal" << endl ;                       
+        cout << "q. Quitter l'application" << endl << endl ;        
+        cout << "Votre choix : " ;
+        cin >> choix ;
+    } while ((choix > '4' || choix < '1') && choix != 'q' && choix != 'm');
+
+
+    return 0 ;
+
+}
