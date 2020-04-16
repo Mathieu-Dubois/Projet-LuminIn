@@ -90,7 +90,7 @@ int LastEntreprise(groupeEntreprises* g)
 
 entreprise* g_indexEntreprise(groupeEntreprises* g, int const index)
 {
-    assert(index <= gEntreprise_size(g)) ;
+    assert(index <= gEntreprise_size(g)) ; // plutôt à index max en fait 
     assert(index > 0) ;
     if (g->entreprise == NULL) return NULL;
     node *tmp = g->entreprise;
@@ -103,25 +103,57 @@ entreprise* g_indexEntreprise(groupeEntreprises* g, int const index)
     return NULL;
 }
 
+groupeEntreprises* SupprimerEntreprise(groupeEntreprises* g, int const index)
+{
+    //on supprime le noeud dans le groupe
+
+    //on mets le csv à jour
 
 
+    return g ;
+}
 
-// void MenuEntreprise()
-// {
-//     char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
-   
-//     do
-//     {
-//         system("clear") ;
-//         cout << " *** Bienvenue sur LuminIN, le site des pros ***" << endl << endl ;
-//         cout << "Vous voulez :" << endl ;
-//         cout << "1. Créer le profil de votre entreprise" << endl ;            
-//         cout << "2. Supprimer le profil de votre entreprise" << endl ;
-//         cout << "3. Créer le profil d'un poste à pourvoir" << endl ;                            
-//         cout << "4. Supprimer le profil d'un poste maintenant pourvu" << endl ;
-//         cout << "5. Faire une recherche parmi les chercheurs d'emploi" << endl << endl ;
-//         cout << "m. Retourner au menu principal" << endl ;                       
-//         cout << "q. Quitter l'application" << endl << endl ;        
-//         cout << "Votre choix : " ;
-//         cin >> choix ;
-//     } while ((choix > '5' || choix < '1') && choix != 'q' && choix != 'm');
+
+void g_ecrireEntreprise(groupeEntreprises* g)
+{
+    // On ouvre en écriture le fichier tmp.csv (comme il n'existe pas, il est créé)
+    ofstream nouveauCSV("tmp.csv") ;
+    if(nouveauCSV)
+    {
+        // On ouvre en lecture le fichier entreprises.csv
+        ifstream ancienCSV("entreprises.csv") ;
+        if(ancienCSV)
+        {
+            // On récupère la première ligne et on l'écrit dans le nouveau fichier
+            string ligne ;
+            getline(ancienCSV, ligne) ;
+            nouveauCSV << ligne << endl ;
+
+            //Maintenant il faut lire le groupe et écrire les informations ligne par ligne
+            node *tmp = g->entreprise ;
+            entreprise *e = NULL ;
+            while (tmp != NULL)
+            {
+                e = (entreprise*)(tmp->data) ;
+                nouveauCSV << e->index << "," << e->nom << "," << e->code_postal << "," << e->courriel << endl ;
+                tmp = tmp->next ;
+            }
+            nouveauCSV.close() ;
+            ancienCSV.close() ;
+
+            // Il ne reste plus qu'à supprimer l'ancien entreprises.csv et renommer tmp.csv 
+            remove("entreprises.csv") ;
+            rename("tmp.csv", "entreprises.csv") ;
+        }
+        else
+        {
+            cout << "ERREUR : Impossible d'ouvrir entreprises.csv" << endl ;
+        }
+    }
+    else
+    {
+        cout << "ERREUR : Impossible d'ouvrir tmp.csv" << endl ;
+    }
+ 
+}
+

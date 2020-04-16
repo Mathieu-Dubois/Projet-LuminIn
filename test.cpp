@@ -141,6 +141,11 @@ int main()
         TEST(strcmp(g_indexEntreprise(gE, 3)->nom, "Amazon") == 0);
     }
 
+    // Test de la fonction g_ecrireEntreprise
+    {
+        g_ecrireEntreprise(gE) ;
+    }
+
 
 
     printf("%d/%d\n", tests_reussis, tests_executes);
