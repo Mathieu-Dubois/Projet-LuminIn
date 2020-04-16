@@ -50,7 +50,7 @@ groupe* g_open(FILE *db)
             amis[i][j] = ami;
             j++;
         }
-        fscanf(db, ",%d\n", p->entreprise);
+        fscanf(db, ",%d\n", p->numEntreprise);
         l_append(&g->personnes, l_make_node((personne *)p)); //Ca n'a pas l'air de linker
         i++;
     }

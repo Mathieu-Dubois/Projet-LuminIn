@@ -1,10 +1,24 @@
 #pragma once
 
-void MenuPrincipal() ;
-void MenuEntreprise() ;
-void MenuChercheur() ;
-void MenuEmploye() ;
+#include <string>
+
+#include "entreprise.h"
+
+// Affiche le menu principal
+int MenuPrincipal(groupeEntreprises *groupeEntr) ;
+
+// Permet à l'utilisateur de choisir s'il veut se connecter au profil de son entreprise ou s'il veut créer le profil de son entreprise
+int MenuEntreprise(groupeEntreprises *groupeEntr) ;
+
+// Permet à l'utilisateur de se connecter sur son profil entreprise
+int SeConnecterEntreprise(groupeEntreprises *groupeEntr) ;
+
+// Permet à l'utilisateur de renseigner les informations de son entreprise (nom, code postal, adresse mail)
+int CreerEntreprise(groupeEntreprises *groupeEntr) ;
 
 
-void A_Implementer() ;
+
+int MenuChercheur(groupeEntreprises *groupeEntr) ;
+int MenuEmploye(groupeEntreprises *groupeEntr) ;
+int A_Implementer(groupeEntreprises *groupeEntr) ;
 

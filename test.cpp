@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <string>
+#include <fstream>
 
 using namespace std ;
 
@@ -105,6 +107,29 @@ int main()
         TEST(g_oneway(g, 5, 4) == false);
         TEST(g_linked(g, 6, 4) == false);
     }
+
+    
+    // Lecture de la DB vers une liste en mémoire.
+    {
+        groupeEntreprises *gE;
+        FILE *dbE = fopen("entreprises.csv", "r");
+        gE = g_openEntreprisesCSV(dbE);
+        fclose(dbE);
+    }
+
+    // Tests des fonctiosn g_openEntreprisesCSV et gEntreprise_size.
+    {
+        TEST(gE != NULL);
+        TEST(gEntreprise_size(gE) == 5);
+    }
+    
+    //Test de la fonction LastEntreprise.
+    {
+        TEST(LastEntreprise(gE) == 5) ;  
+    }
+
+
+
 
     printf("%d/%d\n", tests_reussis, tests_executes);
 

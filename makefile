@@ -32,8 +32,11 @@ build/groupe.o: lib/groupe.c | build
 build/liste.o: lib/liste.c | build
 	$(CC) $(CCFLAGS) -c lib/liste.c -I ./lib -o build/liste.o
 
-build/libbibliotheques.a: build/menu.o build/groupe.o build/liste.o | build
-	ar crs build/libbibliotheques.a build/menu.o build/groupe.o build/liste.o
+build/entreprise.o: lib/entreprise.cpp | build
+	$(CC) $(CCFLAGS) -c lib/entreprise.cpp -I ./lib -o build/entreprise.o
+
+build/libbibliotheques.a: build/menu.o build/groupe.o build/liste.o build/entreprise.o | build
+	ar crs build/libbibliotheques.a build/menu.o build/groupe.o build/liste.o build/entreprise.o
 
 # Programmes de test :
 # test : contient tous les tests
