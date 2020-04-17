@@ -1,4 +1,4 @@
-id,titre,competences,entreprise
-1,acteur,comedie;gag;1
-2,developpeur,C;SQL;Python,2
-3,briocheur,patisserie,5
+id,titre,entreprise,competences
+1,acteur,1,comedie;gag
+2,developpeur,2,C;SQL;Python
+3,briocheur,5,patisserie
