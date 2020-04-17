@@ -40,7 +40,7 @@ int gEntreprise_size(groupeEntreprises* g)
 
 void AfficherEntreprises(groupeEntreprises* g)
 {
-    if (g->entreprise == NULL) cout << "groupe vide" << endl ;
+    if (g->entreprise == NULL) cout << "Aucune entreprise enregistrée" << endl ;
     else
     {
         node *tmp = g->entreprise ;
@@ -88,14 +88,28 @@ int LastEntreprise(groupeEntreprises* g)
     return index ;
 }
 
+int ExisteEntreprise(groupeEntreprises*g, int const index)
+{
+    if (g->entreprise == NULL) return 0;
+    if(index > LastEntreprise(g) || index < 0) return 0 ;
+    node *tmp = g->entreprise;
+    entreprise *e = (entreprise*)tmp->data;
+    while(e->index != index && e != NULL && tmp->next !=NULL){
+        tmp = tmp -> next;
+        e = (entreprise*)tmp->data;
+    } 
+    if (e->index == index) return 1;
+    return 0;
+}
+
 entreprise* g_indexEntreprise(groupeEntreprises* g, int const index)
 {
-    assert(index <= gEntreprise_size(g)) ; // plutôt à index max en fait 
+    assert(index <= LastEntreprise(g)) ;
     assert(index > 0) ;
     if (g->entreprise == NULL) return NULL;
     node *tmp = g->entreprise;
     entreprise *e = (entreprise*)tmp->data;
-    while (e->index != index && e != NULL && tmp->next !=NULL){
+    while(e->index != index && e != NULL && tmp->next !=NULL){
         tmp = tmp -> next;
         e = (entreprise*)tmp->data;
     } 
@@ -105,14 +119,27 @@ entreprise* g_indexEntreprise(groupeEntreprises* g, int const index)
 
 groupeEntreprises* SupprimerEntreprise(groupeEntreprises* g, int const index)
 {
-    //on supprime le noeud dans le groupe
+    // On supprime le noeud dans le groupe
+    assert (g) ;
+    node *tmp = g->entreprise ;
+    entreprise *e = (entreprise*)tmp->data ;
+    while (e->index != index)
+    {
+        tmp = tmp->next ;
+        e = (entreprise*)(tmp->data) ;
+    }
+   
+    if(tmp->previous != NULL) tmp->previous->next = tmp->next ;
+    else g->entreprise = tmp->next ;
+    if(tmp->next != NULL) tmp->next->previous = tmp->previous ;
+    
+    free(tmp) ;
 
-    //on mets le csv à jour
-
+    // Puis on met à jour entreprises.csv
+    g_ecrireEntreprise(g) ;
 
     return g ;
 }
-
 
 void g_ecrireEntreprise(groupeEntreprises* g)
 {

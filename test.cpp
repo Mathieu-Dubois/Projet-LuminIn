@@ -45,7 +45,7 @@ int main()
     // Tests des fonctiosn g_open et g_size.
     {
         TEST(g != NULL);
-        TEST(g_size(g) == 6);
+        TEST(g_size(g) == 8);
     }
 
     // Tests de la fonction g_index.
@@ -101,7 +101,7 @@ int main()
     // Tests de la fonction g_remove.
     {
         g_remove(g, 4);
-        TEST(g_size(g) == 5);
+        TEST(g_size(g) == 7);
         TEST(g_index(g, 4) == NULL);
         TEST(g_friends(g, 5, 4) == false);
         TEST(g_oneway(g, 5, 4) == false);
@@ -129,7 +129,7 @@ int main()
         char nom[40] = "Netflix" ;
         char code[10] = "45789" ;
         char mail[128] = "netflixandchill@gmail.com" ;
-        AjoutEntreprise(gE,nom,code,mail) ;
+        AjoutEntreprise(gE,nom,code,mail) ; // ATTENTION VA MODIFER LE CSV INITIAL
         TEST(LastEntreprise(gE) == 6) ;
     }
 
@@ -143,16 +143,26 @@ int main()
 
     // Test de la fonction g_ecrireEntreprise
     {
-        g_ecrireEntreprise(gE) ;
+        g_ecrireEntreprise(gE) ; 
     }
 
+    // Test de la fonction SupprimerEntreprise
+    {
+        SupprimerEntreprise(gE,1) ;
+        SupprimerEntreprise(gE,2) ;
+        SupprimerEntreprise(gE,3) ;
+        SupprimerEntreprise(gE,4) ;
+        SupprimerEntreprise(gE,5) ;
+        SupprimerEntreprise(gE,6) ;
+    }
 
 
     printf("%d/%d\n", tests_reussis, tests_executes);
 
+    cout << "ATTENTION ENTREPRISES.CSV A ETE MODIFIE (penser à remettre le fichier initial)" << endl ;
+
     return tests_executes - tests_reussis;
 
-    cout << "Tous les tests passent" << endl ;
 
     return 0 ;
 }

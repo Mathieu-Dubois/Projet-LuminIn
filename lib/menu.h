@@ -19,6 +19,9 @@ int CreerEntreprise(groupeEntreprises *groupeEntr) ;
 // Affiche le menu d'une entreprise une fois qu'elle s'est connectée
 int ProfilEntreprise(groupeEntreprises *groupeEntr, int index) ;
 
+// Demande la confirmation à l'utilisateur pour supprimer son profil
+int ConfirmerSuppressionEntreprise(groupeEntreprises *groupeEntr, int index) ;
+
 
 int MenuChercheur(groupeEntreprises *groupeEntr) ;
 int MenuEmploye(groupeEntreprises *groupeEntr) ;

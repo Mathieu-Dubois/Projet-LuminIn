@@ -217,9 +217,6 @@ int A_Implementer(groupeEntreprises *groupeEntr)
 
 int SeConnecterEntreprise(groupeEntreprises *groupeEntr)
 {  
-
-    int taille(0) ; // Contient la taille du groupe entreprise
-    taille = gEntreprise_size(groupeEntr) ;
     char choixID(0) ;   // Contient l'id choisi par l'utilisateur
     do
     {
@@ -232,7 +229,7 @@ int SeConnecterEntreprise(groupeEntreprises *groupeEntr)
         cout << "q. Quitter l'application" << endl << endl ; 
         cout << "Votre choix : " ;
         cin >> choixID ;
-    } while ((choixID > taille + 48 || choixID < '1') && choixID != 'q' && choixID != 'm' && choixID != 'r');  
+    } while (!ExisteEntreprise(groupeEntr, choixID - 48) && choixID != 'q' && choixID != 'm' && choixID != 'r');
 
     switch (choixID)
     {
@@ -326,18 +323,86 @@ int ProfilEntreprise(groupeEntreprises *groupeEntr, int index)
         system("clear") ;
         cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
         cout << "Profil de : " << g_indexEntreprise(groupeEntr, index)->nom << endl << endl ;
-        cout << "Vous voulez :" << endl ;        
-        cout << "1. Supprimer le profil de votre entreprise" << endl ;
-        cout << "2. Créer le profil d'un poste à pourvoir" << endl ;                            
-        cout << "3. Supprimer le profil d'un poste maintenant pourvu" << endl ;
-        cout << "4. Faire une recherche parmi les chercheurs d'emploi" << endl << endl ;
+        cout << "Vous voulez :" << endl ;
+        cout << "1. Consulter les postes à pourvoir de votre entreprise" << endl ; 
+        cout << "2. Ajouter un poste à pourvoir" << endl ;
+        cout << "3. Supprimer un poste à pourvoir" << endl ;
+        cout << "4. Faire une recherche parmi les chercheurs d'emploi" << endl ;
+        cout << "5. Supprimer le profil de votre entreprise" << endl << endl ;
         cout << "m. Retourner au menu principal" << endl ;                       
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         cin >> choix ;
-    } while ((choix > '4' || choix < '1') && choix != 'q' && choix != 'm');
+    } while ((choix > '5' || choix < '1') && choix != 'q' && choix != 'm');
 
+    switch (choix)
+    {
+    case '1':
+        return A_Implementer(groupeEntr) ;
+        break;
+    case '2':
+        return A_Implementer(groupeEntr) ;
+        break;
+    case '3':
+        return A_Implementer(groupeEntr) ;
+        break;
+    case '4':
+        return A_Implementer(groupeEntr) ;
+        break;
+    case '5':
+        return ConfirmerSuppressionEntreprise(groupeEntr, index) ;
+        break;
+    case 'm':
+        return MenuPrincipal(groupeEntr) ;
+        break;
+    case 'q':
+        return 0 ;
+        break;
+    default:
+        break;
+    }
 
     return 0 ;
 
+}
+
+
+int ConfirmerSuppressionEntreprise(groupeEntreprises* groupeEntr , int index)
+{
+    char choix(0) ;
+
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
+        cout << "Profil de : " << g_indexEntreprise(groupeEntr, index)->nom << endl << endl ;
+        cout << "Suppression du profil : " <<
+        g_indexEntreprise(groupeEntr, index)->nom << " - " <<
+        g_indexEntreprise(groupeEntr, index)->code_postal << " - " <<
+        g_indexEntreprise(groupeEntr, index)->courriel << endl << endl ; 
+        cout << "Confirmez vous la suppression de ce profil ?" << endl <<
+        "Toutes les annonces de postes à pourvoir par l'entreprise " << 
+        g_indexEntreprise(groupeEntr, index)->nom <<
+        " seront également supprimées." << endl << endl ;
+        cout << "o. OUI" << endl ;                            
+        cout << "n. NON" << endl << endl ;       
+        cout << "Votre choix : " ;
+        cin >> choix ;
+    } while (choix != 'o' && choix != 'n') ;
+
+    switch (choix)
+    {
+    case 'o':
+        groupeEntr = SupprimerEntreprise(groupeEntr, index) ;
+        return MenuPrincipal(groupeEntr) ;
+        break;
+    case 'n':
+        return ProfilEntreprise(groupeEntr, index) ;
+        break;
+    default:
+        break;
+    }
+
+
+    return 0 ;
 }

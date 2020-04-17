@@ -32,6 +32,9 @@ int AjoutEntreprise(groupeEntreprises *groupeEntr, char nom[40], char code_posta
 // Retourne l'index de la dernière entreprise du groupe
 int LastEntreprise(groupeEntreprises* g) ;
 
+// Retourne 1 si l'entreprise fait partie du groupe, 0 sinon
+int ExisteEntreprise(groupeEntreprises*g, int const index) ;
+
 // Retourne l'entreprise correspondant à l'index passé en paramètres
 entreprise* g_indexEntreprise(groupeEntreprises* g, int const index) ;
 
