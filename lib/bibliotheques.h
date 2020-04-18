@@ -5,4 +5,5 @@
 #include "groupe.h"
 #include "entreprise.h"
 #include "postes.h"
+#include "employe.h"
 
