@@ -11,6 +11,7 @@
 groupe* g_open(FILE *db)
 {
     groupe *g = (groupe*)malloc(sizeof(groupe));
+    g->personnes = NULL ;
     int amis[20][5];
     int ami, i,j;
     personne data;

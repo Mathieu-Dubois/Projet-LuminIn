@@ -5,8 +5,10 @@ using namespace std ;
 
 #include "menu.h"
 #include "entreprise.h"
+#include "postes.h"
+#include "groupe.h"
 
-int MenuPrincipal(groupeEntreprises *gEntreprise)
+int MenuPrincipal(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
 {
     char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
  
@@ -26,13 +28,13 @@ int MenuPrincipal(groupeEntreprises *gEntreprise)
         switch (choix)
         {
         case '1':
-            return MenuEntreprise(gEntreprise) ;
+            return MenuEntreprise(gEntreprise, gPoste, gPersonne) ;
             break;
         case '2':
-            return MenuEmploye(gEntreprise) ;
+            return MenuEmploye(gEntreprise, gPoste, gPersonne) ;
             break;
         case '3':
-            return MenuChercheur(gEntreprise) ;
+            return MenuChercheur(gEntreprise, gPoste, gPersonne) ;
             break;
         case 'q':
             return 0 ;
@@ -44,7 +46,7 @@ int MenuPrincipal(groupeEntreprises *gEntreprise)
     return 0 ;
 }
 
-int MenuEntreprise(groupeEntreprises *gEntreprise)
+int MenuEntreprise(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
 {
     char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
    
@@ -63,13 +65,13 @@ int MenuEntreprise(groupeEntreprises *gEntreprise)
     switch (choix)
     {
     case '1':
-        return SeConnecterEntreprise(gEntreprise) ;
+        return SeConnecterEntreprise(gEntreprise, gPoste, gPersonne) ;
         break;
     case '2':
-        return CreerEntreprise(gEntreprise) ;
+        return CreerEntreprise(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'm':
-        return MenuPrincipal(gEntreprise) ;
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'q':
         return 0 ;
@@ -81,7 +83,7 @@ int MenuEntreprise(groupeEntreprises *gEntreprise)
     return 0 ;
 }
 
-int MenuChercheur(groupeEntreprises *gEntreprise)
+int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
 {
     char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
    
@@ -104,22 +106,22 @@ int MenuChercheur(groupeEntreprises *gEntreprise)
     switch (choix)
     {
     case '1':
-        return A_Implementer(gEntreprise) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '2':
-        return A_Implementer(gEntreprise) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '3':
-        return A_Implementer(gEntreprise) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '4':
-        return A_Implementer(gEntreprise) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '5':
-        return A_Implementer(gEntreprise) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'm':
-        return MenuPrincipal(gEntreprise) ;
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'q':
         return 0 ;
@@ -131,7 +133,7 @@ int MenuChercheur(groupeEntreprises *gEntreprise)
     return 0 ;
 }
 
-int MenuEmploye(groupeEntreprises *gEntreprise)
+int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
 {
     char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
    
@@ -155,25 +157,25 @@ int MenuEmploye(groupeEntreprises *gEntreprise)
     switch (choix)
     {
     case '1':
-        return A_Implementer(gEntreprise) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '2':
-        return A_Implementer(gEntreprise) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '3':
-        return A_Implementer(gEntreprise) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '4':
-        return A_Implementer(gEntreprise) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '5':
-        return A_Implementer(gEntreprise) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '6':
-        return A_Implementer(gEntreprise) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'm':
-        return MenuPrincipal(gEntreprise) ;
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'q':
         return 0;
@@ -185,7 +187,7 @@ int MenuEmploye(groupeEntreprises *gEntreprise)
     return 0 ;
 }
 
-int A_Implementer(groupeEntreprises *gEntreprise)
+int A_Implementer(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
 {
     char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
    
@@ -203,7 +205,7 @@ int A_Implementer(groupeEntreprises *gEntreprise)
     switch (choix)
     {
     case 'm':
-        return MenuPrincipal(gEntreprise) ;
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'q':
         return 0 ;
@@ -215,7 +217,7 @@ int A_Implementer(groupeEntreprises *gEntreprise)
     return 0 ;
 }
 
-int SeConnecterEntreprise(groupeEntreprises *gEntreprise)
+int SeConnecterEntreprise(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
 {  
     char choixID(0) ;   // Contient l'id choisi par l'utilisateur
     do
@@ -234,13 +236,13 @@ int SeConnecterEntreprise(groupeEntreprises *gEntreprise)
     switch (choixID)
     {
     case 'm':
-        return MenuPrincipal(gEntreprise) ;
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'q':
         return 0 ;
         break;
     case 'r':
-        return MenuEntreprise(gEntreprise) ;
+        return MenuEntreprise(gEntreprise, gPoste, gPersonne) ;
         break;
     
     default:
@@ -248,13 +250,13 @@ int SeConnecterEntreprise(groupeEntreprises *gEntreprise)
     }
 
 
-    return ProfilEntreprise(gEntreprise, (int)choixID - 48) ;
+    return ProfilEntreprise(gEntreprise, gPoste, gPersonne, (int)choixID - 48) ;
     
 
     return 0;
 }
 
-int CreerEntreprise(groupeEntreprises *gEntreprise)
+int CreerEntreprise(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
 {
     char nom[40];
     char code_postal[10] ;
@@ -302,10 +304,10 @@ int CreerEntreprise(groupeEntreprises *gEntreprise)
         {
         case 'o':
             AjoutEntreprise(gEntreprise, nom, code_postal, courriel) ;
-            return MenuEntreprise(gEntreprise) ;
+            return MenuEntreprise(gEntreprise, gPoste, gPersonne) ;
             break;
         case 'n':
-            return MenuEntreprise(gEntreprise) ;
+            return MenuEntreprise(gEntreprise, gPoste, gPersonne) ;
             break;
         default:
             break;
@@ -314,7 +316,7 @@ int CreerEntreprise(groupeEntreprises *gEntreprise)
     return 0 ;
 }
 
-int ProfilEntreprise(groupeEntreprises *gEntreprise, int index)
+int ProfilEntreprise(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne, int index)
 {
     char choix(0) ;
 
@@ -338,22 +340,22 @@ int ProfilEntreprise(groupeEntreprises *gEntreprise, int index)
     switch (choix)
     {
     case '1':
-        return A_Implementer(gEntreprise) ;
+        return ListeDesPostes(gEntreprise, gPoste, gPersonne, index) ;
         break;
     case '2':
-        return A_Implementer(gEntreprise) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '3':
-        return A_Implementer(gEntreprise) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '4':
-        return A_Implementer(gEntreprise) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '5':
-        return ConfirmerSuppressionEntreprise(gEntreprise, index) ;
+        return ConfirmerSuppressionEntreprise(gEntreprise, gPoste, gPersonne, index) ;
         break;
     case 'm':
-        return MenuPrincipal(gEntreprise) ;
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'q':
         return 0 ;
@@ -366,7 +368,7 @@ int ProfilEntreprise(groupeEntreprises *gEntreprise, int index)
 
 }
 
-int ConfirmerSuppressionEntreprise(groupeEntreprises* gEntreprise , int index)
+int ConfirmerSuppressionEntreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne, int index)
 {
     char choix(0) ;
 
@@ -393,10 +395,10 @@ int ConfirmerSuppressionEntreprise(groupeEntreprises* gEntreprise , int index)
     {
     case 'o':
         gEntreprise = SupprimerEntreprise(gEntreprise, index) ;
-        return MenuPrincipal(gEntreprise) ;
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'n':
-        return ProfilEntreprise(gEntreprise, index) ;
+        return ProfilEntreprise(gEntreprise, gPoste, gPersonne, index) ;
         break;
     default:
         break;
@@ -406,7 +408,7 @@ int ConfirmerSuppressionEntreprise(groupeEntreprises* gEntreprise , int index)
     return 0 ;
 }
 
-int ListeDesPostes(groupeEntreprises* gEntreprise, int index)
+int ListeDesPostes(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne, int index)
 {
     char choix(0) ;
 
@@ -416,21 +418,21 @@ int ListeDesPostes(groupeEntreprises* gEntreprise, int index)
         cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
         cout << "Profil de : " << g_indexEntreprise(gEntreprise, index)->nom << endl << endl ;
         cout << "Liste des postes à pourvoir dans votre entreprise :" << endl ;
-        // AfficherPostes(groupePostes) ;
-        cout << "r. Retourner à la page précédente" << endl << endl ;
+        AfficherPostesEntreprise(gEntreprise, gPoste, index) ;
+        cout << endl << "r. Retourner à la page précédente" << endl ;
         cout << "m. Retourner au menu principal" << endl ;                       
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         cin >> choix ;
-    } while ((choix > '5' || choix < '1') && choix != 'q' && choix != 'm');
+    } while (choix != 'q' && choix != 'm' && choix != 'r');
 
     switch (choix)
     {
     case 'r':
-        return ProfilEntreprise(gEntreprise, index) ;
+        return ProfilEntreprise(gEntreprise, gPoste, gPersonne, index) ;
         break;
     case 'm':
-        return MenuPrincipal(gEntreprise) ;
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'q':
         return 0 ;

@@ -17,7 +17,9 @@ using namespace std ;
 
 groupeEntreprises* g_openEntreprisesCSV(FILE *db)
 {
-    groupeEntreprises *g = (groupeEntreprises*)malloc(sizeof(groupeEntreprises));
+    groupeEntreprises *g = NULL ;
+    g = (groupeEntreprises*)malloc(sizeof(groupeEntreprises));
+    g->entreprise = NULL ;
     entreprise data;
 
     char poubelle[100]; //On tej la première ligne

@@ -19,16 +19,17 @@ using namespace std ;
 
 groupePostes* g_openPostesCSV(FILE* db)
 {
-    groupePostes *g = (groupePostes*)malloc(sizeof(groupePostes)) ;
+    groupePostes *g = NULL ;
+    g = (groupePostes*)malloc(sizeof(groupePostes)) ;
+    g->poste = NULL ;
     poste data ;
     char caracterelu ;
 
     //Initialisation du tableau competence
-    for (int i = 0 ; i < 5 ; i++){ 
-        for(int j = 0 ; j < 128; j++){
-            data.competence[i][j] = '\0';
-        }
-    }
+    for (int i = 0 ; i < 5 ; i++)
+        for(int j = 0 ; j < 128; j++) data.competence[i][j] = '\0';
+        
+    
 
     char poubelle[100]; //On tej la première ligne
     fscanf(db, "%s\n", poubelle);
@@ -81,26 +82,44 @@ void AfficherPostes(groupePostes* g)
     }
 }
 
-void AfficherPostes(groupeEntreprises* gE, groupePostes* gP, int index)
+void AfficherPostesEntreprise(groupeEntreprises* gE, groupePostes* gP, int index)
 {
-    if (g->poste == NULL) cout << "Aucun poste enregistrée" << endl ;
+    if (gE->entreprise == NULL) cout << "Aucune entreprise enregistrée" << endl ;
     else
     {
-        node *tmp = g->poste ;
-        poste *p = (poste*)tmp->data ;
-        while (p!= NULL && tmp != NULL)
+        if(ExisteEntreprise(gE,index))
         {
-            // cout << e->index << " - " << e->nom << " - " << e->code_postal << " - " << e->courriel << endl ;
-            cout << p->index << " - " << p->titre << " - " << p->entreprise << " - | " ;
-            for (int i = 0; i < 5; i++)
+            if (gP->poste == NULL) cout << "Aucun poste enregistré" << endl ;
+            else
             {
-                for (int j = 0; j < 128; j++) cout << p->competence[i][j] ;
-                if(p->competence[i][0] != '\0') cout << " | " ;
+                node *tmp = gP->poste ;
+                poste *p = (poste*)tmp->data ;
+                int test = 0 ;
+                while (p!= NULL && tmp != NULL)
+                {
+                    if(p->entreprise == index)
+                    {
+                        cout << p->index << " - " << p->titre << " - | " ;
+                        for (int i = 0; i < 5; i++)
+                        {
+                            for (int j = 0; j < 128; j++) cout << p->competence[i][j] ;
+                            if(p->competence[i][0] != '\0') cout << " | " ;
+                        }
+                        cout << endl ;
+                        test = 1 ;
+                        
+                    } 
+                    tmp = tmp->next ;
+                    if(tmp != NULL) p = (poste*)tmp->data ;
+                }
+                if (!test) cout << "Aucun poste enregistré pour le moment." << endl ;
+               
+                
             }
-            cout << endl ;
-            tmp = tmp->next ;
-            if(tmp != NULL) p = (poste*)tmp->data ;
-            
         }
+        else cout << "ERREUR : L'entreprise n'existe pas" << endl ;
     }
+    
+    
+    
 }

@@ -5,13 +5,35 @@ using namespace std ;
 
 int main()
 {    
-    // Création du groupe entreprise d'après "entreprises.csv"
-    groupeEntreprises *groupeEntr = NULL ;
-    FILE *dbE = fopen("entreprises.csv", "r");
-    groupeEntr = g_openEntreprisesCSV(dbE);
-    fclose(dbE);
+    // Création du groupe d'entreprises
+    groupeEntreprises *gE = NULL;
+    {
+        FILE *dbE = NULL ;
+        dbE = fopen("entreprises.csv", "r");
+        gE = g_openEntreprisesCSV(dbE);
+        fclose(dbE);
+    }
     
-    MenuPrincipal(groupeEntr) ;
+    // Création du groupe de postes
+    groupePostes *gP = NULL ;
+    {
+        FILE *dbP = NULL ;
+        dbP = fopen("postes.csv", "r");
+        gP = g_openPostesCSV(dbP);
+        fclose(dbP);
+    }
+
+    // Création du groupe de personnes
+    groupe *gPe = NULL ;
+    {
+        FILE *dbPe = NULL ;
+        dbPe = fopen("employes.csv", "r");
+        gPe = g_open(dbPe);
+        fclose(dbPe);
+    }
+
+
+    MenuPrincipal(gE, gP, gPe) ;
 
     return 0 ;
 }
