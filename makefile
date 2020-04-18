@@ -26,8 +26,8 @@ all: build/test_exe build/application_exe
 build/menu.o: lib/menu.cpp | build
 	$(CC) $(CCFLAGS) -c lib/menu.cpp -I ./lib -o build/menu.o
 
-build/groupe.o: lib/groupe.c | build
-	$(CC) $(CCFLAGS) -c lib/groupe.c -I ./lib -o build/groupe.o
+build/groupe.o: lib/groupe.cpp | build
+	$(CC) $(CCFLAGS) -c lib/groupe.cpp -I ./lib -o build/groupe.o
 
 build/liste.o: lib/liste.c | build
 	$(CC) $(CCFLAGS) -c lib/liste.c -I ./lib -o build/liste.o

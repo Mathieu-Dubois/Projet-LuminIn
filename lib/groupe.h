@@ -13,7 +13,7 @@ typedef struct personne
     char nom[128];
     char prenom[128];
     char courriel[128];
-    int adresse[128];
+    int adresse;
     char competence[5][128];
     struct personne *amis[MAX_AMIS];
     int entreprise;
@@ -26,6 +26,9 @@ typedef struct groupe
 
 // Crée un groupe à partir d'un flux donné.
 groupe* g_open(FILE* db);
+
+//Ecris une table csv à partir d'un groupe donné
+void g_ecrire(groupe* gEmployes);
 
 // Retour la taille du groupe.
 int g_size(groupe* g);
@@ -91,3 +94,7 @@ int g_distance(groupe* g, int const index_a, int const index_b);
 // g_remove(g, 3) => {[1,Alice,2] [2,Bob,1] [4,Dave,]}
 // g_distance(g, 1, 4) => -1
 void g_remove(groupe* g, int const index);
+
+
+// Réinitialise les fichiers csv à leur état initial
+void ReinitialiserCSV() ;

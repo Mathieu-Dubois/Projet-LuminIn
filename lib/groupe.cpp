@@ -1,12 +1,14 @@
+#include <iostream>
+using namespace std ;
 #include "groupe.h"
-
 #include "liste.h"
-
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <malloc.h>
+#include <fstream>
+
 
 groupe* g_open(FILE *db)
 {
@@ -33,7 +35,7 @@ groupe* g_open(FILE *db)
     char poubelle[100]; //On tej la première ligne
     fscanf(db, "%s\n", poubelle);
     //Lecture du fichier
-    while(fscanf(db, "%d,%128[^,],%128[^,],%128[^,],%d", &data.index, data.nom, data.prenom, data.courriel, data.adresse) == 5)
+    while(fscanf(db, "%d,%128[^,],%128[^,],%128[^,],%d", &data.index, data.nom, data.prenom, data.courriel, &data.adresse) == 5)
     {
         personne *p = (personne*)malloc(sizeof(personne));
         *p = data;
@@ -55,6 +57,9 @@ groupe* g_open(FILE *db)
         l_append(&g->personnes, l_make_node((personne *)p)); //Ca n'a pas l'air de linker
         i++;
     }
+
+
+
 
     //Maintenant on link les amis
     node *tmp = g->personnes;
@@ -83,6 +88,59 @@ groupe* g_open(FILE *db)
     }
     return g;
 }
+
+void g_ecrire(groupe* gEmployes)
+{
+    char tampon[100]; 
+    FILE *db = fopen("employes.csv", "r");
+    fscanf(db, "%s\n", tampon);
+    fclose(db);
+    FILE *tmp = fopen("employes.csv", "w");
+    fputs(tampon, tmp);
+    fputc('\n', tmp);
+    node *temp = gEmployes->personnes;
+    personne*tmpami;
+    while(temp != NULL){
+        tmpami = (personne*)(temp->data);
+        fprintf(tmp, "%d,", tmpami->index);
+        fputs(tmpami->nom, tmp);
+        fputc(',', tmp);
+        fputs(tmpami->prenom, tmp);
+        fputc(',', tmp);
+        fputs(tmpami->courriel, tmp);
+        fputc(',', tmp);
+        fprintf(tmp, "%d,", tmpami->adresse);
+        int virgule = 0;
+        for (int x = 0; x < 5 ; x++){
+            if (tmpami->competence[x][0] != '\0' && virgule == 0) {
+                fputs(tmpami->competence[x], tmp);
+                virgule = 1;
+            }
+            else if (tmpami->competence[x][0] != '\0' && virgule == 1) {
+                fputc(';', tmp);
+                fputs(tmpami->competence[x], tmp);
+            }
+        }
+        fputc(',', tmp);
+        virgule = 0;
+        for (int j = 0 ; j < 5 ; j++){
+            if (tmpami->amis[j] != NULL){
+                    if (virgule == 0 ){
+                         fprintf(tmp, "%d", tmpami->amis[j]->index);
+                         virgule = 1;
+                    }
+                    else if (virgule == 1) fprintf(tmp, ";%d", tmpami->amis[j]->index);
+                
+            }
+        }
+        fprintf(tmp, ",%d", tmpami->entreprise);
+        fputc('\n', tmp);
+        temp = temp->next;
+    }
+    fclose(tmp);
+    remove("tmp.txt");
+}
+
 
 int g_size(groupe* g)
 {
@@ -299,4 +357,56 @@ void g_remove(groupe* g, int const index)
 
 
     return;
+}
+
+
+void ReinitialiserCSV()
+{
+    ofstream entreprise("tmp1.csv") ;
+    if(entreprise)
+    {
+        entreprise << "id,nom,code_postal,mail" << endl ;
+        entreprise << "1,Disney,77700,walt@disney.com" << endl ;
+        entreprise << "2,Google,75009,emplois@google.com" << endl ;
+        entreprise << "3,Amazon,65058,contact@amazon.com" << endl ;
+        entreprise << "4,Apple,54410,contact@apple.com" << endl ;
+        entreprise << "5,Doowap,42754,bonnebrioche@doowap.com" << endl ;
+        entreprise.close() ;
+    }
+    else cout << "ERREUR 1" << endl ;
+
+    ofstream poste("tmp2.csv") ;
+    if(poste)
+    {
+        poste << "id,titre,entreprise,competences" << endl ;
+        poste << "1,acteur,1,comedie;gag" << endl ;
+        poste << "2,developpeur,2,C;SQL;Python" << endl ;
+        poste << "3,briocheur,5,patisserie" << endl ;
+        poste << "4,mascotte_Mickey,1,danse;sport" << endl ;
+        poste.close() ;
+    }
+    else cout << "ERREUR 2" << endl ;
+
+    ofstream employes("tmp3.csv") ;
+    if(employes)
+    {
+        employes << "id,nom,prenom,mail,code-postal,competences,collegues,entreprise" << endl ;
+        employes << "1,Untel,Michel,m_untel@google.com,13010,C++;Python,,2" << endl ;
+        employes << "2,Mouse,Mickey,mickey@mickeyville.gov,77700,comedie,3;5;6,1" << endl ;
+        employes << "3,Mouse,Minnie,minnie@mickeyville.gov,77700,comedie;chant,2,1" << endl ;
+        employes << "4,Brioche,Theo,theobrioche@doowap.fr,13400,patisserie,5,5" << endl ;
+        employes << "5,Scott,Monon,monon@cristalclear.com,54879,chant;abdotransat,4;2,4" << endl ;
+        employes << "6,Pas,Fred,cestquilui@invisible.com,54710,sieste,5,1" << endl ;
+        employes << "7,Duck,Donald,donal.duck@canardville.gov,77700,comedie;gag,2,-1" << endl ;
+        employes << "8,Pignon,Francois,pignouf@gmail.com,75020,C;SQL;Python,,-1" << endl ;
+        employes.close() ;
+    }
+    else cout << "ERREUR 3" << endl ;
+
+    remove("entreprises.csv") ;
+    remove("postes.csv") ;
+    remove("employes.csv") ;
+    rename("tmp1.csv","entreprises.csv") ;
+    rename("tmp2.csv","postes.csv") ;
+    rename("tmp3.csv","employes.csv") ;
 }
