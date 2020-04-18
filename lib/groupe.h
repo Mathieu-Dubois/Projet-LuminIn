@@ -16,7 +16,7 @@ typedef struct personne
     int adresse[128];
     char competence[5][128];
     struct personne *amis[MAX_AMIS];
-    int numEntreprise[128];
+    int entreprise;
 } personne;
 
 typedef struct groupe

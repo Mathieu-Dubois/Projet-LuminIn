@@ -38,8 +38,11 @@ build/entreprise.o: lib/entreprise.cpp | build
 build/postes.o: lib/postes.cpp | build
 	$(CC) $(CCFLAGS) -c lib/postes.cpp -I ./lib -o build/postes.o
 
-build/libbibliotheques.a: build/menu.o build/groupe.o build/liste.o build/entreprise.o build/postes.o | build
-	ar crs build/libbibliotheques.a build/menu.o build/groupe.o build/liste.o build/entreprise.o build/postes.o
+build/employe.o: lib/employe.c |build 
+	$(CC) $(CCFLAGS) -c lib/employe.c -I ./lib -o build/employe.o
+
+build/libbibliotheques.a: build/menu.o build/groupe.o build/liste.o build/entreprise.o build/postes.o build/employe.o| build
+	ar crs build/libbibliotheques.a build/menu.o build/groupe.o build/liste.o build/entreprise.o build/postes.o build/employe.o
 
 # Programmes :
 # test : contient tous les tests

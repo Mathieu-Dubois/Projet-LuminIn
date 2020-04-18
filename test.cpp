@@ -146,6 +146,64 @@ int main()
         TEST(g_linked(g, 6, 4) == false);
     }
 
+    //------------------- TESTS EMPLOYES ------------------
+
+    // Tests de la fonction modifier adresse
+    {
+        modifier_adresse(4, g, 38000);
+        TEST(g_index(g, 4)->adresse == 38000);
+        TEST(modifier_adresse(4, g, 38000) == 1);
+    }
+
+    // Tests de la fonction modifier entreprise
+    {
+        modifier_entreprise(4, g, 3);
+        TEST(g_index(g, 4)->entreprise == 3);
+        TEST(modifier_entreprise(4, g, 3) == 1);
+    }
+
+    // Tests de la fonction ajouter compétence
+    {
+        char comp[5] = {'f', 'o', 'r', 't', '\0'};
+        ajouter_competence(4, g, comp);
+        TEST(strcmp(g_index(g, 4)->competence[1], comp) == 0);
+        TEST(ajouter_competence(4, g, comp) == 1);
+    }
+
+    // Tests de la fonction quitter entreprise
+    {
+        quitter_entreprise(6, g);
+        TEST(g_index(g, 6)->entreprise == -1);
+        TEST(quitter_entreprise(6, g) == 1);
+    }
+
+    // Tests de la fonction ajouter collègue
+    {
+        TEST(ajouter_collegue(2, g, 3) == 1);
+        TEST(ajouter_collegue(4, g, 3) == 2);
+        TEST(ajouter_collegue(9, g, 3) == 3);
+        TEST(ajouter_collegue(4, g, 7) == 0);
+        TEST(g_oneway(g, 4, 7) == true);
+
+    }
+
+    // Tests de la fonction supprimer collegue
+    {
+        TEST(supprimer_collegue(4, g, 7) == 0);
+        TEST(g_friends(g, 4, 7) == false);
+        TEST(supprimer_collegue(4, g, 7) == 1);
+    }
+
+    // Tests de la fonction rejoindre entreprise
+    {
+        TEST(rejoindre_entreprise(6, g, 3) == 0);
+        TEST(g_oneway(g, 6, 4) == false);
+        TEST(g_oneway(g, 6, 7) == false);
+        TEST(g_friends(g, 6, 4) == true);
+        TEST(g_friends(g, 6, 7) == true);
+    }
+
+
     // Test de la fonction LastEntreprise et ajout AjoutEntreprise
     {
         TEST(LastEntreprise(gE) == 5) ;
@@ -193,6 +251,16 @@ int main()
     {
         TEST(LastPoste(gP) == 4) ;
     }
+
+    char comp[5][128] = {'\0'};
+    int col[5] ;
+    for (int i = 0; i < 5 ; i++) col[i] = -1;
+    char Manon[6] = {'M','a','n','o', 'n', '\0'};
+    char nom[5] = {'s', 'c', 't', 't', '\0'};
+    char mail[5] = {'m', 'a', 'i', 'l', '\0'};
+    creer_profil(Manon, nom, mail, 17800, comp, col, 2, g);
+    TEST(g_size(g) == 9);
+    supprimer_profil(9,g);
 
 
 
