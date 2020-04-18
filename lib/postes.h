@@ -26,3 +26,9 @@ void AfficherPostes(groupePostes* g) ;
 
 // Affiche tous les postes pourvu par l'entreprise donné par son index
 void AfficherPostesEntreprise(groupeEntreprises* gE, groupePostes* gP, int index) ;
+
+// Ajoute un poste au fichier postes.csv et au groupe de postes
+int AjoutPoste(groupePostes *gP, char titre[128], int index, char competence[5][128]) ;
+
+// Retourne l'index du dernier poste du groupe de postes
+int LastPoste(groupePostes* gP) ;

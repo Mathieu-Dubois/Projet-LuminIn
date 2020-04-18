@@ -189,6 +189,11 @@ int main()
     // AfficherPostesEntreprise(gE,gP,5) ;
     // }
 
+    // // Test de la fonction LastPoste
+    {
+        TEST(LastPoste(gP) == 4) ;
+    }
+
 
 
 
