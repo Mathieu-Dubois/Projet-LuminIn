@@ -129,18 +129,18 @@ int AjoutPoste(groupePostes *gP, char titre[128], int index, char competence[5][
     
     // int index(0) ; // Contiendra l'index de la nouvelle entreprise à ajouter
 
-    index = LastPoste(groupeEntr) ; // On récupère l'index du dernier poste du groupe
-    entreprise *nouveau = (entreprise*)malloc(sizeof(entreprise)) ;
-    nouveau->index = index + 1 ;
-    strcpy(nouveau->nom, nom) ;
-    strcpy(nouveau->code_postal, code_postal) ;
-    strcpy(nouveau->courriel, courriel) ;
-    // Ajout de la nouvelle entreprise au groupe
-    l_append(&groupeEntr->entreprise, l_make_node((entreprise*)nouveau)) ;
-    // Ajout de la nouvelle entreprise dans le fichier CSV
-    ofstream fichier("entreprises.csv", ios::app) ;
-    fichier << index+1 << "," << nom << "," << code_postal << "," << courriel << endl ;
-    fichier.close() ;
+    // index = LastPoste(groupeEntr) ; // On récupère l'index du dernier poste du groupe
+    // entreprise *nouveau = (entreprise*)malloc(sizeof(entreprise)) ;
+    // nouveau->index = index + 1 ;
+    // strcpy(nouveau->nom, nom) ;
+    // strcpy(nouveau->code_postal, code_postal) ;
+    // strcpy(nouveau->courriel, courriel) ;
+    // // Ajout de la nouvelle entreprise au groupe
+    // l_append(&groupeEntr->entreprise, l_make_node((entreprise*)nouveau)) ;
+    // // Ajout de la nouvelle entreprise dans le fichier CSV
+    // ofstream fichier("entreprises.csv", ios::app) ;
+    // fichier << index+1 << "," << nom << "," << code_postal << "," << courriel << endl ;
+    // fichier.close() ;
 
     return 0 ;
 }
