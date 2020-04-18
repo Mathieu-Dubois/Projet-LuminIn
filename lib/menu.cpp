@@ -1,9 +1,14 @@
 #include <iostream>
 using namespace std ;
 
-#include "menu.h"
+#include <regex>
 
-void MenuPrincipal()
+#include "menu.h"
+#include "entreprise.h"
+#include "postes.h"
+#include "groupe.h"
+
+int MenuPrincipal(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
 {
     char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
  
@@ -23,71 +28,62 @@ void MenuPrincipal()
         switch (choix)
         {
         case '1':
-            MenuEntreprise() ;
+            return MenuEntreprise(gEntreprise, gPoste, gPersonne) ;
             break;
         case '2':
-            MenuEmploye() ;
+            return MenuEmploye(gEntreprise, gPoste, gPersonne) ;
             break;
         case '3':
-            MenuChercheur() ;
+            return MenuChercheur(gEntreprise, gPoste, gPersonne) ;
             break;
-        
+        case 'q':
+            return 0 ;
+            break;
         default:
             break;
         }
 
-    return ;
+    return 0 ;
 }
 
-void MenuEntreprise()
+int MenuEntreprise(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
 {
     char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
    
     do
     {
         system("clear") ;
-        cout << " *** Bienvenue sur LuminIN, le site des pros ***" << endl << endl ;
-        cout << "Vous voulez :" << endl ;
-        cout << "1. Créer le profil de votre entreprise" << endl ;            
-        cout << "2. Supprimer le profil de votre entreprise" << endl ;
-        cout << "3. Créer le profil d'un poste à pourvoir" << endl ;                            
-        cout << "4. Supprimer le profil d'un poste maintenant pourvu" << endl ;
-        cout << "5. Faire une recherche parmi les chercheurs d'emploi" << endl << endl ;
+        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
+        cout << "1. Se connecter" << endl ; 
+        cout << "2. Créer un compte " << endl << endl ;            
         cout << "m. Retourner au menu principal" << endl ;                       
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         cin >> choix ;
-    } while ((choix > '5' || choix < '1') && choix != 'q' && choix != 'm');
+    } while ((choix > '2' || choix < '1') && choix != 'q' && choix != 'm');
 
     switch (choix)
     {
     case '1':
-        A_Implementer() ;
+        return SeConnecterEntreprise(gEntreprise, gPoste, gPersonne) ;
         break;
     case '2':
-        A_Implementer() ;
-        break;
-    case '3':
-        A_Implementer() ;
-        break;
-    case '4':
-        A_Implementer() ;
-        break;
-    case '5':
-        A_Implementer() ;
+        return CreerEntreprise(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'm':
-        MenuPrincipal() ;
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
         break;
-    
+    case 'q':
+        return 0 ;
+        break;
     default:
         break;
     }
     
-    return ;
+    return 0 ;
 }
 
-void MenuChercheur()
+int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
 {
     char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
    
@@ -110,32 +106,34 @@ void MenuChercheur()
     switch (choix)
     {
     case '1':
-        A_Implementer() ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '2':
-        A_Implementer() ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '3':
-        A_Implementer() ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '4':
-        A_Implementer() ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '5':
-        A_Implementer() ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'm':
-        MenuPrincipal() ;
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
         break;
-    
+    case 'q':
+        return 0 ;
+        break;
     default:
         break;
     }
     
-    return ;
+    return 0 ;
 }
 
-void MenuEmploye()
+int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
 {
     char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
    
@@ -159,39 +157,37 @@ void MenuEmploye()
     switch (choix)
     {
     case '1':
-        A_Implementer() ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '2':
-        A_Implementer() ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '3':
-        A_Implementer() ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '4':
-        A_Implementer() ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '5':
-        A_Implementer() ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '6':
-        A_Implementer() ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'm':
-        MenuPrincipal() ;
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
         break;
-    
+    case 'q':
+        return 0;
+        break;
     default:
         break;
     }
     
-    return ;
+    return 0 ;
 }
 
-
-
-
-
-void A_Implementer()
+int A_Implementer(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
 {
     char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
    
@@ -200,7 +196,7 @@ void A_Implementer()
         system("clear") ;
         cout << " *** Bienvenue sur LuminIN, le site des pros ***" << endl << endl ;
         cout << "Fonctionnalité non implémentée pour le moment:" << endl ;
-        cout << "m. Retour au menu principal" << endl ;                      
+        cout << "m. Retour au menu principal" << endl ;                     
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         cin >> choix ;
@@ -209,12 +205,241 @@ void A_Implementer()
     switch (choix)
     {
     case 'm':
-        MenuPrincipal() ;
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case 'q':
+        return 0 ;
+        break;
+    default:
+        break;
+    }
+    
+    return 0 ;
+}
+
+int SeConnecterEntreprise(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
+{  
+    char choixID(0) ;   // Contient l'id choisi par l'utilisateur
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
+        cout << "Sélectionnez votre id :" << endl ;
+        AfficherEntreprises(gEntreprise) ;
+        cout << endl << "r. Retourner à la page précédente" << endl ;    
+        cout << "m. Menu principal" << endl ;                   
+        cout << "q. Quitter l'application" << endl << endl ; 
+        cout << "Votre choix : " ;
+        cin >> choixID ;
+    } while (!ExisteEntreprise(gEntreprise, choixID - 48) && choixID != 'q' && choixID != 'm' && choixID != 'r');
+
+    switch (choixID)
+    {
+    case 'm':
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case 'q':
+        return 0 ;
+        break;
+    case 'r':
+        return MenuEntreprise(gEntreprise, gPoste, gPersonne) ;
         break;
     
     default:
         break;
     }
+
+
+    return ProfilEntreprise(gEntreprise, gPoste, gPersonne, (int)choixID - 48) ;
     
-    return ;
+
+    return 0;
+}
+
+int CreerEntreprise(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
+{
+    char nom[40];
+    char code_postal[10] ;
+    char courriel[128];
+    char choix(0) ;
+
+    system("clear") ;
+    cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
+    do
+    {
+        cout << "Nom de l'entreprise (sans espaces) : " ;
+        cin >> nom ;
+        if(!regex_match(nom, regex("[a-zA-Zéèêëïîôö'_]{1,40}"))) cout << "Merci de renseigner un nom valide." << endl ;
+    } while (!regex_match(nom, regex("[a-zA-Zéèêëïîôö'_]{1,40}"))); // Format nom entreprise : lettres uniquement (maximum 40)
+
+    do
+    {
+        cout << "Code Postal (5 chiffres) : " ;
+        cin >> code_postal ;
+        if(!regex_match(code_postal, regex("[\\d]{1,5}"))) cout << "Merci de renseigner un code postal valide." << endl ;
+    } while (!regex_match(code_postal, regex("[\\d]{5}"))); // Format code postal : 5 chiffres uniquement
+    
+    do
+    {
+        cout << "Adresse mail : " ;
+        cin >> courriel ;
+        if(!regex_match(courriel, regex("[\\w._%+-]{1,20}@[\\w._]{2,20}.[A-Za-z]{2,3}"))) cout << "Merci de renseigner une adresse mail valide." << endl ;
+    } while (!regex_match(courriel, regex("[\\w._%+-]{1,20}@[\\w._]{2,20}.[A-Za-z]{2,3}"))); // Format d'une adresse mail
+
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
+        cout << "Nom : " << nom << endl ;
+        cout << "Code postal : " << code_postal << endl ;
+        cout << "Adresse mail : " << courriel << endl << endl ; 
+        cout << "Validez vous ces paramètres ?" << endl ;
+        cout << "o. OUI" << endl ;
+        cout << "n. NON" << endl ;
+        cout << "Votre choix : " ;
+        cin >> choix ; 
+    } while ((choix != 'o' && choix != 'n')) ;
+    
+    switch (choix)
+        {
+        case 'o':
+            AjoutEntreprise(gEntreprise, nom, code_postal, courriel) ;
+            return MenuEntreprise(gEntreprise, gPoste, gPersonne) ;
+            break;
+        case 'n':
+            return MenuEntreprise(gEntreprise, gPoste, gPersonne) ;
+            break;
+        default:
+            break;
+        }
+        
+    return 0 ;
+}
+
+int ProfilEntreprise(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne, int index)
+{
+    char choix(0) ;
+
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
+        cout << "Profil de : " << g_indexEntreprise(gEntreprise, index)->nom << endl << endl ;
+        cout << "Vous voulez :" << endl ;
+        cout << "1. Consulter les postes à pourvoir de votre entreprise" << endl ; 
+        cout << "2. Ajouter un poste à pourvoir" << endl ;
+        cout << "3. Supprimer un poste à pourvoir" << endl ;
+        cout << "4. Faire une recherche parmi les chercheurs d'emploi" << endl ;
+        cout << "5. Supprimer le profil de votre entreprise" << endl << endl ;
+        cout << "m. Retourner au menu principal" << endl ;                       
+        cout << "q. Quitter l'application" << endl << endl ;        
+        cout << "Votre choix : " ;
+        cin >> choix ;
+    } while ((choix > '5' || choix < '1') && choix != 'q' && choix != 'm');
+
+    switch (choix)
+    {
+    case '1':
+        return ListeDesPostes(gEntreprise, gPoste, gPersonne, index) ;
+        break;
+    case '2':
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case '3':
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case '4':
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case '5':
+        return ConfirmerSuppressionEntreprise(gEntreprise, gPoste, gPersonne, index) ;
+        break;
+    case 'm':
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case 'q':
+        return 0 ;
+        break;
+    default:
+        break;
+    }
+
+    return 0 ;
+
+}
+
+int ConfirmerSuppressionEntreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne, int index)
+{
+    char choix(0) ;
+
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
+        cout << "Profil de : " << g_indexEntreprise(gEntreprise, index)->nom << endl << endl ;
+        cout << "Suppression du profil : " <<
+        g_indexEntreprise(gEntreprise, index)->nom << " - " <<
+        g_indexEntreprise(gEntreprise, index)->code_postal << " - " <<
+        g_indexEntreprise(gEntreprise, index)->courriel << endl << endl ; 
+        cout << "Confirmez vous la suppression de ce profil ?" << endl <<
+        "Toutes les annonces de postes à pourvoir par l'entreprise " << 
+        g_indexEntreprise(gEntreprise, index)->nom <<
+        " seront également supprimées." << endl << endl ;
+        cout << "o. OUI" << endl ;                            
+        cout << "n. NON" << endl << endl ;       
+        cout << "Votre choix : " ;
+        cin >> choix ;
+    } while (choix != 'o' && choix != 'n') ;
+
+    switch (choix)
+    {
+    case 'o':
+        gEntreprise = SupprimerEntreprise(gEntreprise, index) ;
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case 'n':
+        return ProfilEntreprise(gEntreprise, gPoste, gPersonne, index) ;
+        break;
+    default:
+        break;
+    }
+
+
+    return 0 ;
+}
+
+int ListeDesPostes(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne, int index)
+{
+    char choix(0) ;
+
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
+        cout << "Profil de : " << g_indexEntreprise(gEntreprise, index)->nom << endl << endl ;
+        cout << "Liste des postes à pourvoir dans votre entreprise :" << endl ;
+        AfficherPostesEntreprise(gEntreprise, gPoste, index) ;
+        cout << endl << "r. Retourner à la page précédente" << endl ;
+        cout << "m. Retourner au menu principal" << endl ;                       
+        cout << "q. Quitter l'application" << endl << endl ;        
+        cout << "Votre choix : " ;
+        cin >> choix ;
+    } while (choix != 'q' && choix != 'm' && choix != 'r');
+
+    switch (choix)
+    {
+    case 'r':
+        return ProfilEntreprise(gEntreprise, gPoste, gPersonne, index) ;
+        break;
+    case 'm':
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case 'q':
+        return 0 ;
+        break;
+    default:
+        break;
+    }
+
+    return 0 ;
 }
