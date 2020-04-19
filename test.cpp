@@ -37,6 +37,8 @@ int main()
 {    
     ReinitialiserCSV() ;
 
+    //------------------- TESTS GROUPE ------------------
+
     // Lecture de la DB vers une liste en mémoire.
     // Création du groupe d'entreprises
     groupeEntreprises *gE = NULL;
@@ -148,7 +150,7 @@ int main()
         // TEST(g_linked(g, 6, 4) == false);
     }
 
-    // //------------------- TESTS EMPLOYES ------------------
+    //------------------- TESTS EMPLOYES ------------------
 
     // Tests de la fonction modifier adresse
     {
@@ -179,14 +181,13 @@ int main()
         TEST(quitter_entreprise(6, g) == 1);
     }
 
-    // Tests de la fonction ajouter collègue
-    // {
-    //     TEST(ajouter_collegue(2, g, 3) == 1);
-    //     TEST(ajouter_collegue(4, g, 3) == 2);
-    //     TEST(ajouter_collegue(9, g, 3) == 3);
-    //     TEST(ajouter_collegue(4, g, 7) == 0);
-    //     TEST(g_oneway(g, 4, 7) == true);
-    // }
+    //Tests de la fonction ajouter collègue
+    {
+        TEST(ajouter_collegue(2, g, 3) == 1);
+        TEST(ajouter_collegue(4, g, 3) == 2);
+        TEST(ajouter_collegue(9, g, 3) == 3);
+        TEST(g_friends(g, 2, 3) == true);
+    }
 
     // Tests de la fonction supprimer collegue
     // {
@@ -195,15 +196,30 @@ int main()
     //     TEST(supprimer_collegue(4, g, 7) == 1);
     // }
 
-    // Tests de la fonction rejoindre entreprise
-    // {
-    //     TEST(rejoindre_entreprise(6, g, 3) == 0);
-    //     TEST(g_oneway(g, 6, 4) == false);
-    //     TEST(g_oneway(g, 6, 7) == false);
-    //     TEST(g_friends(g, 6, 4) == true);
-    //     TEST(g_friends(g, 6, 7) == true);
-    // }
+    //Tests de la fonction rejoindre entreprise
+    {
+        TEST(rejoindre_entreprise(6, g, 3) == 0);
+        TEST(rejoindre_entreprise(7, g, 3) == 0);
+        TEST(g_oneway(g, 6, 4) == false);
+        TEST(g_oneway(g, 6, 7) == false);
+        TEST(g_friends(g, 6, 4) == true);
+        TEST(g_friends(g, 6, 7) == true);
+    }
 
+    //Tests de la fonction supprimer employe
+    {
+        char comp[5][128] = {'\0'};
+        int col[5] ;
+        for (int i = 0; i < 5 ; i++) col[i] = -1;
+        char Manon[6] = {'M','a','n','o', 'n', '\0'};
+        char nom[5] = {'s', 'c', 't', 't', '\0'};
+        char mail[5] = {'m', 'a', 'i', 'l', '\0'};
+        creer_profil(Manon, nom, mail, 17800, comp, col, 2, g);
+        TEST(g_size(g) == 9);
+        supprimer_profil(9,g);
+    }
+
+    //------------------- TESTS ENTREPRISE ------------------
 
     // // Test de la fonction LastEntreprise et ajout AjoutEntreprise
     {
@@ -254,27 +270,10 @@ int main()
         TEST(LastPoste(gP) == 4) ;
     }
 
-    // char comp[5][128] = {'\0'};
-    // int col[5] ;
-    // for (int i = 0; i < 5 ; i++) col[i] = -1;
-    // char Manon[6] = {'M','a','n','o', 'n', '\0'};
-    // char nom[5] = {'s', 'c', 't', 't', '\0'};
-    // char mail[5] = {'m', 'a', 'i', 'l', '\0'};
-    // creer_profil(Manon, nom, mail, 17800, comp, col, 2, g);
-    // TEST(g_size(g) == 9);
-    // supprimer_profil(9,g);
-
-
     ReinitialiserCSV() ;
 
 
     printf("%d/%d\n", tests_reussis, tests_executes);
-
-    cout << "ATTENTION 1 : Si on modifie l'adresse d'une personne supprimée (lignes 151 à 163) -> segt fault" << endl ;
-    cout << "ATTENTION 2 : Les test de la fonction ajouter collègue ne passent pas tous" << endl ;
-    cout << "ATTENTION 3 : Pareil pour supprimer collègue mais je pense que ces tests dépendant de ceux du dessus donc c'est normal (à vérifier)" << endl ;
-    cout << "ATTENTION 4 : Pareil pour rejoindre entreprise et pareil ça doit être les test qui dépendant des tests précédents (à vérifier)" << endl ;
-    cout << "ATTENTION 5 : Le dernier test ne passe pas (ligne 263) -> segt fault. La 9e personne Manon est bien créé (d'ailleurs il laisse un blanc ente le 8 et le 9 dans le csv) mais segt fault en essayant de le supprimer" << endl ;
 
     return tests_executes - tests_reussis;
 }

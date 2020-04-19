@@ -349,8 +349,9 @@ void g_remove(groupe* g, int const index)
         tmp = tmp -> next;
         ami = (personne*)(tmp->data);
     }
-    tmp -> previous ->next = tmp->next;
-    tmp -> next -> previous = tmp -> previous;
+    if (tmp->previous != NULL) tmp -> previous ->next = tmp->next;
+    else g->personnes = tmp -> next;
+    if (tmp->next != NULL) tmp -> next -> previous = tmp -> previous;
     free(tmp);
 
     
@@ -398,7 +399,7 @@ void ReinitialiserCSV()
         employes << "5,Scott,Monon,monon@cristalclear.com,54879,chant;abdotransat,4;2,4" << endl ;
         employes << "6,Pas,Fred,cestquilui@invisible.com,54710,sieste,5,1" << endl ;
         employes << "7,Duck,Donald,donal.duck@canardville.gov,77700,comedie;gag,2,-1" << endl ;
-        employes << "8,Pignon,Francois,pignouf@gmail.com,75020,C;SQL;Python,,-1" << endl ;
+        employes << "8,Pignon,Francois,pignouf@gmail.com,75020,C;SQL;Python,,-1";
         employes.close() ;
     }
     else cout << "ERREUR 3" << endl ;

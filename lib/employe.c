@@ -30,7 +30,7 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
     else index = i+1;
     fclose(employes);
     employes = fopen("employes.csv", "a");
-    fprintf(employes, "\n%d,", index);
+    fprintf(employes, "%d,", index);
     fputs(nom, employes);
     fputc(',', employes);
     fputs(prenom, employes);
