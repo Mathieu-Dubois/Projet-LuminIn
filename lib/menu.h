@@ -27,6 +27,8 @@ int ConfirmerSuppressionEntreprise(groupeEntreprises *gEntreprise, groupePostes 
 // Affiche le menu où l'entreprise voit tous ces poste à pourvoir
 int ListeDesPostes(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne, int index) ;
 
+//Le menu/formulaire pour créer un profil employés ou chercheur d'emploi
+int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
 
 int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
 int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;

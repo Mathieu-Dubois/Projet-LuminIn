@@ -2,11 +2,15 @@
 using namespace std ;
 
 #include <regex>
+#include<string.h>
+#include<stdio.h>
+#include<stdlib.h>
 
 #include "menu.h"
 #include "entreprise.h"
 #include "postes.h"
 #include "groupe.h"
+#include "employe.h"
 
 int MenuPrincipal(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
 {
@@ -157,8 +161,9 @@ int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gP
     switch (choix)
     {
     case '1':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return MenuCreer_Profil(gEntreprise, gPoste, gPersonne);
         break;
+        
     case '2':
         return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
@@ -442,4 +447,89 @@ int ListeDesPostes(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe 
     }
 
     return 0 ;
+}
+
+int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+
+    
+    int adresse;
+    char competence[5][128]={'\0'};
+    int collegue[5]={-1,-1,-1,-1,-1};
+    int entreprise;
+        
+    char *nom=(char *) malloc(sizeof(char));
+    cout << "Saisir votre Nom : ";
+    cin >> nom ;
+    
+
+    char *prenom=(char *) malloc(sizeof(char));
+    cout << "Saisir votre prenom : ";
+    cin >> prenom ;
+    
+
+    char *courriel=(char *) malloc(sizeof(char));
+    cout << "Saisir votre email : ";
+    cin >> courriel ;
+    
+
+    cout << "Saisir votre code postal : ";
+    cin >> adresse ;
+
+    AfficherEntreprises(gEntreprise);
+    cout << "Ecrivez l'ID de votre entreprise (-1 sinon): ";
+    cin >> entreprise;
+    
+    int i=0;
+    char c;
+    while(i < 5){
+        cout << "Voulez vous ajouter une compétence (O ou N) ?";
+        cin >> c;
+        if (c=='O'){
+        cout << "Saisir une compétence (rien si pas de compétence) : ";
+        cin >> competence[i];
+        i++;
+        }
+        else i=5;
+    }
+
+    //print de la table employes
+    if (gPersonne->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
+    else
+    {
+        node *tmp = gPersonne->personnes ;
+        personne *e = (personne*)tmp->data ;
+        while (e!= NULL && tmp != NULL)
+        {
+            // cout << e->index << " - " << e->nom << " - " << e->code_postal << " - " << e->courriel << endl ;
+            cout << e->index << " - " << e->nom  << endl ;
+            tmp = tmp->next ;
+            if(tmp != NULL) e = (personne*)tmp->data ;
+            
+        }
+    }
+
+    i=0;
+    c='N';
+    while(i < 5){
+        cout << "Voulez vous ajouter un collegue (O ou N) ?";
+        cin >> c;
+        if (c=='O'){
+        cout << "Saisir l'id d'un de vos anciens collegues : ";
+        cin >> collegue[i];
+        i++;
+        }
+        else i=5;
+    }
+
+
+    cout << endl;
+    cout << "Nom : " << nom << endl ;
+    cout << "Prenom : " << prenom << endl ;
+    cout << "Courriel : " << courriel << endl ;
+    cout << "Code Postal : " << adresse << endl ;
+    cout << "ID entreprise :" << entreprise <<endl;
+    //cout << "compétence : "<<competence[1]<<endl;
+
+    creer_profil(nom,prenom,courriel,adresse,competence,collegue,entreprise,gPersonne);
+    return 1;
 }
