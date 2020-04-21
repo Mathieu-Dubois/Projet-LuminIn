@@ -343,7 +343,7 @@ int ProfilEntreprise(groupeEntreprises *gEntreprise, groupePostes *gPoste, group
         return ListeDesPostes(gEntreprise, gPoste, gPersonne, index) ;
         break;
     case '2':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return CreerPoste(gEntreprise, gPoste, gPersonne, index) ;
         break;
     case '3':
         return A_Implementer(gEntreprise, gPoste, gPersonne) ;
@@ -441,5 +441,84 @@ int ListeDesPostes(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe 
         break;
     }
 
+    return 0 ;
+}
+
+int CreerPoste(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne, int indexE)
+{
+    char titre[128];
+    char competence[5][128] = {'\0'} ;
+    char choix(0) ;
+    char choixComp(0) ;
+
+    system("clear") ;
+    cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
+    cout << "Profil de : " << g_indexEntreprise(gEntreprise, indexE)->nom << endl << endl ;
+    do
+    {
+        cout << "Intitulé du poste (sans espaces) : " ;
+        cin >> titre ;
+        if(!regex_match(titre, regex("[a-zA-Zéèêëïîôö'_]{1,128}"))) cout << "Merci de renseigner un intitulé valide." << endl ;
+    } while (!regex_match(titre, regex("[a-zA-Zéèêëïîôö'_]{1,128}"))); // Format intitulé : lettres uniquement (maximum 128)
+
+    int compteur(1) ;
+    int stop(0) ;
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
+        cout << "Profil de : " << g_indexEntreprise(gEntreprise, indexE)->nom << endl << endl ;
+        cout << "Compétence n°" << compteur << " (sans espaces) : " ;
+        cin >> competence[compteur-1] ;
+        choixComp = 0 ;
+        if(compteur < 5)
+        {
+            do
+            {   
+                cout << endl << "Voulez vous ajouter une autre compétence ?" << endl ;
+                cout << "o. OUI" << endl ;
+                cout << "n. NON" << endl ;
+                cout << "Votre choix : " ;
+                cin >> choixComp ;
+            } while (choixComp != 'o' && choixComp != 'n');
+            if (choixComp == 'n') stop = 1 ;
+        }
+        compteur++ ;
+    } while (stop == 0 && compteur < 6);
+    
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
+        cout << "Profil de : " << g_indexEntreprise(gEntreprise, indexE)->nom << endl << endl ;
+        cout << "Ajout du poste suivant : " << endl ;
+        cout << "Titre : " << titre << endl ;
+        for (int i = 0; i < 5; i++)
+        {
+            if(competence[i][0] != '\0')
+            {
+                cout << "Compétence n°" << i+1 << " : " << competence[i] << endl ;
+            }
+        }
+        cout << endl << "Validez vous ces paramètres ?" << endl ;
+        cout << "o. OUI" << endl ;
+        cout << "n. NON" << endl ;
+        cout << "Votre choix : " ;
+        cin >> choix ; 
+    } while ((choix != 'o' && choix != 'n')) ;
+    
+    switch (choix)
+        {
+        case 'o':
+            AjoutPoste(gPoste, titre, indexE, competence) ;
+            return ProfilEntreprise(gEntreprise, gPoste, gPersonne, indexE) ;
+            break;
+        case 'n':
+            return ProfilEntreprise(gEntreprise, gPoste, gPersonne, indexE) ;
+            break;
+        default:
+            break;
+        }
+        
     return 0 ;
 }

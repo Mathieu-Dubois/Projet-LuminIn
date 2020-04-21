@@ -124,23 +124,35 @@ void AfficherPostesEntreprise(groupeEntreprises* gE, groupePostes* gP, int index
     
 }
 
-int AjoutPoste(groupePostes *gP, char titre[128], int index, char competence[5][128])
+int AjoutPoste(groupePostes *gP, char titre[128], int indexE, char competence[5][128])
 {
     
-    // int index(0) ; // Contiendra l'index de la nouvelle entreprise à ajouter
+    int indexP(0) ; // Contiendra l'index du nouveau poste à ajouter
 
-    // index = LastPoste(groupeEntr) ; // On récupère l'index du dernier poste du groupe
-    // entreprise *nouveau = (entreprise*)malloc(sizeof(entreprise)) ;
-    // nouveau->index = index + 1 ;
-    // strcpy(nouveau->nom, nom) ;
-    // strcpy(nouveau->code_postal, code_postal) ;
-    // strcpy(nouveau->courriel, courriel) ;
-    // // Ajout de la nouvelle entreprise au groupe
-    // l_append(&groupeEntr->entreprise, l_make_node((entreprise*)nouveau)) ;
-    // // Ajout de la nouvelle entreprise dans le fichier CSV
-    // ofstream fichier("entreprises.csv", ios::app) ;
-    // fichier << index+1 << "," << nom << "," << code_postal << "," << courriel << endl ;
-    // fichier.close() ;
+    indexP = LastPoste(gP) ; // On récupère l'index du dernier poste du 
+    poste *nouveau = (poste*)malloc(sizeof(poste)) ;
+    nouveau->index = indexP + 1 ;
+    strcpy(nouveau->titre, titre) ;
+    nouveau->entreprise = indexE ;
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 128; j++)
+        {
+            nouveau->competence[i][j] = competence[i][j] ;
+        } 
+    }
+    // Ajout du nouveau poste au groupe
+    l_append(&gP->poste, l_make_node((poste*)nouveau)) ;
+    // Ajout du nouveau poste dans le fichier CSV
+    ofstream fichier("postes.csv", ios::app) ;
+    fichier << indexP+1 << "," << titre << "," << indexE << "," ;
+    if(competence[0][0] != '\0') fichier << competence[0] ;
+    for (int i = 1; i < 5; i++)
+    {
+        if(competence[i][0] != '\0') fichier << ";" << competence[i] ;
+    }
+    fichier << endl ;
+    fichier.close() ;
 
     return 0 ;
 }

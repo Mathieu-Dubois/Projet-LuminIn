@@ -270,6 +270,36 @@ int main()
         TEST(LastPoste(gP) == 4) ;
     }
 
+    // Test de la fonction AjoutPoste
+    {
+        char titre[128] = "vendeur" ;
+        int indexE = 4 ;
+        char competence[5][128] = {'\0'};
+        competence[0][0] = 'd';
+        competence[0][1] = 'y';
+        competence[0][2] = 'n';
+        competence[0][3] = 'a';
+        competence[0][4] = 'm';
+        competence[0][5] = 'i';
+        competence[0][6] = 'q';
+        competence[0][7] = 'u';
+        competence[0][8] = 'e';
+        competence[0][9] = '\0';
+        competence[1][0] = 'h';
+        competence[1][1] = 'e';
+        competence[1][2] = 'y';
+        competence[1][3] = '\0';
+        competence[2][0] = 'm';
+        competence[2][1] = 'i';
+        competence[2][2] = 'q';
+        competence[2][3] = 'u';
+        competence[2][4] = 'e';
+        competence[2][5] = '\0';
+        // competence[1] = "souriant" ;
+        // competence[2] = "efficace" ;
+        AjoutPoste(gP,titre,indexE,competence) ;
+    }
+
     ReinitialiserCSV() ;
 
 
