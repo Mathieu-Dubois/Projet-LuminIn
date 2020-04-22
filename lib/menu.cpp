@@ -110,7 +110,7 @@ int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *
     switch (choix)
     {
     case '1':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return MenuCreer_Profil(gEntreprise, gPoste, gPersonne);
         break;
     case '2':
         return A_Implementer(gEntreprise, gPoste, gPersonne) ;
@@ -165,7 +165,7 @@ int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gP
         break;
         
     case '2':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return MenuModifier_Profil(gEntreprise, gPoste, gPersonne) ;
         break;
     case '3':
         return A_Implementer(gEntreprise, gPoste, gPersonne) ;
@@ -457,18 +457,18 @@ int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, group
     int collegue[5]={-1,-1,-1,-1,-1};
     int entreprise;
         
-    char *nom=(char *) malloc(sizeof(char));
-    cout << "Saisir votre Nom : ";
+    char *nom= new char(25);
+    cout << "Saisir votre Nom (inf à 24 caractères): ";
     cin >> nom ;
     
 
-    char *prenom=(char *) malloc(sizeof(char));
-    cout << "Saisir votre prenom : ";
+    char *prenom= new char(25);
+    cout << "Saisir votre prenom (inf à 24 caractères): ";
     cin >> prenom ;
     
 
-    char *courriel=(char *) malloc(sizeof(char));
-    cout << "Saisir votre email : ";
+    char *courriel= new char(25);
+    cout << "Saisir votre email (inf à 24 caractères): ";
     cin >> courriel ;
     
 
@@ -484,8 +484,8 @@ int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, group
     while(i < 5){
         cout << "Voulez vous ajouter une compétence (O ou N) ?";
         cin >> c;
-        if (c=='O'){
-        cout << "Saisir une compétence (rien si pas de compétence) : ";
+        if (c=='O' || c=='o'){
+        cout << "Saisir une compétence : ";
         cin >> competence[i];
         i++;
         }
@@ -513,7 +513,7 @@ int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, group
     while(i < 5){
         cout << "Voulez vous ajouter un collegue (O ou N) ?";
         cin >> c;
-        if (c=='O'){
+        if (c=='O' || c=='o'){
         cout << "Saisir l'id d'un de vos anciens collegues : ";
         cin >> collegue[i];
         i++;
@@ -528,8 +528,65 @@ int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, group
     cout << "Courriel : " << courriel << endl ;
     cout << "Code Postal : " << adresse << endl ;
     cout << "ID entreprise :" << entreprise <<endl;
-    //cout << "compétence : "<<competence[1]<<endl;
 
     creer_profil(nom,prenom,courriel,adresse,competence,collegue,entreprise,gPersonne);
     return 1;
+}
+
+
+
+int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+
+ char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
+   
+    do
+    {
+        system("clear") ;
+        cout << " ** Vous souhaitez actuellement modifier votre profil **" << endl << endl ;
+        cout << "Vous voulez :" << endl ;
+        cout << "1. Ajouter une compétence" << endl ;            
+        cout << "2. Supprimer une compétence" << endl ;
+        cout << "3. Changer d'adresse email" << endl ;                            
+        cout << "4. Mettre à jour/changer d'entreprises" << endl ;
+        cout << "5. Ajouter un collégue" << endl ;
+        cout << "6. Supprimer un collégue" << endl << endl ;
+        cout << "m. Retourner au menu principal" << endl ;                       
+        cout << "q. Quitter l'application" << endl << endl ;        
+        cout << "Votre choix : " ;
+        cin >> choix ;
+    } while ((choix > '6' || choix < '1') && choix != 'q' && choix != 'm');
+
+    switch (choix)
+    {
+    case '1':
+        return A_Implementer(gEntreprise, gPoste, gPersonne);
+        break;
+        
+    case '2':
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case '3':
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case '4':
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case '5':
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case '6':
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case 'm':
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case 'q':
+        return 0;
+        break;
+    default:
+        break;
+    }
+    
+    return 0 ;
+
 }
