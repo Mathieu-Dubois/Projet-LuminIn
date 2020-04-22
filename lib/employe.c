@@ -12,11 +12,12 @@
 
 void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[5][128], int collegue[5], int entreprise, groupe *gEmployes)
 {
-    FILE *employes; int i, j, index; char poub[128];
+    //FILE *employes; 
+    int i, j, index; char poub[128];
 
     //On ajoute d'abord dans la table csv
     //Il faut récupérer en premier lieu l'indice
-    employes = fopen("employes.csv", "r");
+    FILE *employes = fopen("employes.csv", "r");
     fscanf(employes, "%s\n", poub);
     i = 0;
     do {
@@ -27,7 +28,7 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
     if (i != j){
         index = i;
     } 
-    else index = i+1;
+    else index = i+1;/*
     fclose(employes);
     employes = fopen("employes.csv", "a");
     fprintf(employes, "%d,", index);
@@ -60,9 +61,8 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
         else fputc(',', employes);
     }
     if (i == 0) fputc(',', employes); //Il n'y a pas de collègues
-    fprintf(employes, "%d", entreprise);
+    fprintf(employes, "%d", entreprise);*/
     fclose(employes);
-
     //Ensuite on met à jour le groupe d'employés
     personne *p = (personne*)malloc(sizeof(personne));
     p->index = index;
@@ -95,6 +95,7 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
             compt++;
         }
     }
+    g_ecrire(gEmployes);
     return;
 }
 
