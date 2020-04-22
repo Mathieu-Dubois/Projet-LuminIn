@@ -458,17 +458,17 @@ int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, group
     int entreprise;
         
     char *nom= new char(25);
-    cout << "Saisir votre Nom (inf à 24 caractères): ";
+    cout << "Saisir votre Nom (Max 24 caractères): ";
     cin >> nom ;
     
 
     char *prenom= new char(25);
-    cout << "Saisir votre prenom (inf à 24 caractères): ";
+    cout << "Saisir votre prenom (Max 24 caractères): ";
     cin >> prenom ;
     
 
     char *courriel= new char(25);
-    cout << "Saisir votre email (inf à 24 caractères): ";
+    cout << "Saisir votre email (Max 24 caractères): ";
     cin >> courriel ;
     
 
@@ -489,7 +489,7 @@ int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, group
         cin >> competence[i];
         i++;
         }
-        else i=5;
+        else if (c=='N' || c=='n')i=5;
     }
 
     //print de la table employes
@@ -518,11 +518,12 @@ int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, group
         cin >> collegue[i];
         i++;
         }
-        else i=5;
+        else if (c=='N' || c=='n') i=5;
     }
 
 
     cout << endl;
+    cout << "Recapitulatif" << endl;
     cout << "Nom : " << nom << endl ;
     cout << "Prenom : " << prenom << endl ;
     cout << "Courriel : " << courriel << endl ;
