@@ -531,7 +531,7 @@ int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, group
     cout << "ID entreprise :" << entreprise <<endl;
 
     creer_profil(nom,prenom,courriel,adresse,competence,collegue,entreprise,gPersonne);
-    return 1;
+    return 0;
 }
 
 
@@ -545,8 +545,8 @@ int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
         system("clear") ;
         cout << " ** Vous souhaitez actuellement modifier votre profil **" << endl << endl ;
         cout << "Vous voulez :" << endl ;
-        cout << "1. Ajouter une compétence" << endl ;            
-        cout << "2. Supprimer une compétence" << endl ;
+        cout << "1. Ajouter/supprimer une compétence" << endl ;            
+        cout << "2. Modifier une compétence" << endl ;
         cout << "3. Changer d'adresse email" << endl ;                            
         cout << "4. Mettre à jour/changer d'entreprises" << endl ;
         cout << "5. Ajouter un collégue" << endl ;
@@ -564,7 +564,7 @@ int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
         break;
         
     case '2':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return MenuMod_Adresse(gEntreprise, gPoste, gPersonne) ;
         break;
     case '3':
         return A_Implementer(gEntreprise, gPoste, gPersonne) ;
@@ -589,5 +589,37 @@ int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
     }
     
     return 0 ;
+
+}
+
+int MenuMod_Adresse(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+
+int newadr,id;
+
+//print de la table employes
+ if (gPersonne->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
+    else
+    {
+        node *tmp = gPersonne->personnes ;
+        personne *e = (personne*)tmp->data ;
+        while (e!= NULL && tmp != NULL)
+        {
+            // cout << e->index << " - " << e->nom << " - "  << " - " << e->courriel << endl ;
+            cout << e->index << " - " << e->nom  << "-" << e->adresse << endl ;
+            tmp = tmp->next ;
+            if(tmp != NULL) e = (personne*)tmp->data ;
+            
+        }
+    }
+
+cout << "Ecrivez l'ID correspondant à votre identité : " << endl;
+cin >> id;
+
+cout << "Ecrivez votre nouveau code postal : " << endl;
+cin >> newadr;
+
+modifier_adresse(id,gPersonne,newadr);
+
+return 0;
 
 }
