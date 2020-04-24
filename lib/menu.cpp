@@ -570,7 +570,7 @@ int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
         return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '4':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return Menu_mod_entreprise(gEntreprise, gPoste, gPersonne) ;
         break;
     case '5':
         return A_Implementer(gEntreprise, gPoste, gPersonne) ;
@@ -622,4 +622,39 @@ modifier_adresse(id,gPersonne,newadr);
 
 return 0;
 
+}
+
+int Menu_mod_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+    
+    int newent,id;
+
+//print de la table employes
+ if (gPersonne->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
+    else
+    {
+        node *tmp = gPersonne->personnes ;
+        personne *e = (personne*)tmp->data ;
+        while (e!= NULL && tmp != NULL)
+        {
+            // cout << e->index << " - " << e->nom << " - "  << " - " << e->courriel << endl ;
+            cout << e->index << " - " << e->nom  << "-" << e->entreprise << endl ;
+            tmp = tmp->next ;
+            if(tmp != NULL) e = (personne*)tmp->data ;
+            
+        }
+    }
+
+cout << "Ecrivez l'ID correspondant à votre identité : " << endl << endl;
+cin >> id;
+
+AfficherEntreprises(gEntreprise);
+
+cout << "Saisir l'ID de votre nouvelle entreprise (-1 si passage en recherche d'emploi) : " << endl;
+cin >> newent;
+
+cout << "Votre statut entreprise a été mise à jour" << endl;
+
+modifier_entreprise(id,gPersonne,newent);
+
+return 0;
 }

@@ -33,7 +33,11 @@ int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, group
 //le menu pour une modification du profil
 int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
 
+//Le formulaire pour modifier son adresse
 int MenuMod_Adresse(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+
+//Le formulaire pour mettre à jour son entreprise 
+int Menu_mod_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
 
 int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
 int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
