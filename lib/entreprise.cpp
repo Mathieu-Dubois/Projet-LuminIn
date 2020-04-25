@@ -186,3 +186,72 @@ void g_ecrireEntreprise(groupeEntreprises* g)
  
 }
 
+void EntrepriseRechercheParCompetence(groupe* gPe, char competence[128])
+{
+    int trouve(0) ;
+
+    if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
+    else
+    {
+        node *tmp = gPe->personnes ;
+        personne *p = (personne*)tmp->data ;
+        while (p!= NULL && tmp != NULL)
+        {
+            if(p->entreprise == -1) // Si c'est un chercheur d'emploi
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (!strcmp(competence, p->competence[i])) // Et qu'une compétence match
+                    {
+                        if(trouve == 0) cout << endl << "Liste des chercheurs d'emploi possédant la compétence " << competence << " : " << endl ;
+                        cout << p->nom << " - " << p->prenom << " - " << p->courriel << endl ;
+                        trouve = 1 ;
+                    }
+                }
+            }
+            
+            tmp = tmp->next ;
+            if(tmp != NULL) p = (personne*)tmp->data ;
+        }
+        if(!trouve) cout << "Aucun chercheur d'emploi ne correspond à votre recherche" << endl ;
+
+    }
+}
+
+void EntrepriseRechercheParCompetenceEtCode(groupe* gPe, char competence[128], int code_postal)
+{
+    int trouve(0) ;
+
+    if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
+    else
+    {
+        node *tmp = gPe->personnes ;
+        personne *p = (personne*)tmp->data ;
+        while (p!= NULL && tmp != NULL)
+        {
+            if(p->entreprise == -1) // Si c'est un chercheur d'emploi
+            {
+                if (p->adresse == code_postal) // Si le code postal match
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (!strcmp(competence, p->competence[i])) // Et qu'une compétence match
+                        {
+                             if(trouve == 0) cout << endl << "Liste des chercheurs d'emploi possédant la compétence " << competence << " et le code postal " << code_postal << " :" << endl ;
+                            cout << p->nom << " - " << p->prenom << " - " << p->courriel << endl ;
+                            trouve = 1 ;
+                        }
+                    }
+                }
+                
+                
+                
+            }
+            
+            tmp = tmp->next ;
+            if(tmp != NULL) p = (personne*)tmp->data ;
+        }
+        if(!trouve) cout << "Aucun chercheur d'emploi ne correspond à votre recherche" << endl ;
+
+    }
+}

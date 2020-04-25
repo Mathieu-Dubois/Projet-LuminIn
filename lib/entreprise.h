@@ -3,6 +3,7 @@
 #include <string>
 
 #include "liste.h"
+#include "groupe.h"
 
 typedef struct entreprise
 {
@@ -44,4 +45,8 @@ groupeEntreprises* SupprimerEntreprise(groupeEntreprises* g, int const index) ;
 // Met à jour le fichier entreprises.csv à partir du groupe passé en paramètres
 void g_ecrireEntreprise(groupeEntreprises* g) ;
 
+// Affiche nom, prénom et adresse mail d'une personne ayant la compétence demandé (ssi c'est un chercheur d'emploi)
+void EntrepriseRechercheParCompetence(groupe* gPe, char competence[128]) ;
 
+// Affiche nom, prénom et adresse mail d'une personne ayant la compétence et le code postal demandés (ssi c'est un chercheur d'emploi)
+void EntrepriseRechercheParCompetenceEtCode(groupe* gPe, char competence[128], int code_postal) ;

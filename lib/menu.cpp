@@ -349,7 +349,7 @@ int ProfilEntreprise(groupeEntreprises *gEntreprise, groupePostes *gPoste, group
         return ChoixPosteSupprime(gEntreprise, gPoste, gPersonne, index) ;
         break;
     case '4':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return MenuEntrepriseCherchePar(gEntreprise, gPoste, gPersonne, index) ;
         break;
     case '5':
         return ConfirmerSuppressionEntreprise(gEntreprise, gPoste, gPersonne, index) ;
@@ -550,6 +550,72 @@ int ChoixPosteSupprime(groupeEntreprises *gEntreprise, groupePostes *gPoste, gro
         break;
     }
 
+
+    return 0 ;
+}
+
+int MenuEntrepriseCherchePar(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne, int indexE)
+{
+    char choix(0) ;
+    char competence[128] ;
+    int code_postal ;
+
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
+        cout << "Profil de : " << g_indexEntreprise(gEntreprise, indexE)->nom << endl << endl ;
+        cout << "Vous voulez :" << endl ;
+        cout << "1. Faire une recherche par compétence" << endl ; 
+        cout << "2. Faire une recherche par compétence et code postal" << endl << endl ;
+        cout << "r. Retourner à la page précédente" << endl ;
+        cout << "m. Retourner au menu principal" << endl ;                       
+        cout << "q. Quitter l'application" << endl << endl ;        
+        cout << "Votre choix : " ;
+        cin >> choix ;
+    } while ((choix > '2' || choix < '1') && choix != 'r' && choix != 'q' && choix != 'm');
+
+    switch (choix)
+    {
+    case '1':
+        system("clear") ;
+        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
+        cout << "Profil de : " << g_indexEntreprise(gEntreprise, indexE)->nom << endl << endl ;
+        cout << "Saisissez la compétence que vous recherchez : "  ;
+        cin >> competence ;
+        EntrepriseRechercheParCompetence(gPersonne, competence) ;
+        cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
+        cin >> choix ;
+        return ProfilEntreprise(gEntreprise, gPoste, gPersonne, indexE) ;
+        break;
+    case '2':
+        system("clear") ;
+        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
+        cout << "Profil de : " << g_indexEntreprise(gEntreprise, indexE)->nom << endl << endl ;
+        cout << "Saisissez la compétence que vous recherchez : "  ;
+        cin >> competence ;
+        cout << "Saisissez le code postal que vous recherchez : "  ;
+        cin >> code_postal ;
+        EntrepriseRechercheParCompetenceEtCode(gPersonne, competence, code_postal) ;
+        cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
+        cin >> choix ;
+        return ProfilEntreprise(gEntreprise, gPoste, gPersonne, indexE) ;
+        break;
+    
+    case 'r':
+        return ProfilEntreprise(gEntreprise, gPoste, gPersonne, indexE) ;
+        break;
+    case 'm':
+        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
+        break;
+    case 'q':
+        return 0 ;
+        break;
+    default:
+        break;
+    }
+
+    return 0 ;
 
     return 0 ;
 }

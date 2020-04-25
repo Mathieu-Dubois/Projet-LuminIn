@@ -300,6 +300,17 @@ int main()
         AjoutPoste(gP,titre,indexE,competence) ;
     }
 
+    // {
+    // char hey[128] = "comedie" ;
+    // char hey2[128] = "Python" ;
+    // EntrepriseRechercheParCompetence(g, hey) ;
+    // EntrepriseRechercheParCompetence(g, hey2) ;
+
+    // int codeP = 75020 ;
+    // EntrepriseRechercheParCompetenceEtCode(g,hey2,codeP) ;
+    // EntrepriseRechercheParCompetenceEtCode(g,hey2,codeP+1) ;
+    // }
+
     ReinitialiserCSV() ;
 
 

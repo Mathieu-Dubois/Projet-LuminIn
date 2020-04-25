@@ -33,6 +33,9 @@ int CreerPoste(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPe
 // Permet à une entreprise de choisir le poste qu'elle veut supprimer
 int ChoixPosteSupprime(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne, int indexE) ;
 
+// Affiche le menu de recherche pour une entreprise
+int MenuEntrepriseCherchePar(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne, int indexE) ;
+
 
 int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
 int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
