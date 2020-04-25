@@ -32,3 +32,13 @@ int AjoutPoste(groupePostes *gP, char titre[128], int index, char competence[5][
 
 // Retourne l'index du dernier poste du groupe de postes
 int LastPoste(groupePostes* gP) ;
+
+// Supprime un poste du groupe poste
+groupePostes* SupprimerPoste(groupePostes* gP, int const index) ;
+
+
+// Met à jour le fichier poste.csv à partir du groupe passé en paramètres
+void g_ecrirePoste(groupePostes* gP) ;
+
+// Retourne 1 si le poste fait partie du groupe et qu'il appartient à l'entreprise qui le demande, 0 sinon
+int ExistePosteEntreprise(groupePostes* gP, int const indexP, int const indexE) ;

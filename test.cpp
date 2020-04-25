@@ -225,7 +225,7 @@ int main()
     {
         TEST(LastEntreprise(gE) == 5) ;
         char nom[40] = "Netflix" ;
-        char code[10] = "45789" ;
+        int code = 45789 ;
         char mail[128] = "netflixandchill@gmail.com" ;
         AjoutEntreprise(gE,nom,code,mail) ; // ATTENTION VA MODIFER LE CSV INITIAL
         TEST(LastEntreprise(gE) == 6) ;
@@ -234,7 +234,7 @@ int main()
     // // Test de la fonction g_indexEntreprise
     {
         TEST(strcmp(g_indexEntreprise(gE, 1)->nom, "Disney") == 0);
-        TEST(strcmp(g_indexEntreprise(gE, 1)->code_postal, "77700") == 0);
+        TEST(g_indexEntreprise(gE, 1)->code_postal == 77700) ;
         TEST(strcmp(g_indexEntreprise(gE, 2)->courriel, "emplois@google.com") == 0);
         TEST(strcmp(g_indexEntreprise(gE, 3)->nom, "Amazon") == 0);
     }

@@ -8,7 +8,7 @@ typedef struct entreprise
 {
     int index ;
     char nom[40] ;
-    char code_postal[10];
+    int code_postal;
     char courriel[128] ;
 } entreprise ;
 
@@ -27,7 +27,7 @@ int gEntreprise_size(groupeEntreprises* g) ;
 void AfficherEntreprises(groupeEntreprises* g) ;
 
 // Ajoute une entreprise au fichier "entreprises.csv" et au groupe entreprise
-int AjoutEntreprise(groupeEntreprises *groupeEntr, char nom[40], char code_postal[10], char courriel[128]) ;
+int AjoutEntreprise(groupeEntreprises *groupeEntr, char nom[40], int code_postal, char courriel[128]) ;
 
 // Retourne l'index de la dernière entreprise du groupe
 int LastEntreprise(groupeEntreprises* g) ;

@@ -25,7 +25,7 @@ groupeEntreprises* g_openEntreprisesCSV(FILE *db)
     char poubelle[100]; //On tej la première ligne
     fscanf(db, "%s\n", poubelle);
     //Lecture du fichier
-    while(fscanf(db, "%d,%128[^,],%128[^,],%128[^\n]\n", &data.index, data.nom, data.code_postal, data.courriel) == 4)
+    while(fscanf(db, "%d,%128[^,],%d,%128[^\n]\n", &data.index, data.nom, &data.code_postal, data.courriel) == 4)
     {
         entreprise *e = (entreprise*)malloc(sizeof(entreprise));
         *e = data;
@@ -58,7 +58,7 @@ void AfficherEntreprises(groupeEntreprises* g)
     }
 }
 
-int AjoutEntreprise(groupeEntreprises *groupeEntr, char nom[40], char code_postal[10], char courriel[128])
+int AjoutEntreprise(groupeEntreprises *groupeEntr, char nom[40], int code_postal, char courriel[128])
 {
     
     int index(0) ; // Contiendra l'index de la nouvelle entreprise à ajouter
@@ -67,7 +67,7 @@ int AjoutEntreprise(groupeEntreprises *groupeEntr, char nom[40], char code_posta
     entreprise *nouveau = (entreprise*)malloc(sizeof(entreprise)) ;
     nouveau->index = index + 1 ;
     strcpy(nouveau->nom, nom) ;
-    strcpy(nouveau->code_postal, code_postal) ;
+    nouveau->code_postal = code_postal;
     strcpy(nouveau->courriel, courriel) ;
     // Ajout de la nouvelle entreprise au groupe
     l_append(&groupeEntr->entreprise, l_make_node((entreprise*)nouveau)) ;
