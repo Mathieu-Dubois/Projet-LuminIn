@@ -1,6 +1,7 @@
 #pragma once
 
 #include "groupe.h"
+#include "postes.h"
 
 #include <stdbool.h>
 #include <stdio.h>
