@@ -226,6 +226,14 @@ int main()
         TEST(recherche_poste_comp(8, g, gP) == 1); //Le 8 en trouve plusieurs
     }
 
+    //Tests de la fonction rechercher ancien collègue par entreprise
+    {
+        TEST(recherche_col_par_entre(2, g, 1)==1);
+        TEST(recherche_col_par_entre(8, g, 2) == 0);
+        TEST(recherche_col_par_entre(2, g, 11)== 0); //Il n'en trouve pas car il n'y a pas d'entreprise 11
+    }
+
+
     //------------------- TESTS ENTREPRISE ------------------
 
     // // Test de la fonction LastEntreprise et ajout AjoutEntreprise

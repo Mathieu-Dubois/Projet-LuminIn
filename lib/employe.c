@@ -535,3 +535,34 @@ int recherche_poste_postal(int indice, groupe *gEmployes, groupePostes *gPostes,
     if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
     return code_retour;
 }
+
+
+/*  Entrée :        indice : indice de la personne qui fait la recherche
+                    index : indice de l'entreprise à laquelle doivent appartenir les anciens collègues
+                    
+    Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
+                    1 Si tout se passe bien et qu'on a trouvé au moins un match
+                    2 si on ne trouve pas l'indice dans le groupe                         */
+int recherche_col_par_entre(int indice, groupe *gEmployes, int index)
+{
+    int trouve = 0, code_retour = 0, i;
+    node *temp = gEmployes->personnes;
+    personne*tmpami;
+    
+    while(temp != NULL && trouve ==0){
+        tmpami = (personne*)(temp->data);
+        if (tmpami->index == indice){                               //Quand on atteint la personne souhaitée
+            i = 0;
+            trouve = 1;   
+            while (tmpami->amis[i] != NULL){                           //On recherche parmi ses amis
+                if (tmpami->amis[i]->entreprise == index){
+                    code_retour = 1;
+                    printf("- %s | %s | %s\n", tmpami->amis[i]->nom, tmpami->amis[i]->prenom, tmpami->amis[i]->courriel);
+                }
+                i++;
+            }
+        } else temp = temp -> next;
+    }
+    if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
+    return code_retour;
+}
