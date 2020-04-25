@@ -124,23 +124,35 @@ void AfficherPostesEntreprise(groupeEntreprises* gE, groupePostes* gP, int index
     
 }
 
-int AjoutPoste(groupePostes *gP, char titre[128], int index, char competence[5][128])
+int AjoutPoste(groupePostes *gP, char titre[128], int indexE, char competence[5][128])
 {
     
-    // int index(0) ; // Contiendra l'index de la nouvelle entreprise à ajouter
+    int indexP(0) ; // Contiendra l'index du nouveau poste à ajouter
 
-    // index = LastPoste(groupeEntr) ; // On récupère l'index du dernier poste du groupe
-    // entreprise *nouveau = (entreprise*)malloc(sizeof(entreprise)) ;
-    // nouveau->index = index + 1 ;
-    // strcpy(nouveau->nom, nom) ;
-    // strcpy(nouveau->code_postal, code_postal) ;
-    // strcpy(nouveau->courriel, courriel) ;
-    // // Ajout de la nouvelle entreprise au groupe
-    // l_append(&groupeEntr->entreprise, l_make_node((entreprise*)nouveau)) ;
-    // // Ajout de la nouvelle entreprise dans le fichier CSV
-    // ofstream fichier("entreprises.csv", ios::app) ;
-    // fichier << index+1 << "," << nom << "," << code_postal << "," << courriel << endl ;
-    // fichier.close() ;
+    indexP = LastPoste(gP) ; // On récupère l'index du dernier poste du 
+    poste *nouveau = (poste*)malloc(sizeof(poste)) ;
+    nouveau->index = indexP + 1 ;
+    strcpy(nouveau->titre, titre) ;
+    nouveau->entreprise = indexE ;
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 128; j++)
+        {
+            nouveau->competence[i][j] = competence[i][j] ;
+        } 
+    }
+    // Ajout du nouveau poste au groupe
+    l_append(&gP->poste, l_make_node((poste*)nouveau)) ;
+    // Ajout du nouveau poste dans le fichier CSV
+    ofstream fichier("postes.csv", ios::app) ;
+    fichier << indexP+1 << "," << titre << "," << indexE << "," ;
+    if(competence[0][0] != '\0') fichier << competence[0] ;
+    for (int i = 1; i < 5; i++)
+    {
+        if(competence[i][0] != '\0') fichier << ";" << competence[i] ;
+    }
+    fichier << endl ;
+    fichier.close() ;
 
     return 0 ;
 }
@@ -154,4 +166,106 @@ int LastPoste(groupePostes* gP)
     index = p->index ;
 
     return index ;
+}
+
+groupePostes* SupprimerPoste(groupePostes* gP, int const index)
+{
+    // On supprime le noeud dans le groupe
+    assert (gP) ;
+    node *tmp = gP->poste ;
+    poste *p = (poste*)tmp->data ;
+    while (p->index != index)
+    {
+        tmp = tmp->next ;
+        p = (poste*)(tmp->data) ;
+    }
+   
+    if(tmp->previous != NULL) tmp->previous->next = tmp->next ;
+    else gP->poste = tmp->next ;
+    if(tmp->next != NULL) tmp->next->previous = tmp->previous ;
+    
+    free(tmp) ;
+
+    // Puis on met à jour poste.csv
+    g_ecrirePoste(gP) ;
+
+    return gP ;
+}
+
+void g_ecrirePoste(groupePostes* gP)
+{
+    // On ouvre en écriture le fichier tmp.csv (comme il n'existe pas, il est créé)
+    ofstream nouveauCSV("tmp.csv") ;
+    if(nouveauCSV)
+    {
+        // On ouvre en lecture le fichier postes.csv
+        ifstream ancienCSV("postes.csv") ;
+        if(ancienCSV)
+        {
+            // On récupère la première ligne et on l'écrit dans le nouveau fichier
+            string ligne ;
+            getline(ancienCSV, ligne) ;
+            nouveauCSV << ligne << endl ;
+
+            //Maintenant il faut lire le groupe et écrire les informations ligne par ligne
+            node *tmp = gP->poste ;
+            poste *p = NULL ;
+            while (tmp != NULL)
+            {
+                p = (poste*)(tmp->data) ;
+                nouveauCSV << p->index << "," << p->titre << "," << p->entreprise << "," ;
+                if(p->competence[0][0] != '\0') nouveauCSV << p->competence[0] ;
+                for (int i = 1; i < 5; i++)
+                {
+                    if(p->competence[i][0] != '\0') nouveauCSV << ";" << p->competence[i] ;
+                }
+                nouveauCSV << endl ;
+                tmp = tmp->next ;
+            }
+            nouveauCSV.close() ;
+            ancienCSV.close() ;
+
+            // Il ne reste plus qu'à supprimer l'ancien poste.csv et renommer tmp.csv 
+            remove("postes.csv") ;
+            rename("tmp.csv", "postes.csv") ;
+        }
+        else
+        {
+            cout << "ERREUR : Impossible d'ouvrir postes.csv" << endl ;
+        }
+    }
+    else
+    {
+        cout << "ERREUR : Impossible d'ouvrir tmp.csv" << endl ;
+    }
+ 
+}
+
+int ExistePosteEntreprise(groupePostes* gP, int const indexP, int const indexE)
+{
+    if (gP->poste == NULL) return 0;
+    if(indexP > LastPoste(gP) || indexP < 0) return 0 ;
+    node *tmp = gP->poste;
+    poste *p = (poste*)tmp->data;
+    while(p->index != indexP && p != NULL && tmp->next !=NULL){
+        tmp = tmp -> next;
+        p = (poste*)tmp->data;
+    } 
+    if (p->index == indexP && p->entreprise == indexE ) return 1;
+    return 0;
+}
+
+groupePostes* SupprimerEntreprise_postes(groupePostes* gP, int const indexE)
+{
+    int indexMax = LastPoste(gP) ;
+
+    for (int i = 1; i <= indexMax; i++)
+    {
+        if (ExistePosteEntreprise(gP, i, indexE))
+        {
+            gP = SupprimerPoste(gP, i) ;
+        }
+    }
+    
+    return gP ;
 }

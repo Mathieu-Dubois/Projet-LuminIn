@@ -27,6 +27,15 @@ int ConfirmerSuppressionEntreprise(groupeEntreprises *gEntreprise, groupePostes 
 // Affiche le menu où l'entreprise voit tous ces poste à pourvoir
 int ListeDesPostes(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne, int index) ;
 
+// Permet à une entreprise de créer un poste à pourvoir
+int CreerPoste(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne, int indexE) ;
+
+// Permet à une entreprise de choisir le poste qu'elle veut supprimer
+int ChoixPosteSupprime(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne, int indexE) ;
+
+// Affiche le menu de recherche pour une entreprise
+int MenuEntrepriseCherchePar(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne, int indexE) ;
+
 
 int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
 int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;

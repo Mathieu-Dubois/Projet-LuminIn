@@ -225,7 +225,7 @@ int main()
     {
         TEST(LastEntreprise(gE) == 5) ;
         char nom[40] = "Netflix" ;
-        char code[10] = "45789" ;
+        int code = 45789 ;
         char mail[128] = "netflixandchill@gmail.com" ;
         AjoutEntreprise(gE,nom,code,mail) ; // ATTENTION VA MODIFER LE CSV INITIAL
         TEST(LastEntreprise(gE) == 6) ;
@@ -234,7 +234,7 @@ int main()
     // // Test de la fonction g_indexEntreprise
     {
         TEST(strcmp(g_indexEntreprise(gE, 1)->nom, "Disney") == 0);
-        TEST(strcmp(g_indexEntreprise(gE, 1)->code_postal, "77700") == 0);
+        TEST(g_indexEntreprise(gE, 1)->code_postal == 77700) ;
         TEST(strcmp(g_indexEntreprise(gE, 2)->courriel, "emplois@google.com") == 0);
         TEST(strcmp(g_indexEntreprise(gE, 3)->nom, "Amazon") == 0);
     }
@@ -269,6 +269,47 @@ int main()
     {
         TEST(LastPoste(gP) == 4) ;
     }
+
+    // Test de la fonction AjoutPoste
+    {
+        char titre[128] = "vendeur" ;
+        int indexE = 4 ;
+        char competence[5][128] = {'\0'};
+        competence[0][0] = 'd';
+        competence[0][1] = 'y';
+        competence[0][2] = 'n';
+        competence[0][3] = 'a';
+        competence[0][4] = 'm';
+        competence[0][5] = 'i';
+        competence[0][6] = 'q';
+        competence[0][7] = 'u';
+        competence[0][8] = 'e';
+        competence[0][9] = '\0';
+        competence[1][0] = 'h';
+        competence[1][1] = 'e';
+        competence[1][2] = 'y';
+        competence[1][3] = '\0';
+        competence[2][0] = 'm';
+        competence[2][1] = 'i';
+        competence[2][2] = 'q';
+        competence[2][3] = 'u';
+        competence[2][4] = 'e';
+        competence[2][5] = '\0';
+        // competence[1] = "souriant" ;
+        // competence[2] = "efficace" ;
+        AjoutPoste(gP,titre,indexE,competence) ;
+    }
+
+    // {
+    // char hey[128] = "comedie" ;
+    // char hey2[128] = "Python" ;
+    // EntrepriseRechercheParCompetence(g, hey) ;
+    // EntrepriseRechercheParCompetence(g, hey2) ;
+
+    // int codeP = 75020 ;
+    // EntrepriseRechercheParCompetenceEtCode(g,hey2,codeP) ;
+    // EntrepriseRechercheParCompetenceEtCode(g,hey2,codeP+1) ;
+    // }
 
     ReinitialiserCSV() ;
 
