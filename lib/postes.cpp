@@ -93,6 +93,7 @@ void AfficherPoste(groupePostes* g, int index)
         while (tmp != NULL && trouve ==0){
             p = (poste*)tmp->data ;
             if(p->index == index){
+                trouve = 1;
                 cout << p->index << " - " << p->titre << " - " << p->entreprise << " - | " ;
                 for (int i = 0; i < 5; i++)
                 {

@@ -219,6 +219,13 @@ int main()
         supprimer_profil(9,g);
     }
 
+    //Tests de la fonction rechercher poste competences
+    {
+        TEST(recherche_poste_comp(1, g, gP) == 1);
+        TEST(recherche_poste_comp(6, g, gP) == 0);
+        TEST(recherche_poste_comp(8, g, gP) == 1); //Le 8 en trouve plusieurs
+    }
+
     //------------------- TESTS ENTREPRISE ------------------
 
     // // Test de la fonction LastEntreprise et ajout AjoutEntreprise
