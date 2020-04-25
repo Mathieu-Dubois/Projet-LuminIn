@@ -2,6 +2,7 @@
 
 #include "employe.h"
 #include "groupe.h"
+#include "postes.h"
 
 #include <stdbool.h>
 #include <stdio.h>
@@ -433,5 +434,50 @@ int supprimer_collegue(int indice, groupe *gEmployes, int col)
     }
     if (trouve == 0) code_retour = 2;                                   //Si on ne trouve pas l'index correspondant
     g_ecrire(gEmployes);
+    return code_retour;
+}
+
+
+/*  Entrée :        indice : indice de la personne qui veut rechercher un poste
+                    
+    Code retour:    0 Si tout se passe bien
+                    1  si on ne trouve pas l'indice dans le groupe                         */
+int recherche_poste_comp(int indice, groupe *gEmployes, groupePostes *gPostes)
+{
+    int trouve = 0, code_retour = 0, i, j, fait = 0;
+    node *temp = gEmployes->personnes;
+    personne*tmpami;
+
+    node*temposte = gPostes->poste;
+    poste*amiposte;
+
+    
+    while(temp != NULL && trouve ==0){
+        tmpami = (personne*)(temp->data);
+        if (tmpami->index == indice){                               //Quand on atteint la personne souhaitée
+            i = 0;
+            trouve = 1;                          
+            while(i<5 && fait == 0){
+                if (tmpami->competence[i][0] != '\0'){              //Si il a une competence, on va chercher les match
+                    while (temposte != NULL){
+                        amiposte = (poste*)(temposte->data);
+                        j = 0;
+                        while(j < 5){
+                            if (amiposte->competence[j][0] != '\0'){
+                                if (!strcmp(amiposte->competence[i], tmpami->competence[i])) AfficherPoste(gPostes, amiposte->index);
+                            }
+                            j++;
+                        }
+                    }
+                } else fait = 1;                                    //Il n'y a plus de competences
+
+                i++;
+            }  
+
+        } else {
+            temp = temp -> next;
+        }
+    }
+    if (trouve == 0) code_retour = 1;                               //Si on ne trouve pas l'index correspondan
     return code_retour;
 }

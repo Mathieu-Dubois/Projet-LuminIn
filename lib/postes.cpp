@@ -82,6 +82,30 @@ void AfficherPostes(groupePostes* g)
     }
 }
 
+void AfficherPoste(groupePostes* g, int index)
+{
+    int trouve = 0;
+    if (g->poste == NULL) cout << "Aucun poste enregistrée" << endl ;
+    else
+    {
+        node *tmp = g->poste ;
+        poste *p;
+        while (tmp != NULL && trouve ==0){
+            p = (poste*)tmp->data ;
+            if(p->index == index){
+                cout << p->index << " - " << p->titre << " - " << p->entreprise << " - | " ;
+                for (int i = 0; i < 5; i++)
+                {
+                    for (int j = 0; j < 128; j++) cout << p->competence[i][j] ;
+                    if(p->competence[i][0] != '\0') cout << " | " ;
+                }
+                cout << endl ;
+                
+            } else tmp = tmp->next ;
+        }
+    }
+}
+
 void AfficherPostesEntreprise(groupeEntreprises* gE, groupePostes* gP, int index)
 {
     if (gE->entreprise == NULL) cout << "Aucune entreprise enregistrée" << endl ;

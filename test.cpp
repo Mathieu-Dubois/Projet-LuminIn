@@ -209,7 +209,7 @@ int main()
     //Tests de la fonction supprimer employe
     {
         char comp[5][128] = {'\0'};
-        int col[5] ;
+        int col[5];
         for (int i = 0; i < 5 ; i++) col[i] = -1;
         char Manon[6] = {'M','a','n','o', 'n', '\0'};
         char nom[5] = {'s', 'c', 't', 't', '\0'};
