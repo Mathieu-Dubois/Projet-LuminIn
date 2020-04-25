@@ -491,3 +491,47 @@ int recherche_poste_comp(int indice, groupe *gEmployes, groupePostes *gPostes)
     if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
     return code_retour;
 }
+
+
+/*  Entrée :        indice : indice de la personne qui veut rechercher un poste
+                    
+    Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
+                    1 Si tout se passe bien et qu'on a trouvé au moins un match
+                    2 si on ne trouve pas l'indice dans le groupe                         */
+int recherche_poste_postal(int indice, groupe *gEmployes, groupePostes *gPostes, groupeEntreprises *gEntre)
+{
+    int trouve = 0, trouveentre = 0, code_retour = 0;
+    node *temp = gEmployes->personnes;
+    personne*tmpami;
+
+    node*temposte = gPostes->poste;
+    poste*amiposte;
+
+    node*tempentre = gEntre->entreprise;
+    entreprise*amientre;
+
+    
+    while(temp != NULL && trouve ==0){
+        tmpami = (personne*)(temp->data);
+        if (tmpami->index == indice){                               //Quand on atteint la personne souhaitée
+            trouve = 1;   
+            while (temposte != NULL){                               //On cherche parmi les postes
+                amiposte = (poste*)(temposte->data);
+                trouveentre = 0;
+                while (tempentre != NULL && trouveentre == 0){                          //On recherche parmi les entreprises
+                    amientre = (entreprise*)(tempentre->data);
+                    if(amientre->index == amiposte->entreprise){
+                        trouveentre = 1;
+                        //if(amientre->code_postal == tmpami->adresse){
+                        //     code_retour = 1;
+                        //     AfficherPoste(gPostes, amiposte->index);
+                        // }
+                    } else tempentre = tempentre->next;
+                }
+                temposte = temposte->next;
+            }
+        } else temp = temp -> next;
+    }
+    if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
+    return code_retour;
+}
