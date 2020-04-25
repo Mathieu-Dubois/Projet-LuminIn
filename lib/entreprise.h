@@ -38,9 +38,10 @@ int ExisteEntreprise(groupeEntreprises*g, int const index) ;
 // Retourne l'entreprise correspondant à l'index passé en paramètres
 entreprise* g_indexEntreprise(groupeEntreprises* g, int const index) ;
 
-// Supprime l'entreprise passée en paramètre (du groupe et du csv)
+// Supprime l'entreprise passée en paramètre (du groupe et du csv) plus les poste à pourvoir de cette entreprise
 groupeEntreprises* SupprimerEntreprise(groupeEntreprises* g, int const index) ;
 
 // Met à jour le fichier entreprises.csv à partir du groupe passé en paramètres
 void g_ecrireEntreprise(groupeEntreprises* g) ;
+
 

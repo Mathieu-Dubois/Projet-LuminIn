@@ -254,3 +254,18 @@ int ExistePosteEntreprise(groupePostes* gP, int const indexP, int const indexE)
     if (p->index == indexP && p->entreprise == indexE ) return 1;
     return 0;
 }
+
+groupePostes* SupprimerEntreprise_postes(groupePostes* gP, int const indexE)
+{
+    int indexMax = LastPoste(gP) ;
+
+    for (int i = 1; i <= indexMax; i++)
+    {
+        if (ExistePosteEntreprise(gP, i, indexE))
+        {
+            gP = SupprimerPoste(gP, i) ;
+        }
+    }
+    
+    return gP ;
+}

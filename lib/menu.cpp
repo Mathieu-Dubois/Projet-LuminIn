@@ -394,6 +394,7 @@ int ConfirmerSuppressionEntreprise(groupeEntreprises* gEntreprise, groupePostes 
     switch (choix)
     {
     case 'o':
+        gPoste = SupprimerEntreprise_postes(gPoste, index) ;
         gEntreprise = SupprimerEntreprise(gEntreprise, index) ;
         return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
         break;

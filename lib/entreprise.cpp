@@ -119,11 +119,11 @@ entreprise* g_indexEntreprise(groupeEntreprises* g, int const index)
     return NULL;
 }
 
-groupeEntreprises* SupprimerEntreprise(groupeEntreprises* g, int const index)
+groupeEntreprises* SupprimerEntreprise(groupeEntreprises* gE, int const index)
 {
     // On supprime le noeud dans le groupe
-    assert (g) ;
-    node *tmp = g->entreprise ;
+    assert (gE) ;
+    node *tmp = gE->entreprise ;
     entreprise *e = (entreprise*)tmp->data ;
     while (e->index != index)
     {
@@ -132,15 +132,15 @@ groupeEntreprises* SupprimerEntreprise(groupeEntreprises* g, int const index)
     }
    
     if(tmp->previous != NULL) tmp->previous->next = tmp->next ;
-    else g->entreprise = tmp->next ;
+    else gE->entreprise = tmp->next ;
     if(tmp->next != NULL) tmp->next->previous = tmp->previous ;
     
     free(tmp) ;
 
     // Puis on met à jour entreprises.csv
-    g_ecrireEntreprise(g) ;
+    g_ecrireEntreprise(gE) ;
 
-    return g ;
+    return gE ;
 }
 
 void g_ecrireEntreprise(groupeEntreprises* g)
