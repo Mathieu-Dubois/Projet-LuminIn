@@ -115,11 +115,11 @@ int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *
     case '3':
         return Menusupprimer_profil(gEntreprise, gPoste, gPersonne) ;
         break;
-    case '4':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+   case '5':
+        return Menu_emploi(gEntreprise, gPoste, gPersonne) ;
         break;
-    case '5':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+    case '6':
+        return Menu_emploi_collegue(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'm':
         return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
@@ -131,7 +131,7 @@ int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *
         break;
     }
     
-    return 0 ;
+    return MenuChercheur(gEntreprise,gPoste,gPersonne) ;
 }
 
 int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
@@ -171,10 +171,10 @@ int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gP
         return Menuquitter_entreprise(gEntreprise, gPoste, gPersonne) ;
         break;
     case '5':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return Menu_emploi(gEntreprise, gPoste, gPersonne) ;
         break;
     case '6':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return Menu_emploi_collegue(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'm':
         return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
@@ -186,7 +186,7 @@ int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gP
         break;
     }
     
-    return 0 ;
+    return MenuEmploye(gEntreprise,gPoste,gPersonne) ;
 }
 
 int A_Implementer(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
@@ -735,7 +735,7 @@ int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
         return Menuajouter_collegue(gEntreprise, gPoste, gPersonne) ;
         break;
     case '6':
-        return  Menusupprimer_collegue(gEntreprise, gPoste, gPersonne) ;
+        return Menusupprimer_collegue(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'm':
         return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
@@ -747,7 +747,7 @@ int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
         break;
     }
     
-    return 0 ;
+    return 0;
 
 }
 
@@ -925,3 +925,80 @@ if(a==0) cout << "Operation effectué avec succès" << endl;
 return 0;
 
 }
+
+int Menu_emploi(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+    
+    int id,choix,a;
+
+    //print de la table employes
+    printemployes(gPersonne);
+
+    cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
+    cin >> id;
+
+    cout << "Vous voulez :" << endl; 
+    cout<< "(1) Chercher un poste selon par code postal "<<endl;
+    cout<< "(2) Chercher un poste selon vos compétence"<<endl;
+    cin >> choix ;
+
+    if(choix==1){
+        a=recherche_poste_postal(id,gPersonne,gPoste,gEntreprise);
+        
+        if(a==0) cout << "pas de poste à cette adresse" << endl;
+        if(a==1) cout << "Au moins un poste à cette adresse" << endl;
+        if(a==2) cout << "Problème d'indice non trouvé"<< endl;
+
+    }
+    if(choix==2){
+        a=recherche_poste_comp(id,gPersonne,gPoste);
+        
+        if(a==0) cout << "pas de poste avec cette competence" << endl;
+        if(a==1) cout << "Au moins un poste avec cet competence" << endl;
+        if(a==2) cout << "Problème d'indice non trouvé"<< endl;
+    }
+    return 0;
+}
+        
+
+int Menu_emploi_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+    int id,col,choix;
+
+    //print de la table employes
+    printemployes(gPersonne);
+
+    cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
+    cin >> id;
+
+    cout << "Vous voulez :" << endl; 
+    cout<< "(1) Chercher un collègue qui posséde une compétence spécifique "<<endl;
+    cout<< "(2) Chercher une entreprise dans laquel travail un collègue"<<endl;
+    cin >> choix ;
+
+    if (choix==1){
+        char comp[128];
+
+        cout << "Saisir la compétence recherché : " << endl;
+        cin >> comp;
+
+        int a = recherche_col_comp(id,gPersonne,comp);
+        if(a==0) cout << "pas de collégue avec cet compétence" << endl;
+        if(a==1) cout << "Au moins un de vos collègue posséde cette compétence" << endl;
+        if(a==2) cout << "Problème d'indice non trouvé"<< endl;
+    }
+
+    if (choix==2){
+        AfficherEntreprises(gEntreprise);
+
+        cout << endl << "Ecrivez l'ID correspondant à l'entreprise: " << endl;
+        cin >> col;
+
+        int a = recherche_col_par_entre(id,gPersonne,col);
+
+        if(a==0) cout << "pas de collégue dans cet entreprise" << endl;
+        if(a==1) cout << "Au moins un de vos collègue travaille dans cette entreprise" << endl;
+        if(a==2) cout << "Problème d'indice non trouvé"<< endl;
+    }   
+    
+    return 0;
+}
+

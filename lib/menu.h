@@ -78,6 +78,11 @@ int Menusupprimer_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste,
 //menu print de la table employes
 void printemployes (groupe *gPersonne);
 
+int Menu_emploi(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
+
+int Menu_emploi_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
+
+
 int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
 int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
 int A_Implementer(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
