@@ -209,7 +209,7 @@ int main()
     //Tests de la fonction supprimer employe
     {
         char comp[5][128] = {'\0'};
-        int col[5] ;
+        int col[5];
         for (int i = 0; i < 5 ; i++) col[i] = -1;
         char Manon[6] = {'M','a','n','o', 'n', '\0'};
         char nom[5] = {'s', 'c', 't', 't', '\0'};
@@ -217,6 +217,29 @@ int main()
         creer_profil(Manon, nom, mail, 17800, comp, col, 2, g);
         TEST(g_size(g) == 9);
         supprimer_profil(9,g);
+    }
+
+    //Tests de la fonction rechercher poste competences
+    {
+        TEST(recherche_poste_comp(1, g, gP) == 1);
+        TEST(recherche_poste_comp(6, g, gP) == 0);
+        TEST(recherche_poste_comp(8, g, gP) == 1); //Le 8 en trouve plusieurs
+    }
+
+    //Tests de la fonction rechercher ancien collègue par entreprise
+    {
+        TEST(recherche_col_par_entre(2, g, 1)==1);
+        TEST(recherche_col_par_entre(8, g, 2) == 0);
+        TEST(recherche_col_par_entre(2, g, 11)== 0); //Il n'en trouve pas car il n'y a pas d'entreprise 11
+    }
+
+    //Tests de la fonction rechercher ancien collègue par compétence
+    {
+        char src[6] = {'c','h','a','n','t','\0'};
+        TEST(recherche_col_comp(2, g, src)==1);
+        TEST(recherche_col_comp(8, g, src) == 0);
+        char src2[7] = {'t','e','n','n','i','s','\0'};
+        TEST(recherche_col_comp(2, g, src2)== 0); //Il n'en trouve pas car il n'y a pas de competence tennis
     }
 
     //------------------- TESTS ENTREPRISE ------------------
