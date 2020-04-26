@@ -2,15 +2,11 @@
 using namespace std ;
 
 #include <regex>
-#include<string.h>
-#include<stdio.h>
-#include<stdlib.h>
 
 #include "menu.h"
 #include "entreprise.h"
 #include "postes.h"
 #include "groupe.h"
-#include "employe.h"
 
 int MenuPrincipal(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
 {
@@ -110,7 +106,7 @@ int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *
     switch (choix)
     {
     case '1':
-        return MenuCreer_Profil(gEntreprise, gPoste, gPersonne);
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '2':
         return A_Implementer(gEntreprise, gPoste, gPersonne) ;
@@ -161,11 +157,10 @@ int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gP
     switch (choix)
     {
     case '1':
-        return MenuCreer_Profil(gEntreprise, gPoste, gPersonne);
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
-        
     case '2':
-        return MenuModifier_Profil(gEntreprise, gPoste, gPersonne) ;
+        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '3':
         return A_Implementer(gEntreprise, gPoste, gPersonne) ;
@@ -450,109 +445,6 @@ int ListeDesPostes(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe 
     return 0 ;
 }
 
-int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
-
-    
-    int adresse;
-    char competence[5][128]={'\0'};
-    int collegue[5]={-1,-1,-1,-1,-1};
-    int entreprise;
-        
-    char *nom= new char(25);
-    cout << "Saisir votre Nom (Max 24 caractères): ";
-    cin >> nom ;
-    
-
-    char *prenom= new char(25);
-    cout << "Saisir votre prenom (Max 24 caractères): ";
-    cin >> prenom ;
-    
-
-    char *courriel= new char(25);
-    cout << "Saisir votre email (Max 24 caractères): ";
-    cin >> courriel ;
-    
-
-    cout << "Saisir votre code postal : ";
-    cin >> adresse ;
-
-    AfficherEntreprises(gEntreprise);
-    cout << "Ecrivez l'ID de votre entreprise (-1 sinon): ";
-    cin >> entreprise;
-    
-    int i=0;
-    char c;
-    while(i < 5){
-        cout << "Voulez vous ajouter une compétence (O ou N) ?";
-        cin >> c;
-        if (c=='O' || c=='o'){
-        cout << "Saisir une compétence : ";
-        cin >> competence[i];
-        i++;
-        }
-        else if (c=='N' || c=='n')i=5;
-    }
-
-    //print de la table employes
-    if (gPersonne->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
-    else
-    {
-        node *tmp = gPersonne->personnes ;
-        personne *e = (personne*)tmp->data ;
-        while (e!= NULL && tmp != NULL)
-        {
-            // cout << e->index << " - " << e->nom << " - " << e->code_postal << " - " << e->courriel << endl ;
-            cout << e->index << " - " << e->nom  << endl ;
-            tmp = tmp->next ;
-            if(tmp != NULL) e = (personne*)tmp->data ;
-            
-        }
-    }
-
-    i=0;
-    c='N';
-    while(i < 5){
-        cout << "Voulez vous ajouter un collegue (O ou N) ?";
-        cin >> c;
-        if (c=='O' || c=='o'){
-        cout << "Saisir l'id d'un de vos anciens collegues : ";
-        cin >> collegue[i];
-        i++;
-        }
-        else if (c=='N' || c=='n') i=5;
-    }
-
-
-    cout << endl;
-    cout << "Recapitulatif" << endl;
-    cout << "Nom : " << nom << endl ;
-    cout << "Prenom : " << prenom << endl ;
-    cout << "Courriel : " << courriel << endl ;
-    cout << "Code Postal : " << adresse << endl ;
-    cout << "ID entreprise :" << entreprise <<endl;
-
-    creer_profil(nom,prenom,courriel,adresse,competence,collegue,entreprise,gPersonne);
-    return 0;
-}
-
-
-
-int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
-
- char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
-   
-    do
-    {
-        system("clear") ;
-        cout << " ** Vous souhaitez actuellement modifier votre profil **" << endl << endl ;
-        cout << "Vous voulez :" << endl ;
-        cout << "1. Ajouter/supprimer une compétence" << endl ;            
-        cout << "2. Modifier une compétence" << endl ;
-        cout << "3. Changer d'adresse email" << endl ;                            
-        cout << "4. Mettre à jour/changer d'entreprises" << endl ;
-        cout << "5. Ajouter un collégue" << endl ;
-        cout << "6. Supprimer un collégue" << endl << endl ;
-
 int CreerPoste(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne, int indexE)
 {
     char titre[128];
@@ -717,78 +609,13 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gEntreprise, groupePostes *gPost
         return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'q':
-        return 0;
+        return 0 ;
         break;
     default:
         break;
-    }    
+    }
+
     return 0 ;
 
-}
-
-int MenuMod_Adresse(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
-
-int newadr,id;
-
-//print de la table employes
- if (gPersonne->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
-    else
-    {
-        node *tmp = gPersonne->personnes ;
-        personne *e = (personne*)tmp->data ;
-        while (e!= NULL && tmp != NULL)
-        {
-            // cout << e->index << " - " << e->nom << " - "  << " - " << e->courriel << endl ;
-            cout << e->index << " - " << e->nom  << "-" << e->adresse << endl ;
-            tmp = tmp->next ;
-            if(tmp != NULL) e = (personne*)tmp->data ;
-            
-        }
-    }
-
-cout << "Ecrivez l'ID correspondant à votre identité : " << endl;
-cin >> id;
-
-cout << "Ecrivez votre nouveau code postal : " << endl;
-cin >> newadr;
-
-modifier_adresse(id,gPersonne,newadr);
-
-return 0;
-
-}
-
-int Menu_mod_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
-    
-    int newent,id;
-
-//print de la table employes
- if (gPersonne->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
-    else
-    {
-        node *tmp = gPersonne->personnes ;
-        personne *e = (personne*)tmp->data ;
-        while (e!= NULL && tmp != NULL)
-        {
-            // cout << e->index << " - " << e->nom << " - "  << " - " << e->courriel << endl ;
-            cout << e->index << " - " << e->nom  << "-" << e->entreprise << endl ;
-            tmp = tmp->next ;
-            if(tmp != NULL) e = (personne*)tmp->data ;
-            
-        }
-    }
-
-cout << "Ecrivez l'ID correspondant à votre identité : " << endl << endl;
-cin >> id;
-
-AfficherEntreprises(gEntreprise);
-
-cout << "Saisir l'ID de votre nouvelle entreprise (-1 si passage en recherche d'emploi) : " << endl;
-cin >> newent;
-
-cout << "Votre statut entreprise a été mise à jour" << endl;
-
-modifier_entreprise(id,gPersonne,newent);
-
-return 0;
+    return 0 ;
 }
