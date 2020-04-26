@@ -69,6 +69,9 @@ int Menuquitter_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste,
 //Le menu pour supprimer un profil employes
 int Menusupprimer_profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
 
+//Le menu pour ajouter un collegue
+int Menuajouter_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+
 //menu print de la table employes
 void printemployes (groupe *gPersonne);
 

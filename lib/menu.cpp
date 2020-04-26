@@ -732,7 +732,7 @@ int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
         return Menu_mod_entreprise(gEntreprise, gPoste, gPersonne) ;
         break;
     case '5':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return Menuajouter_collegue(gEntreprise, gPoste, gPersonne) ;
         break;
     case '6':
         return A_Implementer(gEntreprise, gPoste, gPersonne) ;
@@ -866,6 +866,34 @@ cin >> id;
 supprimer_profil(id,gPersonne);
 
 cout << endl << "Votre compte a été supprimé. " << endl;
+
+return 0;
+
+}
+
+int Menuajouter_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne)
+{
+
+int id,col;
+
+//print de la table employes
+printemployes(gPersonne);
+
+cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
+cin >> id;
+
+printemployes(gPersonne);
+
+cout << endl << "Ecrivez l'ID correspondant à votre nouveau collègue : " << endl;
+cin >> col;
+
+int a= ajouter_collegue(id,gPersonne,col);
+
+if(a==1) cout << "Ce collègue est déja dans votre liste" << endl;
+if(a==2) cout << "Cet personne n'est pas dans la même entreprise que vous" << endl;
+if(a==3) cout << "Désolé, cet ID n'est pas répertorié" << endl;
+if(a==3) cout << "Désolé, vous avez atteint le nombre maximum de collègues" << endl;
+if(a==0) cout << "Operation effectué avec succès" << endl;
 
 return 0;
 
