@@ -110,7 +110,7 @@ int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *
         return MenuCreer_Profil(gEntreprise, gPoste, gPersonne);
         break;
     case '2':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return MenuModifier_Profil(gEntreprise, gPoste, gPersonne) ;
         break;
     case '3':
         return A_Implementer(gEntreprise, gPoste, gPersonne) ;
@@ -619,7 +619,6 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gEntreprise, groupePostes *gPost
 
     return 0 ;
 
-    return 0 ;
 }
 
 
@@ -719,8 +718,8 @@ int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
         system("clear") ;
         cout << " ** Vous souhaitez actuellement modifier votre profil **" << endl << endl ;
         cout << "Vous voulez :" << endl ;
-        cout << "1. Ajouter/supprimer une compétence" << endl ;            
-        cout << "2. Modifier une compétence" << endl ;
+        cout << "1. Ajouter une compétence" << endl ;            
+        cout << "2. Modifier votre code postal" << endl ;
         cout << "3. Changer d'adresse email" << endl ;                            
         cout << "4. Mettre à jour/changer d'entreprises" << endl ;
         cout << "5. Ajouter un collégue" << endl ;
@@ -734,7 +733,7 @@ int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
     switch (choix)
     {
     case '1':
-        return A_Implementer(gEntreprise, gPoste, gPersonne);
+        return Menuajouter_Competence(gEntreprise, gPoste, gPersonne);
         break;
         
     case '2':
@@ -818,7 +817,7 @@ int Menu_mod_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
         }
     }
 
-cout << "Ecrivez l'ID correspondant à votre identité : " << endl << endl;
+cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl << endl;
 cin >> id;
 
 AfficherEntreprises(gEntreprise);
@@ -831,4 +830,43 @@ cout << "Votre statut entreprise a été mise à jour" << endl;
 modifier_entreprise(id,gPersonne,newent);
 
 return 0;
+}
+
+
+int Menuajouter_Competence(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+
+char comp[128];
+int id;
+
+//print de la table employes
+ if (gPersonne->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
+    else
+    {
+        node *tmp = gPersonne->personnes ;
+        personne *e = (personne*)tmp->data ;
+        while (e!= NULL && tmp != NULL)
+        {
+            // cout << e->index << " - " << e->nom << " - "  << " - " << e->courriel << endl ;
+            cout << e->index << " - " << e->nom << endl ;
+            tmp = tmp->next ;
+            if(tmp != NULL) e = (personne*)tmp->data ;
+            
+        }
+    }
+
+cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
+cin >> id;
+
+cout << "Saisir votre nouvelle compétence : " << endl;
+cin >> comp;
+
+int a = ajouter_competence(id,gPersonne,comp);
+
+if(a==1) cout << "vous avez déja cette compétence" << endl;
+if(a==2) cout << "vous avez déja le nombre maximal de compétence" << endl;
+if(a==3) cout << "Désolé, votre ID n'est pas répertorié" << endl;
+if(a==0) cout << "Operation effectué avec succès" << endl;
+
+return 0;
+
 }
