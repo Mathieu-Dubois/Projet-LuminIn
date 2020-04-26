@@ -39,6 +39,17 @@ int MenuMod_Adresse(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe
 //Le formulaire pour mettre à jour son entreprise 
 int Menu_mod_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
 
+// Permet à une entreprise de créer un poste à pourvoir
+int CreerPoste(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne, int indexE) ;
+
+// Permet à une entreprise de choisir le poste qu'elle veut supprimer
+int ChoixPosteSupprime(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne, int indexE) ;
+
+// Affiche le menu de recherche pour une entreprise
+int MenuEntrepriseCherchePar(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne, int indexE) ;
+
+
+
 int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
 int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
 int A_Implementer(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;

@@ -25,7 +25,7 @@ groupeEntreprises* g_openEntreprisesCSV(FILE *db)
     char poubelle[100]; //On tej la première ligne
     fscanf(db, "%s\n", poubelle);
     //Lecture du fichier
-    while(fscanf(db, "%d,%128[^,],%128[^,],%128[^\n]\n", &data.index, data.nom, data.code_postal, data.courriel) == 4)
+    while(fscanf(db, "%d,%128[^,],%d,%128[^\n]\n", &data.index, data.nom, &data.code_postal, data.courriel) == 4)
     {
         entreprise *e = (entreprise*)malloc(sizeof(entreprise));
         *e = data;
@@ -58,7 +58,7 @@ void AfficherEntreprises(groupeEntreprises* g)
     }
 }
 
-int AjoutEntreprise(groupeEntreprises *groupeEntr, char nom[40], char code_postal[10], char courriel[128])
+int AjoutEntreprise(groupeEntreprises *groupeEntr, char nom[40], int code_postal, char courriel[128])
 {
     
     int index(0) ; // Contiendra l'index de la nouvelle entreprise à ajouter
@@ -67,7 +67,7 @@ int AjoutEntreprise(groupeEntreprises *groupeEntr, char nom[40], char code_posta
     entreprise *nouveau = (entreprise*)malloc(sizeof(entreprise)) ;
     nouveau->index = index + 1 ;
     strcpy(nouveau->nom, nom) ;
-    strcpy(nouveau->code_postal, code_postal) ;
+    nouveau->code_postal = code_postal;
     strcpy(nouveau->courriel, courriel) ;
     // Ajout de la nouvelle entreprise au groupe
     l_append(&groupeEntr->entreprise, l_make_node((entreprise*)nouveau)) ;
@@ -119,11 +119,11 @@ entreprise* g_indexEntreprise(groupeEntreprises* g, int const index)
     return NULL;
 }
 
-groupeEntreprises* SupprimerEntreprise(groupeEntreprises* g, int const index)
+groupeEntreprises* SupprimerEntreprise(groupeEntreprises* gE, int const index)
 {
     // On supprime le noeud dans le groupe
-    assert (g) ;
-    node *tmp = g->entreprise ;
+    assert (gE) ;
+    node *tmp = gE->entreprise ;
     entreprise *e = (entreprise*)tmp->data ;
     while (e->index != index)
     {
@@ -132,15 +132,15 @@ groupeEntreprises* SupprimerEntreprise(groupeEntreprises* g, int const index)
     }
    
     if(tmp->previous != NULL) tmp->previous->next = tmp->next ;
-    else g->entreprise = tmp->next ;
+    else gE->entreprise = tmp->next ;
     if(tmp->next != NULL) tmp->next->previous = tmp->previous ;
     
     free(tmp) ;
 
     // Puis on met à jour entreprises.csv
-    g_ecrireEntreprise(g) ;
+    g_ecrireEntreprise(gE) ;
 
-    return g ;
+    return gE ;
 }
 
 void g_ecrireEntreprise(groupeEntreprises* g)
@@ -186,3 +186,72 @@ void g_ecrireEntreprise(groupeEntreprises* g)
  
 }
 
+void EntrepriseRechercheParCompetence(groupe* gPe, char competence[128])
+{
+    int trouve(0) ;
+
+    if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
+    else
+    {
+        node *tmp = gPe->personnes ;
+        personne *p = (personne*)tmp->data ;
+        while (p!= NULL && tmp != NULL)
+        {
+            if(p->entreprise == -1) // Si c'est un chercheur d'emploi
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    if (!strcmp(competence, p->competence[i])) // Et qu'une compétence match
+                    {
+                        if(trouve == 0) cout << endl << "Liste des chercheurs d'emploi possédant la compétence " << competence << " : " << endl ;
+                        cout << p->nom << " - " << p->prenom << " - " << p->courriel << endl ;
+                        trouve = 1 ;
+                    }
+                }
+            }
+            
+            tmp = tmp->next ;
+            if(tmp != NULL) p = (personne*)tmp->data ;
+        }
+        if(!trouve) cout << "Aucun chercheur d'emploi ne correspond à votre recherche" << endl ;
+
+    }
+}
+
+void EntrepriseRechercheParCompetenceEtCode(groupe* gPe, char competence[128], int code_postal)
+{
+    int trouve(0) ;
+
+    if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
+    else
+    {
+        node *tmp = gPe->personnes ;
+        personne *p = (personne*)tmp->data ;
+        while (p!= NULL && tmp != NULL)
+        {
+            if(p->entreprise == -1) // Si c'est un chercheur d'emploi
+            {
+                if (p->adresse == code_postal) // Si le code postal match
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        if (!strcmp(competence, p->competence[i])) // Et qu'une compétence match
+                        {
+                             if(trouve == 0) cout << endl << "Liste des chercheurs d'emploi possédant la compétence " << competence << " et le code postal " << code_postal << " :" << endl ;
+                            cout << p->nom << " - " << p->prenom << " - " << p->courriel << endl ;
+                            trouve = 1 ;
+                        }
+                    }
+                }
+                
+                
+                
+            }
+            
+            tmp = tmp->next ;
+            if(tmp != NULL) p = (personne*)tmp->data ;
+        }
+        if(!trouve) cout << "Aucun chercheur d'emploi ne correspond à votre recherche" << endl ;
+
+    }
+}

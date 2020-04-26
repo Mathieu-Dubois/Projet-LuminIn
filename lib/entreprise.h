@@ -3,12 +3,13 @@
 #include <string>
 
 #include "liste.h"
+#include "groupe.h"
 
 typedef struct entreprise
 {
     int index ;
     char nom[40] ;
-    char code_postal[10];
+    int code_postal;
     char courriel[128] ;
 } entreprise ;
 
@@ -27,7 +28,7 @@ int gEntreprise_size(groupeEntreprises* g) ;
 void AfficherEntreprises(groupeEntreprises* g) ;
 
 // Ajoute une entreprise au fichier "entreprises.csv" et au groupe entreprise
-int AjoutEntreprise(groupeEntreprises *groupeEntr, char nom[40], char code_postal[10], char courriel[128]) ;
+int AjoutEntreprise(groupeEntreprises *groupeEntr, char nom[40], int code_postal, char courriel[128]) ;
 
 // Retourne l'index de la dernière entreprise du groupe
 int LastEntreprise(groupeEntreprises* g) ;
@@ -38,9 +39,14 @@ int ExisteEntreprise(groupeEntreprises*g, int const index) ;
 // Retourne l'entreprise correspondant à l'index passé en paramètres
 entreprise* g_indexEntreprise(groupeEntreprises* g, int const index) ;
 
-// Supprime l'entreprise passée en paramètre (du groupe et du csv)
+// Supprime l'entreprise passée en paramètre (du groupe et du csv) plus les poste à pourvoir de cette entreprise
 groupeEntreprises* SupprimerEntreprise(groupeEntreprises* g, int const index) ;
 
 // Met à jour le fichier entreprises.csv à partir du groupe passé en paramètres
 void g_ecrireEntreprise(groupeEntreprises* g) ;
 
+// Affiche nom, prénom et adresse mail d'une personne ayant la compétence demandé (ssi c'est un chercheur d'emploi)
+void EntrepriseRechercheParCompetence(groupe* gPe, char competence[128]) ;
+
+// Affiche nom, prénom et adresse mail d'une personne ayant la compétence et le code postal demandés (ssi c'est un chercheur d'emploi)
+void EntrepriseRechercheParCompetenceEtCode(groupe* gPe, char competence[128], int code_postal) ;
