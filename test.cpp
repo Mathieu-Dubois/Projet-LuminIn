@@ -221,9 +221,9 @@ int main()
 
     //Tests de la fonction rechercher poste competences
     {
-        TEST(recherche_poste_comp(1, g, gP) == 1);
-        TEST(recherche_poste_comp(6, g, gP) == 0);
-        TEST(recherche_poste_comp(8, g, gP) == 1); //Le 8 en trouve plusieurs
+        TEST(recherche_poste_comp(1, g, gP, gE) == 1);
+        TEST(recherche_poste_comp(6, g, gP, gE) == 0);
+        TEST(recherche_poste_comp(8, g, gP, gE) == 1); //Le 8 en trouve plusieurs
     }
 
     //Tests de la fonction rechercher poste competences

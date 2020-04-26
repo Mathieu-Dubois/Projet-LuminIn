@@ -82,26 +82,31 @@ void AfficherPostes(groupePostes* g)
     }
 }
 
-void AfficherPoste(groupePostes* g, int index)
+void AfficherPoste(groupePostes* g, int index, groupeEntreprises *gEntre)
 {
-    int trouve = 0;
+    int trouve = 0, fait = 0;
     if (g->poste == NULL) cout << "Aucun poste enregistrée" << endl ;
     else
     {
         node *tmp = g->poste ;
         poste *p;
+
+        node*tempentre = gEntre->entreprise;
+        entreprise*entrami;
+
         while (tmp != NULL && trouve ==0){
             p = (poste*)tmp->data ;
-            if(p->index == index){
+            if(p->index == index){                                      //On a trouvé le poste correspondant
                 trouve = 1;
-                cout << p->index << " - " << p->titre << " - " << p->entreprise << " - | " ;
-                for (int i = 0; i < 5; i++)
-                {
-                    for (int j = 0; j < 128; j++) cout << p->competence[i][j] ;
-                    if(p->competence[i][0] != '\0') cout << " | " ;
-                }
-                cout << endl ;
-                
+                fait = 0;
+                while (gEntre != NULL && fait == 0){
+                    entrami = (entreprise*)(tempentre->data);
+                    if (p->entreprise == entrami->index){               //On a trouvé l'entreprise correspondant au poste
+                        cout << p->titre << " - " << entrami->nom << " - " << entrami->courriel << " - " << entrami->code_postal << endl;
+                        fait = 1;
+                    }
+                    tempentre = tempentre -> next;
+                }               
             } else tmp = tmp->next ;
         }
     }
