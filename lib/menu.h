@@ -63,6 +63,12 @@ int Menu_mod_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
 //Le formulaire pour ajouter une compétence
 int Menuajouter_Competence(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
 
+//Le menu pour quitter son entreprise
+int Menuquitter_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
+
+//menu print de la table employes
+void printemployes (groupe *gPersonne);
+
 int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
 int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
 int A_Implementer(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;

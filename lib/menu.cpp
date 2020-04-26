@@ -146,7 +146,7 @@ int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gP
         cout << "1. Créer votre profil" << endl ;            
         cout << "2. Modifier votre profil" << endl ;
         cout << "3. Supprimer votre profil" << endl ;                            
-        cout << "4. Mettre à jour votre statut (passer en recherche d'emploi) !!!! ça je crois que c'est pas un menu, ça se fait automatiquement quand une entreprise le vire" << endl ;
+        cout << "4. Mettre à jour votre statut (passer en recherche d'emploi)" << endl ;
         cout << "5. Chercher un emploi qui correspond à votre profil" << endl ;
         cout << "6. Chercher un emploi grâce à vos collègues" << endl << endl ;
         cout << "m. Retourner au menu principal" << endl ;                       
@@ -168,7 +168,7 @@ int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gP
         return A_Implementer(gEntreprise, gPoste, gPersonne) ;
         break;
     case '4':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return Menuquitter_entreprise(gEntreprise, gPoste, gPersonne) ;
         break;
     case '5':
         return A_Implementer(gEntreprise, gPoste, gPersonne) ;
@@ -665,21 +665,7 @@ int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, group
         else if (c=='N' || c=='n')i=5;
     }
 
-    //print de la table employes
-    if (gPersonne->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
-    else
-    {
-        node *tmp = gPersonne->personnes ;
-        personne *e = (personne*)tmp->data ;
-        while (e!= NULL && tmp != NULL)
-        {
-            // cout << e->index << " - " << e->nom << " - " << e->code_postal << " - " << e->courriel << endl ;
-            cout << e->index << " - " << e->nom  << endl ;
-            tmp = tmp->next ;
-            if(tmp != NULL) e = (personne*)tmp->data ;
-            
-        }
-    }
+    printemployes (gPersonne);
 
     i=0;
     c='N';
@@ -770,20 +756,7 @@ int MenuMod_Adresse(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe
 int newadr,id;
 
 //print de la table employes
- if (gPersonne->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
-    else
-    {
-        node *tmp = gPersonne->personnes ;
-        personne *e = (personne*)tmp->data ;
-        while (e!= NULL && tmp != NULL)
-        {
-            // cout << e->index << " - " << e->nom << " - "  << " - " << e->courriel << endl ;
-            cout << e->index << " - " << e->nom  << "-" << e->adresse << endl ;
-            tmp = tmp->next ;
-            if(tmp != NULL) e = (personne*)tmp->data ;
-            
-        }
-    }
+printemployes (gPersonne);
 
 cout << "Ecrivez l'ID correspondant à votre identité : " << endl;
 cin >> id;
@@ -802,20 +775,7 @@ int Menu_mod_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
     int newent,id;
 
 //print de la table employes
- if (gPersonne->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
-    else
-    {
-        node *tmp = gPersonne->personnes ;
-        personne *e = (personne*)tmp->data ;
-        while (e!= NULL && tmp != NULL)
-        {
-            // cout << e->index << " - " << e->nom << " - "  << " - " << e->courriel << endl ;
-            cout << e->index << " - " << e->nom  << "-" << e->entreprise << endl ;
-            tmp = tmp->next ;
-            if(tmp != NULL) e = (personne*)tmp->data ;
-            
-        }
-    }
+printemployes (gPersonne);
 
 cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl << endl;
 cin >> id;
@@ -839,20 +799,7 @@ char comp[128];
 int id;
 
 //print de la table employes
- if (gPersonne->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
-    else
-    {
-        node *tmp = gPersonne->personnes ;
-        personne *e = (personne*)tmp->data ;
-        while (e!= NULL && tmp != NULL)
-        {
-            // cout << e->index << " - " << e->nom << " - "  << " - " << e->courriel << endl ;
-            cout << e->index << " - " << e->nom << endl ;
-            tmp = tmp->next ;
-            if(tmp != NULL) e = (personne*)tmp->data ;
-            
-        }
-    }
+printemployes (gPersonne);
 
 cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
 cin >> id;
@@ -869,4 +816,38 @@ if(a==0) cout << "Operation effectué avec succès" << endl;
 
 return 0;
 
+}
+
+int Menuquitter_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+
+
+int id;
+
+//print de la table employes
+printemployes(gPersonne);
+
+cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
+cin >> id;
+
+quitter_entreprise(id,gPersonne);
+
+return 0;
+
+}
+
+void printemployes (groupe *gPersonne){
+
+ if (gPersonne->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
+    else
+    {
+        node *tmp = gPersonne->personnes ;
+        personne *e = (personne*)tmp->data ;
+        while (e!= NULL && tmp != NULL)
+        {
+            cout << e->index << " - " << e->nom << " - "  << " - " << e->courriel << " - " << e->entreprise << endl ;
+            tmp = tmp->next ;
+            if(tmp != NULL) e = (personne*)tmp->data ;
+            
+        }
+    }
 }
