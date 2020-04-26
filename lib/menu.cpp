@@ -51,6 +51,8 @@ int MenuPrincipal(groupeEntreprises *gE, groupePostes *gP, groupe *gPe)
     return 0 ;
 }
 
+
+
 /* ============================================================================================================
 ||
 ||                                  PARTIE ENTREPRISE
@@ -539,8 +541,11 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupe *gP
 
 
 
-
-
+/* ============================================================================================================
+||
+||                                  PARTIE PERSONNE 
+||
+   ============================================================================================================ */
 
 
 
@@ -712,7 +717,6 @@ int Menu_mod_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
     return 0;
 }
 
-
 int Menuajouter_Competence(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
 
     char comp[128];
@@ -878,7 +882,6 @@ int Menu_emploi(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gP
     }
     return 0;
 }
-        
 
 int Menu_emploi_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
     int id,col,choix;
@@ -921,6 +924,10 @@ int Menu_emploi_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, g
     
     return 0;
 }
+
+
+
+
 
 
 
