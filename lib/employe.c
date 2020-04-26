@@ -566,3 +566,39 @@ int recherche_col_par_entre(int indice, groupe *gEmployes, int index)
     if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
     return code_retour;
 }
+
+
+/*  Entrée :        indice : indice de la personne qui veut rechercher un collègue
+                    
+    Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
+                    1 Si tout se passe bien et qu'on a trouvé au moins un match
+                    2 si on ne trouve pas l'indice dans le groupe                         */
+int recherche_col_comp(int indice, groupe *gEmployes, char comp[128])
+{
+    int trouve = 0, code_retour = 0, i, j, fait = 0;
+    node *temp = gEmployes->personnes;
+    personne*tmpami;
+
+    while(temp != NULL && trouve ==0){
+        tmpami = (personne*)(temp->data);
+        if (tmpami->index == indice){                                       //Quand on atteint la personne souhaitée
+            i = 0;
+            trouve = 1;   
+            while (tmpami->amis[i] != NULL && fait ==0){
+                j = 0;
+                while(tmpami->amis[i]->competence[j][0] != '\0' && fait ==0){
+                    if (!strcmp(tmpami->amis[i]->competence[j], comp)){ //Si la personne correspond
+                        code_retour = 1;
+                        printf("- %s | %s | %s\n", tmpami->amis[i]->nom, tmpami->amis[i]->prenom, tmpami->amis[i]->courriel);
+                        fait = 1;
+                    }
+                    j++;
+                } 
+                i++;
+            }  
+            
+        } else temp = temp -> next;
+    }
+    if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
+    return code_retour;
+}

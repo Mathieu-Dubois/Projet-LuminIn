@@ -233,6 +233,14 @@ int main()
         TEST(recherche_col_par_entre(2, g, 11)== 0); //Il n'en trouve pas car il n'y a pas d'entreprise 11
     }
 
+    //Tests de la fonction rechercher ancien collègue par compétence
+    {
+        char src[6] = {'c','h','a','n','t','\0'};
+        TEST(recherche_col_comp(2, g, src)==1);
+        TEST(recherche_col_comp(8, g, src) == 0);
+        char src2[7] = {'t','e','n','n','i','s','\0'};
+        TEST(recherche_col_comp(2, g, src2)== 0); //Il n'en trouve pas car il n'y a pas de competence tennis
+    }
 
     //------------------- TESTS ENTREPRISE ------------------
 

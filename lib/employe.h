@@ -41,5 +41,8 @@ int recherche_poste_comp(int indice, groupe *gEmployes, groupePostes* gPostes);
 /*Recherche d'un poste en fonction du code postal*/
 int recherche_poste_postal(int indice, groupe *gEmployes, groupePostes *gPostes, groupeEntreprises *gEntre);
 
-/*Recherche parmi les ancien collègues de la personne d'indice donné si ily en a qui travaille dans l'entreprise d'index donné*/
+/*Recherche parmi les anciens collègues de la personne d'indice donné si ily en a qui travaille dans l'entreprise d'index donné*/
 int recherche_col_par_entre(int indice, groupe *gEmployes, int index);
+
+/*Recherche parmi les anciens collègues ceux qui ont une compétence donnée*/
+int recherche_col_comp(int indice, groupe *gEmployes, char comp[128]);
