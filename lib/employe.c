@@ -522,10 +522,10 @@ int recherche_poste_postal(int indice, groupe *gEmployes, groupePostes *gPostes,
                     amientre = (entreprise*)(tempentre->data);
                     if(amientre->index == amiposte->entreprise){
                         trouveentre = 1;
-                        //if(amientre->code_postal == tmpami->adresse){
-                        //     code_retour = 1;
-                        //     AfficherPoste(gPostes, amiposte->index);
-                        // }
+                        if(amientre->code_postal == tmpami->adresse){
+                            code_retour = 1;
+                            AfficherPoste(gPostes, amiposte->index);
+                        }
                     } else tempentre = tempentre->next;
                 }
                 temposte = temposte->next;

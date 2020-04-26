@@ -226,6 +226,13 @@ int main()
         TEST(recherche_poste_comp(8, g, gP) == 1); //Le 8 en trouve plusieurs
     }
 
+    //Tests de la fonction rechercher poste competences
+    {
+        TEST(recherche_poste_postal(2, g, gP, gE) == 1);
+        TEST(recherche_poste_postal(4, g, gP, gE) == 0);
+        TEST(recherche_poste_postal(7, g, gP, gE) == 1);
+    }
+
     //Tests de la fonction rechercher ancien collègue par entreprise
     {
         TEST(recherche_col_par_entre(2, g, 1)==1);
