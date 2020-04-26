@@ -950,7 +950,7 @@ int Menu_emploi(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gP
 
     }
     if(choix==2){
-        a=recherche_poste_comp(id,gPersonne,gPoste);
+        a=recherche_poste_comp(id,gPersonne,gPoste,gEntreprise);
         
         if(a==0) cout << "pas de poste avec cette competence" << endl;
         if(a==1) cout << "Au moins un poste avec cet competence" << endl;
