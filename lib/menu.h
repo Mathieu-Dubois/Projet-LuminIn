@@ -66,6 +66,9 @@ int Menuajouter_Competence(groupeEntreprises* gEntreprise, groupePostes *gPoste,
 //Le menu pour quitter son entreprise
 int Menuquitter_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
 
+//Le menu pour supprimer un profil employes
+int Menusupprimer_profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+
 //menu print de la table employes
 void printemployes (groupe *gPersonne);
 

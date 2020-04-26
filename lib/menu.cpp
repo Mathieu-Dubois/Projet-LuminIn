@@ -113,7 +113,7 @@ int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *
         return MenuModifier_Profil(gEntreprise, gPoste, gPersonne) ;
         break;
     case '3':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return Menusupprimer_profil(gEntreprise, gPoste, gPersonne) ;
         break;
     case '4':
         return A_Implementer(gEntreprise, gPoste, gPersonne) ;
@@ -165,7 +165,7 @@ int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gP
         return MenuModifier_Profil(gEntreprise, gPoste, gPersonne) ;
         break;
     case '3':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return Menusupprimer_profil(gEntreprise, gPoste, gPersonne) ;
         break;
     case '4':
         return Menuquitter_entreprise(gEntreprise, gPoste, gPersonne) ;
@@ -835,8 +835,8 @@ return 0;
 
 }
 
-void printemployes (groupe *gPersonne){
-
+void printemployes (groupe *gPersonne)
+{
  if (gPersonne->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
     else
     {
@@ -850,4 +850,23 @@ void printemployes (groupe *gPersonne){
             
         }
     }
+}
+
+int Menusupprimer_profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne)
+{
+
+int id;
+
+//print de la table employes
+printemployes(gPersonne);
+
+cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
+cin >> id;
+
+supprimer_profil(id,gPersonne);
+
+cout << endl << "Votre compte a été supprimé. " << endl;
+
+return 0;
+
 }
