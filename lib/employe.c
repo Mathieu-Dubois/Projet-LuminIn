@@ -443,7 +443,7 @@ int supprimer_collegue(int indice, groupe *gEmployes, int col)
     Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
                     1 Si tout se passe bien et qu'on a trouvé au moins un match
                     2 si on ne trouve pas l'indice dans le groupe                         */
-int recherche_poste_comp(int indice, groupe *gEmployes, groupePostes *gPostes)
+int recherche_poste_comp(int indice, groupe *gEmployes, groupePostes *gPostes, groupeEntreprises *gEntre)
 {
     int trouve = 0, code_retour = 0, i, j, fait = 0;
     node *temp = gEmployes->personnes;
@@ -469,7 +469,7 @@ int recherche_poste_comp(int indice, groupe *gEmployes, groupePostes *gPostes)
                             if (tmpami->competence[i][0] != '\0'){              //Si il a une competence, on va chercher les match
                                 if (!strcmp(amiposte->competence[j], tmpami->competence[i])){
                                     code_retour = 1;
-                                    AfficherPoste(gPostes, amiposte->index);
+                                    AfficherPoste(gPostes, amiposte->index, gEntre);
                                     fait = 1;
                                 }
                                 
@@ -522,10 +522,10 @@ int recherche_poste_postal(int indice, groupe *gEmployes, groupePostes *gPostes,
                     amientre = (entreprise*)(tempentre->data);
                     if(amientre->index == amiposte->entreprise){
                         trouveentre = 1;
-                        //if(amientre->code_postal == tmpami->adresse){
-                        //     code_retour = 1;
-                        //     AfficherPoste(gPostes, amiposte->index);
-                        // }
+                        if(amientre->code_postal == tmpami->adresse){
+                            code_retour = 1;
+                            AfficherPoste(gPostes, amiposte->index, gEntre);
+                        }
                     } else tempentre = tempentre->next;
                 }
                 temposte = temposte->next;

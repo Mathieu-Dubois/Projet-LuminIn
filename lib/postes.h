@@ -25,7 +25,7 @@ groupePostes* g_openPostesCSV(FILE* db) ;
 void AfficherPostes(groupePostes* g) ;
 
 //Affiche un poste donné
-void AfficherPoste(groupePostes* g, int index);
+void AfficherPoste(groupePostes* g, int index, groupeEntreprises *gEntre);
 
 // Affiche tous les postes pourvu par l'entreprise donné par son index
 void AfficherPostesEntreprise(groupeEntreprises* gE, groupePostes* gP, int index) ;

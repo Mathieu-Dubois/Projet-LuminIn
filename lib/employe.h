@@ -36,7 +36,7 @@ int rejoindre_entreprise(int indice, groupe *gEmployes, int entre);
 int supprimer_collegue(int indice, groupe *gEmployes, int col);
 
 /*Recherche d'un poste en fonction des competences*/
-int recherche_poste_comp(int indice, groupe *gEmployes, groupePostes* gPostes);
+int recherche_poste_comp(int indice, groupe *gEmployes, groupePostes* gPostes, groupeEntreprises *gEntre);
 
 /*Recherche d'un poste en fonction du code postal*/
 int recherche_poste_postal(int indice, groupe *gEmployes, groupePostes *gPostes, groupeEntreprises *gEntre);
