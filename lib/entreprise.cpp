@@ -1,203 +1,297 @@
-#pragma once
-
+#include <iostream>
+using namespace std ;
+#include <fstream>
 #include <string>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <malloc.h>
+#include <string.h>
 
 #include "entreprise.h"
-#include "postes.h"
 #include "groupe.h"
-
-/*==============================================================================================
- || FONCTION : MenuPrincipal
-  ==============================================================================================
- || But : Affiche le menu principal permettant de s'identifier en tant qu'entreprise ou utisateur
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||
- || Retour :
- ||     Retourne 0 si tout s'est bien passé 
-  ============================================================================================== */
-int MenuPrincipal(groupeEntreprises *gE, groupePostes *gP, groupe *gPe) ;
+#include "liste.h"
 
 
-/* ============================================================================================================
-||
-||                                  PARTIE ENTREPRISE
-||
-   ============================================================================================================ */
+// But : Création d'un groupe d'entreprise à partir d'un flux donné
+groupeEntreprises* g_openEntreprisesCSV(FILE *db)
+{
+    groupeEntreprises *gE = NULL ;
+    gE = (groupeEntreprises*)malloc(sizeof(groupeEntreprises));
+    gE->entreprise = NULL ;
+    entreprise data;
 
-/*==============================================================================================
- || FONCTION : MenuEntreprise
-  ==============================================================================================
- || But : Affiche le menu permettant à l'utilisateur de :
- ||       - se connecter sur le profil de son entreprise
- ||       - créer le profil de son entreprise 
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||
- || Retour :
- ||     Retourne 0 si tout s'est bien passé 
-  ============================================================================================== */
-int MenuEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe) ;
+    // On "supprime" la première ligne du fichier car elle ne contient aucune donnée
+    char poubelle[100]; 
+    fscanf(db, "%s\n", poubelle);
 
-/*==============================================================================================
- || FONCTION : MenuSeConnecterEntreprise
-  ==============================================================================================
- || But : Affiche tous les index et nom des entreprises du groupe d'entreprise
- ||       et demande à l'utilisateur d'entrer le numéro de son entreprise
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||
- || Retour :
- ||     Retourne 0 si tout s'est bien passé 
-  ============================================================================================== */
-int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe) ;
+    /* Puis on lit le fichier jusqu'à la fin en lisant à chaque fois :
+     - un numéro correspondant à l'index de l'entreprise dans le fichier puis une virgule
+     - une chaine de caractères correspondant au nom de l'entreprise puis une virgule
+     - un numéro à 5 chiffres correspondant au code postale de l'entreprise puis une virgule
+     - une chaine de caractères correspondant à l'adresse mail de l'entreprise puis un retour à la ligne
 
-/*==============================================================================================
- || FONCTION : MenuCreerEntreprise
-  ==============================================================================================
- || But : Affiche le menu permettant à l'utilisateur de créer le profil de son entreprise
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||
- || Retour :
- ||     Retourne 0 si tout s'est bien passé 
-  ============================================================================================== */
-int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe) ;
+     Pour chaque ligne lue, on ajoute au groupe l'entreprise contenant les informations lues
+     Si ces conditions ne sont pas vérifiées, cela signifie que le fichier a été lu en entier
+     On retourne alors le groupe créé */
+    while(fscanf(db, "%d,%128[^,],%d,%128[^\n]\n", &data.index, data.nom, &data.code_postal, data.courriel) == 4)
+    {
+        entreprise *e = (entreprise*)malloc(sizeof(entreprise));
+        *e = data;
+        l_append(&gE->entreprise, l_make_node((entreprise *)e));
+    }
 
-/*==============================================================================================
- || FONCTION : MenuProfilEntreprise
-  ==============================================================================================
- || But : Affiche le menu avec toutes les fonctionnalités d'une entreprise connectée 
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     indexE : index de l'entreprise connectée
- ||
- || Retour :
- ||     Retourne 0 si tout s'est bien passé 
-  ============================================================================================== */
-int MenuProfilEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int indexE) ;
+    return gE;
+}
 
-/*==============================================================================================
- || FONCTION : MenuConfirmerSuppressionEntreprise
-  ==============================================================================================
- || But : Affiche le menu demandant confirmation à l'utilisateur avant de supprimer le profil 
- ||       de son entreprise
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     indexE : index de l'entreprise connectée (et donc à supprimer)
- ||
- || Retour :
- ||     Retourne 0 si tout s'est bien passé 
-  ============================================================================================== */
-int MenuConfirmerSuppressionEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int indexE) ;
+// But : Déterminer la taille d'un groupe de type : groupeEntreprises
+int gEntreprise_size(groupeEntreprises* gE)
+{
+    return l_length(gE->entreprise);
+}
 
-/*==============================================================================================
- || FONCTION : MenuAfficherPostesDuneEntreprise
-  ==============================================================================================
- || But : Affiche le menu où l'utilisateur peut voir tous les postes à pourvoir de son entreprise
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     indexE : index de l'entreprise connectée
- ||
- || Retour :
- ||     Retourne 0 si tout s'est bien passé 
-  ============================================================================================== */
-int MenuAfficherPostesDuneEntreprise(groupeEntreprises* gE, groupePostes *gP, groupe *gPe, int indexE) ;
+// But : Afficher l'index et le nom de toutes les entreprises d'un même groupe
+void AfficherEntreprises(groupeEntreprises* g)
+{
+    if (g->entreprise == NULL) cout << "Aucune entreprise enregistrée" << endl ;
+    else
+    {
+        node *tmp = g->entreprise ;
+        entreprise *e = (entreprise*)tmp->data ;
+        while (e!= NULL && tmp != NULL)
+        {
+            cout << e->index << " - " << e->nom  << endl ;
+            tmp = tmp->next ;
+            if(tmp != NULL) e = (entreprise*)tmp->data ;
+        }
+    }
+}
 
-/*==============================================================================================
- || FONCTION : MenuCreerPoste
-  ==============================================================================================
- || But : Affiche le menu permettant à l'utilisateur de créer un poste à pourvoir
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     indexE : index de l'entreprise connectée
- ||
- || Retour :
- ||     Retourne 0 si tout s'est bien passé 
-  ============================================================================================== */
-int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int indexE) ;
+// But : Ajouter une entreprise à un groupe de type groupeEntreprises
+void AjoutEntreprise(groupeEntreprises *gE, char nom[40], int code_postal, char courriel[128])
+{
+    // On récupère l'index de la dernière entreprise du groupe
+    int index(0) ;
+    index = LastEntreprise(gE) ; 
+    
+    // On créé une nouvelle entreprise et on lui attribue tout ses paramètres
+    // Remarque : l'index de la nouvelle entreprise = index de la dernière entreprise du groupe + 1
+    entreprise *nouveau = (entreprise*)malloc(sizeof(entreprise)) ;
+    nouveau->index = index + 1 ;    
+    strcpy(nouveau->nom, nom) ;
+    nouveau->code_postal = code_postal;
+    strcpy(nouveau->courriel, courriel) ;
 
-/*==============================================================================================
- || FONCTION : MenuSupprimerPoste
-  ==============================================================================================
- || But : Affiche tous les postes à pourvoir de l'entreprise connectée et demande à
- ||       l'utilisateur l'index du poste à supprimer
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     indexE : index de l'entreprise connectée
- ||
- || Retour :
- ||     Retourne 0 si tout s'est bien passé 
-  ============================================================================================== */
-int MenuSupprimerPoste(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int indexE) ;
+    // Ajout de la nouvelle entreprise au groupe
+    l_append(&gE->entreprise, l_make_node((entreprise*)nouveau)) ;
 
-/*==============================================================================================
- || FONCTION : MenuEntrepriseCherchePar
-  ==============================================================================================
- || But : Affiche le menu permettant à une entreprise de chercher un chercheur d'emploi par 
- ||       compétence ou compétence et code postal
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     indexE : index de l'entreprise connectée
- ||
- || Retour :
- ||     Retourne 0 si tout s'est bien passé 
-  ============================================================================================== */
-int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int indexE) ;
+    // Ajout de la nouvelle entreprise dans le fichier CSV
+    ofstream fichier("entreprises.csv", ios::app) ;
+    fichier << index+1 << "," << nom << "," << code_postal << "," << courriel << endl ;
+    fichier.close() ;
+}
 
+// But : Déterminer l'index de la dernière entreprise d'un groupe de type groupeEntreprises
+int LastEntreprise(groupeEntreprises* gE)
+{
+    int index(0) ;
+    node *tmp = gE->entreprise ;
+    tmp = l_tail(tmp) ;
+    entreprise *e = (entreprise*)tmp->data ;
+    index = e->index ;
 
+    return index ;
+}
 
+// But : Déterminer si une entreprise fait partie du groupe passé en paramètres
+int ExisteEntreprise(groupeEntreprises*gE, int const indexE)
+{
+    // Si le groupe est vide, l'entreprise n'existe pas, on retourne 0
+    if (gE->entreprise == NULL) return 0;
 
+    // Si l'index demandé est supérieur à l'index de la dernière entreprise, l'entreprise n'existe pas, on retourne 0
+    if(indexE > LastEntreprise(gE) || indexE < 0) return 0 ;
 
+    // Sinon on parcourt tout le groupe jusqu'à trouver (ou non) l'entreprise voulue
+    node *tmp = gE->entreprise;
+    entreprise *e = (entreprise*)tmp->data;
+    while(e->index != indexE && e != NULL && tmp->next !=NULL){
+        tmp = tmp -> next;
+        e = (entreprise*)tmp->data;
+    } 
+    if (e->index == indexE) return 1 ; // On l'a trouvé, on retourne 1
+    // On l'a pas trouvé, on retourne 0
+    return 0;
+}
 
+// But : Accéder à une entreprise du groupe pour la manipuler
+entreprise* g_indexEntreprise(groupeEntreprises* gE, int const indexE)
+{
+    // Si l'entreprise recherchée existe, on va la chercher et on la retourne
+    if(ExisteEntreprise(gE,indexE))
+    {
+        node *tmp = gE->entreprise;
+        entreprise *e = (entreprise*)tmp->data;
+        while(e->index != indexE && e != NULL && tmp->next !=NULL)
+        {
+            tmp = tmp -> next;
+            e = (entreprise*)tmp->data;
+        }
+        if (e->index == indexE) return e ; 
+    }
 
-//Le menu/formulaire pour créer un profil employés ou chercheur d'emploi
-int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+    // Sinon on affiche un message d'erreur et on retourne NULL
+    else cout << "ERREUR ID ENTREPRISE" ;
+    return NULL ;
+}
 
-//le menu pour une modification du profil
-int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+// But : Supprimer une entreprise du groupe passé en paramètres et du fichier entreprises.csv
+groupeEntreprises* SupprimerEntreprise(groupeEntreprises* gE, int const indexE)
+{
+    // On va chercher l'entreprise dans le groupe
+    assert (gE) ;
+    node *tmp = gE->entreprise ;
+    entreprise *e = (entreprise*)tmp->data ;
+    while (e->index != indexE)
+    {
+        tmp = tmp->next ;
+        e = (entreprise*)(tmp->data) ;
+    }
+   
+    // On raccroche les noeuds entre eux pour enlever l'entreprise
+    if(tmp->previous != NULL) tmp->previous->next = tmp->next ;
+    else gE->entreprise = tmp->next ;
+    if(tmp->next != NULL) tmp->next->previous = tmp->previous ;
+    
+    // On libère la mémoire contenant l'entreprise supprimée
+    free(tmp) ;
 
-//Le formulaire pour modifier son adresse
-int MenuMod_Adresse(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+    // Puis on met à jour entreprises.csv
+    g_ecrireEntreprise(gE) ;
 
-//Le formulaire pour mettre à jour son entreprise 
-int Menu_mod_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+    return gE ;
+}
 
+// But : Mettre à jour le fichier entreprises.csv à partir du groupe passé en paramètres
+void g_ecrireEntreprise(groupeEntreprises* gE)
+{
+    // On ouvre en écriture le fichier tmp.csv (comme il n'existe pas, il est créé)
+    ofstream nouveauCSV("tmp.csv") ;
+    if(nouveauCSV)
+    {
+        // On ouvre en lecture le fichier entreprises.csv
+        ifstream ancienCSV("entreprises.csv") ;
+        if(ancienCSV)
+        {
+            // On récupère la première ligne et on l'écrit dans le nouveau fichier
+            string ligne ;
+            getline(ancienCSV, ligne) ;
+            nouveauCSV << ligne << endl ;
 
+            // Maintenant il faut lire le groupe et écrire les informations ligne par ligne
+            node *tmp = gE->entreprise ;
+            entreprise *e = NULL ;
+            while (tmp != NULL)
+            {
+                e = (entreprise*)(tmp->data) ;
+                nouveauCSV << e->index << "," << e->nom << "," << e->code_postal << "," << e->courriel << endl ;
+                tmp = tmp->next ;
+            }
+            nouveauCSV.close() ;
+            ancienCSV.close() ;
 
+            // Il ne reste plus qu'à supprimer l'ancien entreprises.csv et renommer tmp.csv 
+            remove("entreprises.csv") ;
+            rename("tmp.csv", "entreprises.csv") ;
+        }
+        else
+        {
+            cout << "ERREUR : Impossible d'ouvrir entreprises.csv" << endl ;
+        }
+    }
+    else
+    {
+        cout << "ERREUR : Impossible d'ouvrir tmp.csv" << endl ;
+    }
+}
 
+// But : Afficher le nom, le prénom et l'adresse mail de tous les chercheurs d'emploi possédant la compétence demandée
+void EntrepriseRechercheParCompetence(groupe* gPe, char competence[128])
+{
+    int trouve(0) ;
 
-int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
-int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
-int A_Implementer(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
+    if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
 
+    // On parcourt tout le groupe
+    else
+    {
+        node *tmp = gPe->personnes ;
+        personne *p = (personne*)tmp->data ;
+        while (p!= NULL && tmp != NULL)
+        {
+            // Si la personne courante est un chercheur d'emploi (ie : entreprise = -1)
+            if(p->entreprise == -1)
+            {
+                // On regarde toutes ces compétences 
+                for (int i = 0; i < 5; i++)
+                {
+                    // Si une compétence correspond à la compétence recherchée, on affiche la personne
+                    if (!strcmp(competence, p->competence[i]))
+                    {
+                        if(trouve == 0) cout << endl << "Liste des chercheurs d'emploi possédant la compétence " << competence << " : " << endl ;
+                        cout << p->nom << " - " << p->prenom << " - " << p->courriel << endl ;
+                        trouve = 1 ;
+                    }
+                }
+            }
+            tmp = tmp->next ;
+            if(tmp != NULL) p = (personne*)tmp->data ;
+        }
+
+        // Si on a rien trouvé, on l'indique à l'utilisateur
+        if(!trouve) cout << "Aucun chercheur d'emploi ne correspond à votre recherche" << endl ;
+    }
+}
+
+// But : Afficher le nom, le prénom et l'adresse mail de tous les chercheurs d'emploi possédant la compétence et le code postal demandée
+void EntrepriseRechercheParCompetenceEtCode(groupe* gPe, char competence[128], int code_postal)
+{
+    int trouve(0) ;
+
+    if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
+    // On parcourt tout le groupe
+    else
+    {
+        node *tmp = gPe->personnes ;
+        personne *p = (personne*)tmp->data ;
+        while (p!= NULL && tmp != NULL)
+        {
+            // Si la personne courante est un chercheur d'emploi (ie : entreprise = -1)
+            if(p->entreprise == -1)
+            {
+                // Et que le code postal de cette personne est celui demandé
+                if (p->adresse == code_postal)
+                {
+                    // On regarde toutes ces compétences 
+                    for (int i = 0; i < 5; i++)
+                    {
+                        // Si une compétence correspond à la compétence recherchée, on affiche la personne
+                        if (!strcmp(competence, p->competence[i]))
+                        {
+                             if(trouve == 0) cout << endl << "Liste des chercheurs d'emploi possédant la compétence " << competence << " et le code postal " << code_postal << " :" << endl ;
+                            cout << p->nom << " - " << p->prenom << " - " << p->courriel << endl ;
+                            trouve = 1 ;
+                        }
+                    }
+                }
+            }
+            
+            tmp = tmp->next ;
+            if(tmp != NULL) p = (personne*)tmp->data ;
+        }
+
+        // Si on a rien trouvé, on l'indique à l'utilisateur
+        if(!trouve) cout << "Aucun chercheur d'emploi ne correspond à votre recherche" << endl ;
+    }
+}
