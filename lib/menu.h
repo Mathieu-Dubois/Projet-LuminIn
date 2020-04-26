@@ -72,6 +72,9 @@ int Menusupprimer_profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, g
 //Le menu pour ajouter un collegue
 int Menuajouter_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
 
+//L'interface pour suprimer un collegue
+int Menusupprimer_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+
 //menu print de la table employes
 void printemployes (groupe *gPersonne);
 

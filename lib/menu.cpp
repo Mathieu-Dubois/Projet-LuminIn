@@ -707,7 +707,7 @@ int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
         cout << "1. Ajouter une compétence" << endl ;            
         cout << "2. Modifier votre code postal" << endl ;
         cout << "3. Changer d'adresse email" << endl ;                            
-        cout << "4. Mettre à jour/changer d'entreprises" << endl ;
+        cout << "4. rejoindre une entreprise" << endl ;
         cout << "5. Ajouter un collégue" << endl ;
         cout << "6. Supprimer un collégue" << endl << endl ;
         cout << "m. Retourner au menu principal" << endl ;                       
@@ -735,7 +735,7 @@ int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
         return Menuajouter_collegue(gEntreprise, gPoste, gPersonne) ;
         break;
     case '6':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return  Menusupprimer_collegue(gEntreprise, gPoste, gPersonne) ;
         break;
     case 'm':
         return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
@@ -782,12 +782,12 @@ cin >> id;
 
 AfficherEntreprises(gEntreprise);
 
-cout << "Saisir l'ID de votre nouvelle entreprise (-1 si passage en recherche d'emploi) : " << endl;
+cout << "Saisir l'ID de votre nouvelle entreprise : " << endl;
 cin >> newent;
 
 cout << "Votre statut entreprise a été mise à jour" << endl;
 
-modifier_entreprise(id,gPersonne,newent);
+rejoindre_entreprise(id,gPersonne,newent); //ou modifier entreprise ?
 
 return 0;
 }
@@ -892,7 +892,34 @@ int a= ajouter_collegue(id,gPersonne,col);
 if(a==1) cout << "Ce collègue est déja dans votre liste" << endl;
 if(a==2) cout << "Cet personne n'est pas dans la même entreprise que vous" << endl;
 if(a==3) cout << "Désolé, cet ID n'est pas répertorié" << endl;
-if(a==3) cout << "Désolé, vous avez atteint le nombre maximum de collègues" << endl;
+if(a==4) cout << "Désolé, vous avez atteint le nombre maximum de collègues" << endl;
+if(a==0) cout << "Operation effectué avec succès" << endl;
+
+return 0;
+
+}
+
+int Menusupprimer_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne)
+{
+
+int id,col;
+
+//print de la table employes
+printemployes(gPersonne);
+
+cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
+cin >> id;
+
+printemployes(gPersonne);
+
+cout << endl << "Ecrivez l'ID correspondant à votre ancien collègue : " << endl;
+cin >> col;
+
+int a= supprimer_collegue(id,gPersonne,col);
+
+
+if(a==1) cout << "Désolé, Cet personne n'est déja plus votre collègues" << endl;
+if(a==2) cout << "Désolé, Cet personne n'est pas enregistré dans la BDD" << endl;
 if(a==0) cout << "Operation effectué avec succès" << endl;
 
 return 0;
