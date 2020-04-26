@@ -48,6 +48,39 @@ int ChoixPosteSupprime(groupeEntreprises *gEntreprise, groupePostes *gPoste, gro
 // Affiche le menu de recherche pour une entreprise
 int MenuEntrepriseCherchePar(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne, int indexE) ;
 
+//Le menu/formulaire pour créer un profil employés ou chercheur d'emploi
+int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+
+//le menu pour une modification du profil
+int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+
+//Le formulaire pour modifier son adresse
+int MenuMod_Adresse(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+
+//Le formulaire pour mettre à jour son entreprise 
+int Menu_mod_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+
+//Le formulaire pour ajouter une compétence
+int Menuajouter_Competence(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+
+//Le menu pour quitter son entreprise
+int Menuquitter_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
+
+//Le menu pour supprimer un profil employes
+int Menusupprimer_profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+
+//Le menu pour ajouter un collegue
+int Menuajouter_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+
+//L'interface pour suprimer un collegue
+int Menusupprimer_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+
+//menu print de la table employes
+void printemployes (groupe *gPersonne);
+
+int Menu_emploi(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
+
+int Menu_emploi_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
 
 
 int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
