@@ -61,11 +61,11 @@ int main()
 
     // Lecture de la DB vers une liste en mémoire.
     // Création du groupe de personnes 
-    groupe *g = NULL ;
+    groupePersonnes *gPe = NULL ;
     {
         FILE *dbPe = NULL ;
         dbPe = fopen("employes.csv", "r");
-        g = g_open(dbPe);
+        gPe = g_open(dbPe);
         fclose(dbPe);
     }
 
@@ -86,124 +86,124 @@ int main()
 
     // // Test des fonctiosn g_open et g_size.
     {
-        TEST(g != NULL);
-        TEST(g_size(g) == 8);
+        TEST(gPe != NULL);
+        TEST(g_size(gPe) == 8);
     }
 
     // // Tests de la fonction g_index.
     {
-        TEST(strcmp(g_index(g, 1)->nom, "Untel") == 0);
-        TEST(strcmp(g_index(g, 1)->prenom, "Michel") == 0);
-        TEST(strcmp(g_index(g, 2)->courriel, "mickey@mickeyville.gov") == 0);
-        TEST(g_index(g, 6)->amis[0]->index == 5);
+        TEST(strcmp(g_index(gPe, 1)->nom, "Untel") == 0);
+        TEST(strcmp(g_index(gPe, 1)->prenom, "Michel") == 0);
+        TEST(strcmp(g_index(gPe, 2)->courriel, "mickey@mickeyville.gov") == 0);
+        TEST(g_index(gPe, 6)->amis[0]->index == 5);
     }
     
     // // Tests de la fonction g_friends.
     {
-         TEST(g_friends(g, 1, 1) == false);
-         TEST(g_friends(g, 6, 5) == false);
-         TEST(g_friends(g, 3, 2) == true);
-         TEST(g_friends(g, 5, 4) == true);
-         TEST(g_friends(g, 5, 2) == true);
+         TEST(g_friends(gPe, 1, 1) == false);
+         TEST(g_friends(gPe, 6, 5) == false);
+         TEST(g_friends(gPe, 3, 2) == true);
+         TEST(g_friends(gPe, 5, 4) == true);
+         TEST(g_friends(gPe, 5, 2) == true);
     }
     
     // // Tests de la fonction g_bestie.
     {
-        TEST(g_bestie(g, 2) == 3);
-        TEST(g_bestie(g, 3) == 2);
-        TEST(g_bestie(g, 1) == -1);
+        TEST(g_bestie(gPe, 2) == 3);
+        TEST(g_bestie(gPe, 3) == 2);
+        TEST(g_bestie(gPe, 1) == -1);
     }
 
     // // Tests de la fonction g_oneway.
     {
-        TEST(g_oneway(g, 4, 5) == false);
-        TEST(g_oneway(g, 3, 2) == false);
-        TEST(g_oneway(g, 2, 3) == false);
-        TEST(g_oneway(g, 6, 5) == true);
+        TEST(g_oneway(gPe, 4, 5) == false);
+        TEST(g_oneway(gPe, 3, 2) == false);
+        TEST(g_oneway(gPe, 2, 3) == false);
+        TEST(g_oneway(gPe, 6, 5) == true);
     }
     
     // // Tests de la fonction g_linked.
     {
-        TEST(g_linked(g, 1, 1) == false);
-        TEST(g_linked(g, 2, 2) == false);
-        TEST(g_linked(g, 2, 6) == true);
-        TEST(g_linked(g, 5, 4) == true);
-        TEST(g_linked(g, 4, 1) == false);
-        TEST(g_linked(g, 6, 4) == true);
+        TEST(g_linked(gPe, 1, 1) == false);
+        TEST(g_linked(gPe, 2, 2) == false);
+        TEST(g_linked(gPe, 2, 6) == true);
+        TEST(g_linked(gPe, 5, 4) == true);
+        TEST(g_linked(gPe, 4, 1) == false);
+        TEST(g_linked(gPe, 6, 4) == true);
     }
     
     // // Tests de la fonction g_distance.
     {
-         TEST(g_distance(g, 1, 1) == 0); 
-         TEST(g_distance(g, 5, 4) == 1);   
-         TEST(g_distance(g, 1, 2) == -1);
-         TEST(g_distance(g, 6, 4) == 2);    
+         TEST(g_distance(gPe, 1, 1) == 0); 
+         TEST(g_distance(gPe, 5, 4) == 1);   
+         TEST(g_distance(gPe, 1, 2) == -1);
+         TEST(g_distance(gPe, 6, 4) == 2);    
     }
     
     // // Tests de la fonction g_remove.
     {
-        // g_remove(g, 4);
-        // TEST(g_size(g) == 7);
-        // TEST(g_index(g, 4) == NULL);
-        // TEST(g_friends(g, 5, 4) == false);
-        // TEST(g_oneway(g, 5, 4) == false);
-        // TEST(g_linked(g, 6, 4) == false);
+        // g_remove(gPe, 4);
+        // TEST(g_size(gPe) == 7);
+        // TEST(g_index(gPe, 4) == NULL);
+        // TEST(g_friends(gPe, 5, 4) == false);
+        // TEST(g_oneway(gPe, 5, 4) == false);
+        // TEST(g_linked(gPe, 6, 4) == false);
     }
 
     //------------------- TESTS EMPLOYES ------------------
 
     // Tests de la fonction modifier adresse
     {
-        modifier_adresse(4, g, 38000);
-        TEST(g_index(g, 4)->adresse == 38000);
-        TEST(modifier_adresse(4, g, 38000) == 1);
+        modifier_adresse(4, gPe, 38000);
+        TEST(g_index(gPe, 4)->adresse == 38000);
+        TEST(modifier_adresse(4, gPe, 38000) == 1);
     }
 
     // Tests de la fonction modifier entreprise
     {
-        modifier_entreprise(4, g, 3);
-        TEST(g_index(g, 4)->entreprise == 3);
-        TEST(modifier_entreprise(4, g, 3) == 1);
+        modifier_entreprise(4, gPe, 3);
+        TEST(g_index(gPe, 4)->entreprise == 3);
+        TEST(modifier_entreprise(4, gPe, 3) == 1);
     }
 
     // Tests de la fonction ajouter compétence
     {
         char comp[5] = {'f', 'o', 'r', 't', '\0'};
-        ajouter_competence(4, g, comp);
-        TEST(strcmp(g_index(g, 4)->competence[1], comp) == 0);
-        TEST(ajouter_competence(4, g, comp) == 1);
+        ajouter_competence(4, gPe, comp);
+        TEST(strcmp(g_index(gPe, 4)->competence[1], comp) == 0);
+        TEST(ajouter_competence(4, gPe, comp) == 1);
     }
 
     // Tests de la fonction quitter entreprise
     {
-        quitter_entreprise(6, g);
-        TEST(g_index(g, 6)->entreprise == -1);
-        TEST(quitter_entreprise(6, g) == 1);
+        quitter_entreprise(6, gPe);
+        TEST(g_index(gPe, 6)->entreprise == -1);
+        TEST(quitter_entreprise(6, gPe) == 1);
     }
 
     //Tests de la fonction ajouter collègue
     {
-        TEST(ajouter_collegue(2, g, 3) == 1);
-        TEST(ajouter_collegue(4, g, 3) == 2);
-        TEST(ajouter_collegue(9, g, 3) == 3);
-        TEST(g_friends(g, 2, 3) == true);
+        TEST(ajouter_collegue(2, gPe, 3) == 1);
+        TEST(ajouter_collegue(4, gPe, 3) == 2);
+        TEST(ajouter_collegue(9, gPe, 3) == 3);
+        TEST(g_friends(gPe, 2, 3) == true);
     }
 
     // Tests de la fonction supprimer collegue
     // {
-    //     TEST(supprimer_collegue(4, g, 7) == 0);
-    //     TEST(g_friends(g, 4, 7) == false);
-    //     TEST(supprimer_collegue(4, g, 7) == 1);
+    //     TEST(supprimer_collegue(4, gPe, 7) == 0);
+    //     TEST(g_friends(gPe, 4, 7) == false);
+    //     TEST(supprimer_collegue(4, gPe, 7) == 1);
     // }
 
     //Tests de la fonction rejoindre entreprise
     {
-        TEST(rejoindre_entreprise(6, g, 3) == 0);
-        TEST(rejoindre_entreprise(7, g, 3) == 0);
-        TEST(g_oneway(g, 6, 4) == false);
-        TEST(g_oneway(g, 6, 7) == false);
-        TEST(g_friends(g, 6, 4) == true);
-        TEST(g_friends(g, 6, 7) == true);
+        TEST(rejoindre_entreprise(6, gPe, 3) == 0);
+        TEST(rejoindre_entreprise(7, gPe, 3) == 0);
+        TEST(g_oneway(gPe, 6, 4) == false);
+        TEST(g_oneway(gPe, 6, 7) == false);
+        TEST(g_friends(gPe, 6, 4) == true);
+        TEST(g_friends(gPe, 6, 7) == true);
     }
 
     //Tests de la fonction supprimer employe
@@ -214,39 +214,39 @@ int main()
         char Manon[6] = {'M','a','n','o', 'n', '\0'};
         char nom[5] = {'s', 'c', 't', 't', '\0'};
         char mail[5] = {'m', 'a', 'i', 'l', '\0'};
-        creer_profil(Manon, nom, mail, 17800, comp, col, 2, g);
-        TEST(g_size(g) == 9);
-        supprimer_profil(9,g);
+        creer_profil(Manon, nom, mail, 17800, comp, col, 2, gPe);
+        TEST(g_size(gPe) == 9);
+        supprimer_profil(9,gPe);
     }
 
     //Tests de la fonction rechercher poste competences
     {
-        TEST(recherche_poste_comp(1, g, gP, gE) == 1);
-        TEST(recherche_poste_comp(6, g, gP, gE) == 0);
-        TEST(recherche_poste_comp(8, g, gP, gE) == 1); //Le 8 en trouve plusieurs
+        TEST(recherche_poste_comp(1, gPe, gP, gE) == 1);
+        TEST(recherche_poste_comp(6, gPe, gP, gE) == 0);
+        TEST(recherche_poste_comp(8, gPe, gP, gE) == 1); //Le 8 en trouve plusieurs
     }
 
     //Tests de la fonction rechercher poste competences
     {
-        TEST(recherche_poste_postal(2, g, gP, gE) == 1);
-        TEST(recherche_poste_postal(4, g, gP, gE) == 0);
-        TEST(recherche_poste_postal(7, g, gP, gE) == 1);
+        TEST(recherche_poste_postal(2, gPe, gP, gE) == 1);
+        TEST(recherche_poste_postal(4, gPe, gP, gE) == 0);
+        TEST(recherche_poste_postal(7, gPe, gP, gE) == 1);
     }
 
     //Tests de la fonction rechercher ancien collègue par entreprise
     {
-        TEST(recherche_col_par_entre(2, g, 1)==1);
-        TEST(recherche_col_par_entre(8, g, 2) == 0);
-        TEST(recherche_col_par_entre(2, g, 11)== 0); //Il n'en trouve pas car il n'y a pas d'entreprise 11
+        TEST(recherche_col_par_entre(2, gPe, 1)==1);
+        TEST(recherche_col_par_entre(8, gPe, 2) == 0);
+        TEST(recherche_col_par_entre(2, gPe, 11)== 0); //Il n'en trouve pas car il n'y a pas d'entreprise 11
     }
 
     //Tests de la fonction rechercher ancien collègue par compétence
     {
         char src[6] = {'c','h','a','n','t','\0'};
-        TEST(recherche_col_comp(2, g, src)==1);
-        TEST(recherche_col_comp(8, g, src) == 0);
+        TEST(recherche_col_comp(2, gPe, src)==1);
+        TEST(recherche_col_comp(8, gPe, src) == 0);
         char src2[7] = {'t','e','n','n','i','s','\0'};
-        TEST(recherche_col_comp(2, g, src2)== 0); //Il n'en trouve pas car il n'y a pas de competence tennis
+        TEST(recherche_col_comp(2, gPe, src2)== 0); //Il n'en trouve pas car il n'y a pas de competence tennis
     }
 
     //------------------- TESTS ENTREPRISE ------------------
@@ -333,12 +333,12 @@ int main()
     // {
     // char hey[128] = "comedie" ;
     // char hey2[128] = "Python" ;
-    // EntrepriseRechercheParCompetence(g, hey) ;
-    // EntrepriseRechercheParCompetence(g, hey2) ;
+    // EntrepriseRechercheParCompetence(gPe, hey) ;
+    // EntrepriseRechercheParCompetence(gPe, hey2) ;
 
     // int codeP = 75020 ;
-    // EntrepriseRechercheParCompetenceEtCode(g,hey2,codeP) ;
-    // EntrepriseRechercheParCompetenceEtCode(g,hey2,codeP+1) ;
+    // EntrepriseRechercheParCompetenceEtCode(gPe,hey2,codeP) ;
+    // EntrepriseRechercheParCompetenceEtCode(gPe,hey2,codeP+1) ;
     // }
 
     ReinitialiserCSV() ;
@@ -375,5 +375,5 @@ int main()
 // 4,Brioche,Theo,theobrioche@doowap.fr,13400,patisserie,5,5
 // 5,Scott,Monon,monon@cristalclear.com,54879,chant;abdotransat,4;2,4
 // 6,Pas,Fred,cestquilui@invisible.com,54710,sieste,5,1
-// 7,Duck,Donald,donal.duck@canardville.gov,77700,comedie;gag,2,-1
+// 7,Duck,Donald,donal.duck@canardville.gov,77700,comedie;gagPe,2,-1
 // 8,Pignon,Francois,pignouf@gmail.com,75020,C;SQL;Python,,-1

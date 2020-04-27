@@ -10,10 +10,10 @@ using namespace std ;
 #include <fstream>
 
 
-groupe* g_open(FILE *db)
+groupePersonnes* g_open(FILE *db)
 {
-    groupe *g = (groupe*)malloc(sizeof(groupe));
-    g->personnes = NULL ;
+    groupePersonnes *gPe = (groupePersonnes*)malloc(sizeof(groupePersonnes));
+    gPe->personnes = NULL ;
     int amis[20][5];
     int ami, i,j;
     personne data;
@@ -54,7 +54,7 @@ groupe* g_open(FILE *db)
             j++;
         }
         fscanf(db, ",%d\n", &p->entreprise);
-        l_append(&g->personnes, l_make_node((personne *)p)); //Ca n'a pas l'air de linker
+        l_append(&gPe->personnes, l_make_node((personne *)p)); //Ca n'a pas l'air de linker
         i++;
     }
 
@@ -62,8 +62,8 @@ groupe* g_open(FILE *db)
 
 
     //Maintenant on link les amis
-    node *tmp = g->personnes;
-    node *parcours = g->personnes;
+    node *tmp = gPe->personnes;
+    node *parcours = gPe->personnes;
     personne* parcourami, *tmpami;
     int compt=0;
     i = 0;
@@ -71,7 +71,7 @@ groupe* g_open(FILE *db)
         compt = 0;
         for (int j = 0 ; j < 5 ; j++){
             if (amis[i][j] != -1){
-                parcours = g->personnes;
+                parcours = gPe->personnes;
                 tmpami = (personne*)(tmp->data);
                 parcourami = (personne*)(parcours->data);
                 while(parcourami->index != amis[i][j]){
@@ -86,10 +86,10 @@ groupe* g_open(FILE *db)
         tmp = tmp->next;
         i++;
     }
-    return g;
+    return gPe;
 }
 
-void g_ecrire(groupe* gEmployes)
+void g_ecrire(groupePersonnes* gPe)
 {
     char tampon[100]; 
     FILE *db = fopen("employes.csv", "r");
@@ -98,7 +98,7 @@ void g_ecrire(groupe* gEmployes)
     FILE *tmp = fopen("employes.csv", "w");
     fputs(tampon, tmp);
     fputc('\n', tmp);
-    node *temp = gEmployes->personnes;
+    node *temp = gPe->personnes;
     personne*tmpami;
     while(temp != NULL){
         tmpami = (personne*)(temp->data);
@@ -142,7 +142,7 @@ void g_ecrire(groupe* gEmployes)
 }
 
 
-int g_size(groupe* g)
+int g_size(groupePersonnes* g)
 {
      int x=0;
   
@@ -162,7 +162,7 @@ int g_size(groupe* g)
     return x;
 }
 
-personne* g_index(groupe* g, int const index)
+personne* g_index(groupePersonnes* g, int const index)
 {
     assert(index<21);
     assert(index>=0);
@@ -177,7 +177,7 @@ personne* g_index(groupe* g, int const index)
     return NULL;
 }
 
-bool g_friends(groupe* g, int const index_a, int const index_b)
+bool g_friends(groupePersonnes* g, int const index_a, int const index_b)
 {
     personne* a = g_index(g,index_a);
     personne* b = g_index(g,index_b);
@@ -196,7 +196,7 @@ bool g_friends(groupe* g, int const index_a, int const index_b)
     return false;
 }
 
-int g_bestie(groupe* g, int const index)
+int g_bestie(groupePersonnes* g, int const index)
 {
     personne* origin = g_index(g, index);
     if (origin == NULL || origin->amis[0] == NULL) return -1;
@@ -207,7 +207,7 @@ int g_bestie(groupe* g, int const index)
     else return -1;
 }
 
-bool g_oneway(groupe* g, int const index_a, int const index_b)
+bool g_oneway(groupePersonnes* g, int const index_a, int const index_b)
 {
     personne* a = g_index(g,index_a);
     personne* b = g_index(g,index_b);
@@ -227,7 +227,7 @@ bool g_oneway(groupe* g, int const index_a, int const index_b)
     return false;
 }
 
-bool g_linked(groupe* g, int const index_a, int const index_b)
+bool g_linked(groupePersonnes* g, int const index_a, int const index_b)
 {
     int sec[20]; //tableau d'attente
     int wet[20];
@@ -262,7 +262,7 @@ bool g_linked(groupe* g, int const index_a, int const index_b)
     return false;
 }
 
-int g_distance(groupe* g, int const index_a, int const index_b)
+int g_distance(groupePersonnes* g, int const index_a, int const index_b)
 {
     int n=1;
    
@@ -311,7 +311,7 @@ int g_distance(groupe* g, int const index_a, int const index_b)
      else return -1;
 }
 
-void g_remove(groupe* g, int const index)
+void g_remove(groupePersonnes* g, int const index)
 {
     assert(g);
 

@@ -11,7 +11,7 @@
 #include <malloc.h>
 #include <string.h>
 
-void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[5][128], int collegue[5], int entreprise, groupe *gEmployes)
+void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[5][128], int collegue[5], int entreprise, groupePersonnes *gEmployes)
 {
     //FILE *employes; 
     int i, j, index; char poub[128];
@@ -100,7 +100,7 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
     return;
 }
 
-void supprimer_profil (int index, groupe *gEmployes){
+void supprimer_profil (int index, groupePersonnes *gEmployes){
     //On supprime du groupe
     g_remove(gEmployes, index);
     //On supprime la ligne du fichier
@@ -175,7 +175,7 @@ void supprimer_profil (int index, groupe *gEmployes){
     Code retour:    0 Si tout se passe bien
                     1 si l'adresse est identique
                     2 si on ne trouve pas l'indice dans le groupe               */
-int modifier_adresse(int indice, groupe *gEmployes, int nouv_adresse)
+int modifier_adresse(int indice, groupePersonnes *gEmployes, int nouv_adresse)
 {
     node *temp = gEmployes->personnes;
     personne*tmpami;
@@ -206,7 +206,7 @@ int modifier_adresse(int indice, groupe *gEmployes, int nouv_adresse)
     Code retour:    0 Si tout se passe bien
                     1 si l'entreprise est identique
                     2 si on ne trouve pas l'indice dans le groupe               */
-int modifier_entreprise(int indice, groupe *gEmployes, int nouv_entre)
+int modifier_entreprise(int indice, groupePersonnes *gEmployes, int nouv_entre)
 {
     node *temp = gEmployes->personnes;
     personne*tmpami;
@@ -239,7 +239,7 @@ int modifier_entreprise(int indice, groupe *gEmployes, int nouv_entre)
                     1 si la personne a déjà cette compétence
                     2 si la personne a déjà la nombre maximum de compétences
                     3 si on ne trouve pas l'indice dans le groupe               */
-int ajouter_competence(int indice, groupe *gEmployes, char comp[128])
+int ajouter_competence(int indice, groupePersonnes *gEmployes, char comp[128])
 {
     node *temp = gEmployes->personnes;
     personne*tmpami;
@@ -279,7 +279,7 @@ int ajouter_competence(int indice, groupe *gEmployes, char comp[128])
     Code retour:    0 Si tout se passe bien
                     1 si la personne n'a pas d'entreprise
                     2 si on ne trouve pas l'indice dans le groupe               */
-int quitter_entreprise(int indice, groupe *gEmployes)
+int quitter_entreprise(int indice, groupePersonnes *gEmployes)
 {
     node *temp = gEmployes->personnes;
     personne*tmpami;
@@ -311,7 +311,7 @@ int quitter_entreprise(int indice, groupe *gEmployes)
                     2 si la personne n'est pas dans la même entreprise
                     3 si on ne trouve pas l'indice dans le groupe  
                     4 si la personne a deja trop d'amis                          */
-int ajouter_collegue(int indice, groupe *gEmployes, int col)
+int ajouter_collegue(int indice, groupePersonnes *gEmployes, int col)
 {
     node *temp = gEmployes->personnes;
     personne*tmpami;
@@ -365,7 +365,7 @@ int ajouter_collegue(int indice, groupe *gEmployes, int col)
     Code retour:    0 Si tout se passe bien
                     1 si on ne trouve pas l'indice de la personne dans le groupe
                     2 si on a pas assez de place pour ajouter tous les collegues          */
-int rejoindre_entreprise(int indice, groupe *gEmployes, int entre)
+int rejoindre_entreprise(int indice, groupePersonnes *gEmployes, int entre)
 {
     node *temp = gEmployes->personnes;
     personne*tmpami;
@@ -408,7 +408,7 @@ int rejoindre_entreprise(int indice, groupe *gEmployes, int entre)
     Code retour:    0 Si tout se passe bien
                     1 si la personne n'a pas cette personne en ami
                     2 si on ne trouve pas l'indice dans le groupe                         */
-int supprimer_collegue(int indice, groupe *gEmployes, int col)
+int supprimer_collegue(int indice, groupePersonnes *gEmployes, int col)
 {
     node *temp = gEmployes->personnes;
     personne*tmpami;
@@ -443,7 +443,7 @@ int supprimer_collegue(int indice, groupe *gEmployes, int col)
     Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
                     1 Si tout se passe bien et qu'on a trouvé au moins un match
                     2 si on ne trouve pas l'indice dans le groupe                         */
-int recherche_poste_comp(int indice, groupe *gEmployes, groupePostes *gPostes, groupeEntreprises *gEntre)
+int recherche_poste_comp(int indice, groupePersonnes *gEmployes, groupePostes *gPostes, groupeEntreprises *gEntre)
 {
     int trouve = 0, code_retour = 0, i, j, fait = 0;
     node *temp = gEmployes->personnes;
@@ -498,7 +498,7 @@ int recherche_poste_comp(int indice, groupe *gEmployes, groupePostes *gPostes, g
     Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
                     1 Si tout se passe bien et qu'on a trouvé au moins un match
                     2 si on ne trouve pas l'indice dans le groupe                         */
-int recherche_poste_postal(int indice, groupe *gEmployes, groupePostes *gPostes, groupeEntreprises *gEntre)
+int recherche_poste_postal(int indice, groupePersonnes *gEmployes, groupePostes *gPostes, groupeEntreprises *gEntre)
 {
     int trouve = 0, trouveentre = 0, code_retour = 0;
     node *temp = gEmployes->personnes;
@@ -543,7 +543,7 @@ int recherche_poste_postal(int indice, groupe *gEmployes, groupePostes *gPostes,
     Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
                     1 Si tout se passe bien et qu'on a trouvé au moins un match
                     2 si on ne trouve pas l'indice dans le groupe                         */
-int recherche_col_par_entre(int indice, groupe *gEmployes, int index)
+int recherche_col_par_entre(int indice, groupePersonnes *gEmployes, int index)
 {
     int trouve = 0, code_retour = 0, i;
     node *temp = gEmployes->personnes;
@@ -573,7 +573,7 @@ int recherche_col_par_entre(int indice, groupe *gEmployes, int index)
     Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
                     1 Si tout se passe bien et qu'on a trouvé au moins un match
                     2 si on ne trouve pas l'indice dans le groupe                         */
-int recherche_col_comp(int indice, groupe *gEmployes, char comp[128])
+int recherche_col_comp(int indice, groupePersonnes *gEmployes, char comp[128])
 {
     int trouve = 0, code_retour = 0, i, j, fait = 0;
     node *temp = gEmployes->personnes;
