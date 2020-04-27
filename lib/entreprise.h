@@ -20,13 +20,13 @@ typedef struct groupeEntreprises
 /*==============================================================================================
  || FONCTION : g_openEntrepriseCSV
   ==============================================================================================
- || But : Création d'un groupe d'entreprise à partir d'un flux donné
+ || But : Création d'un groupe d'entreprises à partir d'un flux donné
  ||
  || Paramètre :
  ||     db : pointeur sur une structure FILE
  ||
  || Retour :
- ||     Retourne un pointeur vers le groupe d'entreprise (ie : structure groupeEntreprises)  
+ ||     Retourne un pointeur vers le groupe d'entreprises (ie : structure groupeEntreprises)  
   ============================================================================================== */
 groupeEntreprises* g_openEntreprisesCSV(FILE* db) ;
 
