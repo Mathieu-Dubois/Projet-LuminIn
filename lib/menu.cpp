@@ -11,7 +11,7 @@ using namespace std ;
 // Remarque : Dans chaque menu, choix est un char pour sécuriser la saisie (permet de détecter si l'utilisateur entre une lettre au lieu d'un chiffre)
 
 // But : Affiche le menu principal permettant de s'identifier en tant qu'entreprise ou utisateur
-int MenuPrincipal(groupeEntreprises *gE, groupePostes *gP, groupe *gPe)
+int MenuPrincipal(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
 {
     char choix(0) ;
  
@@ -62,7 +62,7 @@ int MenuPrincipal(groupeEntreprises *gE, groupePostes *gP, groupe *gPe)
 /* But : Affiche le menu permettant à l'utilisateur de :
        - se connecter sur le profil de son entreprise
        - créer le profil de son entreprise               */
-int MenuEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe)
+int MenuEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
 {
     char choix(0) ;     
    
@@ -103,7 +103,7 @@ int MenuEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe)
 
 /* But : Affiche tous les index et nom des entreprises du groupe d'entreprise
         et demande à l'utilisateur d'entrer le numéro de son entreprise         */
-int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe)
+int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
 {  
     // Contiendra l'index d'entreprise entré par l'utilisateur
     char choix(0) ;
@@ -147,7 +147,7 @@ int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *g
 }
 
 // But : Affiche le menu permettant à l'utilisateur de créer le profil de son entreprise
-int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe)
+int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
 {
     char nom[40];
     int code_postal ;
@@ -213,7 +213,7 @@ int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe)
 }
 
 // But : Affiche le menu avec toutes les fonctionnalités d'une entreprise connectée 
-int MenuProfilEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int indexE)
+int MenuProfilEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexE)
 {
     char choix(0) ;
 
@@ -268,7 +268,7 @@ int MenuProfilEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, i
 }
 
 // But : Affiche le menu demandant confirmation à l'utilisateur avant de supprimer le profil de son entreprise
-int MenuConfirmerSuppressionEntreprise(groupeEntreprises* gE, groupePostes *gP, groupe *gPe, int indexE)
+int MenuConfirmerSuppressionEntreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexE)
 {
     char choix(0) ;
 
@@ -312,7 +312,7 @@ int MenuConfirmerSuppressionEntreprise(groupeEntreprises* gE, groupePostes *gP, 
 }
 
 // But : Affiche le menu où l'utilisateur peut voir tous les postes à pourvoir de son entreprise
-int MenuAfficherPostesDuneEntreprise(groupeEntreprises* gE, groupePostes *gP, groupe *gPe, int indexE)
+int MenuAfficherPostesDuneEntreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexE)
 {
     char choix(0) ;
 
@@ -351,7 +351,7 @@ int MenuAfficherPostesDuneEntreprise(groupeEntreprises* gE, groupePostes *gP, gr
 }
 
 // But : Affiche le menu permettant à l'utilisateur de créer un poste à pourvoir
-int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int indexE)
+int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexE)
 {
     char titre[128];
     char competence[5][128] = {'\0'} ;
@@ -436,7 +436,7 @@ int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int ind
 }
 
 // But : Affiche tous les postes à pourvoir de l'entreprise connectée et demande à l'utilisateur l'index du poste à supprimer
-int MenuSupprimerPoste(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int indexE)
+int MenuSupprimerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexE)
 {
     char choix(0) ;
 
@@ -470,7 +470,7 @@ int MenuSupprimerPoste(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int
 }
 
 // But : Affiche le menu permettant à une entreprise de chercher un chercheur d'emploi par compétence ou compétence et code postal
-int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int indexE)
+int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexE)
 {
     char choix(0) ;
     char competence[128] ;
@@ -541,15 +541,15 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupe *gP
 
 
 
+
+
 /* ============================================================================================================
 ||
 ||                                  PARTIE PERSONNE 
 ||
    ============================================================================================================ */
 
-
-
-int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+int MenuCreer_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe){
 
     
     int adresse;
@@ -575,7 +575,7 @@ int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, group
     cout << "Saisir votre code postal : ";
     cin >> adresse ;
 
-    AfficherEntreprises(gEntreprise);
+    AfficherEntreprises(gE);
     cout << "Ecrivez l'ID de votre entreprise (-1 sinon): ";
     cin >> entreprise;
     
@@ -592,7 +592,7 @@ int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, group
         else if (c=='N' || c=='n')i=5;
     }
 
-    printemployes (gPersonne);
+    printemployes (gPe);
 
     i=0;
     c='N';
@@ -616,11 +616,11 @@ int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, group
     cout << "Code Postal : " << adresse << endl ;
     cout << "ID entreprise :" << entreprise <<endl;
 
-    creer_profil(nom,prenom,courriel,adresse,competence,collegue,entreprise,gPersonne);
+    creer_profil(nom,prenom,courriel,adresse,competence,collegue,entreprise,gPe);
     return 0;
 }
 
-int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe){
 
  char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
    
@@ -644,26 +644,26 @@ int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
     switch (choix)
     {
     case '1':
-        return Menuajouter_Competence(gEntreprise, gPoste, gPersonne);
+        return Menuajouter_Competence(gE, gP, gPe);
         break;
         
     case '2':
-        return MenuMod_Adresse(gEntreprise, gPoste, gPersonne) ;
+        return MenuMod_Adresse(gE, gP, gPe) ;
         break;
     case '3':
-        return A_Implementer(gEntreprise, gPoste, gPersonne) ;
+        return A_Implementer(gE, gP, gPe) ;
         break;
     case '4':
-        return Menu_mod_entreprise(gEntreprise, gPoste, gPersonne) ;
+        return Menu_mod_entreprise(gE, gP, gPe) ;
         break;
     case '5':
-        return Menuajouter_collegue(gEntreprise, gPoste, gPersonne) ;
+        return Menuajouter_collegue(gE, gP, gPe) ;
         break;
     case '6':
-        return Menusupprimer_collegue(gEntreprise, gPoste, gPersonne) ;
+        return Menusupprimer_collegue(gE, gP, gPe) ;
         break;
     case 'm':
-        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
+        return MenuPrincipal(gE, gP, gPe) ;
         break;
     case 'q':
         return 0;
@@ -676,12 +676,12 @@ int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, gr
 
 }
 
-int MenuMod_Adresse(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+int MenuMod_Adresse(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe){
 
     int newadr,id;
 
     //print de la table employes
-    printemployes (gPersonne);
+    printemployes (gPe);
 
     cout << "Ecrivez l'ID correspondant à votre identité : " << endl;
     cin >> id;
@@ -689,41 +689,41 @@ int MenuMod_Adresse(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe
     cout << "Ecrivez votre nouveau code postal : " << endl;
     cin >> newadr;
 
-    modifier_adresse(id,gPersonne,newadr);
+    modifier_adresse(id,gPe,newadr);
 
     return 0;
 
 }
 
-int Menu_mod_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+int Menu_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe){
     
     int newent,id;
 
     //print de la table employes
-    printemployes (gPersonne);
+    printemployes (gPe);
 
     cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl << endl;
     cin >> id;
 
-    AfficherEntreprises(gEntreprise);
+    AfficherEntreprises(gE);
 
     cout << "Saisir l'ID de votre nouvelle entreprise : " << endl;
     cin >> newent;
 
     cout << "Votre statut entreprise a été mise à jour" << endl;
 
-    rejoindre_entreprise(id,gPersonne,newent); //ou modifier entreprise ?
+    rejoindre_entreprise(id,gPe,newent); //ou modifier entreprise ?
 
     return 0;
 }
 
-int Menuajouter_Competence(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+int Menuajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe){
 
     char comp[128];
     int id;
 
     //print de la table employes
-    printemployes (gPersonne);
+    printemployes (gPe);
 
     cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
     cin >> id;
@@ -731,7 +731,7 @@ int Menuajouter_Competence(groupeEntreprises* gEntreprise, groupePostes *gPoste,
     cout << "Saisir votre nouvelle compétence : " << endl;
     cin >> comp;
 
-    int a = ajouter_competence(id,gPersonne,comp);
+    int a = ajouter_competence(id,gPe,comp);
 
     if(a==1) cout << "vous avez déja cette compétence" << endl;
     if(a==2) cout << "vous avez déja le nombre maximal de compétence" << endl;
@@ -742,29 +742,29 @@ int Menuajouter_Competence(groupeEntreprises* gEntreprise, groupePostes *gPoste,
 
 }
 
-int Menuquitter_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+int Menuquitter_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe){
 
 
     int id;
 
     //print de la table employes
-    printemployes(gPersonne);
+    printemployes(gPe);
 
     cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
     cin >> id;
 
-    quitter_entreprise(id,gPersonne);
+    quitter_entreprise(id,gPe);
 
     return 0;
 
 }
 
-void printemployes (groupe *gPersonne)
+void printemployes (groupePersonnes *gPe)
 {
- if (gPersonne->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
+ if (gPe->personnes == NULL) cout << "Aucune personnes enregistrée" << endl ;
     else
     {
-        node *tmp = gPersonne->personnes ;
+        node *tmp = gPe->personnes ;
         personne *e = (personne*)tmp->data ;
         while (e!= NULL && tmp != NULL)
         {
@@ -776,18 +776,18 @@ void printemployes (groupe *gPersonne)
     }
 }
 
-int Menusupprimer_profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne)
+int Menusupprimer_profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe)
 {
 
     int id;
 
     //print de la table employes
-    printemployes(gPersonne);
+    printemployes(gPe);
 
     cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
     cin >> id;
 
-    supprimer_profil(id,gPersonne);
+    supprimer_profil(id,gPe);
 
     cout << endl << "Votre compte a été supprimé. " << endl;
 
@@ -795,23 +795,23 @@ int Menusupprimer_profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, g
 
 }
 
-int Menuajouter_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne)
+int Menuajouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe)
 {
 
     int id,col;
 
     //print de la table employes
-    printemployes(gPersonne);
+    printemployes(gPe);
 
     cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
     cin >> id;
 
-    printemployes(gPersonne);
+    printemployes(gPe);
 
     cout << endl << "Ecrivez l'ID correspondant à votre nouveau collègue : " << endl;
     cin >> col;
 
-    int a= ajouter_collegue(id,gPersonne,col);
+    int a= ajouter_collegue(id,gPe,col);
 
     if(a==1) cout << "Ce collègue est déja dans votre liste" << endl;
     if(a==2) cout << "Cet personne n'est pas dans la même entreprise que vous" << endl;
@@ -823,23 +823,23 @@ int Menuajouter_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, g
 
 }
 
-int Menusupprimer_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne)
+int Menusupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe)
 {
 
     int id,col;
 
     //print de la table employes
-    printemployes(gPersonne);
+    printemployes(gPe);
 
     cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
     cin >> id;
 
-    printemployes(gPersonne);
+    printemployes(gPe);
 
     cout << endl << "Ecrivez l'ID correspondant à votre ancien collègue : " << endl;
     cin >> col;
 
-    int a= supprimer_collegue(id,gPersonne,col);
+    int a= supprimer_collegue(id,gPe,col);
 
 
     if(a==1) cout << "Désolé, Cet personne n'est déja plus votre collègues" << endl;
@@ -850,12 +850,12 @@ int Menusupprimer_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste,
 
 }
 
-int Menu_emploi(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+int Menu_emploi(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe){
     
     int id,choix,a;
 
     //print de la table employes
-    printemployes(gPersonne);
+    printemployes(gPe);
 
     cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
     cin >> id;
@@ -866,7 +866,7 @@ int Menu_emploi(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gP
     cin >> choix ;
 
     if(choix==1){
-        a=recherche_poste_postal(id,gPersonne,gPoste,gEntreprise);
+        a=recherche_poste_postal(id,gPe,gP,gE);
         
         if(a==0) cout << "pas de poste à cette adresse" << endl;
         if(a==1) cout << "Au moins un poste à cette adresse" << endl;
@@ -874,7 +874,7 @@ int Menu_emploi(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gP
 
     }
     if(choix==2){
-        a=recherche_poste_comp(id,gPersonne,gPoste,gEntreprise);
+        a=recherche_poste_comp(id,gPe,gP,gE);
         
         if(a==0) cout << "pas de poste avec cette competence" << endl;
         if(a==1) cout << "Au moins un poste avec cet competence" << endl;
@@ -883,11 +883,11 @@ int Menu_emploi(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gP
     return 0;
 }
 
-int Menu_emploi_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne){
+int Menu_emploi_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe){
     int id,col,choix;
 
     //print de la table employes
-    printemployes(gPersonne);
+    printemployes(gPe);
 
     cout << endl << "Ecrivez l'ID correspondant à votre identité : " << endl;
     cin >> id;
@@ -903,19 +903,19 @@ int Menu_emploi_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, g
         cout << "Saisir la compétence recherché : " << endl;
         cin >> comp;
 
-        int a = recherche_col_comp(id,gPersonne,comp);
+        int a = recherche_col_comp(id,gPe,comp);
         if(a==0) cout << "pas de collégue avec cet compétence" << endl;
         if(a==1) cout << "Au moins un de vos collègue posséde cette compétence" << endl;
         if(a==2) cout << "Problème d'indice non trouvé"<< endl;
     }
 
     if (choix==2){
-        AfficherEntreprises(gEntreprise);
+        AfficherEntreprises(gE);
 
         cout << endl << "Ecrivez l'ID correspondant à l'entreprise: " << endl;
         cin >> col;
 
-        int a = recherche_col_par_entre(id,gPersonne,col);
+        int a = recherche_col_par_entre(id,gPe,col);
 
         if(a==0) cout << "pas de collégue dans cet entreprise" << endl;
         if(a==1) cout << "Au moins un de vos collègue travaille dans cette entreprise" << endl;
@@ -935,7 +935,11 @@ int Menu_emploi_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, g
 
 
 
-int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
+
+
+
+
+int MenuChercheur(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
 {
     char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
    
@@ -958,22 +962,22 @@ int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *
     switch (choix)
     {
     case '1':
-        return MenuCreer_Profil(gEntreprise, gPoste, gPersonne);
+        return MenuCreer_Profil(gE, gP, gPe);
         break;
     case '2':
-        return MenuModifier_Profil(gEntreprise, gPoste, gPersonne) ;
+        return MenuModifier_Profil(gE, gP, gPe) ;
         break;
     case '3':
-        return Menusupprimer_profil(gEntreprise, gPoste, gPersonne) ;
+        return Menusupprimer_profil(gE, gP, gPe) ;
         break;
    case '5':
-        return Menu_emploi(gEntreprise, gPoste, gPersonne) ;
+        return Menu_emploi(gE, gP, gPe) ;
         break;
     case '6':
-        return Menu_emploi_collegue(gEntreprise, gPoste, gPersonne) ;
+        return Menu_emploi_collegue(gE, gP, gPe) ;
         break;
     case 'm':
-        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
+        return MenuPrincipal(gE, gP, gPe) ;
         break;
     case 'q':
         return 0 ;
@@ -982,10 +986,10 @@ int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *
         break;
     }
     
-    return MenuChercheur(gEntreprise,gPoste,gPersonne) ;
+    return MenuChercheur(gE,gP,gPe) ;
 }
 
-int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
+int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
 {
     char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
    
@@ -1009,26 +1013,26 @@ int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gP
     switch (choix)
     {
     case '1':
-        return MenuCreer_Profil(gEntreprise, gPoste, gPersonne);
+        return MenuCreer_Profil(gE, gP, gPe);
         break;
         
     case '2':
-        return MenuModifier_Profil(gEntreprise, gPoste, gPersonne) ;
+        return MenuModifier_Profil(gE, gP, gPe) ;
         break;
     case '3':
-        return Menusupprimer_profil(gEntreprise, gPoste, gPersonne) ;
+        return Menusupprimer_profil(gE, gP, gPe) ;
         break;
     case '4':
-        return Menuquitter_entreprise(gEntreprise, gPoste, gPersonne) ;
+        return Menuquitter_entreprise(gE, gP, gPe) ;
         break;
     case '5':
-        return Menu_emploi(gEntreprise, gPoste, gPersonne) ;
+        return Menu_emploi(gE, gP, gPe) ;
         break;
     case '6':
-        return Menu_emploi_collegue(gEntreprise, gPoste, gPersonne) ;
+        return Menu_emploi_collegue(gE, gP, gPe) ;
         break;
     case 'm':
-        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
+        return MenuPrincipal(gE, gP, gPe) ;
         break;
     case 'q':
         return 0;
@@ -1037,10 +1041,10 @@ int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gP
         break;
     }
     
-    return MenuEmploye(gEntreprise,gPoste,gPersonne) ;
+    return MenuEmploye(gE,gP,gPe) ;
 }
 
-int A_Implementer(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne)
+int A_Implementer(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
 {
     char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
    
@@ -1058,7 +1062,7 @@ int A_Implementer(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *
     switch (choix)
     {
     case 'm':
-        return MenuPrincipal(gEntreprise, gPoste, gPersonne) ;
+        return MenuPrincipal(gE, gP, gPe) ;
         break;
     case 'q':
         return 0 ;

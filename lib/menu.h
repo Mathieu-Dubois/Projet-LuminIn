@@ -19,7 +19,7 @@
  || Retour :
  ||     Retourne 0 si tout s'est bien passé 
   ============================================================================================== */
-int MenuPrincipal(groupeEntreprises *gE, groupePostes *gP, groupe *gPe) ;
+int MenuPrincipal(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe) ;
 
 
 /* ============================================================================================================
@@ -43,7 +43,7 @@ int MenuPrincipal(groupeEntreprises *gE, groupePostes *gP, groupe *gPe) ;
  || Retour :
  ||     Retourne 0 si tout s'est bien passé 
   ============================================================================================== */
-int MenuEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe) ;
+int MenuEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe) ;
 
 /*==============================================================================================
  || FONCTION : MenuSeConnecterEntreprise
@@ -59,7 +59,7 @@ int MenuEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe) ;
  || Retour :
  ||     Retourne 0 si tout s'est bien passé 
   ============================================================================================== */
-int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe) ;
+int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe) ;
 
 /*==============================================================================================
  || FONCTION : MenuCreerEntreprise
@@ -74,7 +74,7 @@ int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *g
  || Retour :
  ||     Retourne 0 si tout s'est bien passé 
   ============================================================================================== */
-int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe) ;
+int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe) ;
 
 /*==============================================================================================
  || FONCTION : MenuProfilEntreprise
@@ -90,7 +90,7 @@ int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe) ;
  || Retour :
  ||     Retourne 0 si tout s'est bien passé 
   ============================================================================================== */
-int MenuProfilEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int indexE) ;
+int MenuProfilEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexE) ;
 
 /*==============================================================================================
  || FONCTION : MenuConfirmerSuppressionEntreprise
@@ -107,7 +107,7 @@ int MenuProfilEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, i
  || Retour :
  ||     Retourne 0 si tout s'est bien passé 
   ============================================================================================== */
-int MenuConfirmerSuppressionEntreprise(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int indexE) ;
+int MenuConfirmerSuppressionEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexE) ;
 
 /*==============================================================================================
  || FONCTION : MenuAfficherPostesDuneEntreprise
@@ -123,7 +123,7 @@ int MenuConfirmerSuppressionEntreprise(groupeEntreprises *gE, groupePostes *gP, 
  || Retour :
  ||     Retourne 0 si tout s'est bien passé 
   ============================================================================================== */
-int MenuAfficherPostesDuneEntreprise(groupeEntreprises* gE, groupePostes *gP, groupe *gPe, int indexE) ;
+int MenuAfficherPostesDuneEntreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexE) ;
 
 /*==============================================================================================
  || FONCTION : MenuCreerPoste
@@ -139,7 +139,7 @@ int MenuAfficherPostesDuneEntreprise(groupeEntreprises* gE, groupePostes *gP, gr
  || Retour :
  ||     Retourne 0 si tout s'est bien passé 
   ============================================================================================== */
-int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int indexE) ;
+int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexE) ;
 
 /*==============================================================================================
  || FONCTION : MenuSupprimerPoste
@@ -156,7 +156,7 @@ int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int ind
  || Retour :
  ||     Retourne 0 si tout s'est bien passé 
   ============================================================================================== */
-int MenuSupprimerPoste(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int indexE) ;
+int MenuSupprimerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexE) ;
 
 /*==============================================================================================
  || FONCTION : MenuEntrepriseCherchePar
@@ -173,7 +173,7 @@ int MenuSupprimerPoste(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int
  || Retour :
  ||     Retourne 0 si tout s'est bien passé 
   ============================================================================================== */
-int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupe *gPe, int indexE) ;
+int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexE) ;
 
 
 
@@ -189,43 +189,43 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupe *gP
 
 
 //Le menu/formulaire pour créer un profil employés ou chercheur d'emploi
-int MenuCreer_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+int MenuCreer_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
 
 //le menu pour une modification du profil
-int MenuModifier_Profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
 
 //Le formulaire pour modifier son adresse
-int MenuMod_Adresse(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+int MenuMod_Adresse(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
 
 //Le formulaire pour mettre à jour son entreprise 
-int Menu_mod_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+int Menu_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
 
 //Le formulaire pour ajouter une compétence
-int Menuajouter_Competence(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+int Menuajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
 
 //Le menu pour quitter son entreprise
-int Menuquitter_entreprise(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
+int Menuquitter_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe) ;
 
 //menu print de la table employes
-void printemployes (groupe *gPersonne);
+void printemployes (groupePersonnes *gPe);
 
 //Le menu pour supprimer un profil employes
-int Menusupprimer_profil(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+int Menusupprimer_profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
 
 //Le menu pour ajouter un collegue
-int Menuajouter_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+int Menuajouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
 
 //L'interface pour suprimer un collegue
-int Menusupprimer_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne);
+int Menusupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
 
-int Menu_emploi(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
+int Menu_emploi(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe) ;
 
-int Menu_emploi_collegue(groupeEntreprises* gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
-
-
+int Menu_emploi_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe) ;
 
 
-int MenuChercheur(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
-int MenuEmploye(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
-int A_Implementer(groupeEntreprises *gEntreprise, groupePostes *gPoste, groupe *gPersonne) ;
+
+
+int MenuChercheur(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe) ;
+int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe) ;
+int A_Implementer(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe) ;
 

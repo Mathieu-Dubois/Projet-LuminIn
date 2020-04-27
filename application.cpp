@@ -24,7 +24,7 @@ int main()
     }
 
     // Création du groupe de personnes
-    groupe *gPe = NULL ;
+    groupePersonnes *gPe = NULL ;
     {
         FILE *dbPe = NULL ;
         dbPe = fopen("employes.csv", "r");

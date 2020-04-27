@@ -148,13 +148,13 @@ void g_ecrireEntreprise(groupeEntreprises* gE) ;
  || But : Afficher le nom, le prénom et l'adresse mail de tous les chercheurs d'emploi possédant la compétence demandée
  ||     
  || Paramètres :
- ||     gPe : pointeur sur un groupe de type groupe
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
  ||     competence : une chaine de caractère contenant la compétence demandée
  ||
  || Retour :
  ||     Aucun
   ============================================================================================== */
-void EntrepriseRechercheParCompetence(groupe* gPe, char competence[128]) ;
+void EntrepriseRechercheParCompetence(groupePersonnes* gPe, char competence[128]) ;
 
 /*==============================================================================================
  || FONCTION : EntrepriseRechercheParCompetenceEtCode
@@ -162,14 +162,14 @@ void EntrepriseRechercheParCompetence(groupe* gPe, char competence[128]) ;
  || But : Afficher le nom, le prénom et l'adresse mail de tous les chercheurs d'emploi possédant la compétence et le code postal demandée
  ||     
  || Paramètres :
- ||     gPe : pointeur sur un groupe de type groupe
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
  ||     competence : une chaine de caractère contenant la compétence demandée
  ||     code_postal : un entier contenant  le code postal demandé
  ||
  || Retour :
  ||     Aucun
   ============================================================================================== */
-void EntrepriseRechercheParCompetenceEtCode(groupe* gPe, char competence[128], int code_postal) ;
+void EntrepriseRechercheParCompetenceEtCode(groupePersonnes* gPe, char competence[128], int code_postal) ;
 
 
 
