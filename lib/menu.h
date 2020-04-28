@@ -192,40 +192,43 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
 int MenuCreer_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
 
 //le menu pour une modification du profil
-int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
+int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
 
 //Le formulaire pour modifier son adresse
-int MenuMod_Adresse(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
+int MenuMod_Adresse(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
 
 //Le formulaire pour mettre à jour son entreprise 
-int Menu_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
+int Menu_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
 
 //Le formulaire pour ajouter une compétence
-int Menuajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
+int Menuajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
 
 //Le menu pour quitter son entreprise
-int Menuquitter_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe) ;
+int Menuquitter_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id) ;
 
 //menu print de la table employes
 void printemployes (groupePersonnes *gPe);
 
 //Le menu pour supprimer un profil employes
-int Menusupprimer_profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
+int Menusupprimer_profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
 
 //Le menu pour ajouter un collegue
-int Menuajouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
+int Menuajouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
 
 //L'interface pour suprimer un collegue
-int Menusupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
+int Menusupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
 
-int Menu_emploi(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe) ;
+//l'interface pour chercher un emploi
+int Menu_emploi(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id) ;
 
-int Menu_emploi_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe) ;
+//l'interface pour trouver un emploi à l'aide d'un collègue
+int Menu_emploi_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id) ;
+
+//Menu pour s'identifier (employé et chercheur d'emploi)
+int Menuidentification(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe);
 
 
-
-
-int MenuChercheur(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe) ;
-int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe) ;
+int MenuChercheur(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int id) ;
+int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int id) ;
 int A_Implementer(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe) ;
 
