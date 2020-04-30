@@ -985,12 +985,11 @@ int MenuChercheur(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe,
     {
         system("clear") ;
         cout << " *** Bienvenue sur LuminIN, le site des pros ***" << endl << endl ;
-        cout << "Vous voulez :" << endl ;
-        cout << "1. Créer votre profil" << endl ;            
-        cout << "2. Modifier votre profil" << endl ;
-        cout << "3. Supprimer votre profil" << endl ;                            
-        cout << "4. Mettre à jour votre statut (passer employé) !!!! ça je crois que c'est pas un menu, ça se fait automatiquement quand une entreprise l'embauche" << endl ;
-        cout << "5. Chercher un emploi grâce à vos collègues" << endl << endl ;
+        cout << "Vous voulez :" << endl ;         
+        cout << "1. Modifier votre profil" << endl ;
+        cout << "2. Supprimer votre profil" << endl ;                            
+        cout << "3. Mettre à jour votre statut (passer employé) !!!! ça je crois que c'est pas un menu, ça se fait automatiquement quand une entreprise l'embauche" << endl ;
+        cout << "4. Chercher un emploi grâce à vos collègues" << endl << endl ;
         cout << "m. Retourner au menu principal" << endl ;                       
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
@@ -1000,18 +999,15 @@ int MenuChercheur(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe,
     switch (choix)
     {
     case '1':
-        MenuCreer_Profil(gE, gP, gPe);
-        break;
-    case '2':
         MenuModifier_Profil(gE, gP, gPe,id) ;
         break;
-    case '3':
+    case '2':
         Menusupprimer_profil(gE, gP, gPe,id) ;
         break;
-   case '5':
+   case '3':
         Menu_emploi(gE, gP, gPe,id) ;
         break;
-    case '6':
+    case '4':
         Menu_emploi_collegue(gE, gP, gPe,id) ;
         break;
     case 'm':
@@ -1030,7 +1026,7 @@ int MenuChercheur(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe,
         cin >> c;
     }while(c!='C' && c!='P');
 
-    if(c=='C') return MenuChercheur(gE, gP, gPe,id);
+    if(c=='C') return CheckStatut(gE, gP, gPe, id);
     if (c=='P') return MenuPrincipal(gE, gP, gPe);   
 
     return 0;
@@ -1044,13 +1040,12 @@ int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, i
     {
         system("clear") ;
         cout << " *** Bienvenue sur LuminIN, le site des pros ***" << endl << endl ;
-        cout << "Vous voulez :" << endl ;
-        cout << "1. Créer votre profil" << endl ;            
-        cout << "2. Modifier votre profil" << endl ;
-        cout << "3. Supprimer votre profil" << endl ;                            
-        cout << "4. Mettre à jour votre statut (passer en recherche d'emploi)" << endl ;
-        cout << "5. Chercher un emploi qui correspond à votre profil" << endl ;
-        cout << "6. Chercher un emploi grâce à vos collègues" << endl << endl ;
+        cout << "Vous voulez :" << endl ;         
+        cout << "1. Modifier votre profil" << endl ;
+        cout << "2. Supprimer votre profil" << endl ;                            
+        cout << "3. Mettre à jour votre statut (passer en recherche d'emploi)" << endl ;
+        cout << "4. Chercher un emploi qui correspond à votre profil" << endl ;
+        cout << "5. Chercher un emploi grâce à vos collègues" << endl << endl ;
         cout << "m. Retourner au menu principal" << endl ;                       
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
@@ -1060,22 +1055,18 @@ int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, i
     switch (choix)
     {
     case '1':
-        MenuCreer_Profil(gE, gP, gPe);
-        break;
-        
-    case '2':
         MenuModifier_Profil(gE, gP, gPe,id) ;
         break;
-    case '3':
+    case '2':
         Menusupprimer_profil(gE, gP, gPe, id) ;
         break;
-    case '4':
+    case '3':
         Menuquitter_entreprise(gE, gP, gPe,id) ;
         break;
-    case '5':
+    case '4':
         Menu_emploi(gE, gP, gPe,id) ;
         break;
-    case '6':
+    case '5':
         Menu_emploi_collegue(gE, gP, gPe, id) ;
         break;
     case 'm':
@@ -1094,7 +1085,7 @@ int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, i
         cin >> c;
     }while(c!='C' && c!='P');
 
-    if(c=='C') return MenuEmploye(gE, gP, gPe,id);
+    if(c=='C') return CheckStatut(gE, gP, gPe,id);
     if (c=='P') return MenuPrincipal(gE, gP, gPe);   
 
     return 0;
@@ -1106,7 +1097,7 @@ int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, i
 
 int A_Implementer(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
 {
-    char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
+    char choix(0) ;    
    
     do
     {
