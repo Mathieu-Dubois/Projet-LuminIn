@@ -192,7 +192,7 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
 int MenuCreer_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
 
 //le menu pour une modification du profil
-int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
+void MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
 
 //Le formulaire pour modifier son adresse
 int MenuMod_Adresse(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
@@ -227,6 +227,8 @@ int Menu_emploi_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonne
 //Menu pour s'identifier (employé et chercheur d'emploi)
 int Menuidentification(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe);
 
+//Vérifie si il s'agit d'un employé ou d'un chercheur d'emploi et sélectionne ainsi le menu adapté
+int CheckStatut(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe,int id);
 
 int MenuChercheur(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int id) ;
 int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int id) ;

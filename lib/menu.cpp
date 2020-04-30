@@ -617,10 +617,34 @@ int MenuCreer_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *g
     cout << "ID entreprise :" << entreprise <<endl;
 
     creer_profil(nom,prenom,courriel,adresse,competence,collegue,entreprise,gPe);
-    return 0;
-}
+    char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
+   
+    do
+    {
+        system("clear") ;
+        cout << " *** Votre compte a été crée avec succès ***" << endl << endl ;
+        cout << "m. Retour au menu principal" << endl ;                     
+        cout << "q. Quitter l'application" << endl << endl ;        
+        cin >> choix ;
+    } while (choix != 'm' && choix != 'q');
 
-int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id){
+    switch (choix)
+    {
+    case 'm':
+        return MenuPrincipal(gE, gP, gPe) ;
+        break;
+    case 'q':
+        return 0 ;
+        break;
+    default:
+        break;
+    }
+    
+    return 0 ;    
+
+}    
+
+void MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id){
 
  char choix(0) ;     // choix est un char et non un int pour empêcher la saisie d'une lettre (autre que q)
    
@@ -644,35 +668,32 @@ int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes
     switch (choix)
     {
     case '1':
-        return Menuajouter_Competence(gE, gP, gPe,id);
+        Menuajouter_Competence(gE, gP, gPe,id);
         break;
         
     case '2':
-        return MenuMod_Adresse(gE, gP, gPe,id) ;
+        MenuMod_Adresse(gE, gP, gPe,id) ;
         break;
     case '3':
-        return A_Implementer(gE, gP, gPe) ;
+        A_Implementer(gE, gP, gPe) ;
         break;
     case '4':
-        return Menu_mod_entreprise(gE, gP, gPe,id) ;
+        Menu_mod_entreprise(gE, gP, gPe,id) ;
         break;
     case '5':
-        return Menuajouter_collegue(gE, gP, gPe,id) ;
+        Menuajouter_collegue(gE, gP, gPe,id) ;
         break;
     case '6':
-        return Menusupprimer_collegue(gE, gP, gPe,id) ;
+        Menusupprimer_collegue(gE, gP, gPe,id) ;
         break;
     case 'm':
-        return MenuPrincipal(gE, gP, gPe) ;
+        MenuPrincipal(gE, gP, gPe) ;
         break;
     case 'q':
-        return 0;
         break;
     default:
         break;
     }
-    
-    return 0;
 
 }
 
@@ -907,13 +928,14 @@ int Menuidentification(groupeEntreprises *gE, groupePostes *gP, groupePersonnes 
     {
     case '1':
         int id;
+        system("clear") ;
         printemployes(gPe);
-        cout << "Saisir votre id" << endl ; 
+        cout << endl << "Saisir votre id : " << endl ; 
         cin >> id;
-        MenuEmploye(gE, gP, gPe,id) ;
+        return CheckStatut(gE,gP,gPe,id); 
         break;
     case '2':
-        MenuCreer_Profil(gE, gP, gPe) ;
+        return MenuCreer_Profil(gE, gP, gPe) ;
         break;
     case 'm':
         return MenuPrincipal(gE, gP, gPe) ;
@@ -928,6 +950,30 @@ int Menuidentification(groupeEntreprises *gE, groupePostes *gP, groupePersonnes 
     return 0 ;
 
 }
+
+int CheckStatut(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe,int id){
+    node *temp = gPe->personnes;
+    personne*tmpami;
+    int trouve = 0;
+    while(temp != NULL && trouve ==0){
+        tmpami = (personne*)(temp->data);
+        if (tmpami->index == id){                               //Quand on atteint la personne souhaitée
+            if (tmpami->entreprise == -1) return MenuChercheur(gE,gP,gPe,id);   //Si la personne est sans emploi, menu sans emploi
+            else {
+                return MenuEmploye(gE,gP,gPe,id);
+            }
+            trouve = 1;
+            }
+        else if (trouve == 0){
+            temp = temp->next;
+        }
+    }
+    if (trouve == 0){
+        cout << endl << "Cet identifiant n'est pas répertorié" << endl;
+    }
+    return 0;
+}  
+
 
 int MenuChercheur(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int id)
 {
@@ -954,19 +1000,19 @@ int MenuChercheur(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe,
     switch (choix)
     {
     case '1':
-        return MenuCreer_Profil(gE, gP, gPe);
+        MenuCreer_Profil(gE, gP, gPe);
         break;
     case '2':
-        return MenuModifier_Profil(gE, gP, gPe,id) ;
+        MenuModifier_Profil(gE, gP, gPe,id) ;
         break;
     case '3':
-        return Menusupprimer_profil(gE, gP, gPe,id) ;
+        Menusupprimer_profil(gE, gP, gPe,id) ;
         break;
    case '5':
-        return Menu_emploi(gE, gP, gPe,id) ;
+        Menu_emploi(gE, gP, gPe,id) ;
         break;
     case '6':
-        return Menu_emploi_collegue(gE, gP, gPe,id) ;
+        Menu_emploi_collegue(gE, gP, gPe,id) ;
         break;
     case 'm':
         return MenuPrincipal(gE, gP, gPe) ;
@@ -977,8 +1023,17 @@ int MenuChercheur(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe,
     default:
         break;
     }
-    
-    return MenuChercheur(gE,gP,gPe,id) ;
+
+    char c;
+    do{
+        cout << "Voulez vous rester connecté ou aller au menu principal (C ou P) ?" <<endl;
+        cin >> c;
+    }while(c!='C' && c!='P');
+
+    if(c=='C') return MenuChercheur(gE, gP, gPe,id);
+    if (c=='P') return MenuPrincipal(gE, gP, gPe);   
+
+    return 0;
 }
 
 int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int id)
@@ -1005,23 +1060,23 @@ int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, i
     switch (choix)
     {
     case '1':
-        return MenuCreer_Profil(gE, gP, gPe);
+        MenuCreer_Profil(gE, gP, gPe);
         break;
         
     case '2':
-        return MenuModifier_Profil(gE, gP, gPe,id) ;
+        MenuModifier_Profil(gE, gP, gPe,id) ;
         break;
     case '3':
-        return Menusupprimer_profil(gE, gP, gPe, id) ;
+        Menusupprimer_profil(gE, gP, gPe, id) ;
         break;
     case '4':
-        return Menuquitter_entreprise(gE, gP, gPe,id) ;
+        Menuquitter_entreprise(gE, gP, gPe,id) ;
         break;
     case '5':
-        return Menu_emploi(gE, gP, gPe,id) ;
+        Menu_emploi(gE, gP, gPe,id) ;
         break;
     case '6':
-        return Menu_emploi_collegue(gE, gP, gPe, id) ;
+        Menu_emploi_collegue(gE, gP, gPe, id) ;
         break;
     case 'm':
         return MenuPrincipal(gE, gP, gPe) ;
@@ -1033,7 +1088,16 @@ int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, i
         break;
     }
     
-    return MenuEmploye(gE,gP,gPe,id) ;
+    char c;
+    do{
+        cout << "Voulez vous rester connecté ou aller au menu principal (C ou P) ?" <<endl;
+        cin >> c;
+    }while(c!='C' && c!='P');
+
+    if(c=='C') return MenuEmploye(gE, gP, gPe,id);
+    if (c=='P') return MenuPrincipal(gE, gP, gPe);   
+
+    return 0;
 }
 
 
