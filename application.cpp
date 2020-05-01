@@ -4,7 +4,9 @@ using namespace std ;
 #include "lib/bibliotheques.h"
 
 int main()
-{    
+{   
+    journal_OuvertureApplication() ;
+
     // Création du groupe d'entreprises
     groupeEntreprises *gE = NULL;
     {
@@ -32,8 +34,9 @@ int main()
         fclose(dbPe);
     }
 
-
     MenuPrincipal(gE, gP, gPe) ;
+
+    journal_FermetureApplication() ;
 
     return 0 ;
 }

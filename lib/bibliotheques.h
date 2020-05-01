@@ -6,3 +6,4 @@
 #include "entreprise.h"
 #include "postes.h"
 #include "employe.h"
+#include "journal.h"

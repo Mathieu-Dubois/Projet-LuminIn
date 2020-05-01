@@ -98,3 +98,9 @@ void g_remove(groupePersonnes* g, int const index);
 
 // Réinitialise les fichiers csv à leur état initial
 void ReinitialiserCSV() ;
+
+// Fais une sauvegarde du journal pour ne pas le modifier quand on exécute le programme de test
+void SauvegardeJournal() ;
+
+// Restaure la sauvegarde du journal
+void RestaurerJournal() ;

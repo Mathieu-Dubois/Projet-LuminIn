@@ -17,6 +17,12 @@ clean:
 build:
 	mkdir -p build
 
+# Réinitialise les fichiers csv
+reset: reset.cpp
+	$(CC) $(CCFLAGS) reset.cpp -o reset_exe
+	./reset_exe
+	rm -rf reset_exe 
+
 # S'assure de l'existence tout les programmes finaux (application, test, etc.)
 # Par exemple : all: build/test build/appli
 all: build/test_exe build/application_exe
@@ -41,8 +47,11 @@ build/postes.o: lib/postes.cpp | build
 build/employe.o: lib/employe.c |build 
 	$(CC) $(CCFLAGS) -c lib/employe.c -I ./lib -o build/employe.o
 
-build/libbibliotheques.a: build/menu.o build/groupe.o build/liste.o build/entreprise.o build/postes.o build/employe.o| build
-	ar crs build/libbibliotheques.a build/menu.o build/groupe.o build/liste.o build/entreprise.o build/postes.o build/employe.o
+build/journal.o: lib/journal.cpp | build
+	$(CC) $(CCFLAGS) -c lib/journal.cpp -I ./lib -o build/journal.o
+
+build/libbibliotheques.a: build/menu.o build/groupe.o build/liste.o build/entreprise.o build/postes.o build/employe.o build/journal.o | build
+	ar crs build/libbibliotheques.a build/menu.o build/groupe.o build/liste.o build/entreprise.o build/postes.o build/employe.o build/journal.o
 
 # Programmes :
 # test : contient tous les tests

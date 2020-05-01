@@ -7,6 +7,7 @@ using namespace std ;
 #include "employe.h"
 #include "postes.h"
 #include "groupe.h"
+#include "journal.h"
 
 // Remarque : Dans chaque menu, choix est un char pour sécuriser la saisie (permet de détecter si l'utilisateur entre une lettre au lieu d'un chiffre)
 
@@ -141,6 +142,7 @@ int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePer
     }
 
     // Troisième étape : Si l'utilisateur a renseigné un index d'entreprise valide, on affiche le menu de cette entreprise
+    journal_ConnexionEntreprise(g_indexEntreprise(gE, (int)choix - 48)) ;
     return MenuProfilEntreprise(gE, gP, gPe, (int)choix - 48) ;
     
     return 0 ;
@@ -240,6 +242,7 @@ int MenuProfilEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonne
     switch (choix)
     {
     case '1':
+        journal_EntrepriseConsultePostes(g_indexEntreprise(gE, indexE)) ;
         return MenuAfficherPostesDuneEntreprise(gE, gP, gPe, indexE) ;
         break;
     case '2':
@@ -255,9 +258,11 @@ int MenuProfilEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonne
         return MenuConfirmerSuppressionEntreprise(gE, gP, gPe, indexE) ;
         break;
     case 'm':
+        journal_DeconnexionEntreprise(g_indexEntreprise(gE, indexE)) ;
         return MenuPrincipal(gE, gP, gPe) ;
         break;
     case 'q':
+        journal_DeconnexionEntreprise(g_indexEntreprise(gE, indexE)) ;
         return 0 ;
         break;
     default:
@@ -338,9 +343,11 @@ int MenuAfficherPostesDuneEntreprise(groupeEntreprises* gE, groupePostes *gP, gr
         return MenuProfilEntreprise(gE, gP, gPe, indexE) ;
         break;
     case 'm':
+        journal_DeconnexionEntreprise(g_indexEntreprise(gE, indexE)) ;
         return MenuPrincipal(gE, gP, gPe) ;
         break;
     case 'q':
+        journal_DeconnexionEntreprise(g_indexEntreprise(gE, indexE)) ;
         return 0 ;
         break;
     default:
@@ -501,6 +508,7 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
         cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
         cout << "Saisissez la compétence que vous recherchez : "  ;
         cin >> competence ;
+        journal_EntrepriseRechercheCompetence(g_indexEntreprise(gE, indexE), competence) ;
         EntrepriseRechercheParCompetence(gPe, competence) ;
         cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
         cin >> choix ;
@@ -514,6 +522,7 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
         cin >> competence ;
         cout << "Saisissez le code postal que vous recherchez : "  ;
         cin >> code_postal ;
+        journal_EntrepriseRechercheCompetenceEtCode(g_indexEntreprise(gE, indexE), competence, code_postal) ;
         EntrepriseRechercheParCompetenceEtCode(gPe, competence, code_postal) ;
         cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
         cin >> choix ;
@@ -524,9 +533,11 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
         return MenuProfilEntreprise(gE, gP, gPe, indexE) ;
         break;
     case 'm':
+        journal_DeconnexionEntreprise(g_indexEntreprise(gE, indexE)) ;
         return MenuPrincipal(gE, gP, gPe) ;
         break;
     case 'q':
+        journal_DeconnexionEntreprise(g_indexEntreprise(gE, indexE)) ;
         return 0 ;
         break;
     default:
