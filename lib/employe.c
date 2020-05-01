@@ -12,11 +12,9 @@
 #include <string.h>
 
 void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[5][128], int collegue[5], int entreprise, groupePersonnes *gEmployes)
-{
-    //FILE *employes; 
+{ 
     int i, j, index; char poub[128];
 
-    //On ajoute d'abord dans la table csv
     //Il faut récupérer en premier lieu l'indice
     FILE *employes = fopen("employes.csv", "r");
     fscanf(employes, "%s\n", poub);
@@ -29,40 +27,7 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
     if (i != j){
         index = i;
     } 
-    else index = i+1;/*
-    fclose(employes);
-    employes = fopen("employes.csv", "a");
-    fprintf(employes, "%d,", index);
-    fputs(nom, employes);
-    fputc(',', employes);
-    fputs(prenom, employes);
-    fputc(',', employes);
-    fputs(courriel, employes);
-    fputc(',', employes);
-    fprintf(employes, "%d,", adresse);
-    //On écrit les compétences
-    i = 0;
-    while(competence[i][0] != '\0' && i < 5){
-        j = 0;
-        while(competence[i][j] != '\0') {
-            fputc(competence[i][j], employes);
-            j++;
-        }
-        i++;
-        if (competence[i][0] != '\0') fputc(';', employes);
-        else fputc(',', employes);
-    }
-    if (i == 0) fputc(',', employes); //Il n'y a pas de competences
-    //On écrit les collègues
-    i = 0;
-    while(collegue[i] != -1){
-        fputc(collegue[i], employes);
-        i++;
-        if (collegue[i] != -1) fputc(';', employes);
-        else fputc(',', employes);
-    }
-    if (i == 0) fputc(',', employes); //Il n'y a pas de collègues
-    fprintf(employes, "%d", entreprise);*/
+    else index = i+1;
     fclose(employes);
     //Ensuite on met à jour le groupe d'employés
     personne *p = (personne*)malloc(sizeof(personne));
@@ -77,10 +42,19 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
             p->competence[i][j] = competence[i][j];
         }
     }
-    l_append(&gEmployes->personnes, l_make_node((personne *)p));
+    //On ajoute au bon endroit
+    node *parcours = gEmployes->personnes;
+    personne* parcourami;
+    int done = 0;
+    while (parcours != NULL && done == 0){
+        parcourami = (personne*)(parcours->data);
+        if(parcourami->index != (index-1)) parcours = parcours->next;
+        else done = 1;
+    }
+    if(parcours == NULL) l_append(&gEmployes->personnes, l_make_node((personne *)p));
+    else l_insert(&parcours, l_make_node((personne *)p));
     //Maintenant on link les amis
-    node *parcours;
-    personne* parcourami, *tmpami;
+    personne* tmpami;
     int compt=0;
     for (int j = 0 ; j < 5 ; j++){
         if (collegue[j] != -1){
@@ -103,69 +77,6 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
 void supprimer_profil (int index, groupePersonnes *gEmployes){
     //On supprime du groupe
     g_remove(gEmployes, index);
-    //On supprime la ligne du fichier
-    //FILE *tmp = fopen("tmp.txt", "rw");
-    //FILE *employes = fopen("employes.csv", "r");
-    /*char poub[128];
-    do {
-        fscanf(employes, "%s\n", poub);
-        fputs(poub, tmp);
-        fputc('\n', tmp);
-    } while (!feof(employes));
-    fclose(employes);
-    fclose(tmp);
-    tmp = fopen("tmp.txt", "r");
-    employes = fopen("final.txt", "w+");
-    //Pour la première ligne
-    fscanf(tmp, "%s\n", poub);
-    fputs(poub, employes);
-    fputc('\n', employes);
-    int i = 1, ind, virgule; personne data;
-    do {
-        fscanf(tmp, "%d,", &ind);           //On récupère l'indice pour voir si c'est la ligne à enlever
-        if (ind != index){                  //Si != ligne à enlever alors on lit puis écrit en supprimant les relations
-            fprintf(employes, "%d,", ind);
-            fscanf(tmp, "%128[^,],%128[^,],%128[^,],%d,",data.nom, data.prenom, data.courriel, &data.adresse);
-            //IL MANQUE LES COMPETENCES
-            fputs(data.nom, employes);
-            fputc(',', employes);
-            fputs(data.prenom, employes);
-            fputc(',', employes);
-            fputs(data.courriel, employes);
-            fputc(',', employes);
-            fprintf(employes, "%d,", data.adresse);
-            //Pour les compétences
-            int comp = 0;
-            virgule = 0;
-            while(fscanf(tmp, "%128[^,;];", data.competence[comp]) == 1){
-                if (virgule == 1) fputc(';', employes);
-                fputs(data.competence[comp], employes);
-                virgule = 1;
-                comp++;
-            } 
-            fscanf(tmp, "%c", poub);//on enleve une virgule
-            fputc(',', employes);
-            //Pour les amis
-            virgule = 0; int ami = 0;
-            while(fscanf(tmp, "%d;", &ami)==1){                                        //Pour supprimer les relations
-                if (virgule == 0 &&ami != index){                                     //Si c'est le premier ami, pas de ;
-                    fprintf(employes, "%d", ami);
-                    virgule = 1;
-                } 
-                else if (ami != index && virgule == 1 ) fprintf(employes, ";%d", ami);    //Si ce n'est pas le premier ami, on met 
-            }
-            fscanf(tmp, "%s\n", poub);
-            fputs(poub, employes);
-            fputc('\n', employes);
-        } else {
-            fscanf(tmp, "%s\n", poub);
-        }
-        
-        i++;
-    } while (!feof(tmp));
-    fclose(tmp);
-    fclose(employes);
-    //remove("tmp.txt");*/
     g_ecrire(gEmployes);
 }
 

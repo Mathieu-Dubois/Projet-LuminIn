@@ -58,9 +58,6 @@ groupePersonnes* g_open(FILE *db)
         i++;
     }
 
-
-
-
     //Maintenant on link les amis
     node *tmp = gPe->personnes;
     node *parcours = gPe->personnes;
@@ -100,8 +97,22 @@ void g_ecrire(groupePersonnes* gPe)
     fputc('\n', tmp);
     node *temp = gPe->personnes;
     personne*tmpami;
+    node*rappel;
+    int i = 1, consecutif = 0;
+
     while(temp != NULL){
         tmpami = (personne*)(temp->data);
+        //Exception si numéros pas consécutifs
+        if(tmpami->index != i){
+            consecutif = 0;
+            rappel = temp;
+            while(temp != NULL && tmpami->index != i){
+                temp = temp->next;
+                if (temp != NULL) tmpami = (personne*)(temp->data);
+            }
+            if (temp != NULL) consecutif = 1;
+            else temp = rappel;
+        }
         fprintf(tmp, "%d,", tmpami->index);
         fputs(tmpami->nom, tmp);
         fputc(',', tmp);
@@ -135,7 +146,9 @@ void g_ecrire(groupePersonnes* gPe)
         }
         fprintf(tmp, ",%d", tmpami->entreprise);
         fputc('\n', tmp);
-        temp = temp->next;
+        if (consecutif == 1) temp = rappel;
+        else temp = temp->next;
+        i++;
     }
     fclose(tmp);
     remove("tmp.txt");
