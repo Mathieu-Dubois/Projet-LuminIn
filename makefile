@@ -44,8 +44,8 @@ build/entreprise.o: lib/entreprise.cpp | build
 build/postes.o: lib/postes.cpp | build
 	$(CC) $(CCFLAGS) -c lib/postes.cpp -I ./lib -o build/postes.o
 
-build/employe.o: lib/employe.c |build 
-	$(CC) $(CCFLAGS) -c lib/employe.c -I ./lib -o build/employe.o
+build/employe.o: lib/employe.cpp |build 
+	$(CC) $(CCFLAGS) -c lib/employe.cpp -I ./lib -o build/employe.o
 
 build/journal.o: lib/journal.cpp | build
 	$(CC) $(CCFLAGS) -c lib/journal.cpp -I ./lib -o build/journal.o

@@ -98,7 +98,7 @@ int LastEntreprise(groupeEntreprises* gE) ;
  ||     0 : l'entreprise ne fait pas partie du groupe
  ||     1 : l'entreprise fait partie du groupe
   ============================================================================================== */
-int ExisteEntreprise(groupeEntreprises*gE, int const indexE) ;
+int ExisteEntreprise(groupeEntreprises* gE, int const indexE) ;
 
 /*==============================================================================================
  || FONCTION : g_indexEntreprise

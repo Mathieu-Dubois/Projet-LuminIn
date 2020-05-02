@@ -46,3 +46,65 @@ int recherche_col_par_entre(int indice, groupePersonnes *gEmployes, int index);
 
 /*Recherche parmi les anciens collègues ceux qui ont une compétence donnée*/
 int recherche_col_comp(int indice, groupePersonnes *gEmployes, char comp[128]);
+
+
+
+/*==============================================================================================
+ || FONCTION : AfficherPersonnes
+  ==============================================================================================
+ || But : Afficher l'index, le nom et le prénom de toutes les personnes d'un même groupe
+ ||
+ || Paramètre :
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||
+ || Retour :
+ ||     Aucun
+  ============================================================================================== */
+void AfficherPersonnes(groupePersonnes* gPe) ;
+
+/*==============================================================================================
+ || FONCTION : ExistePersonne
+  ==============================================================================================
+ || But : Déterminer si une personne fait partie du groupe passé en paramètres
+ ||
+ || Paramètres :
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     indexP : index de la personne que l'on cherche
+ ||
+ || Retour :
+ ||     0 : la personne ne fait pas partie du groupe
+ ||     1 : la personne fait partie du groupe
+  ============================================================================================== */
+int ExistePersonne(groupePersonnes *gPe, int const indexP) ;
+
+/*==============================================================================================
+ || FONCTION : LastPersonne
+  ==============================================================================================
+ || But : Déterminer l'index de la dernière personne d'un groupe de type groupePersonnes
+ ||
+ || Paramètre :
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||
+ || Retour :
+ ||     Un entier correspondant à l'index de la dernière personne du groupe
+  ============================================================================================== */
+int LastPersonne(groupePersonnes* gPe) ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int printemployes(groupePersonnes* gPe) ;

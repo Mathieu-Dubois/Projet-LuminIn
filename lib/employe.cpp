@@ -1,15 +1,17 @@
-#include "groupe.h"
-
-#include "employe.h"
-#include "groupe.h"
-#include "postes.h"
-
+#include <iostream>
+using namespace std ;
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <malloc.h>
 #include <string.h>
+
+#include "employe.h"
+#include "groupe.h"
+#include "postes.h"
+
+
 
 void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[5][128], int collegue[5], int entreprise, groupePersonnes *gEmployes)
 { 
@@ -512,4 +514,64 @@ int recherche_col_comp(int indice, groupePersonnes *gEmployes, char comp[128])
     }
     if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
     return code_retour;
+}
+
+
+
+// printemployes
+// But : Afficher l'index, le nom et le prénom de toutes les personnes d'un même groupe
+void AfficherPersonnes(groupePersonnes* gPe)
+{
+ if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
+    else
+    {
+        node *tmp = gPe->personnes ;
+        personne *e = (personne*)tmp->data ;
+        while (e!= NULL && tmp != NULL)
+        {
+            cout << e->index << " - " << e->nom << " " << e->prenom << endl ; /* << " - " << e->courriel << " - " << e->entreprise << endl ; */
+            tmp = tmp->next ;
+            if(tmp != NULL) e = (personne*)tmp->data ;   
+        }
+    }
+}
+
+// But : Déterminer si une personne fait partie du groupe passé en paramètres
+int ExistePersonne(groupePersonnes* gPe, int const indexP)
+{
+    // Si le groupe est vide, la personne n'existe pas, on retourne 0
+    if (gPe->personnes == NULL) return 0;
+
+    // Si l'index demandé est supérieur à l'index de la dernière personne, la personne n'existe pas, on retourne 0
+    if(indexP > LastPersonne(gPe) || indexP < 0) return 0 ;
+
+    // Sinon on parcourt tout le groupe jusqu'à trouver (ou non) la personne voulue
+    node *tmp = gPe->personnes;
+    personne *p = (personne*)tmp->data;
+    while(p->index != indexP && p != NULL && tmp->next !=NULL){
+        tmp = tmp -> next;
+        p = (personne*)tmp->data;
+    } 
+    if (p->index == indexP) return 1 ; // On l'a trouvé, on retourne 1
+    // On l'a pas trouvé, on retourne 0
+    return 0;
+}
+
+// But : Déterminer l'index de la dernière personne d'un groupe de type groupePersonnes
+int LastPersonne(groupePersonnes* gPe)
+{
+    int index(0) ;
+    node *tmp = gPe->personnes ;
+    tmp = l_tail(tmp) ;
+    personne *p = (personne*)tmp->data ;
+    index = p->index ;
+
+    return index ;
+}
+
+int printemployes(groupePersonnes* gPe)
+{
+    cout << "VIEUX PRINT" << endl ;
+
+    return 0 ;
 }
