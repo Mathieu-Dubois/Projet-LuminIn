@@ -8,6 +8,7 @@ using namespace std ;
 #include <assert.h>
 #include <malloc.h>
 #include <fstream>
+#include <string>
 
 
 groupePersonnes* g_open(FILE *db)
@@ -374,6 +375,9 @@ void g_remove(groupePersonnes* g, int const index)
 }
 
 
+
+
+
 void ReinitialiserCSV()
 {
     ofstream entreprise("tmp1.csv") ;
@@ -423,4 +427,38 @@ void ReinitialiserCSV()
     rename("tmp1.csv","entreprises.csv") ;
     rename("tmp2.csv","postes.csv") ;
     rename("tmp3.csv","employes.csv") ;
+}
+
+void SauvegardeJournal()
+{
+    ifstream journal("journal.txt");  // Flux de lecture
+    ofstream sauvegarde("journaltmp.txt"); // Flux d'ecriture
+ 
+   if(journal) // Si le fichier existe bien
+   {
+      string ligne;
+ 
+      while(getline(journal, ligne)) // On le lis ligne par ligne
+      {
+            if(sauvegarde) // Si le lieu de destination existe
+            {
+                sauvegarde << ligne << endl; // On ecrit dans le fichier de destination
+            }                      
+            else
+            {
+                cout << "ERREUR: Impossible d'ouvrir journaltmp.txt." << endl;
+            }
+      }
+   }
+   else
+   {
+      cout << "ERREUR: Impossible d'ouvrir le journal." << endl;
+   }
+}
+
+
+void RestaurerJournal()
+{
+    remove("journal.txt") ;
+    rename("journaltmp.txt","journal.txt") ;
 }

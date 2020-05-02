@@ -13,6 +13,7 @@ using namespace std ;
 #include "groupe.h"
 #include "liste.h"
 #include "postes.h"
+#include "journal.h"
 
 
 // But : Création d'un groupe de postes à partir d'un flux donné
@@ -182,6 +183,8 @@ int AjoutPoste(groupePostes *gP, char titre[128], int indexE, char competence[5]
         } 
     }
 
+    journal_CreationPoste(nouveau) ;
+    
     // Ajout du nouveau poste au groupe
     l_append(&gP->poste, l_make_node((poste*)nouveau)) ;
 
@@ -223,7 +226,8 @@ groupePostes* SupprimerPoste(groupePostes* gP, int const indexP)
         tmp = tmp->next ;
         p = (poste*)(tmp->data) ;
     }
-   
+    
+    journal_SuppressionPoste(p) ;
     // On raccroche les noeuds entre eux pour enlever le poste
     if(tmp->previous != NULL) tmp->previous->next = tmp->next ;
     else gP->poste = tmp->next ;

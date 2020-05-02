@@ -12,6 +12,7 @@ using namespace std ;
 #include "entreprise.h"
 #include "groupe.h"
 #include "liste.h"
+#include "journal.h"
 
 
 // But : Création d'un groupe d'entreprise à partir d'un flux donné
@@ -82,6 +83,9 @@ void AjoutEntreprise(groupeEntreprises *gE, char nom[40], int code_postal, char 
     strcpy(nouveau->nom, nom) ;
     nouveau->code_postal = code_postal;
     strcpy(nouveau->courriel, courriel) ;
+
+    journal_CreationEntreprise(nouveau) ;
+
 
     // Ajout de la nouvelle entreprise au groupe
     l_append(&gE->entreprise, l_make_node((entreprise*)nouveau)) ;
@@ -159,6 +163,7 @@ groupeEntreprises* SupprimerEntreprise(groupeEntreprises* gE, int const indexE)
         e = (entreprise*)(tmp->data) ;
     }
    
+    journal_SuppressionEntreprise(e) ;
     // On raccroche les noeuds entre eux pour enlever l'entreprise
     if(tmp->previous != NULL) tmp->previous->next = tmp->next ;
     else gE->entreprise = tmp->next ;
