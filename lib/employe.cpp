@@ -1,9 +1,5 @@
-#include "groupe.h"
-
-#include "employe.h"
-#include "groupe.h"
-#include "postes.h"
-
+#include <iostream>
+using namespace std ;
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,7 +7,14 @@
 #include <malloc.h>
 #include <string.h>
 
-void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[5][128], int collegue[5], int entreprise, groupePersonnes *gEmployes)
+#include "employe.h"
+#include "groupe.h"
+#include "postes.h"
+#include "journal.h"
+
+
+
+void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[5][128], int collegue[5], int entreprise, groupePersonnes *gPe)
 { 
     int i, j, index; char poub[128];
 
@@ -42,8 +45,9 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
             p->competence[i][j] = competence[i][j];
         }
     }
+
     //On ajoute au bon endroit
-    node *parcours = gEmployes->personnes;
+    node *parcours = gPe->personnes;
     personne* parcourami;
     int done = 0;
     while (parcours != NULL && done == 0){
@@ -51,14 +55,14 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
         if(parcourami->index != (index-1)) parcours = parcours->next;
         else done = 1;
     }
-    if(parcours == NULL) l_append(&gEmployes->personnes, l_make_node((personne *)p));
+    if(parcours == NULL) l_append(&gPe->personnes, l_make_node((personne *)p));
     else l_insert(&parcours, l_make_node((personne *)p));
     //Maintenant on link les amis
     personne* tmpami;
     int compt=0;
     for (int j = 0 ; j < 5 ; j++){
         if (collegue[j] != -1){
-            parcours = gEmployes->personnes;
+            parcours = gPe->personnes;
             tmpami = (personne*)p;
             parcourami = (personne*)(parcours->data);
             while(parcourami->index != collegue[j]){
@@ -70,14 +74,16 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
             compt++;
         }
     }
-    g_ecrire(gEmployes);
+    journal_CreationPersonne(p) ;
+    g_ecrire(gPe);
     return;
 }
 
-void supprimer_profil (int index, groupePersonnes *gEmployes){
+void supprimer_profil (int index, groupePersonnes *gPe){
     //On supprime du groupe
-    g_remove(gEmployes, index);
-    g_ecrire(gEmployes);
+    journal_SuppressionPersonne(g_index(gPe, index)) ;
+    g_remove(gPe, index);
+    g_ecrire(gPe);
 }
 
 /*  Entrée :        indice : indice de la personne qui change de code-postal
@@ -86,9 +92,9 @@ void supprimer_profil (int index, groupePersonnes *gEmployes){
     Code retour:    0 Si tout se passe bien
                     1 si l'adresse est identique
                     2 si on ne trouve pas l'indice dans le groupe               */
-int modifier_adresse(int indice, groupePersonnes *gEmployes, int nouv_adresse)
+int modifier_adresse(int indice, groupePersonnes *gPe, int nouv_adresse)
 {
-    node *temp = gEmployes->personnes;
+    node *temp = gPe->personnes;
     personne*tmpami;
     int trouve = 0, code_retour = -1;
     while(temp != NULL && trouve ==0){
@@ -97,7 +103,7 @@ int modifier_adresse(int indice, groupePersonnes *gEmployes, int nouv_adresse)
             if (tmpami->adresse == nouv_adresse) code_retour = 1;   //Si l'adresse est identique
             else {
                 tmpami->adresse = nouv_adresse;                     //Si tout se passe bien
-                g_ecrire(gEmployes);
+                g_ecrire(gPe);
                 code_retour = 0;
             }
             trouve = 1;
@@ -107,7 +113,7 @@ int modifier_adresse(int indice, groupePersonnes *gEmployes, int nouv_adresse)
         }
     }
     if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondant
-    g_ecrire(gEmployes);
+    g_ecrire(gPe);
     return code_retour;
 }
 
@@ -117,9 +123,9 @@ int modifier_adresse(int indice, groupePersonnes *gEmployes, int nouv_adresse)
     Code retour:    0 Si tout se passe bien
                     1 si l'entreprise est identique
                     2 si on ne trouve pas l'indice dans le groupe               */
-int modifier_entreprise(int indice, groupePersonnes *gEmployes, int nouv_entre)
+int modifier_entreprise(int indice, groupePersonnes *gPe, int nouv_entre)
 {
-    node *temp = gEmployes->personnes;
+    node *temp = gPe->personnes;
     personne*tmpami;
     int trouve = 0, code_retour = -1;
     while(temp != NULL && trouve ==0){
@@ -128,7 +134,7 @@ int modifier_entreprise(int indice, groupePersonnes *gEmployes, int nouv_entre)
             if (tmpami->entreprise == nouv_entre) code_retour = 1;   //Si l'entreprise est identique
             else {
                 tmpami->entreprise = nouv_entre;                     //Si tout se passe bien
-                g_ecrire(gEmployes);
+                g_ecrire(gPe);
                 code_retour = 0;
             }
             trouve = 1;
@@ -138,7 +144,7 @@ int modifier_entreprise(int indice, groupePersonnes *gEmployes, int nouv_entre)
         }
     }
     if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondant
-    g_ecrire(gEmployes);
+    g_ecrire(gPe);
     return code_retour;
 }
 
@@ -150,9 +156,9 @@ int modifier_entreprise(int indice, groupePersonnes *gEmployes, int nouv_entre)
                     1 si la personne a déjà cette compétence
                     2 si la personne a déjà la nombre maximum de compétences
                     3 si on ne trouve pas l'indice dans le groupe               */
-int ajouter_competence(int indice, groupePersonnes *gEmployes, char comp[128])
+int ajouter_competence(int indice, groupePersonnes *gPe, char comp[128])
 {
-    node *temp = gEmployes->personnes;
+    node *temp = gPe->personnes;
     personne*tmpami;
     int trouve = 0, code_retour = -1, i, fait = 0;
     while(temp != NULL && trouve ==0){
@@ -163,7 +169,7 @@ int ajouter_competence(int indice, groupePersonnes *gEmployes, char comp[128])
             while(i<5 && fait == 0){
                 if (tmpami->competence[i][0] == '\0'){              //Si il reste de la place on ajoute la compétence
                     strcpy(tmpami->competence[i], comp);
-                    g_ecrire(gEmployes);
+                    g_ecrire(gPe);
                     code_retour = 0;
                     fait = 1;
                 } else if (!strcmp(tmpami->competence[i], comp)) {     //Si la personne a déjà cette compétence
@@ -180,7 +186,7 @@ int ajouter_competence(int indice, groupePersonnes *gEmployes, char comp[128])
         }
     }
     if (trouve == 0) code_retour = 3;                               //Si on ne trouve pas l'index correspondant
-    g_ecrire(gEmployes);
+    g_ecrire(gPe);
     return code_retour;
 }
 
@@ -190,9 +196,9 @@ int ajouter_competence(int indice, groupePersonnes *gEmployes, char comp[128])
     Code retour:    0 Si tout se passe bien
                     1 si la personne n'a pas d'entreprise
                     2 si on ne trouve pas l'indice dans le groupe               */
-int quitter_entreprise(int indice, groupePersonnes *gEmployes)
+int quitter_entreprise(int indice, groupePersonnes *gPe)
 {
-    node *temp = gEmployes->personnes;
+    node *temp = gPe->personnes;
     personne*tmpami;
     int trouve = 0, code_retour = -1;
     while(temp != NULL && trouve ==0){
@@ -209,7 +215,7 @@ int quitter_entreprise(int indice, groupePersonnes *gEmployes)
         }
     }
     if (trouve == 0) code_retour = 2;                       //Si on ne trouve pas l'index correspondant
-    g_ecrire(gEmployes);
+    g_ecrire(gPe);
     return code_retour;
 }
 
@@ -222,9 +228,9 @@ int quitter_entreprise(int indice, groupePersonnes *gEmployes)
                     2 si la personne n'est pas dans la même entreprise
                     3 si on ne trouve pas l'indice dans le groupe  
                     4 si la personne a deja trop d'amis                          */
-int ajouter_collegue(int indice, groupePersonnes *gEmployes, int col)
+int ajouter_collegue(int indice, groupePersonnes *gPe, int col)
 {
-    node *temp = gEmployes->personnes;
+    node *temp = gPe->personnes;
     personne*tmpami;
     int trouve = 0, code_retour = -1, i, fait = 0, place = 0;
     while(temp != NULL && trouve ==0){
@@ -242,7 +248,7 @@ int ajouter_collegue(int indice, groupePersonnes *gEmployes, int col)
             }
             if (code_retour != 1 && place != 1) code_retour =  4;        //si la personne a deja trop d'amis 
             else if (code_retour == -1){                                 //La personne ne fait pas partie de ses amis et il y a de la place
-                node *parcours = gEmployes->personnes;
+                node *parcours = gPe->personnes;
                 personne*parcourami;
                 i = 0;
                 fait = 0;                    
@@ -266,7 +272,7 @@ int ajouter_collegue(int indice, groupePersonnes *gEmployes, int col)
         } else temp = temp -> next;
     }
     if (trouve == 0) code_retour = 3;                               //Si on ne trouve pas l'index correspondant
-    g_ecrire(gEmployes);
+    g_ecrire(gPe);
     return code_retour;
 }
 
@@ -276,9 +282,9 @@ int ajouter_collegue(int indice, groupePersonnes *gEmployes, int col)
     Code retour:    0 Si tout se passe bien
                     1 si on ne trouve pas l'indice de la personne dans le groupe
                     2 si on a pas assez de place pour ajouter tous les collegues          */
-int rejoindre_entreprise(int indice, groupePersonnes *gEmployes, int entre)
+int rejoindre_entreprise(int indice, groupePersonnes *gPe, int entre)
 {
-    node *temp = gEmployes->personnes;
+    node *temp = gPe->personnes;
     personne*tmpami;
     int trouve = 0, code_retour = -1;
     while(temp != NULL && trouve ==0){
@@ -295,20 +301,20 @@ int rejoindre_entreprise(int indice, groupePersonnes *gEmployes, int entre)
 
     //On ajoute maintenant ses collègues
     else{
-        node *parcours = gEmployes->personnes;
+        node *parcours = gPe->personnes;
         personne*parcourami;
         while(parcours != NULL){
             parcourami = (personne*)(parcours->data);
             if (parcourami->entreprise == tmpami->entreprise){                  //Quand on rencontre un potentiel collègue
-                code_retour = ajouter_collegue(indice, gEmployes, parcourami->index);
-                ajouter_collegue(parcourami->index, gEmployes, indice);                 //On ajoute aussi la personne en collègue aux employes
+                code_retour = ajouter_collegue(indice, gPe, parcourami->index);
+                ajouter_collegue(parcourami->index, gPe, indice);                 //On ajoute aussi la personne en collègue aux employes
                 if(code_retour == 4) code_retour = 2;
                 else code_retour = 0;                 
             }
             parcours = parcours -> next;
         }
     }
-    g_ecrire(gEmployes);
+    g_ecrire(gPe);
     return code_retour;
 }
 
@@ -319,9 +325,9 @@ int rejoindre_entreprise(int indice, groupePersonnes *gEmployes, int entre)
     Code retour:    0 Si tout se passe bien
                     1 si la personne n'a pas cette personne en ami
                     2 si on ne trouve pas l'indice dans le groupe                         */
-int supprimer_collegue(int indice, groupePersonnes *gEmployes, int col)
+int supprimer_collegue(int indice, groupePersonnes *gPe, int col)
 {
-    node *temp = gEmployes->personnes;
+    node *temp = gPe->personnes;
     personne*tmpami;
     int trouve = 0, code_retour = -1, i, fait = 0;
     while(temp != NULL && trouve ==0){
@@ -344,7 +350,7 @@ int supprimer_collegue(int indice, groupePersonnes *gEmployes, int col)
         } else temp = temp -> next;
     }
     if (trouve == 0) code_retour = 2;                                   //Si on ne trouve pas l'index correspondant
-    g_ecrire(gEmployes);
+    g_ecrire(gPe);
     return code_retour;
 }
 
@@ -354,10 +360,10 @@ int supprimer_collegue(int indice, groupePersonnes *gEmployes, int col)
     Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
                     1 Si tout se passe bien et qu'on a trouvé au moins un match
                     2 si on ne trouve pas l'indice dans le groupe                         */
-int recherche_poste_comp(int indice, groupePersonnes *gEmployes, groupePostes *gPostes, groupeEntreprises *gEntre)
+int recherche_poste_comp(int indice, groupePersonnes *gPe, groupePostes *gPostes, groupeEntreprises *gEntre)
 {
     int trouve = 0, code_retour = 0, i, j, fait = 0;
-    node *temp = gEmployes->personnes;
+    node *temp = gPe->personnes;
     personne*tmpami;
 
     node*temposte = gPostes->poste;
@@ -409,10 +415,10 @@ int recherche_poste_comp(int indice, groupePersonnes *gEmployes, groupePostes *g
     Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
                     1 Si tout se passe bien et qu'on a trouvé au moins un match
                     2 si on ne trouve pas l'indice dans le groupe                         */
-int recherche_poste_postal(int indice, groupePersonnes *gEmployes, groupePostes *gPostes, groupeEntreprises *gEntre)
+int recherche_poste_postal(int indice, groupePersonnes *gPe, groupePostes *gPostes, groupeEntreprises *gEntre)
 {
     int trouve = 0, trouveentre = 0, code_retour = 0;
-    node *temp = gEmployes->personnes;
+    node *temp = gPe->personnes;
     personne*tmpami;
 
     node*temposte = gPostes->poste;
@@ -454,10 +460,10 @@ int recherche_poste_postal(int indice, groupePersonnes *gEmployes, groupePostes 
     Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
                     1 Si tout se passe bien et qu'on a trouvé au moins un match
                     2 si on ne trouve pas l'indice dans le groupe                         */
-int recherche_col_par_entre(int indice, groupePersonnes *gEmployes, int index)
+int recherche_col_par_entre(int indice, groupePersonnes *gPe, int index)
 {
     int trouve = 0, code_retour = 0, i;
-    node *temp = gEmployes->personnes;
+    node *temp = gPe->personnes;
     personne*tmpami;
     
     while(temp != NULL && trouve ==0){
@@ -484,10 +490,10 @@ int recherche_col_par_entre(int indice, groupePersonnes *gEmployes, int index)
     Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
                     1 Si tout se passe bien et qu'on a trouvé au moins un match
                     2 si on ne trouve pas l'indice dans le groupe                         */
-int recherche_col_comp(int indice, groupePersonnes *gEmployes, char comp[128])
+int recherche_col_comp(int indice, groupePersonnes *gPe, char comp[128])
 {
     int trouve = 0, code_retour = 0, i, j, fait = 0;
-    node *temp = gEmployes->personnes;
+    node *temp = gPe->personnes;
     personne*tmpami;
 
     while(temp != NULL && trouve ==0){
@@ -512,4 +518,64 @@ int recherche_col_comp(int indice, groupePersonnes *gEmployes, char comp[128])
     }
     if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
     return code_retour;
+}
+
+
+
+// printemployes
+// But : Afficher l'index, le nom et le prénom de toutes les personnes d'un même groupe
+void AfficherPersonnes(groupePersonnes* gPe)
+{
+ if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
+    else
+    {
+        node *tmp = gPe->personnes ;
+        personne *e = (personne*)tmp->data ;
+        while (e!= NULL && tmp != NULL)
+        {
+            cout << e->index << " - " << e->nom << " " << e->prenom << endl ; /* << " - " << e->courriel << " - " << e->entreprise << endl ; */
+            tmp = tmp->next ;
+            if(tmp != NULL) e = (personne*)tmp->data ;   
+        }
+    }
+}
+
+// But : Déterminer si une personne fait partie du groupe passé en paramètres
+int ExistePersonne(groupePersonnes* gPe, int const indexP)
+{
+    // Si le groupe est vide, la personne n'existe pas, on retourne 0
+    if (gPe->personnes == NULL) return 0;
+
+    // Si l'index demandé est supérieur à l'index de la dernière personne, la personne n'existe pas, on retourne 0
+    if(indexP > LastPersonne(gPe) || indexP < 0) return 0 ;
+
+    // Sinon on parcourt tout le groupe jusqu'à trouver (ou non) la personne voulue
+    node *tmp = gPe->personnes;
+    personne *p = (personne*)tmp->data;
+    while(p->index != indexP && p != NULL && tmp->next !=NULL){
+        tmp = tmp -> next;
+        p = (personne*)tmp->data;
+    } 
+    if (p->index == indexP) return 1 ; // On l'a trouvé, on retourne 1
+    // On l'a pas trouvé, on retourne 0
+    return 0;
+}
+
+// But : Déterminer l'index de la dernière personne d'un groupe de type groupePersonnes
+int LastPersonne(groupePersonnes* gPe)
+{
+    int index(0) ;
+    node *tmp = gPe->personnes ;
+    tmp = l_tail(tmp) ;
+    personne *p = (personne*)tmp->data ;
+    index = p->index ;
+
+    return index ;
+}
+
+int printemployes(groupePersonnes* gPe)
+{
+    cout << "VIEUX PRINT" << endl ;
+
+    return 0 ;
 }

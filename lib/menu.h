@@ -38,7 +38,7 @@ int MenuPrincipal(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
  ||
  || Retour :
  ||     Retourne 0 si tout s'est bien passé 
@@ -54,7 +54,7 @@ int MenuEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
  ||
  || Retour :
  ||     Retourne 0 si tout s'est bien passé 
@@ -69,7 +69,7 @@ int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePer
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
  ||
  || Retour :
  ||     Retourne 0 si tout s'est bien passé 
@@ -84,7 +84,7 @@ int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
  ||     indexE : index de l'entreprise connectée
  ||
  || Retour :
@@ -101,7 +101,7 @@ int MenuProfilEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonne
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
  ||     indexE : index de l'entreprise connectée (et donc à supprimer)
  ||
  || Retour :
@@ -117,7 +117,7 @@ int MenuConfirmerSuppressionEntreprise(groupeEntreprises *gE, groupePostes *gP, 
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
  ||     indexE : index de l'entreprise connectée
  ||
  || Retour :
@@ -133,7 +133,7 @@ int MenuAfficherPostesDuneEntreprise(groupeEntreprises* gE, groupePostes *gP, gr
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
  ||     indexE : index de l'entreprise connectée
  ||
  || Retour :
@@ -150,7 +150,7 @@ int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
  ||     indexE : index de l'entreprise connectée
  ||
  || Retour :
@@ -167,7 +167,7 @@ int MenuSupprimerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes 
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
  ||     indexE : index de l'entreprise connectée
  ||
  || Retour :
@@ -187,255 +187,224 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
 ||
    ============================================================================================================ */
 
-
 /*==============================================================================================
- || FONCTION : MenuCreer_Profil
+ || FONCTION : MenuPersonne
   ==============================================================================================
- || But : Le menu/formulaire pour créer un profil employés ou chercheur d'emploi
+ || But : Menu pour permettre à un utilisateur de s'identifier 
  ||
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||
+ || Retour : 
+ ||     Retourne 0 si tout s'est bien passé
+  ============================================================================================== */
+int MenuPersonne(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe);
+
+/*==============================================================================================
+ || FONCTION : MenuSeConnecterPersonne
+  ==============================================================================================
+ ||But : Affiche tous les index et nom des personnes du groupe de personnes
+ ||      et demande à l'utilisateur d'entrer le numéro de son profil         
+ ||
+ || Paramètres :
+ ||     gE : pointeur sur un groupe de type groupeEntreprises
+ ||     gP : pointeur sur un groupe de type groupePostes
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
  ||
  || Retour :
  ||     Retourne 0 si tout s'est bien passé 
   ============================================================================================== */
-int MenuCreer_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe);
+int MenuSeConnecterPersonne(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe) ;
+
+/*==============================================================================================
+ || FONCTION : MenuProfilPersonne
+  ==============================================================================================
+ || But : Affiche le menu avec toutes les fonctionnalités d'une personne connectée 
+ ||
+ || Paramètres :
+ ||     gE : pointeur sur un groupe de type groupeEntreprises
+ ||     gP : pointeur sur un groupe de type groupePostes
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     indexPe : index de la personne connectée
+ ||
+ || Retour :
+ ||     Retourne 0 si tout s'est bien passé 
+  ============================================================================================== */
+int MenuProfilPersonne(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexPe) ;
 
 /*==============================================================================================
  || FONCTION : MenuModifier_Profil
   ==============================================================================================
- || But : le menu pour une modification du profil
+ || But : Affiche le menu permettant à l'utilisateur de modifier son profil
  ||
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     id : L'identifiant de l'utilisateur en cours
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     indexPe: index de la personne connectée
  ||
- || Retour : Void
+ || Retour :
+ ||     Retourne 0 si tout s'est bien passé 
   ============================================================================================== */
-void MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
+int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe) ;
 
 /*==============================================================================================
- || FONCTION : MenuMod_Adresse
+ || FONCTION : MenuConfirmerSuppressionPersonne
   ==============================================================================================
- || But : Le formulaire pour modifier son adresse
+ || But : Affiche le menu demandant confirmation à l'utilisateur avant de supprimer son profil
  ||
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     id : L'identifiant de l'utilisateur en cours
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     indexPe : index de la personne connectée (et donc à supprimer)
+ ||
+ || Retour :
+ ||     Retourne 0 si tout s'est bien passé 
+  ============================================================================================== */
+int MenuConfirmerSuppressionPersonne(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe) ;
+
+/*==============================================================================================
+ || FONCTION : MenuCreerProfil
+  ==============================================================================================
+ || But : Affiche le menu permettant à l'utilisateur de créer son profil
+ ||
+ || Paramètres :
+ ||     gE : pointeur sur un groupe de type groupeEntreprises
+ ||     gP : pointeur sur un groupe de type groupePostes
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||
+ || Retour :
+ ||     Retourne 0 si tout s'est bien passé 
+  ============================================================================================== */
+int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe) ;
+
+/*==============================================================================================
+ || FONCTION : MenuConfirmerQuitterEntreprise
+  ==============================================================================================
+ || But : Affiche le menu demandant confirmation à l'utilisateur avant d'actualiser son statut
+ ||       (passer de employé à chercheur d'emploi)
+ ||
+ || Paramètres :
+ ||     gE : pointeur sur un groupe de type groupeEntreprises
+ ||     gP : pointeur sur un groupe de type groupePostes
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     indexPe : index de la personne connectée
  ||
  || Retour : 
- ||          Retourne 0 si tout s'est bien passé
+ ||     Retourne 0 si tout s'est bien passé
   ============================================================================================== */
-int MenuMod_Adresse(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
+int MenuConfirmerQuitterEntreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe) ;
 
 /*==============================================================================================
- || FONCTION : Menu_mod_entreprise
+ || FONCTION : MenuEntrepriseCherchePar
   ==============================================================================================
- || But : Le formulaire pour mettre à jour son entreprise 
+ || But : Affiche le menu permettant à une personne de chercher un emploi ou un collègue
  ||
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     id : L'identifiant de l'utilisateur en cours
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     indexPe : index de la personne connectée
  ||
- || Retour : 
- ||          Retourne 0 si tout s'est bien passé
+ || Retour :
+ ||     Retourne 0 si tout s'est bien passé 
   ============================================================================================== */
-int Menu_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
+int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexPe) ;
 
 /*==============================================================================================
- || FONCTION : Menuajouter_Competence
+ || FONCTION : MenuPersonneMod_CodePostal
   ==============================================================================================
- || But : Le formulaire pour ajouter une compétence
+ || But : Permet à une personne de modifier son code postal
  ||
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     id : L'identifiant de l'utilisateur en cours
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     indexPe: index de la personne connectée
  ||
  || Retour : 
- ||          Retourne 0 si tout s'est bien passé
+ ||     Retourne 0 si tout s'est bien passé
   ============================================================================================== */
-int Menuajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
+int MenuPersonneMod_CodePostal(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe);
 
 /*==============================================================================================
- || FONCTION : Menuquitter_entreprise
+ || FONCTION : MenuPersonne_mod_entreprise
   ==============================================================================================
- || But : Le menu pour quitter son entreprise (passer en recherche d'emploi)
+ || But : Permet à une personne de modifier son entreprise (si il change ou quitte son emploi)
  ||
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     id : L'identifiant de l'utilisateur en cours
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     indexPe: index de la personne connectée
  ||
  || Retour : 
- ||          Retourne 0 si tout s'est bien passé
+ ||     Retourne 0 si tout s'est bien passé
   ============================================================================================== */
-int Menuquitter_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id) ;
+int MenuPersonne_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe);
 
 /*==============================================================================================
- || FONCTION : printemployes
+ || FONCTION : MenuPersonneajouter_Competence
   ==============================================================================================
- || But : Print de la table employes
- ||
- || Paramètres :
- ||     gPe : pointeur sur un groupe de type groupe
-  ============================================================================================== */
-void printemployes (groupePersonnes *gPe);
-
-/*==============================================================================================
- || FONCTION : Menusupprimer_profil
-  ==============================================================================================
- || But : Le menu pour supprimer son profil
+ || But : Permet à une personne d'ajouter une compétence à son profil
  ||
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     id : L'identifiant de l'utilisateur en cours
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     indexPe: index de la personne connectée
  ||
  || Retour : 
- ||          Retourne 0 si tout s'est bien passé
+ ||     Retourne 0 si tout s'est bien passé
   ============================================================================================== */
-int Menusupprimer_profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
+int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe);
 
 /*==============================================================================================
- || FONCTION : Menuajouter_collegue
+ || FONCTION : MenuPersonneAjouter_collegue
   ==============================================================================================
- || But : Le menu pour ajouter un collegue dans sa liste
+ || But : Permet à une personne d'ajouter un collègue à son profil
  ||
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     id : L'identifiant de l'utilisateur en cours
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     indexPe: index de la personne connectée
  ||
  || Retour : 
- ||          Retourne 0 si tout s'est bien passé
+ ||     Retourne 0 si tout s'est bien passé
   ============================================================================================== */
-int Menuajouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
+int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe);
 
 /*==============================================================================================
- || FONCTION : Menusupprimer_collegue
+ || FONCTION : MenuPersonnesupprimer_collegue
   ==============================================================================================
- || But : Le menu pour supprimer un collegue de sa liste
+ || But : Permet à une personne de supprimer un collègue de son profil
  ||
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     id : L'identifiant de l'utilisateur en cours
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     indexPe: index de la personne connectée
  ||
  || Retour : 
- ||          Retourne 0 si tout s'est bien passé
+ ||     Retourne 0 si tout s'est bien passé
   ============================================================================================== */
-int Menusupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
-
-/*==============================================================================================
- || FONCTION : Menu_emploi
-  ==============================================================================================
- || But : l'interface pour chercher un emploi
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     id : L'identifiant de l'utilisateur en cours
- ||
- || Retour : 
- ||          Retourne 0 si tout s'est bien passé
-  ============================================================================================== */
-int Menu_emploi(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id) ;
-
-/*==============================================================================================
- || FONCTION : Menu_emploi_collegue
-  ==============================================================================================
- || But : l'interface pour chercher un emploi à l'aide d'un collègue
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     id : L'identifiant de l'utilisateur en cours
- ||
- || Retour : 
- ||          Retourne 0 si tout s'est bien passé
-  ============================================================================================== */
-int Menu_emploi_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id) ;
-
-/*==============================================================================================
- || FONCTION : Menuidentification
-  ==============================================================================================
- || But : Menu pour s'identifier (Universel, pour employé comme chercheur d'emploi)
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     id : L'identifiant de l'utilisateur en cours
- ||
- || Retour : 
- ||          Retourne 0 si tout s'est bien passé
-  ============================================================================================== */
-int Menuidentification(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe);
-
-/*==============================================================================================
- || FONCTION : CheckStatut
-  ==============================================================================================
- || But : Vérifie si il s'agit d'un employé ou d'un chercheur d'emploi et sélectionne ainsi le menu adapté
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     id : L'identifiant de l'utilisateur en cours
- ||
- || Retour : 
- ||          Retourne 0 si tout s'est bien passé
-  ============================================================================================== */
-int CheckStatut(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe,int id);
+int MenuPersonnesupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe);
 
 
-/*==============================================================================================
- || FONCTION :  MenuChercheur
-  ==============================================================================================
- || But : Menu principal pour les chercheur d'emploi
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     id : L'identifiant de l'utilisateur en cours
- ||
- || Retour : 
- ||          Retourne 0 si tout s'est bien passé
-  ============================================================================================== */
-int MenuChercheur(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int id) ;
 
-/*==============================================================================================
- || FONCTION :  MenuEmploye
-  ==============================================================================================
- || But : Menu principal pour les employe
- ||
- || Paramètres :
- ||     gE : pointeur sur un groupe de type groupeEntreprises
- ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
- ||     id : L'identifiant de l'utilisateur en cours
- ||
- || Retour : 
- ||          Retourne 0 si tout s'est bien passé
-  ============================================================================================== */
-int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int id) ;
+
+
+
+
+
+
+
+
+
 
 /*==============================================================================================
  || FONCTION :  A_Implementer
@@ -445,10 +414,105 @@ int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, i
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
- ||     gPe : pointeur sur un groupe de type groupe
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
  ||
  || Retour : 
- ||          Retourne 0 si tout s'est bien passé
+ ||     Retourne 0 si tout s'est bien passé
   ============================================================================================== */
 int A_Implementer(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe) ;
 
+
+
+
+
+
+// /*==============================================================================================
+//  || FONCTION :  MenuChercheur
+//   ==============================================================================================
+//  || But : Menu principal pour les chercheur d'emploi
+//  ||
+//  || Paramètres :
+//  ||     gE : pointeur sur un groupe de type groupeEntreprises
+//  ||     gP : pointeur sur un groupe de type groupePostes
+//  ||     gPe : pointeur sur un groupe de type groupePersonnes
+//  ||     id : L'identifiant de l'utilisateur en cours
+//  ||
+//  || Retour : 
+//  ||          Retourne 0 si tout s'est bien passé
+//   ============================================================================================== */
+// int MenuChercheur(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int id) ;
+
+// /*==============================================================================================
+//  || FONCTION :  MenuEmploye
+//   ==============================================================================================
+//  || But : Menu principal pour les employe
+//  ||
+//  || Paramètres :
+//  ||     gE : pointeur sur un groupe de type groupeEntreprises
+//  ||     gP : pointeur sur un groupe de type groupePostes
+//  ||     gPe : pointeur sur un groupe de type groupePersonnes
+//  ||     id : L'identifiant de l'utilisateur en cours
+//  ||
+//  || Retour : 
+//  ||          Retourne 0 si tout s'est bien passé
+//   ============================================================================================== */
+// int MenuEmploye(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int id) ;
+
+
+// /*==============================================================================================
+//  || FONCTION : CheckStatut
+//   ==============================================================================================
+//  || But : Vérifie si il s'agit d'un employé ou d'un chercheur d'emploi et sélectionne ainsi le menu adapté
+//  ||
+//  || Paramètres :
+//  ||     gE : pointeur sur un groupe de type groupeEntreprises
+//  ||     gP : pointeur sur un groupe de type groupePostes
+//  ||     gPe : pointeur sur un groupe de type groupePersonnes
+//  ||     id : L'identifiant de l'utilisateur en cours
+//  ||
+//  || Retour : 
+//  ||          Retourne 0 si tout s'est bien passé
+//   ============================================================================================== */
+// int CheckStatut(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe,int id);
+
+// /*==============================================================================================
+//  || FONCTION : printemployes
+//   ==============================================================================================
+//  || But : Print de la table employes
+//  ||
+//  || Paramètres :
+//  ||     gPe : pointeur sur un groupe de type groupe
+//   ============================================================================================== */
+// void printemployes (groupePersonnes *gPe);
+
+// /*==============================================================================================
+//  || FONCTION : Menu_emploi
+//   ==============================================================================================
+//  || But : l'interface pour chercher un emploi
+//  ||
+//  || Paramètres :
+//  ||     gE : pointeur sur un groupe de type groupeEntreprises
+//  ||     gP : pointeur sur un groupe de type groupePostes
+//  ||     gPe : pointeur sur un groupe de type groupePersonnes
+//  ||     id : L'identifiant de l'utilisateur en cours
+//  ||
+//  || Retour : 
+//  ||          Retourne 0 si tout s'est bien passé
+//   ============================================================================================== */
+// int Menu_emploi(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id) ;
+
+// /*==============================================================================================
+//  || FONCTION : Menu_emploi_collegue
+//   ==============================================================================================
+//  || But : l'interface pour chercher un emploi à l'aide d'un collègue
+//  ||
+//  || Paramètres :
+//  ||     gE : pointeur sur un groupe de type groupeEntreprises
+//  ||     gP : pointeur sur un groupe de type groupePostes
+//  ||     gPe : pointeur sur un groupe de type groupePersonnes
+//  ||     id : L'identifiant de l'utilisateur en cours
+//  ||
+//  || Retour : 
+//  ||          Retourne 0 si tout s'est bien passé
+//   ============================================================================================== */
+// int Menu_emploi_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id) ;

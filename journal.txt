@@ -72,3 +72,59 @@
         01-05-2020 20:13:54 : Disney a consulté sa liste des postes à pourvoir 
     01-05-2020 20:14:00 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
 01-05-2020 20:14:00 : Fermeture de l'application 
+03-05-2020 09:44:06 : Ouverture de l'application 
+    03-05-2020 09:44:56 : Création du compte 9 - Avatar Aang - 84265 - momoetappa@katara.com
+    03-05-2020 09:46:17 : Connexion du compte 9 - Avatar  Aang - 84265 - momoetappa@katara.com
+    03-05-2020 09:46:18 : Déconnexion du compte 9 - Avatar  Aang - 84265 - momoetappa@katara.com
+03-05-2020 09:46:18 : Fermeture de l'application 
+03-05-2020 09:57:07 : Ouverture de l'application 
+    03-05-2020 09:57:13 : Connexion du compte 9 - Avatar  Aang - 84265 - momoetappa@katara.com
+        03-05-2020 09:57:20 : Suppression du profil  9 - Avatar Aang - 84265 - momoetappa@katara.com
+03-05-2020 09:57:26 : Fermeture de l'application 
+03-05-2020 10:11:51 : Ouverture de l'application 
+    03-05-2020 10:12:04 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+        03-05-2020 10:12:24 : Mouse Mickey quitte l'entreprise Disney
+    03-05-2020 10:12:30 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+03-05-2020 10:12:30 : Fermeture de l'application 
+03-05-2020 11:31:25 : Ouverture de l'application 
+    03-05-2020 11:31:31 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+        03-05-2020 11:31:40 : Mouse Mickey quitte l'entreprise Disney
+        03-05-2020 11:32:11 : Mouse Mickey a rejoint l'entreprise Google
+        03-05-2020 11:32:32 : Mouse Mickey quitte l'entreprise Google
+        03-05-2020 11:32:32 : Mouse Mickey a rejoint l'entreprise Disney
+    03-05-2020 11:32:39 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+03-05-2020 11:32:39 : Fermeture de l'application 
+03-05-2020 11:36:17 : Ouverture de l'application 
+    03-05-2020 11:36:24 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+    03-05-2020 12:02:54 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+03-05-2020 12:02:54 : Fermeture de l'application 
+03-05-2020 12:02:58 : Ouverture de l'application 
+    03-05-2020 12:03:01 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+        03-05-2020 12:03:11 : Mouse Mickey a ajouté une compétence à son profil (chant)
+    03-05-2020 12:03:18 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+03-05-2020 12:03:18 : Fermeture de l'application 
+03-05-2020 12:05:13 : Ouverture de l'application 
+    03-05-2020 12:05:18 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+    03-05-2020 12:10:31 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+03-05-2020 12:10:31 : Fermeture de l'application 
+03-05-2020 12:10:39 : Ouverture de l'application 
+    03-05-2020 12:10:44 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+    03-05-2020 12:13:03 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+03-05-2020 12:13:03 : Fermeture de l'application 
+03-05-2020 12:18:20 : Ouverture de l'application 
+    03-05-2020 12:18:25 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+        03-05-2020 12:18:44 : Mouse Mickey a supprimé Mouse Minnie de son réseau de collègue
+    03-05-2020 12:19:13 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+03-05-2020 12:19:13 : Fermeture de l'application 
+03-05-2020 12:19:59 : Ouverture de l'application 
+    03-05-2020 12:20:03 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+    03-05-2020 12:20:18 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+03-05-2020 12:20:18 : Fermeture de l'application 
+03-05-2020 12:40:41 : Ouverture de l'application 
+    03-05-2020 12:40:47 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+        03-05-2020 12:41:02 : Mouse Mickey a fait une recherche de collègue par entreprise (Google)
+        03-05-2020 12:41:20 : Mouse Mickey a fait une recherche de collègue par compétence (chant)
+        03-05-2020 12:41:35 : Mouse Mickey a fait une recherche de poste par compétence (ERREUR)
+        03-05-2020 12:41:55 : Mouse Mickey a fait une recherche de poste par compétence et code postal (ERREUR, -1)
+    03-05-2020 12:42:06 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+03-05-2020 12:42:06 : Fermeture de l'application 

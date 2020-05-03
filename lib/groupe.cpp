@@ -456,7 +456,6 @@ void SauvegardeJournal()
    }
 }
 
-
 void RestaurerJournal()
 {
     remove("journal.txt") ;

@@ -6,6 +6,12 @@ using namespace std ;
 
 #include "journal.h"
 
+/* ============================================================================================================
+||
+||                                 JOURNAL PARTIE GENERALE 
+||
+   ============================================================================================================ */
+
 // But : Récupérer la date et l'heure de l'OS (fonction trouvée sur internet)
 string AfficherDate()
 {
@@ -54,7 +60,14 @@ void journal_FermetureApplication()
     FluxVersJournal.close() ;
 }
 
-// But : Ajouter une entrée au journal renseignant les informations de l'entreprise créé
+
+/* ============================================================================================================
+||
+||                                 JOURNAL PARTIE ENTREPRISE 
+||
+   ============================================================================================================ */
+
+// But : Ajouter une entrée au journal renseignant les informations de l'entreprise créée
 void journal_CreationEntreprise(entreprise* e)
 { 
     ofstream FluxVersJournal("journal.txt", ios::app) ;
@@ -215,10 +228,254 @@ void journal_DeconnexionEntreprise(entreprise* e)
 }
 
 
+/* ============================================================================================================
+||
+||                                 JOURNAL PARTIE PERSONNE 
+||
+  ============================================================================================================ */
+
+//  But : Ajouter une entrée au journal renseignant la personne qui s'est connectée
+void journal_ConnexionPersonne(personne* p)
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "    " << AfficherDate() << " : Connexion du compte " << 
+        p->index << " - " << p->nom << "  " << p->prenom << " - " << p->adresse << " - " << p->courriel << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+// But : Ajouter une entrée au journal renseignant la personne qui s'est déconnectée
+void journal_DeconnexionPersonne(personne* p)
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "    " << AfficherDate() << " : Déconnexion du compte " << 
+        p->index << " - " << p->nom << "  " << p->prenom << " - " << p->adresse << " - " << p->courriel << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+// But : Ajouter une entrée au journal renseignant les informations de la personne créée
+void journal_CreationPersonne(personne* p)
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "    " << AfficherDate() << " : Création du compte " << 
+        p->index << " - " << p->nom << " " << p->prenom << " - " << p->adresse << " - " << p->courriel << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+// But : Ajouter une entrée au journal renseignant la personne qui a été supprimée
+void journal_SuppressionPersonne(personne* p)
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "        " << AfficherDate() << " : Suppression du profil  " << 
+        p->index << " - " << p->nom << " " << p->prenom << " - " << p->adresse << " - " << p->courriel << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+// But : Ajouter une entrée au journal renseignant que la personne a quitté son entreprise
+void journal_QuitterEntreprise(personne* p, entreprise* e)
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "        " << AfficherDate() << " : " <<  p->nom << " " << p->prenom << " quitte l'entreprise " << e->nom << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+// But : Ajouter une entrée au journal renseignant que la personne a modifié son code postal
+void journal_PersonneMod_CodePostal(personne* p, int code_postal, int new_code_postal)
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "        " << AfficherDate() << " : " << p->nom << " " << p->prenom << " a modifié son code postal (" 
+        << code_postal << " -> " << new_code_postal << ")" << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+// But : Ajouter une entrée au journal renseignant que la personne a ajouté une compétence à son profil
+void journal_Personneajouter_Competence(personne* p, char competence[128])
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "        " << AfficherDate()  << " : " << p->nom << " " << p->prenom << " a ajouté une compétence à son profil (" 
+        << competence << ")" << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+// But : Ajouter une entrée au journal renseignant que la personne a changé d'entreprise
+void journal_Personne_mod_entreprise(personne* p, entreprise* e, entreprise*  new_e)
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        if(p->entreprise == -1 && new_e == NULL) ; // On ne fait rien
+        else if(new_e == NULL)  // On indique que la personne quitte son entreprise
+        {
+            journal_QuitterEntreprise(p,e) ;
+        }
+        else if(p->entreprise == -1) // On indique que la personne rejoint une entreprise
+        {
+            FluxVersJournal << "        " << AfficherDate() << " : " << p->nom << " " << p->prenom << " a rejoint l'entreprise "
+            << new_e->nom << endl ;
+        }
+        else  // On indique que la personne change d'entreprise
+        {
+            journal_QuitterEntreprise(p,e) ;
+            FluxVersJournal << "        " << AfficherDate() << " : " << p->nom << " " << p->prenom << " a rejoint l'entreprise "
+            << new_e->nom << endl ;
+        }
+        
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+// But : Ajouter une entrée au journal renseignant que la personne a ajouté un collègue à son réseau
+void journal_PersonneAjouter_Collegue(personne* p, personne* np)
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "        " << AfficherDate()  << " : " << p->nom << " " << p->prenom << " a ajouté " <<
+        np->nom << " " << np->prenom << " à son réseau de collègue" << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+// But : Ajouter une entrée au journal renseignant que la personne a supprimé un collègue de son réseau
+void journal_PersonneSupprimer_Collegue(personne* p, personne* np)
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "        " << AfficherDate()  << " : " << p->nom << " " << p->prenom << " a supprimé " <<
+        np->nom << " " << np->prenom << " de son réseau de collègue" << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+// But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche de poste par compétence, et affiche la compétence
+void journal_PersonneRecherchePosteParCompetence(personne* p, char competence[128])
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "        " << AfficherDate() << " : " << p->nom << " " << p->prenom << " a fait une recherche de poste par compétence (" << competence << ")" << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+/* But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche
+         de poste par compétence et code, et affiche la compétence et le code */
+void journal_PersonneRecherchePosteParCompetenceEtCode(personne* p, char competence[128], int code)
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "        " << AfficherDate() << " : " << p->nom << " " << p->prenom 
+        << " a fait une recherche de poste par compétence et code postal (" << competence << ", " << code << ")" << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+// But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche de collègue par compétence, et affiche la compétence
+void journal_PersonneRechercheCollegueParCompetence(personne* p, char competence[128])
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "        " << AfficherDate() << " : " << p->nom << " " << p->prenom << " a fait une recherche de collègue par compétence (" << competence << ")" << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+// But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche de collègue par entreprise, et affiche l'entreprise
+void journal_PersonneRechercheCollegueParEntreprise(personne* p, entreprise* e)
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "        " << AfficherDate() << " : " << p->nom << " " << p->prenom << " a fait une recherche de collègue par entreprise (" << e->nom << ")" << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+
+
 
 
 /*
 
-journal_DeconnexionEntreprise(g_indexEntreprise(gE, indexE)) ;
+journal_PersonneRechercheCollegueParEntreprise(g_index(gPe, indexPe)) ;
 
 */
