@@ -636,6 +636,7 @@ int MenuSeConnecterPersonne(groupeEntreprises *gE, groupePostes *gP, groupePerso
     }
 
     // Troisième étape : Si l'utilisateur a renseigné un index de personne valide, on affiche le menu de cette personne
+    journal_ConnexionPersonne(g_index(gPe, (int)choix - 48)) ;
     return MenuProfilPersonne(gE, gP, gPe, (int)choix - 48) ;
     
     return 0 ;
@@ -696,9 +697,11 @@ int MenuProfilPersonne(groupeEntreprises *gE, groupePostes *gP, groupePersonnes 
         return MenuConfirmerQuitterEntreprise(gE, gP, gPe, indexPe) ;
         break;
     case 'm':
+        journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
         return MenuPrincipal(gE, gP, gPe) ;
         break;
     case 'q':
+        journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
         return 0 ;
         break;
     default:
@@ -757,13 +760,14 @@ int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes
         cout << "2. Modifier votre adresse mail" << endl ; 
         cout << "3. Ajouter une compétence" << endl ;                              
         cout << "4. Ajouter un collègue" << endl ;
-        cout << "5. Supprimer un collègue" << endl << endl ;
+        cout << "5. Supprimer un collègue" << endl ;
+        cout << "6. Modifier votre entreprise" << endl << endl ;
         cout << "r. Retourner à la page précédente" << endl ;
         cout << "m. Retourner au menu principal" << endl ;                       
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         cin >> choix ;
-    } while ((choix > '5' || choix < '1') && choix != 'q' && choix != 'm' && choix != 'r');
+    } while ((choix > '6' || choix < '1') && choix != 'q' && choix != 'm' && choix != 'r');
 
     switch (choix)
     {
@@ -775,24 +779,30 @@ int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes
         A_Implementer(gE, gP, gPe) ;
         break;
     case '3':
-        Menuajouter_Competence(gE, gP, gPe, indexPe) ;
+        MenuPersonneajouter_Competence(gE, gP, gPe, indexPe) ;
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
         break;
     case '4':
-        Menuajouter_collegue(gE, gP, gPe, indexPe) ;
+        MenuPersonneAjouter_collegue(gE, gP, gPe, indexPe) ;
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
         break;
     case '5':
-        Menusupprimer_collegue(gE, gP, gPe, indexPe) ;
+        MenuPersonnesupprimer_collegue(gE, gP, gPe, indexPe) ;
+        return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
+        break;
+    case '6':
+        MenuPersonne_mod_entreprise(gE, gP, gPe, indexPe) ;
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
         break;
     case 'r':
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
         break;
     case 'm':
+        journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
         return MenuPrincipal(gE, gP, gPe) ;
         break;
     case 'q':
+        journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
         break;
     default:
         break;
@@ -840,7 +850,6 @@ int MenuConfirmerSuppressionPersonne(groupeEntreprises* gE, groupePostes *gP, gr
     switch (choix)
     {
     case 'o':
-        // gE = SupprimerEntreprise(gE, indexE) ;
         supprimer_profil(indexPe,gPe) ;
         return MenuPrincipal(gE, gP, gPe) ;
         break;
@@ -983,6 +992,7 @@ int MenuConfirmerQuitterEntreprise(groupeEntreprises* gE, groupePostes *gP, grou
     // On actualise ou pas son statut en fonction de sa réponse
     if (c=='o')
     {
+      journal_QuitterEntreprise(g_index(gPe, indexPe), g_indexEntreprise(gE,g_index(gPe, indexPe)->entreprise)) ;
       quitter_entreprise(indexPe,gPe);
       return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
     } 
@@ -996,6 +1006,7 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
 {
     char choix(0) ;
     int a(0) ;
+    char erreur[10] = "ERREUR" ;
 
     // On commence par regarder si cette personne est un employé ou un chercheur d'emploi
     std::string statut = "" ;
@@ -1051,6 +1062,7 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
             cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
             cout << "Résultat de la recherche :" << endl ;
             a=recherche_poste_comp(indexPe,gPe,gP,gE);
+            journal_PersonneRecherchePosteParCompetence(g_index(gPe, indexPe),erreur ) ;
             if(a==0) cout << "pas de poste avec cette competence" << endl;
             if(a==1) cout << "Au moins un poste avec cet competence" << endl;
             if(a==2) cout << "Problème d'indice non trouvé"<< endl;
@@ -1064,6 +1076,7 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
             cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
             cout << "Résultat de la recherche :" << endl ;
             a=recherche_poste_postal(indexPe,gPe,gP,gE);
+            journal_PersonneRecherchePosteParCompetenceEtCode(g_index(gPe, indexPe), erreur, -1 ) ;
             if(a==0) cout << "pas de poste à cette adresse" << endl;
             if(a==1) cout << "Au moins un poste à cette adresse" << endl;
             if(a==2) cout << "Problème d'indice non trouvé"<< endl;
@@ -1077,9 +1090,11 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
             return MenuProfilPersonne(gE, gP, gPe, indexPe) ; ;
             break;
         case 'm':
+            journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
             return MenuPrincipal(gE, gP, gPe) ;
             break;
         case 'q':
+            journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
             return 0 ;
             break;
         default:
@@ -1118,6 +1133,7 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
             cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
             cout << "Résultat de la recherche :" << endl ;
             a = recherche_col_par_entre(indexPe,gPe,col);
+            journal_PersonneRechercheCollegueParEntreprise(g_index(gPe, indexPe), g_indexEntreprise(gE,col)) ;
             if(a==0) cout << "Pas de collègue dans cette entreprise" << endl;
             if(a==1) cout << "Au moins un de vos collègue travaille dans cette entreprise" << endl;
             if(a==2) cout << "Problème d'indice non trouvé"<< endl;
@@ -1136,6 +1152,7 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
             cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
             cout << "Résultat de la recherche :" << endl ;
             a = recherche_col_comp(indexPe,gPe,comp);
+            journal_PersonneRechercheCollegueParCompetence(g_index(gPe, indexPe), comp) ;
             if(a==0) cout << "Pas de collègue avec cette compétence" << endl;
             if(a==1) cout << "Au moins un de vos collègue possède cette compétence" << endl;
             if(a==2) cout << "Problème d'indice non trouvé"<< endl;
@@ -1149,9 +1166,11 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
             return MenuProfilPersonne(gE, gP, gPe, indexPe) ; ;
             break;
         case 'm':
+            journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
             return MenuPrincipal(gE, gP, gPe) ;
             break;
         case 'q':
+            journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
             return 0 ;
             break;
         default:
@@ -1164,9 +1183,11 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ; ;
         break;
     case 'm':
+        journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
         return MenuPrincipal(gE, gP, gPe) ;
         break;
     case 'q':
+        journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
         return 0 ;
         break;
     default:
@@ -1188,89 +1209,136 @@ int MenuPersonneMod_CodePostal(groupeEntreprises* gE, groupePostes *gP, groupePe
     cout << "Quel est votre nouveau code postal ? : " ;
     cin >> newadr;
 
+    journal_PersonneMod_CodePostal(g_index(gPe, indexPe),g_index(gPe, indexPe)->adresse, newadr) ;
     modifier_adresse(indexPe,gPe,newadr);
+
+    char choix(0) ;
+    cout << "Opération effectuée avec succès" << endl;
+    cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
+    cin >> choix ;
 
     return 0;
 
+}
+
+// But : Permet à une personne de modifier son entreprise (si il change ou quitte son emploi)
+int MenuPersonne_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+{
+    int newent;
+
+    system("clear") ;
+    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+    cout << "Changement de votre entreprise" << endl << endl ;
+
+    AfficherEntreprises(gE);
+    cout << "Saisir l'ID de votre nouvelle entreprise : " << endl;
+    cin >> newent;
+    cout << "Votre statut entreprise a été mise à jour" << endl;
+
+    if(g_index(gPe, indexPe)->entreprise == -1 && newent == -1) ; // On ne fait rien
+    else if(newent == -1) journal_Personne_mod_entreprise(g_index(gPe, indexPe), g_indexEntreprise(gE,g_index(gPe,indexPe)->entreprise), NULL) ;
+    else journal_Personne_mod_entreprise(g_index(gPe, indexPe), g_indexEntreprise(gE,g_index(gPe,indexPe)->entreprise),g_indexEntreprise(gE,newent)) ;
+
+    rejoindre_entreprise(indexPe,gPe,newent); //ou modifier entreprise ?
+
+    char choix(0) ;
+    cout << "Opération effectuée avec succès" << endl;
+    cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
+    cin >> choix ;
+
+    return 0;
 }
 
 // But : Permet à une personne d'ajouter une compétence à son profil
-int Menuajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
-
     char comp[128];
 
-    cout << "Saisir votre nouvelle compétence : " << endl;
+    system("clear") ;
+    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+    cout << "Ajout d'une nouvelle compétence" << endl << endl ;
+    cout << "Saisir votre nouvelle compétence : " ;
     cin >> comp;
 
-    int a = ajouter_competence(id,gPe,comp);
+    int a = ajouter_competence(indexPe,gPe,comp);
 
-    if(a==1) cout << "vous avez déja cette compétence" << endl;
-    if(a==2) cout << "vous avez déja le nombre maximal de compétence" << endl;
+    if(a==1) cout << "Vous avez déjà cette compétence" << endl;
+    if(a==2) cout << "Vous avez déjà le nombre maximal de compétences" << endl;
     if(a==3) cout << "Désolé, votre ID n'est pas répertorié" << endl;
-    if(a==0) cout << "Operation effectué avec succès" << endl;
+    if(a==0) 
+    {
+        cout << "Opération effectuée avec succès" << endl;
+        journal_Personneajouter_Competence(g_index(gPe, indexPe), comp) ;
+    }
+    char choix(0) ;
+    cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
+    cin >> choix ;
 
-    return 0;
-
+    return 0 ;
 }
 
-
-
-
-int Menu_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id){
-    
-    int newent;
-
-    AfficherEntreprises(gE);
-
-    cout << "Saisir l'ID de votre nouvelle entreprise : " << endl;
-    cin >> newent;
-
-    cout << "Votre statut entreprise a été mise à jour" << endl;
-
-    rejoindre_entreprise(id,gPe,newent); //ou modifier entreprise ?
-
-    return 0;
-}
-
-int Menuajouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id)
+// But : Permet à une personne d'ajouter un collègue à son profil
+int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
-
     int col;
 
-    printemployes(gPe);
+    system("clear") ;
+    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+    cout << "Ajout d'un collègue au réseau" << endl << endl ;
 
-    cout << endl << "Ecrivez l'ID correspondant à votre nouveau collègue : " << endl;
+    AfficherPersonnes(gPe);
+
+    cout << endl << "Ecrivez l'ID correspondant au collègue à ajouter à votre réseau : " ;
     cin >> col;
 
-    int a= ajouter_collegue(id,gPe,col);
+    int a= ajouter_collegue(indexPe,gPe,col);
 
-    if(a==1) cout << "Ce collègue est déja dans votre liste" << endl;
-    if(a==2) cout << "Cet personne n'est pas dans la même entreprise que vous" << endl;
+    if(a==1) cout << "Ce collègue fait déjà partie de votre réseau" << endl;
+    if(a==2) cout << "Cette personne n'est pas dans la même entreprise que vous" << endl;
     if(a==3) cout << "Désolé, cet ID n'est pas répertorié" << endl;
     if(a==4) cout << "Désolé, vous avez atteint le nombre maximum de collègues" << endl;
-    if(a==0) cout << "Operation effectué avec succès" << endl;
+    if(a==0) 
+    {
+        cout << "Operation effectué avec succès" << endl;
+        journal_PersonneAjouter_Collegue(g_index(gPe, indexPe), g_index(gPe, col)) ;
+    }
+
+    char choix(0) ;
+    cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
+    cin >> choix ;
 
     return 0;
 
 }
 
-int Menusupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id)
+// But : Permet à une personne de supprimer un collègue de son profil
+int MenuPersonnesupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
-
     int col;
 
-    printemployes(gPe);
+    system("clear") ;
+    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+    cout << "Suppression d'un collègue du réseau" << endl << endl ;
 
-    cout << endl << "Ecrivez l'ID correspondant à votre ancien collègue : " << endl;
+    AfficherPersonnes(gPe);
+
+    cout << endl << "Ecrivez l'ID correspondant au collègue à retirer de votre réseau : " ;
     cin >> col;
 
-    int a= supprimer_collegue(id,gPe,col);
+    int a= supprimer_collegue(indexPe,gPe,col);
 
 
-    if(a==1) cout << "Désolé, Cet personne n'est déja plus votre collègues" << endl;
-    if(a==2) cout << "Désolé, Cet personne n'est pas enregistré dans la BDD" << endl;
-    if(a==0) cout << "Operation effectué avec succès" << endl;
+    if(a==1) cout << "Désolé, cette personne ne fait pas partie de votre réseau" << endl;
+    if(a==2) cout << "Désolé, cette identifiant n'est pas attribué" << endl;
+    if(a==0)
+    {
+        cout << "Opération effectué avec succès" << endl;
+        journal_PersonneSupprimer_Collegue(g_index(gPe, indexPe), g_index(gPe, col)) ;
+    }
+
+    char choix(0) ;
+    cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
+    cin >> choix ;
 
     return 0;
 
@@ -1281,6 +1349,7 @@ int Menusupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePerson
 
 
 
+// But : Si une fonctionnalité présente dans le menu n'est pas encore implémentée
 int A_Implementer(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
 {
     char choix(0) ;    
@@ -1314,11 +1383,7 @@ int A_Implementer(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
 
 
 
-
-
-
-
-
+/* *****************************          CIMETIERRE          ******************************************************************* */
  
 
 // int MenuChercheur(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int id)

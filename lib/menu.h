@@ -326,82 +326,73 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
  ||     indexPe: index de la personne connectée
  ||
  || Retour : 
- ||          Retourne 0 si tout s'est bien passé
+ ||     Retourne 0 si tout s'est bien passé
   ============================================================================================== */
 int MenuPersonneMod_CodePostal(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe);
 
-
-
-
-
-
-
-
-
-
 /*==============================================================================================
- || FONCTION : Menu_mod_entreprise
+ || FONCTION : MenuPersonne_mod_entreprise
   ==============================================================================================
- || But : Le formulaire pour mettre à jour son entreprise 
+ || But : Permet à une personne de modifier son entreprise (si il change ou quitte son emploi)
  ||
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
  ||     gPe : pointeur sur un groupe de type groupePersonnes
- ||     id : L'identifiant de l'utilisateur en cours
+ ||     indexPe: index de la personne connectée
  ||
  || Retour : 
- ||          Retourne 0 si tout s'est bien passé
+ ||     Retourne 0 si tout s'est bien passé
   ============================================================================================== */
-int Menu_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
+int MenuPersonne_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe);
 
 /*==============================================================================================
- || FONCTION : Menuajouter_Competence
+ || FONCTION : MenuPersonneajouter_Competence
   ==============================================================================================
- || But : Le formulaire pour ajouter une compétence
+ || But : Permet à une personne d'ajouter une compétence à son profil
  ||
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
  ||     gPe : pointeur sur un groupe de type groupePersonnes
- ||     id : L'identifiant de l'utilisateur en cours
+ ||     indexPe: index de la personne connectée
  ||
  || Retour : 
- ||          Retourne 0 si tout s'est bien passé
+ ||     Retourne 0 si tout s'est bien passé
   ============================================================================================== */
-int Menuajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
+int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe);
 
 /*==============================================================================================
- || FONCTION : Menuajouter_collegue
+ || FONCTION : MenuPersonneAjouter_collegue
   ==============================================================================================
- || But : Le menu pour ajouter un collegue dans sa liste
+ || But : Permet à une personne d'ajouter un collègue à son profil
  ||
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
  ||     gPe : pointeur sur un groupe de type groupePersonnes
- ||     id : L'identifiant de l'utilisateur en cours
+ ||     indexPe: index de la personne connectée
  ||
  || Retour : 
- ||          Retourne 0 si tout s'est bien passé
+ ||     Retourne 0 si tout s'est bien passé
   ============================================================================================== */
-int Menuajouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
+int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe);
 
 /*==============================================================================================
- || FONCTION : Menusupprimer_collegue
+ || FONCTION : MenuPersonnesupprimer_collegue
   ==============================================================================================
- || But : Le menu pour supprimer un collegue de sa liste
+ || But : Permet à une personne de supprimer un collègue de son profil
  ||
  || Paramètres :
  ||     gE : pointeur sur un groupe de type groupeEntreprises
  ||     gP : pointeur sur un groupe de type groupePostes
  ||     gPe : pointeur sur un groupe de type groupePersonnes
- ||     id : L'identifiant de l'utilisateur en cours
+ ||     indexPe: index de la personne connectée
  ||
  || Retour : 
- ||          Retourne 0 si tout s'est bien passé
+ ||     Retourne 0 si tout s'est bien passé
   ============================================================================================== */
-int Menusupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int id);
+int MenuPersonnesupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe);
 
 
 
@@ -426,7 +417,7 @@ int Menusupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePerson
  ||     gPe : pointeur sur un groupe de type groupePersonnes
  ||
  || Retour : 
- ||          Retourne 0 si tout s'est bien passé
+ ||     Retourne 0 si tout s'est bien passé
   ============================================================================================== */
 int A_Implementer(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe) ;
 

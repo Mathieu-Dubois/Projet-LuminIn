@@ -2,6 +2,14 @@
 
 #include "entreprise.h"
 #include "postes.h"
+#include "groupe.h"
+
+
+/* ============================================================================================================
+||
+||                                 JOURNAL PARTIE GENERALE 
+||
+   ============================================================================================================ */
 
 /*==============================================================================================
  || FONCTION : AfficherDate
@@ -43,6 +51,14 @@ void journal_OuvertureApplication() ;
  ||     Aucun 
   ============================================================================================== */
 void journal_FermetureApplication() ;
+
+
+
+/* ============================================================================================================
+||
+||                                 JOURNAL PARTIE ENTREPRISE 
+||
+   ============================================================================================================ */
 
 /*==============================================================================================
  || FONCTION : journal_CreationEntreprise
@@ -99,7 +115,7 @@ void journal_SuppressionPoste(poste* p) ;
 /*==============================================================================================
  || FONCTION : journal_CreationPoste
   ==============================================================================================
- || But : Ajouter une entrée au journal renseignant les informations du poste créé
+ || But : Ajouter une entrée au journal renseignant les informations du poste créée
  ||
  || Paramètre :
  ||     p : pointeur sur un poste
@@ -166,3 +182,213 @@ void journal_EntrepriseRechercheCompetenceEtCode(entreprise* e, char competence[
  ||     Aucun 
   ============================================================================================== */
 void journal_DeconnexionEntreprise(entreprise* e) ;
+
+
+
+/* ============================================================================================================
+||
+||                                 JOURNAL PARTIE PERSONNE 
+||
+  ============================================================================================================ */
+
+/*==============================================================================================
+ || FONCTION : journal_ConnexionPersonne
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant la personne qui s'est connectée
+ ||
+ || Paramètre :
+ ||     p : pointeur sur une personne
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_ConnexionPersonne(personne* p) ;
+
+/*==============================================================================================
+ || FONCTION : journal_DeconnexionPersonne
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant la personne qui s'est déconnectée
+ ||
+ || Paramètre :
+ ||     p : pointeur sur une personne
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_DeconnexionPersonne(personne* p) ;
+
+/*==============================================================================================
+ || FONCTION : journal_CreationPersonne
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant les informations de la personne créée
+ ||
+ || Paramètre :
+ ||     p : pointeur sur une personne
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_CreationPersonne(personne* p) ;
+
+/*==============================================================================================
+ || FONCTION : journal_SuppressionPersonne
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant la personne qui a été supprimée
+ ||
+ || Paramètre :
+ ||     p : pointeur sur une personne
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_SuppressionPersonne(personne* p) ;
+
+/*==============================================================================================
+ || FONCTION : journal_QuitterEntreprise
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant que la personne a quitté son entreprise
+ ||
+ || Paramètre :
+ ||     p : pointeur sur une personne
+ ||     e : pointeur sur l'entreprise quitté
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_QuitterEntreprise(personne* p, entreprise* e) ;
+
+/*==============================================================================================
+ || FONCTION : journal_PersonneMod_CodePostal
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant que la personne a modifié son code postal
+ ||
+ || Paramètre :
+ ||     p : pointeur sur une personne
+ ||     code_postal : entier contenant le nouveau code postal
+ ||     new_code_postal : entier contenant le nouveau code postal
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_PersonneMod_CodePostal(personne* p, int code_postal, int new_code_postal) ;
+
+/*==============================================================================================
+ || FONCTION : journal_Personneajouter_Competence
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant que la personne a ajouté une compétence
+ ||       à son profil
+ ||
+ || Paramètre :
+ ||     p : pointeur sur une personne
+ ||     competence : chaine de caractère contenant la nouvelle compétence
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_Personneajouter_Competence(personne* p, char competence[128]) ;
+
+/*==============================================================================================
+ || FONCTION : journal_Personne_mod_entreprise
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant que la personne a changé d'entreprise
+ ||
+ || Paramètre :
+ ||     p : pointeur sur une personne
+ ||     e : pointeur sur l'entreprise actuelle de la personne
+ ||     new_e : pointeur sur la nouvelle entreprise
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_Personne_mod_entreprise(personne* p, entreprise* e, entreprise*  new_e) ;
+
+/*==============================================================================================
+ || FONCTION : journal_PersonneAjouter_Collegue
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant que la personne a ajouté un collègue à son
+ ||       réseau
+ ||
+ || Paramètre :
+ ||     p : pointeur sur la personne connectée
+ ||    np : pointeur sur le collègue
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_PersonneAjouter_Collegue(personne* p, personne* np) ;
+
+/*==============================================================================================
+ || FONCTION : journal_PersonneSupprimer_Collegue
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant que la personne a supprimé un collègue de
+ ||       son réseau
+ ||
+ || Paramètre :
+ ||     p : pointeur sur la personne connectée
+ ||    np : pointeur sur le collègue
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_PersonneSupprimer_Collegue(personne* p, personne* np) ;
+
+/*==============================================================================================
+ || FONCTION : journal_PersonneRecherchePosteParCompetence
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche
+ ||       de poste par compétence, et affiche la compétence
+ ||
+ || Paramètre :
+ ||     p : pointeur sur une personne
+ ||     competence : chaine de caractère contenant la compétence
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_PersonneRecherchePosteParCompetence(personne* p, char competence[128]) ;
+
+/*==============================================================================================
+ || FONCTION : journal_PersonneRecherchePosteParCompetenceEtCode
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche
+ ||       de poste par compétence et code, et affiche la compétence et le code
+ ||
+ || Paramètre :
+ ||     p : pointeur sur une personne
+ ||     competence : chaine de caractère contenant la compétence
+ ||     code : int contenant le code postal
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_PersonneRecherchePosteParCompetenceEtCode(personne* p, char competence[128], int code) ;
+
+/*==============================================================================================
+ || FONCTION : journal_PersonneRechercheCollegueParCompetence
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche
+ ||       de collègue par compétence, et affiche la compétence
+ ||
+ || Paramètre :
+ ||     p : pointeur sur une personne
+ ||     competence : chaine de caractère contenant la compétence
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_PersonneRechercheCollegueParCompetence(personne* p, char competence[128]) ;
+
+/*==============================================================================================
+ || FONCTION : journal_PersonneRechercheCollegueParEntreprise
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche
+ ||       de collègue par entreprise, et affiche l'entreprise
+ ||
+ || Paramètre :
+ ||     p : pointeur sur une personne
+ ||     e : pointeur sur une personne
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_PersonneRechercheCollegueParEntreprise(personne* p, entreprise* e) ;
