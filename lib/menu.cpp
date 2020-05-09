@@ -946,6 +946,10 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
         cin >> choix ; 
     } while ((choix != 'o' && choix != 'n')) ;
     
+    delete nom;
+    delete prenom;
+    delete courriel;
+    
     // Troisième étape : Si l'utilisateur à validé, on ajoute son profil puis on revient au menu des personnes
     //                   Si l'utilisateur n'a pas validé, on revient au menu des personnes
     switch (choix)
