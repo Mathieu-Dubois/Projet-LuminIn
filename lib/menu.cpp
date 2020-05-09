@@ -100,51 +100,44 @@ int MenuEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe
 }
 
 /* But : Affiche tous les index et nom des entreprises du groupe d'entreprise
-        et demande à l'utilisateur d'entrer le numéro de son entreprise         */
+et demande à l'utilisateur d'entrer le numéro de son entreprise */
 int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
-{  
+{ 
     // Contiendra l'index d'entreprise entré par l'utilisateur
-    char choix(0) ;
+    string choix = "" ;
+    int choixF(0) ;
 
     // Première étape : on affiche index et nom de toutes les entreprises du groupe d'entreprises
-    //                  on vérifie sa saisie en vérifiant si l'entreprise demandée existe dans le groupe
+    // on vérifie sa saisie en vérifiant si l'entreprise demandée existe dans le groupe
     do
     {
         system("clear") ;
         cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
         cout << "Sélectionnez votre id :" << endl ;
         AfficherEntreprises(gE) ;
-        cout << endl << "r. Retourner à la page précédente" << endl ;    
-        cout << "m. Menu principal" << endl ;                   
+        cout << endl << "r. Retourner à la page précédente" << endl ; 
+        cout << "m. Menu principal" << endl ; 
         cout << "q. Quitter l'application" << endl << endl ; 
         cout << "Votre choix : " ;
         cin >> choix ;
-    } while (!ExisteEntreprise(gE, choix - 48) && choix != 'q' && choix != 'm' && choix != 'r');
+        if(choix == "q" || choix == "m" || choix == "r") ;
+        else 
+        {
+            choixF = stoi(choix) ;
+            cout << "le choix est " << choixF << endl ;
+        }
+    } while (!ExisteEntreprise(gE, choixF) && choix != "q" && choix != "m" && choix != "r");
 
     // Deuxième étape : Si l'utilisateur veut finalement changer de menu, on l'oriente vers le bon
-    switch (choix)
-    {
-    case 'm':
-        return MenuPrincipal(gE, gP, gPe) ;
-        break;
-    case 'q':
-        return 0 ;
-        break;
-    case 'r':
-        return MenuEntreprise(gE, gP, gPe) ;
-        break;
-    
-    default:
-        break;
-    }
+    if(choix == "m") return MenuPrincipal(gE, gP, gPe) ;
+    else if(choix == "r") return MenuEntreprise(gE, gP, gPe) ; 
+    else if(choix == "q") return 0 ;
 
     // Troisième étape : Si l'utilisateur a renseigné un index d'entreprise valide, on affiche le menu de cette entreprise
-    journal_ConnexionEntreprise(g_indexEntreprise(gE, (int)choix - 48)) ;
-    return MenuProfilEntreprise(gE, gP, gPe, (int)choix - 48) ;
-    
+    journal_ConnexionEntreprise(g_indexEntreprise(gE, (int)choixF)) ;
+    return MenuProfilEntreprise(gE, gP, gPe, (int)choixF) ;
     return 0 ;
 }
-
 // But : Affiche le menu permettant à l'utilisateur de créer le profil de son entreprise
 int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
 {
