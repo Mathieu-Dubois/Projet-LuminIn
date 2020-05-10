@@ -129,3 +129,86 @@
     03-05-2020 12:42:06 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
 03-05-2020 12:42:06 : Fermeture de l'application 
 ***********************************************************************************************************************
+10-05-2020 17:18:54 : Ouverture de l'application 
+    10-05-2020 17:19:32 : Création de l'entreprise 6 - La grande récrée - 12458 - JouerRireGrandir@papanoel.com
+10-05-2020 17:19:44 : Fermeture de l'application 
+10-05-2020 17:19:51 : Ouverture de l'application 
+    10-05-2020 17:19:59 : Connexion de l'entreprise 6 - La grande récrée - 12458 - JouerRireGrandir@papanoel.com
+        10-05-2020 17:20:05 : La grande récrée a consulté sa liste des postes à pourvoir 
+    10-05-2020 17:20:15 : Déconnexion de l'entreprise 6 - La grande récrée - 12458 - JouerRireGrandir@papanoel.com
+    10-05-2020 17:20:23 : Connexion du compte 6 - Pas  Fred - 54710 - cestquilui@invisible.com
+        10-05-2020 17:20:33 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
+10-05-2020 17:21:23 : Ouverture de l'application 
+    10-05-2020 17:22:07 : Création du compte 6 -  p��2V - 458 - ���2V
+10-05-2020 17:22:41 : Fermeture de l'application 
+10-05-2020 17:24:25 : Ouverture de l'application 
+10-05-2020 17:24:39 : Fermeture de l'application 
+10-05-2020 17:27:00 : Ouverture de l'application 
+10-05-2020 17:27:47 : Fermeture de l'application 
+10-05-2020 17:27:56 : Ouverture de l'application 
+10-05-2020 17:28:26 : Ouverture de l'application 
+10-05-2020 17:29:10 : Fermeture de l'application 
+10-05-2020 17:30:35 : Ouverture de l'application 
+10-05-2020 17:31:21 : Ouverture de l'application 
+10-05-2020 17:31:38 : Fermeture de l'application 
+10-05-2020 17:43:34 : Ouverture de l'application 
+    10-05-2020 17:43:38 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        10-05-2020 17:43:44 : Disney a consulté sa liste des postes à pourvoir 
+10-05-2020 17:45:43 : Ouverture de l'application 
+    10-05-2020 17:45:49 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
+10-05-2020 18:12:27 : Ouverture de l'application 
+    10-05-2020 18:12:36 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        10-05-2020 18:13:39 : Création du poste 5 - Mascotte Mickey - 1 - | danse | sport | 
+        10-05-2020 18:13:45 : Disney a consulté sa liste des postes à pourvoir 
+        10-05-2020 18:14:07 : Suppression du poste 5 - Mascotte Mickey - 1 - | danse | sport | 
+    10-05-2020 18:14:10 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
+10-05-2020 18:14:10 : Fermeture de l'application 
+        10-05-2020 18:15:09 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
+    10-05-2020 18:15:09 : Création du compte 6 - Manon sctt - 17800 - mail
+10-05-2020 18:15:20 : Ouverture de l'application 
+10-05-2020 18:15:21 : Fermeture de l'application 
+        10-05-2020 18:15:23 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
+    10-05-2020 18:15:23 : Création du compte 6 - Manon sctt - 17800 - mail
+        10-05-2020 18:37:33 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
+    10-05-2020 18:37:33 : Création du compte 6 - Manon sctt - 17800 - mail
+10-05-2020 18:42:24 : Ouverture de l'application 
+    10-05-2020 18:42:45 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        10-05-2020 18:43:21 : Disney a fait une recherche par compétence (danse)
+        10-05-2020 18:44:08 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
+    10-05-2020 18:44:08 : Création du compte 6 - Manon sctt - 17800 - mail
+10-05-2020 18:45:24 : Ouverture de l'application 
+    10-05-2020 18:45:30 : Connexion du compte 4 - Brioche  Theo - 13400 - theobrioche@doowap.fr
+        10-05-2020 18:45:34 : Suppression du profil  4 - Brioche Theo - 13400 - theobrioche@doowap.fr
+10-05-2020 18:45:42 : Fermeture de l'application 
+10-05-2020 18:45:48 : Ouverture de l'application 
+    10-05-2020 18:46:04 : Connexion du compte 8 - Pignon  Francois - 75020 - pignouf@gmail.com
+        10-05-2020 18:46:10 : Suppression du profil  8 - Pignon Francois - 75020 - pignouf@gmail.com
+10-05-2020 18:46:12 : Fermeture de l'application 
+        10-05-2020 18:46:52 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
+    10-05-2020 18:46:52 : Création du compte 6 - Manon sctt - 17800 - mail
+10-05-2020 18:49:52 : Ouverture de l'application 
+    10-05-2020 18:50:20 : Création du compte 9 -   - 45 - 0
+10-05-2020 20:42:43 : Ouverture de l'application 
+    10-05-2020 20:42:55 : Connexion du compte 5 - Scott  Monon - 54879 - monon@cristalclear.com
+10-05-2020 20:44:38 : Ouverture de l'application 
+    10-05-2020 20:44:45 : Connexion du compte 5 - Scott  Monon - 54879 - monon@cristalclear.com
+    10-05-2020 20:45:23 : Déconnexion du compte 5 - Scott  Monon - 54879 - monon@cristalclear.com
+10-05-2020 20:45:23 : Fermeture de l'application 
+10-05-2020 20:45:28 : Ouverture de l'application 
+    10-05-2020 20:45:33 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+    10-05-2020 20:45:51 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
+10-05-2020 20:45:51 : Fermeture de l'application 
+10-05-2020 20:53:28 : Ouverture de l'application 
+    10-05-2020 20:53:33 : Connexion du compte 1 - Untel  Michel - 13010 - m_untel@google.com
+    10-05-2020 20:53:42 : Déconnexion du compte 1 - Untel  Michel - 13010 - m_untel@google.com
+10-05-2020 20:53:42 : Fermeture de l'application 
+10-05-2020 20:54:42 : Ouverture de l'application 
+    10-05-2020 20:54:45 : Connexion du compte 1 - Untel  Michel - 13010 - m_untel@google.com
+        10-05-2020 20:55:00 : Untel Michel a modifié son code postal (13010 -> 45582)
+        10-05-2020 20:55:27 : Untel Michel quitte l'entreprise Google
+        10-05-2020 20:55:27 : Untel Michel a rejoint l'entreprise Disney
+    10-05-2020 20:55:51 : Déconnexion du compte 1 - Untel  Michel - 45582 - m_untel@google.com
+    10-05-2020 20:55:59 : Connexion du compte 8 - Pignon  Francois - 75020 - pignouf@gmail.com
+        10-05-2020 20:56:07 : Pignon Francois a rejoint l'entreprise Disney
+    10-05-2020 20:56:46 : Déconnexion du compte 8 - Pignon  Francois - 75020 - pignouf@gmail.com
+10-05-2020 20:56:46 : Fermeture de l'application 

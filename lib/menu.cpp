@@ -330,44 +330,69 @@ int MenuAfficherPostesDuneEntreprise(groupeEntreprises* gE, groupePostes *gP, gr
 // But : Affiche le menu permettant à l'utilisateur de créer un poste à pourvoir
 int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexE)
 {
-    char titre[128];
-    char competence[5][128] = {'\0'} ;
-    char choix(0) ;
-    char choixComp(0) ;
+    // Définitions des ER nécessaires à la saisie sécurisée
+    regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
+    regex patternTitre {"[a-zA-Z0-9éèêëïîôöàâäç'_ ]{1,100}"} ; 
+    regex patternCompetence {"[a-zA-Zéèêëïîôöàâäç'_]{1,100}"} ;
+    string choix ;
+    string titre ;
+    string competence ;
+
+    char competencePoste[5][128] = {'\0'} ;
 
     // Première étape : l'utilisateur entre toutes les informations et on vérifie la saisie
+    cin.ignore() ;
     system("clear") ;
     cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
-    cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
+    cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl ;
     do
     {
-        cout << "Intitulé du poste (sans espaces) : " ;
-        cin >> titre ;
-        if(!regex_match(titre, regex("[a-zA-Zéèêëïîôö'_]{1,128}"))) cout << "Merci de renseigner un intitulé valide." << endl ;
-    } while (!regex_match(titre, regex("[a-zA-Zéèêëïîôö'_]{1,128}"))); // Format intitulé : lettres uniquement (maximum 128)
+        cout << "\nIntitulé du poste : " ;
+        titre = "" ;
+        cin.clear() ;
+        getline(cin, titre) ;
+        if(!regex_match(titre, patternTitre)) cout << "Merci de renseigner un intitulé de poste valide." << endl ;
+    } while (!regex_match(titre, patternTitre)) ;
+
+    // L'intitulé saisi est valide, on doit le convertir en char* pour s'adapter aux fonctions
+    size_t size = titre.size() + 1 ;
+    char titrePoste[128];
+    strncpy(titrePoste, titre.c_str(), size) ;
 
     // A chaque compétence saisie, on demande à l'utilisateur s'il souhaite rajouter une compétence (5 maximum)
     int compteur(1) ;
     int stop(0) ;
     do
     {
-        system("clear") ;
-        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
-        cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
-        cout << "Compétence n°" << compteur << " (sans espaces) : " ;
-        cin >> competence[compteur-1] ;
-        choixComp = 0 ;
+        do
+        {
+            system("clear") ;
+            cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
+            cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
+            cout << "Compétence n°" << compteur << " (sans espaces) : " ;
+            competence = "" ;
+            cin.clear() ;
+            getline(cin, competence) ;
+            if(!regex_match(competence, patternCompetence)) cout << "Merci de renseigner une competence valide." << endl ;
+        } while(!regex_match(competence, patternCompetence)) ;
+        
+        // La compétence saisie est valide, on doit la convertir en char* pour s'adapter aux fonctions
+        size = competence.size() + 1 ;
+        strncpy(competencePoste[compteur-1], competence.c_str(), size) ;
+
         if(compteur < 5)
         {
             do
             {   
-                cout << endl << "Voulez vous ajouter une autre compétence ?" << endl ;
+                cout << endl << "\nVoulez vous ajouter une autre compétence ?" << endl ;
                 cout << "o. OUI" << endl ;
                 cout << "n. NON" << endl ;
                 cout << "Votre choix : " ;
-                cin >> choixComp ;
-            } while (choixComp != 'o' && choixComp != 'n');
-            if (choixComp == 'n') stop = 1 ;
+                choix = "" ;
+                cin.clear() ;
+                getline(cin, choix) ;
+            } while (!regex_match(choix, patternMenu));
+            if (choix == "n") stop = 1 ;
         }
         compteur++ ;
     } while (stop == 0 && compteur < 6);
@@ -379,35 +404,31 @@ int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe
         cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
         cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
         cout << "Ajout du poste suivant : " << endl ;
-        cout << "Titre : " << titre << endl ;
+        cout << "Titre : " << titrePoste << endl ;
         for (int i = 0; i < 5; i++)
         {
-            if(competence[i][0] != '\0')
+            if(competencePoste[i][0] != '\0')
             {
-                cout << "Compétence n°" << i+1 << " : " << competence[i] << endl ;
+                cout << "Compétence n°" << i+1 << " : " << competencePoste[i] << endl ;
             }
         }
         cout << endl << "Validez vous ces paramètres ?" << endl ;
         cout << "o. OUI" << endl ;
         cout << "n. NON" << endl ;
         cout << "Votre choix : " ;
-        cin >> choix ; 
-    } while ((choix != 'o' && choix != 'n')) ;
+        choix = "" ;
+        cin.clear() ;
+        getline(cin, choix) ;
+    } while (!regex_match(choix, patternMenu));
     
     // Troisième étape : Si l'utilisateur à validé, on ajoute son poste puis on revient à la page précédente
     //                   Si l'utilisateur n'a pas validé, on revient à la page précédente
-    switch (choix)
-        {
-        case 'o':
-            AjoutPoste(gP, titre, indexE, competence) ;
+    if(choix == "o")
+    {
+        AjoutPoste(gP, titrePoste, indexE, competencePoste) ;
             return MenuProfilEntreprise(gE, gP, gPe, indexE) ;
-            break;
-        case 'n':
-            return MenuProfilEntreprise(gE, gP, gPe, indexE) ;
-            break;
-        default:
-            break;
-        }
+    }
+    else return MenuProfilEntreprise(gE, gP, gPe, indexE) ;
         
     return 0 ;
 }
@@ -454,9 +475,14 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternMenu {"q|m|r|1|2{1}"} ; // On vérifie si l'utilisateur entre q, m, r, 1 ou 2
+    regex patternCompetence {"[a-zA-Zéèêëïîôöàâäç'_]{1,100}"} ;
+    regex patternCodePostal {"[0-9]{5}"} ; // Un code postal doit contenir 5 chiffres
     string choix ;
-    char competence[128] ;
+    string competence ;
+    string code ;
     int code_postal ;
+
+
 
     // Première étape : on demande à l'utilisateur quelle type de recherche il veut faire
     do
@@ -478,30 +504,65 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
     // Deuxième étape : on affiche le menu correspondant à la recherche demandé
     if(choix == "1")
     {
-        system("clear") ;
-        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
-        cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
-        cout << "Saisissez la compétence que vous recherchez : "  ;
-        cin >> competence ;
-        journal_EntrepriseRechercheCompetence(g_indexEntreprise(gE, indexE), competence) ;
-        EntrepriseRechercheParCompetence(gPe, competence) ;
+        do
+        {
+            system("clear") ;
+            cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
+            cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
+            cout << "Saisissez la compétence que vous recherchez (sans espaces) : "  ;
+            competence = "" ;
+            cin.clear() ;
+            getline(cin, competence) ;
+        } while(!regex_match(competence, patternCompetence)) ;
+
+        // La compétence saisie est valide, on doit la convertir en char* pour s'adapter aux autres fonctions
+        size_t size = competence.size() + 1 ;
+        char competencePoste[128] ;
+        strncpy(competencePoste, competence.c_str(), size) ;
+
+        journal_EntrepriseRechercheCompetence(g_indexEntreprise(gE, indexE), competencePoste) ;
+        EntrepriseRechercheParCompetence(gPe, competencePoste) ;
         cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
         cin >> choix ;
+        cin.ignore() ;
         return MenuProfilEntreprise(gE, gP, gPe, indexE) ;
     }
     else if(choix == "2") 
     {
-        system("clear") ;
-        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
-        cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
-        cout << "Saisissez la compétence que vous recherchez : "  ;
-        cin >> competence ;
-        cout << "Saisissez le code postal que vous recherchez : "  ;
-        cin >> code_postal ;
-        journal_EntrepriseRechercheCompetenceEtCode(g_indexEntreprise(gE, indexE), competence, code_postal) ;
-        EntrepriseRechercheParCompetenceEtCode(gPe, competence, code_postal) ;
+        do
+        {
+            system("clear") ;
+            cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
+            cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
+            cout << "Saisissez la compétence que vous recherchez (sans espaces) : "  ;
+            competence = "" ;
+            cin.clear() ;
+            getline(cin, competence) ;
+        } while(!regex_match(competence, patternCompetence)) ;
+
+        // La compétence saisie est valide, on doit la convertir en char* pour s'adapter aux autres fonctions
+        size_t size = competence.size() + 1 ;
+        char competencePoste[128] ;
+        strncpy(competencePoste, competence.c_str(), size) ;       
+        
+        do
+        {
+            system("clear") ;
+            cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
+            cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
+            cout << "Saisissez le code postal que vous recherchez : "  ;
+            code = "" ;
+            cin.clear() ;
+            getline(cin,code) ;
+        } while(!regex_match(code, patternCodePostal)) ;
+
+        // Le code postal saisie est valide, on doit le convertir en int pour s'adapter aux autres fonctions
+        code_postal = stoi(code) ;
+        journal_EntrepriseRechercheCompetenceEtCode(g_indexEntreprise(gE, indexE), competencePoste, code_postal) ;
+        EntrepriseRechercheParCompetenceEtCode(gPe, competencePoste, code_postal) ;
         cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
         cin >> choix ;
+        cin.ignore() ;
         return MenuProfilEntreprise(gE, gP, gPe, indexE) ;
     }
     else if(choix == "r") return MenuProfilEntreprise(gE, gP, gPe, indexE) ;
@@ -601,7 +662,9 @@ int MenuSeConnecterPersonne(groupeEntreprises *gE, groupePostes *gP, groupePerso
 // But : Affiche le menu avec toutes les fonctionnalités d'une personne connectée 
 int MenuProfilPersonne(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
-    char choix(0) ;
+    // Définitions des ER nécessaires à la saisie sécurisée
+    regex patternMenu {"q|m|1|2|3{1}"} ; // On vérifie si l'utilisateur entre q, m, 1, 2 ou 3
+    string choix ;  
 
     // On commence par regarder si cette personne est un employé ou un chercheur d'emploi
     std::string statut = "" ;
@@ -623,46 +686,38 @@ int MenuProfilPersonne(groupeEntreprises *gE, groupePostes *gP, groupePersonnes 
         cout << "Vous voulez :" << endl ;
         cout << "1. Modifier votre profil" << endl ;
         cout << "2. Supprimer votre profil" << endl ;
-        cout << "3. Faire une recherche d'emploi ou de collègue" << endl ;
+        cout << "3. Faire une recherche d'emploi ou de collègue" << endl << endl ;
         cout << "m. Retourner au menu principal" << endl ;                       
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         cin >> choix ;
-    } while ((choix > '3' || choix < '1') && choix != 'q' && choix != 'm');
+    } while (!regex_match(choix,patternMenu));
 
     // Deuxième étape : on affiche le menu demandé par l'utilisateur amenant à la fonctionnalité voulue
-    switch (choix)
+    if(choix == "1") return MenuModifier_Profil(gE, gP, gPe, indexPe) ;
+    else if(choix == "2") return MenuConfirmerSuppressionPersonne(gE, gP, gPe, indexPe) ;
+    else if(choix == "3") return MenuPersonneCherchePar(gE, gP, gPe, indexPe) ;
+    else if(choix == "m")
     {
-    case '1':
-        return MenuModifier_Profil(gE, gP, gPe, indexPe) ;
-        break;
-    case '2':
-        return MenuConfirmerSuppressionPersonne(gE, gP, gPe, indexPe) ;
-        break;
-    case '3':
-        return MenuPersonneCherchePar(gE, gP, gPe, indexPe) ;
-        break;
-    case 'm':
         journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
         return MenuPrincipal(gE, gP, gPe) ;
-        break;
-    case 'q':
+    }
+    else 
+    {
         journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
         return 0 ;
-        break;
-    default:
-        break;
     }
-
-    return 0 ;
 }
 
 // But : Affiche le menu permettant à l'utilisateur de modifier son profil
 int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
+    // Définitions des ER nécessaires à la saisie sécurisée
+    regex patternMenu1 {"q|m|1|2|3|4|5|6{1}"} ; // On vérifie si l'utilisateur entre q, m, 1, 2, 3, 4, 5 ou 6
+    regex patternMenu2 {"q|m|1|2|3|4|5|6|7{1}"} ; // On vérifie si l'utilisateur entre q, m, 1, 2, 3, 4, 5, 6 ou 7
+    string choix ;
+    int max = 6 ;
 
-    char choix(0) ;
-    int max = 3 ;
     // On commence par regarder si cette personne est un employé ou un chercheur d'emploi
     std::string statut = "" ;
     if(g_index(gPe, indexPe)->entreprise == -1) statut = "Chercheur d'emploi" ;
@@ -698,7 +753,7 @@ int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes
                solitude = 0 ;
             }
         }
-        if(solitude == 1) cout << " aucun collègue enregistré dans votre réseau" << endl ;
+        if(solitude == 1) cout << " Aucun collègue enregistré dans votre réseau" << endl ;
         else cout << " |" ;
         cout << endl << endl;
         cout << "Vous voulez :" << endl ;
@@ -719,52 +774,47 @@ int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         cin >> choix ;
-    } while ((choix > max + 48 || choix < '1') && choix != 'q' && choix != 'm' && choix != 'r');
+    } while ((!regex_match(choix,patternMenu1) && max == 6 ) || (!regex_match(choix,patternMenu2) && max == 7));
 
-    switch (choix)
+    // On affiche le menu demandé par l'utilisateur
+    if(choix == "1")
     {
-    case '1':
         MenuPersonneMod_CodePostal(gE, gP, gPe,indexPe);
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
-        break;
-    case '2':
-        A_Implementer(gE, gP, gPe) ;
-        break;
-    case '3':
+    }
+    else if(choix == "2") return A_Implementer(gE, gP, gPe) ;
+    else if(choix == "3")
+    {
         MenuPersonneajouter_Competence(gE, gP, gPe, indexPe) ;
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
-        break;
-    case '4':
+    }
+    else if(choix == "4")
+    {
         MenuPersonneAjouter_collegue(gE, gP, gPe, indexPe) ;
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
-        break;
-    case '5':
+    }
+    else if(choix == "5")
+    {
         MenuPersonnesupprimer_collegue(gE, gP, gPe, indexPe) ;
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
-        break;
-    case '6':
+    }
+    else if(choix == "6")
+    {
         MenuPersonne_mod_entreprise(gE, gP, gPe, indexPe) ;
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
-        break;
-     case '7':
-        return MenuConfirmerQuitterEntreprise(gE, gP, gPe, indexPe) ;
-        break;
-    case 'r':
-        return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
-        break;
-    case 'm':
+    }
+    else if(choix == "7") return MenuConfirmerQuitterEntreprise(gE, gP, gPe, indexPe) ;
+    else if(choix == "r") return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
+    else if(choix == "m")
+    {
         journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
         return MenuPrincipal(gE, gP, gPe) ;
-        break;
-    case 'q':
-        journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
-        break;
-    default:
-        break;
     }
-
-    return 0 ;
-
+    else
+    {
+        journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
+        return 0 ;
+    }
 }
 
 // But : Affiche le menu demandant confirmation à l'utilisateur avant de supprimer son profil
@@ -813,6 +863,8 @@ int MenuConfirmerSuppressionPersonne(groupeEntreprises* gE, groupePostes *gP, gr
     else if(choix == "n") return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
     else return 0 ;
 }
+
+// JEN SUIS ICI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // But : Affiche le menu permettant à l'utilisateur de créer son profil
 int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
@@ -1327,3 +1379,16 @@ int A_Implementer(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
     else return 0 ;
 }
 
+//  cin.ignore() ;
+//     do
+//     {
+//         do
+//         {
+//             cout << "Votre choix : " ;
+//             choix = "" ;
+//             cin.clear() ;
+//             getline(cin, choix) ;
+//         } while (!regex_match(choix,patternCompetence));
+//         cout <<"    le choix est : " << choix << endl ;
+        
+//     } while (1);
