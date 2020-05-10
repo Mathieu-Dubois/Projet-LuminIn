@@ -2,7 +2,7 @@
 ||   Liste des bug trouvés : (si vous en corrigez un, mettez [CORRIGÉ] devant le tiret correspondant)
 ==========================================================================================================================================================================
 
--   Quand on supprime le profil d'une personne, ça marche parfaitement du point de vue du groupe gPe
+[CORRIGE]-   Quand on supprime le profil d'une personne, ça marche parfaitement du point de vue du groupe gPe
     (ie : la personne est supprimé et les maillons du groupe bien raccrochés)
     Par contre ça foire complétement dans le fichier csv. Toutes les personnes qui se trouvent après la 
     personne supprimée deviennent identiques à la dernière personne du groupe.
