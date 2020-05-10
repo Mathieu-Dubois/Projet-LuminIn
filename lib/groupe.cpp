@@ -98,7 +98,7 @@ void g_ecrire(groupePersonnes* gPe)
     fputc('\n', tmp);
     node *temp = gPe->personnes;
     personne*tmpami;
-    node*rappel;
+    node*rappel = gPe->personnes;
     int i = 1, consecutif = 0;
 
     while(temp != NULL){
@@ -106,13 +106,15 @@ void g_ecrire(groupePersonnes* gPe)
         //Exception si numéros pas consécutifs
         if(tmpami->index != i){
             consecutif = 0;
-            rappel = temp;
             while(temp != NULL && tmpami->index != i){
                 temp = temp->next;
                 if (temp != NULL) tmpami = (personne*)(temp->data);
             }
             if (temp != NULL) consecutif = 1;
-            else temp = rappel;
+            else {
+                temp = rappel;
+                tmpami = (personne*)(temp->data);
+            }
         }
         fprintf(tmp, "%d,", tmpami->index);
         fputs(tmpami->nom, tmp);
@@ -148,7 +150,10 @@ void g_ecrire(groupePersonnes* gPe)
         fprintf(tmp, ",%d", tmpami->entreprise);
         fputc('\n', tmp);
         if (consecutif == 1) temp = rappel;
-        else temp = temp->next;
+        else {
+            temp = temp->next;
+            rappel = rappel->next;
+        }
         i++;
     }
     fclose(tmp);

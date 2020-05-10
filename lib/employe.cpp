@@ -540,6 +540,39 @@ void AfficherPersonnes(groupePersonnes* gPe)
     }
 }
 
+
+// But : Afficher l'index, le nom et le prénom de toutes les personnes que cette personne a en ami
+void AfficherAmis(groupePersonnes* gPe, int index)
+{
+    if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
+    else{
+        node *tmp = gPe->personnes ;
+        personne *e = (personne*)tmp->data ;
+        node * parcours = gPe->personnes;
+        personne* parcourami;
+        int trouve = 0;
+        while (parcours != NULL && trouve == 0){
+            parcourami = (personne*) parcours->data;
+            if(parcourami->index != index) parcours = parcours->next;
+            else trouve = 1;
+        }
+        if (parcours == NULL) cout << "Nous ne parvenons pas à accéder à votre profil"<<endl;
+        else{
+            int i = 0;
+            while (e!= NULL && tmp != NULL){
+                i = 0;
+                while(parcourami->amis[i] != NULL){
+                    if (parcourami->amis[i]->index == e->index) cout << e->index << " - " << e->nom << " " << e->prenom << endl ;
+                    i++;
+                }
+                tmp = tmp->next ;
+                if(tmp != NULL) e = (personne*)tmp->data ;   
+            }
+    }
+        }
+        
+}
+
 // But : Déterminer si une personne fait partie du groupe passé en paramètres
 int ExistePersonne(groupePersonnes* gPe, int const indexP)
 {
