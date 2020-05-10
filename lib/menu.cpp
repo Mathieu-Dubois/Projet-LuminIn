@@ -639,7 +639,6 @@ int MenuSeConnecterPersonne(groupeEntreprises *gE, groupePostes *gP, groupePerso
 int MenuProfilPersonne(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
     char choix(0) ;
-    int max = 3 ;
 
     // On commence par regarder si cette personne est un employé ou un chercheur d'emploi
     std::string statut = "" ;
@@ -662,17 +661,11 @@ int MenuProfilPersonne(groupeEntreprises *gE, groupePostes *gP, groupePersonnes 
         cout << "1. Modifier votre profil" << endl ;
         cout << "2. Supprimer votre profil" << endl ;
         cout << "3. Faire une recherche d'emploi ou de collègue" << endl ;
-        if(statut != "Chercheur d'emploi")
-        {
-            cout << "4. Démissionner de l'entreprise : " << g_indexEntreprise(gE,g_index(gPe, indexPe)->entreprise)->nom << endl << endl ;
-            max = 4 ;
-        }
-        else cout << endl ;
         cout << "m. Retourner au menu principal" << endl ;                       
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         cin >> choix ;
-    } while ((choix > max + 48 || choix < '1') && choix != 'q' && choix != 'm');
+    } while ((choix > '3' || choix < '1') && choix != 'q' && choix != 'm');
 
     // Deuxième étape : on affiche le menu demandé par l'utilisateur amenant à la fonctionnalité voulue
     switch (choix)
@@ -685,9 +678,6 @@ int MenuProfilPersonne(groupeEntreprises *gE, groupePostes *gP, groupePersonnes 
         break;
     case '3':
         return MenuPersonneCherchePar(gE, gP, gPe, indexPe) ;
-        break;
-    case '4':
-        return MenuConfirmerQuitterEntreprise(gE, gP, gPe, indexPe) ;
         break;
     case 'm':
         journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
@@ -709,7 +699,7 @@ int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes
 {
 
     char choix(0) ;
-
+    int max = 3 ;
     // On commence par regarder si cette personne est un employé ou un chercheur d'emploi
     std::string statut = "" ;
     if(g_index(gPe, indexPe)->entreprise == -1) statut = "Chercheur d'emploi" ;
@@ -754,13 +744,19 @@ int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes
         cout << "3. Ajouter une compétence" << endl ;                              
         cout << "4. Ajouter un collègue" << endl ;
         cout << "5. Supprimer un collègue" << endl ;
-        cout << "6. Modifier votre entreprise" << endl << endl ;
+        cout << "6. Modifier votre entreprise" << endl ;
+        if(statut != "Chercheur d'emploi")
+        {
+            cout << "7. Démissionner de l'entreprise : " << g_indexEntreprise(gE,g_index(gPe, indexPe)->entreprise)->nom << endl << endl ;
+            max = 7;
+        }
+        else cout << endl ;
         cout << "r. Retourner à la page précédente" << endl ;
         cout << "m. Retourner au menu principal" << endl ;                       
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         cin >> choix ;
-    } while ((choix > '6' || choix < '1') && choix != 'q' && choix != 'm' && choix != 'r');
+    } while ((choix > max + 48 || choix < '1') && choix != 'q' && choix != 'm' && choix != 'r');
 
     switch (choix)
     {
@@ -786,6 +782,9 @@ int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes
     case '6':
         MenuPersonne_mod_entreprise(gE, gP, gPe, indexPe) ;
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
+        break;
+     case '7':
+        return MenuConfirmerQuitterEntreprise(gE, gP, gPe, indexPe) ;
         break;
     case 'r':
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
@@ -1230,14 +1229,15 @@ int MenuPersonne_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupeP
     AfficherEntreprises(gE);
     cout << "Saisir l'ID de votre nouvelle entreprise : " << endl;
     cin >> newent;
-    cout << "Votre statut entreprise a été mise à jour" << endl;
+    
 
     if(g_index(gPe, indexPe)->entreprise == -1 && newent == -1) ; // On ne fait rien
     else if(newent == -1) journal_Personne_mod_entreprise(g_index(gPe, indexPe), g_indexEntreprise(gE,g_index(gPe,indexPe)->entreprise), NULL) ;
     else journal_Personne_mod_entreprise(g_index(gPe, indexPe), g_indexEntreprise(gE,g_index(gPe,indexPe)->entreprise),g_indexEntreprise(gE,newent)) ;
 
-    rejoindre_entreprise(indexPe,gPe,newent); //ou modifier entreprise ?
-
+    int t = modifier_entreprise(indexPe,gPe,newent); //ou modifier entreprise ?
+    if (t == 0) cout << "Votre statut entreprise a été mise à jour" << endl;
+    else cout << "Cette information était déjà enregistrée" << endl;
     char choix(0) ;
     cout << "Opération effectuée avec succès" << endl;
     cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
@@ -1245,6 +1245,33 @@ int MenuPersonne_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupeP
 
     return 0;
 }
+
+// But : Permet à une personne de quitter son entreprise (si il quitte son emploi)
+int MenuPersonne_quit_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+{
+    int newent(-1); char choix(0);
+
+    system("clear") ;
+    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+    do{
+        cout << "Voulez vous vraiment quitter votre entreprise ? \n" << endl ;
+        cout << "o. OUI" << endl ;                            
+        cout << "n. NON" << endl << endl ;       
+        cout << "Votre choix : " ;
+        cin >> choix ;
+    } while (choix != 'o' && choix != 'n') ;
+
+    int t = modifier_entreprise(indexPe,gPe,newent); //ou modifier entreprise ?
+    if (t == 0) cout << "Votre statut entreprise a été mise à jour" << endl;
+    else cout << "Impossible. Pas d'entreprise à supprimer." << endl;
+
+    cout << "Opération effectuée avec succès" << endl;
+    cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
+    cin >> choix ;
+
+    return 0;
+}
+
 
 // But : Permet à une personne d'ajouter une compétence à son profil
 int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
@@ -1317,7 +1344,7 @@ int MenuPersonnesupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, grou
     cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
     cout << "Suppression d'un collègue du réseau" << endl << endl ;
 
-    AfficherPersonnes(gPe);
+    AfficherAmis(gPe, indexPe);
 
     cout << endl << "Ecrivez l'ID correspondant au collègue à retirer de votre réseau : " ;
     cin >> col;

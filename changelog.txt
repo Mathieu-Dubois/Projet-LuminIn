@@ -42,7 +42,7 @@
 ==========================================================================================================================================================================
 -   Le récapitulatif quand on créé un profil personne est incomplet. On peut rajouter la liste des compétences et des collègues
 
--   Actuellement quand on veut supprimer un de ses collègues, ça affiche la liste de tous les collègues et si on supprime un collègue qui
+[FAIT]-   Actuellement quand on veut supprimer un de ses collègues, ça affiche la liste de tous les collègues et si on supprime un collègue qui
     n'est pas notre ami, ça dit "cette personne ne fait pas partie de votre réseau" puis ça revient au menu
     Est ce que ça ne serait pas mieux d'afficher directement QUE les collègues de la personne, et lui demander de choisir celui qu'elle veut virer
 
@@ -52,12 +52,12 @@
     Et au moins ça réglerait le problème des espaces et aussi je pense du bug se connecter au compte 11 ou 12 ou 20 etc
     Et ça nous permettrait de faire la vérification de saisie en utilisant des regex partout
 
--   Cette idée est juste pour simplifier l'utilisation pour l'utilisateur. En gros quand on lui demande si il veut modifier son entreprise,
+[FAIT]-   Cette idée est juste pour simplifier l'utilisation pour l'utilisateur. En gros quand on lui demande si il veut modifier son entreprise,
     on affiche toutes les entreprises et si il veut juste quitter son entreprise il écrit "-1". Mais c'est peut être mieux d'avoir directement dans
     ce menu, à la suite des entreprises affichées, une option pour quitter son entreprise (c'est plus clair pour lui)
     Et du coup pareil lorsqu'il créé son profil, une option "je suis en recherche d'emploi", un truc comme ça
 
--   Quand une personne qui est en recherche d'emploi et demande a changer d'entreprise et qu'elle écrit -1, ça écrit "votre changement a été effectué
+[FAIT]-   Quand une personne qui est en recherche d'emploi et demande a changer d'entreprise et qu'elle écrit -1, ça écrit "votre changement a été effectué
     avec succès. En réalité, rien n'a changé puisque entreprise est resté à -1. Du coup c'est peut être mieux de mettre un message pour 
     dire que rien ne va changer ou un truc du genre "vous etes déjà à la recherche d'un emploi
 

@@ -347,6 +347,21 @@ int MenuPersonneMod_CodePostal(groupeEntreprises* gE, groupePostes *gP, groupePe
 int MenuPersonne_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe);
 
 /*==============================================================================================
+ || FONCTION : MenuPersonne_quit_entreprise
+  ==============================================================================================
+ || But : Permet à une personne de quitter son entreprise (si il quitte son emploi)
+ ||
+ || Paramètres :
+ ||     gE : pointeur sur un groupe de type groupeEntreprises
+ ||     gP : pointeur sur un groupe de type groupePostes
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     indexPe: index de la personne connectée
+ ||
+ || Retour : 
+ ||     Retourne 0 si tout s'est bien passé
+  ============================================================================================== */
+int MenuPersonne_quit_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe);
+/*==============================================================================================
  || FONCTION : MenuPersonneajouter_Competence
   ==============================================================================================
  || But : Permet à une personne d'ajouter une compétence à son profil

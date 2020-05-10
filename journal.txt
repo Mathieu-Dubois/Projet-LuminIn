@@ -155,3 +155,34 @@
 10-05-2020 17:27:38 : Ouverture de l'application 
     10-05-2020 17:27:45 : Connexion du compte 6 - Pas  Fred - 54710 - cestquilui@invisible.com
         10-05-2020 17:27:51 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
+10-05-2020 17:30:50 : Ouverture de l'application 
+    10-05-2020 17:30:59 : Connexion du compte 7 - Duck  Donald - 77700 - donal.duck@canardville.gov
+10-05-2020 17:36:46 : Ouverture de l'application 
+    10-05-2020 17:37:01 : Connexion du compte 7 - Duck  Donald - 77700 - donal.duck@canardville.gov
+10-05-2020 17:45:18 : Ouverture de l'application 
+    10-05-2020 17:45:27 : Connexion du compte 5 - Scott  Monon - 54879 - monon@cristalclear.com
+        10-05-2020 17:45:42 : Scott Monon quitte l'entreprise Apple
+10-05-2020 18:08:07 : Ouverture de l'application 
+    10-05-2020 18:08:13 : Connexion du compte 5 - Scott  Monon - 54879 - monon@cristalclear.com
+10-05-2020 18:09:37 : Ouverture de l'application 
+    10-05-2020 18:09:41 : Connexion du compte 5 - Scott  Monon - 54879 - monon@cristalclear.com
+10-05-2020 18:11:06 : Ouverture de l'application 
+    10-05-2020 18:11:11 : Connexion du compte 5 - Scott  Monon - 54879 - monon@cristalclear.com
+10-05-2020 18:12:10 : Ouverture de l'application 
+    10-05-2020 18:12:15 : Connexion du compte 5 - Scott  Monon - 54879 - monon@cristalclear.com
+10-05-2020 18:13:21 : Ouverture de l'application 
+    10-05-2020 18:13:27 : Connexion du compte 5 - Scott  Monon - 54879 - monon@cristalclear.com
+        10-05-2020 18:13:46 : Scott Monon a supprimé Mouse Mickey de son réseau de collègue
+10-05-2020 18:20:28 : Ouverture de l'application 
+    10-05-2020 18:20:35 : Connexion du compte 6 - Pas  Fred - 54710 - cestquilui@invisible.com
+10-05-2020 18:21:57 : Ouverture de l'application 
+    10-05-2020 18:22:02 : Connexion du compte 6 - Pas  Fred - 54710 - cestquilui@invisible.com
+10-05-2020 18:22:35 : Ouverture de l'application 
+    10-05-2020 18:22:46 : Connexion du compte 6 - Pas  Fred - 54710 - cestquilui@invisible.com
+        10-05-2020 18:22:59 : Pas Fred quitte l'entreprise Disney
+10-05-2020 18:25:27 : Ouverture de l'application 
+    10-05-2020 18:25:37 : Connexion du compte 5 - Scott  Monon - 54879 - monon@cristalclear.com
+        10-05-2020 18:25:48 : Scott Monon a supprimé Mouse Mickey de son réseau de collègue
+        10-05-2020 18:26:14 : Scott Monon quitte l'entreprise Apple
+10-05-2020 18:27:30 : Ouverture de l'application 
+10-05-2020 18:27:41 : Ouverture de l'application 

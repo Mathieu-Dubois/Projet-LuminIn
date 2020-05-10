@@ -1,8 +1,9 @@
 id,nom,prenom,mail,code-postal,competences,collegues,entreprise
 1,Untel,Michel,m_untel@google.com,13010,C++;Python,,2
-2,Mouse,Mickey,mickey@mickeyville.gov,77700,comedie,3;5,1
+2,Mouse,Mickey,mickey@mickeyville.gov,77700,comedie,3;5;6,1
 3,Mouse,Minnie,minnie@mickeyville.gov,77700,comedie;chant,2,1
 4,Brioche,Theo,theobrioche@doowap.fr,13400,patisserie,5,5
 5,Scott,Monon,monon@cristalclear.com,54879,chant;abdotransat,4;2,4
+6,Pas,Fred,cestquilui@invisible.com,54710,sieste,5,1
 7,Duck,Donald,donal.duck@canardville.gov,77700,comedie;gag,2,-1
 8,Pignon,Francois,pignouf@gmail.com,75020,C;SQL;Python,,-1

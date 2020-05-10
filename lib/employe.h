@@ -62,6 +62,9 @@ int recherche_col_comp(int indice, groupePersonnes *gEmployes, char comp[128]);
   ============================================================================================== */
 void AfficherPersonnes(groupePersonnes* gPe) ;
 
+/*Affiche l'index, le nom et le prénom de toutes les personnes que cette personne a en ami*/
+void AfficherAmis(groupePersonnes* gPe, int index);
+
 /*==============================================================================================
  || FONCTION : ExistePersonne
   ==============================================================================================
