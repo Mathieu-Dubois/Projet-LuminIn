@@ -129,3 +129,29 @@
     03-05-2020 12:42:06 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
 03-05-2020 12:42:06 : Fermeture de l'application 
 
+10-05-2020 17:06:07 : Ouverture de l'application 
+    10-05-2020 17:06:23 : Connexion du compte 6 - Pas  Fred - 54710 - cestquilui@invisible.com
+        10-05-2020 17:06:27 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
+    10-05-2020 17:07:37 : Connexion du compte 1 - Untel  Michel - 38000 - m_untel@google.com
+        10-05-2020 17:07:44 : Untel Michel a modifié son code postal (38000 -> 38000)
+    10-05-2020 17:08:08 : Déconnexion du compte 1 - Untel  Michel - 38000 - m_untel@google.com
+10-05-2020 17:10:25 : Ouverture de l'application 
+10-05-2020 17:10:38 : Ouverture de l'application 
+10-05-2020 17:11:06 : Ouverture de l'application 
+        10-05-2020 17:12:21 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
+        10-05-2020 17:14:10 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
+        10-05-2020 17:17:14 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
+10-05-2020 17:17:20 : Ouverture de l'application 
+10-05-2020 17:17:36 : Ouverture de l'application 
+    10-05-2020 17:17:46 : Connexion du compte 6 - Pas  Fred - 54710 - cestquilui@invisible.com
+        10-05-2020 17:17:51 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
+10-05-2020 17:22:16 : Ouverture de l'application 
+    10-05-2020 17:22:28 : Connexion du compte 4 - Brioche  Theo - 13400 - theobrioche@doowap.fr
+        10-05-2020 17:22:32 : Suppression du profil  4 - Brioche Theo - 13400 - theobrioche@doowap.fr
+10-05-2020 17:24:14 : Ouverture de l'application 
+    10-05-2020 17:24:20 : Connexion du compte 6 - Pas  Fred - 54710 - cestquilui@invisible.com
+        10-05-2020 17:24:24 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
+        10-05-2020 17:24:59 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
+10-05-2020 17:27:38 : Ouverture de l'application 
+    10-05-2020 17:27:45 : Connexion du compte 6 - Pas  Fred - 54710 - cestquilui@invisible.com
+        10-05-2020 17:27:51 : Suppression du profil  6 - Pas Fred - 54710 - cestquilui@invisible.com
