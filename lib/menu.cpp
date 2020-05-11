@@ -660,9 +660,12 @@ int MenuProfilPersonne(groupeEntreprises *gE, groupePostes *gP, groupePersonnes 
 // But : Affiche le menu permettant à l'utilisateur de modifier son profil
 int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
+    // Définitions des ER nécessaires à la saisie sécurisée
+    regex patternMenu1 {"q|m|r|1|2|3|4|5|6{1}"} ; // On vérifie si l'utilisateur entre q, m, r, 1, 2, 3, 4, 5 ou 6
+    regex patternMenu2 {"q|m|r|1|2|3|4|5|6|7{1}"} ; // On vérifie si l'utilisateur entre q, m, r, 1, 2, 3, 4, 5, 6 ou 7
+    string choix ;
+    int max = 6 ;
 
-    char choix(0) ;
-    int max = 3 ;
     // On commence par regarder si cette personne est un employé ou un chercheur d'emploi
     std::string statut = "" ;
     if(g_index(gPe, indexPe)->entreprise == -1) statut = "Chercheur d'emploi" ;
@@ -698,7 +701,7 @@ int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes
                solitude = 0 ;
             }
         }
-        if(solitude == 1) cout << " aucun collègue enregistré dans votre réseau" << endl ;
+        if(solitude == 1) cout << " Aucun collègue enregistré dans votre réseau" << endl ;
         else cout << " |" ;
         cout << endl << endl;
         cout << "Vous voulez :" << endl ;
@@ -719,53 +722,51 @@ int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         cin >> choix ;
-    } while ((choix > max + 48 || choix < '1') && choix != 'q' && choix != 'm' && choix != 'r');
+    } while ((!regex_match(choix,patternMenu1) && max == 6 ) || (!regex_match(choix,patternMenu2) && max == 7));
 
-    switch (choix)
+    // On affiche le menu demandé par l'utilisateur
+    if(choix == "1")
     {
-    case '1':
         MenuPersonneMod_CodePostal(gE, gP, gPe,indexPe);
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
-        break;
-    case '2':
+    }
+    else if(choix == "2")
+    {
         MenuPersonneMod_mail(gE, gP, gPe,indexPe);
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
-        break;
-    case '3':
+    }
+    else if(choix == "3")
+    {
         MenuPersonneajouter_Competence(gE, gP, gPe, indexPe) ;
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
-        break;
-    case '4':
+    }
+    else if(choix == "4")
+    {
         MenuPersonneAjouter_collegue(gE, gP, gPe, indexPe) ;
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
-        break;
-    case '5':
+    }
+    else if(choix == "5")
+    {
         MenuPersonnesupprimer_collegue(gE, gP, gPe, indexPe) ;
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
-        break;
-    case '6':
+    }
+    else if(choix == "6")
+    {
         MenuPersonne_mod_entreprise(gE, gP, gPe, indexPe) ;
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
-        break;
-     case '7':
-        return MenuConfirmerQuitterEntreprise(gE, gP, gPe, indexPe) ;
-        break;
-    case 'r':
-        return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
-        break;
-    case 'm':
+    }
+    else if(choix == "7") return MenuConfirmerQuitterEntreprise(gE, gP, gPe, indexPe) ;
+    else if(choix == "r") return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
+    else if(choix == "m")
+    {
         journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
         return MenuPrincipal(gE, gP, gPe) ;
-        break;
-    case 'q':
-        journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
-        break;
-    default:
-        break;
     }
-
-    return 0 ;
-
+    else
+    {
+        journal_DeconnexionPersonne(g_index(gPe, indexPe)) ;
+        return 0 ;
+    }
 }
 
 // But : Affiche le menu demandant confirmation à l'utilisateur avant de supprimer son profil
