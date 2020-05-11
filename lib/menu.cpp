@@ -1166,10 +1166,10 @@ int MenuPersonneMod_mail(groupeEntreprises* gE, groupePostes *gP, groupePersonne
     //journal_PersonneMod_CodePostal(g_index(gPe, indexPe),g_index(gPe, indexPe)->adresse, newadr) ;
     int a = modifier_mail(indexPe,gPe,newadr);
 
-    if (a==-1) cout << "Cette adresse mail est déjà configuré sur votre compte employé" << endl;
-
+    if(a==2) cout << "Désolé, votre ID n'est pas répertorié" << endl;
+    else cout << "Opération effectuée avec succès" << endl;
+    
     char choix(0) ;
-    cout << "Opération effectuée avec succès" << endl;
     cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
     cin >> choix ;
     delete newadr;
