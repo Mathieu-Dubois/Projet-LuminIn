@@ -405,7 +405,7 @@ void ReinitialiserCSV()
         poste << "1,acteur,1,comedie;gag" << endl ;
         poste << "2,developpeur,2,C;SQL;Python" << endl ;
         poste << "3,briocheur,5,patisserie" << endl ;
-        poste << "4,mascotte_Mickey,1,danse;sport" << endl ;
+        poste << "4,Mascotte Mickey,1,danse;sport" << endl ;
         poste.close() ;
     }
     else cout << "ERREUR 2" << endl ;
