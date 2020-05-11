@@ -728,7 +728,8 @@ int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
         break;
     case '2':
-        A_Implementer(gE, gP, gPe) ;
+        MenuPersonneMod_mail(gE, gP, gPe,indexPe);
+        return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
         break;
     case '3':
         MenuPersonneajouter_Competence(gE, gP, gPe, indexPe) ;
@@ -1145,6 +1146,33 @@ int MenuPersonneMod_CodePostal(groupeEntreprises* gE, groupePostes *gP, groupePe
     cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
     cin >> choix ;
 
+    return 0;
+
+}
+
+int MenuPersonneMod_mail(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+{
+    char* newadr = new char(25);
+
+    system("clear") ;
+    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+    cout << "Changement de votre adresse mail" << endl << endl ;
+
+    cout << "Quel est votre nouvelle adresse mail ? : " ;
+    cin >> newadr;
+
+    
+
+    //journal_PersonneMod_CodePostal(g_index(gPe, indexPe),g_index(gPe, indexPe)->adresse, newadr) ;
+    int a = modifier_mail(indexPe,gPe,newadr);
+
+    if (a==-1) cout << "Cette adresse mail est déjà configuré sur votre compte employé" << endl;
+
+    char choix(0) ;
+    cout << "Opération effectuée avec succès" << endl;
+    cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
+    cin >> choix ;
+    delete newadr;
     return 0;
 
 }

@@ -331,6 +331,22 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
 int MenuPersonneMod_CodePostal(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe);
 
 /*==============================================================================================
+ || FONCTION : MenuPersonneMod_mail
+  ==============================================================================================
+ || But : Permet à une personne de modifier son adresse mail
+ ||
+ || Paramètres :
+ ||     gE : pointeur sur un groupe de type groupeEntreprises
+ ||     gP : pointeur sur un groupe de type groupePostes
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     indexPe: index de la personne connectée
+ ||
+ || Retour : 
+ ||     Retourne 0 si tout s'est bien passé
+  ============================================================================================== */
+int MenuPersonneMod_mail(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe);
+
+/*==============================================================================================
  || FONCTION : MenuPersonne_mod_entreprise
   ==============================================================================================
  || But : Permet à une personne de modifier son entreprise (si il change ou quitte son emploi)

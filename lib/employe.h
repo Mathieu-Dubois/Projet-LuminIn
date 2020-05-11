@@ -16,6 +16,9 @@ void supprimer_profil (int index, groupePersonnes *gEmployes);
 /*modifie le code postal d'une personne à un indice donné*/
 int modifier_adresse(int indice, groupePersonnes *gEmployes, int nouv_adresse);
 
+/*modifier adresse mail*/
+int modifier_mail(int indice, groupePersonnes *gPe, char* new_mail);
+
 /*modifie l'entreprise d'une personne à un indice donné*/
 int modifier_entreprise(int indice, groupePersonnes *gEmployes, int nouv_entre);
 

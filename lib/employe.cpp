@@ -117,6 +117,37 @@ int modifier_adresse(int indice, groupePersonnes *gPe, int nouv_adresse)
     return code_retour;
 }
 
+/*  Entrée :        indice : indice de la personne qui change de mail
+                    nouv_adresse : nouvelle adresse mail
+                    
+    Code retour:    0 Si tout se passe bien
+                    1 si l'adresse est identique
+                    2 si on ne trouve pas l'indice dans le groupe */      
+int modifier_mail(int indice, groupePersonnes *gPe, char *new_mail)
+{
+    node *temp = gPe->personnes;
+    personne *tmpami;
+    int trouve = 0, code_retour = -1;
+    while(temp != NULL && trouve ==0){
+        tmpami = (personne*)(temp->data);
+        if (tmpami->index == indice){                               //Quand on atteint la personne souhaitée
+            if (tmpami->courriel == new_mail) code_retour = 1;   //Si l'adresse est identique
+            else {
+                strcpy(tmpami->courriel, new_mail);                  //Si tout se passe bien
+                g_ecrire(gPe);
+                code_retour = 0;
+            }
+            trouve = 1;
+        }
+        else if (trouve == 0){
+            temp = temp->next;
+        }
+    }
+    if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondant
+    g_ecrire(gPe);
+    return code_retour;
+}
+
 /*  Entrée :        indice : indice de la personne qui change d'entreprise
                     nouv_entre: changement d'entreprise
                     
