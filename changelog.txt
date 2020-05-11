@@ -10,11 +10,11 @@
                 marche car il y a les bons noms, mais pas dans le csv. Et si on quitte l'application et on la relance, là
                 on voit bien que ça a bug.
     
--   La fonction "ajouter profil" pour une personne bug de temps en temps (pas toujours)
-    Des fois elle demande si on veut ajouter une 6eme compétence alors que normalement elle s'arête à 5
-    Des fois elle affiche plusieurs fois à la suite :
-        "voulez vous ajouter une nouvelle compétence (o ou n)voulez vous ajouter une nouvelle compétence (o ou n)etc
-    Des fois elle segt fault
+[CORRIGE]   -   La fonction "ajouter profil" pour une personne bug de temps en temps (pas toujours)
+                Des fois elle demande si on veut ajouter une 6eme compétence alors que normalement elle s'arête à 5
+                Des fois elle affiche plusieurs fois à la suite :
+                    "voulez vous ajouter une nouvelle compétence (o ou n)voulez vous ajouter une nouvelle compétence (o ou n)etc
+                Des fois elle segt fault
 
 [CORRIGE]   -   Ce bug est un peu emmerdant : Quand on veut se connecter au profil d'une personne ou d'une entreprise 10, ou 11, ou 12 etc etc (en gros > 9)
                 ça connecte au mauvais compte.
@@ -27,14 +27,13 @@
     n'importe qui (même une personne d'une autre entreprise) or actuellement si on rajoute qqln qui ne fait pas partie de l'entreprise, ça met un
     message : " cette personne n'est pas dans la même entreprise que vous"
 
--   On peut pas corriger ce bug car je sais pas d'où il vient, mais à un moment je me suis rendu compte que toutes les personnes du groupe personnes
-    ont été supprimées
-
 -   La fonction modifier entreprise m'a indiqué "id non valide" alors que l'id existait bien
 
 -   Le  choix 2 dans menuModifierProfil n'est pas implémenté (changement d'adresse mail)
 
 -   Faire la saisie sécurisée avec "appuyez sur n'importe quelle touche" car bug à cause du buffer
+
+-   Quand on créé un profil, le fichier employes.csv est entièrement supprimé
 
 
 
@@ -42,7 +41,7 @@
 
 
 ==========================================================================================================================================================================
-||  Idées de choses à ajouter / modifier (si vous en faites une, mettez [AJOUTÉ] ou [CORRIGÉ] devant le tiret correspondant)
+||  Idées de choses à ajouter / modifier (si vous en faites une, mettez [FAIT] ou [CORRIGÉ] devant le tiret correspondant)
 ==========================================================================================================================================================================
 -   Le récapitulatif quand on créé un profil personne est incomplet. On peut rajouter la liste des compétences et des collègues
 
