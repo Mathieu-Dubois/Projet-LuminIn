@@ -713,8 +713,8 @@ int MenuProfilPersonne(groupeEntreprises *gE, groupePostes *gP, groupePersonnes 
 int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée
-    regex patternMenu1 {"q|m|1|2|3|4|5|6{1}"} ; // On vérifie si l'utilisateur entre q, m, 1, 2, 3, 4, 5 ou 6
-    regex patternMenu2 {"q|m|1|2|3|4|5|6|7{1}"} ; // On vérifie si l'utilisateur entre q, m, 1, 2, 3, 4, 5, 6 ou 7
+    regex patternMenu1 {"q|m|r|1|2|3|4|5|6{1}"} ; // On vérifie si l'utilisateur entre q, m, r, 1, 2, 3, 4, 5 ou 6
+    regex patternMenu2 {"q|m|r|1|2|3|4|5|6|7{1}"} ; // On vérifie si l'utilisateur entre q, m, r, 1, 2, 3, 4, 5, 6 ou 7
     string choix ;
     int max = 6 ;
 
@@ -864,72 +864,245 @@ int MenuConfirmerSuppressionPersonne(groupeEntreprises* gE, groupePostes *gP, gr
     else return 0 ;
 }
 
-// JEN SUIS ICI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 // But : Affiche le menu permettant à l'utilisateur de créer son profil
 int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
 {
-    int adresse;
-    char competence[5][128]={'\0'};
-    int collegue[5]={-1,-1,-1,-1,-1};
-    int entreprise;
-    char choix(0) ;
+    // Définitions des ER nécessaires à la saisie sécurisée
+    regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
+    regex patternNom {"[A-Z]{1}[a-zA-Zéèêëïîôöàâäç' ]{1,24}"} ; // Un nom de personne commence par une majucule et peut en contenir (25 caractères max)
+    regex patternPrenom {"[A-Z]{1}[a-zéèêëïîôöàâäç']{1,24}"} ; // Un prénom de personne commence par une majucule (25 caractères max)
+    regex patternMail {"[\\w\\._%+-]{1,30}@[\\w_]{2,20}\\.[A-Za-z]{2,3}"} ;
+    regex patternCodePostal {"[0-9]{5}"} ; // Un code postal doit contenir 5 chiffres
+    regex patternNombre {"[1-9]([0-9]*)"} ; // On vérifie si l'utilisateur entre un nombre < 0
+    regex patternCompetence {"[a-zA-Zéèêëïîôöàâäç'_]{1,100}"} ;
+    string choix ;
+
+    string nom ;
+    string prenom ;
+    string code ;
+    string courriel ;
+    string entreprise ;
+    string competence ;
+    string collegue ;
+    string competenceResume[5] ;
+    for (int i = 0; i < 5; i++)
+    {
+        competenceResume[i] = "" ;
+    }
+    
+    char competencePe[5][128]={'\0'};
+    int colleguePe[5]={-1,-1,-1,-1,-1} ;
+    int verifCollegue ;
+    
 
     // Première étape : l'utilisateur entre toutes les informations et on vérifie la saisie
+    cin.ignore() ;
     system("clear") ;
-    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl << endl ;
+    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+    do
+    {
+        cout << "\nSaisir votre nom : " ;
+        nom = "" ;
+        cin.clear() ;
+        getline(cin, nom) ;
+        if(!regex_match(nom, patternNom)) cout << "Merci de renseigner un nom valide." << endl ;
+    } while (!regex_match(nom, patternNom));
+    // Le nom saisie est valide, il faut le convertir en char* pour s'adapter aux autres fonctions
+    size_t size = nom.size() + 1 ;
+    char nomPe[30] ;
+    strncpy(nomPe, nom.c_str(), size) ;
 
-    char *nom= new char(25);
-    cout << "Saisir votre nom (Max 24 caractères): ";
-    cin >> nom ;
-    cout << endl ;
+    do
+    {
+        cout << "\nSaisir votre prénom : " ;
+        prenom = "" ;
+        cin.clear() ;
+        getline(cin, prenom) ;
+        if(!regex_match(prenom, patternPrenom)) cout << "Merci de renseigner un nom valide." << endl ;
+    } while (!regex_match(prenom, patternPrenom));
+    // Le prenom saisie est valide, il faut le convertir en char* pour s'adapter aux autres fonctions
+    size = prenom.size() + 1 ;
+    char prenomPe[30] ;
+    strncpy(prenomPe, prenom.c_str(), size) ;
 
-    char *prenom= new char(25);
-    cout << "Saisir votre prénom (Max 24 caractères): ";
-    cin >> prenom ;
-    cout << endl ;
+    do
+    {
+        cout << "\nAdresse mail : " ;
+        courriel = "" ;
+        cin.clear() ;
+        getline(cin, courriel) ;
+        if(!regex_match(courriel, patternMail)) cout << "Merci de renseigner une adresse mail valide." << endl ;
+    } while (!regex_match(courriel, patternMail));
+    // L'adresse mail saisie est valide, il faut la convertir en char* pour s'adapter aux autres fonctions
+    size = courriel.size() + 1 ;
+    char courrielPe[128] ;
+    strncpy(courrielPe, courriel.c_str(), size) ;
 
-    char *courriel= new char(25);
-    cout << "Saisir votre adresse mail (Max 24 caractères): ";
-    cin >> courriel ;
-    cout << endl ;
-
-    cout << "Saisir votre code postal : ";
-    cin >> adresse ;
-    cout << endl ;
-
-    AfficherEntreprises(gE);
-    cout << "Ecrivez l'ID de votre entreprise (-1 si vous êtes en recherche d'emploi): " ;
-    cin >> entreprise;
-    cout << endl ;
-
-    int i=0;
-    char c;
-    while(i < 5){
-        cout << "Voulez vous ajouter une compétence (o ou n) ? ";
-        cin >> c;
-        if (c=='O' || c=='o'){
-        cout << "Saisir une compétence : ";
-        cin >> competence[i];
-        i++;
-        }
-        else if (c=='N' || c=='n')i=5;
+    do
+    {
+        cout << "\nCode Postal (5 chiffres) : " ;
+        code = "" ;
+        cin.clear() ;
+        getline(cin, code) ;
+        if(!regex_match(code, patternCodePostal)) cout << "Merci de renseigner un code postal valide." << endl ;
+    } while (!regex_match(code, patternCodePostal));
+    // Le code postal saisie est valide, on le convertit en int pour s'adapter aux autre fonctions
+    int adresse ;
+    adresse = stoi(code) ;
+    
+    int entreprisePe ;
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+        cout << "\nEtes vous employé dans une entreprise ? " << endl ;
+        cout << "o. OUI, je suis employé dans une entreprise" << endl ;
+        cout << "n. NON, je suis en recherche d'emploi" << endl << endl ;
+        cout << "Votre choix : " ;
+        entreprise = "" ;
+        cin.clear() ;
+        getline(cin, entreprise) ;
+    } while (!regex_match(entreprise, patternMenu));
+    if(entreprise == "n") entreprisePe = -1 ;
+    else
+    {
+        do
+        {
+            do
+            {
+                system("clear") ;
+                cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+                cout << "\nSaisir l'identifiant de votre entreprise : " << endl ;
+                AfficherEntreprises(gE) ;
+                cout << "Votre choix : " ;
+                entreprise = "" ;
+                cin.clear() ;
+                getline(cin, entreprise) ;
+            } while (!regex_match(entreprise, patternNombre));
+            entreprisePe = stoi(entreprise) ;
+        } while(!ExisteEntreprise(gE,entreprisePe)) ;
     }
-    cout << endl ;
+    
+    // A chaque compétence saisie, on demande à l'utilisateur s'il souhaite rajouter une compétence (5 maximum)
+    int compteur(1) ;
+    int stop(0) ;
+    do
+    {
+        do
+        {
+            system("clear") ;
+            cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
+            cout << "Ajoutons au moins une compétence à votre profil" << endl ;
+            cout << "Compétence n°" << compteur << " (sans espaces) : " ;
+            competence = "" ;
+            cin.clear() ;
+            getline(cin, competence) ;
+            if(!regex_match(competence, patternCompetence)) cout << "Merci de renseigner une competence valide." << endl ;
+        } while(!regex_match(competence, patternCompetence)) ;
+        
+        // La compétence saisie est valide, on doit la convertir en char* pour s'adapter aux fonctions
+        competenceResume[compteur-1] = competence ;
+        size = competence.size() + 1 ;
+        strncpy(competencePe[compteur-1], competence.c_str(), size) ;
 
-    AfficherPersonnes (gPe);
-    i=0;
-    c='N';
-    while(i < 5){
-        cout << "Voulez vous ajouter un collègue (o ou n) ?";
-        cin >> c;
-        if (c=='O' || c=='o'){
-        cout << "Saisir l'id d'un de vos (anciens) collègues : ";
-        cin >> collegue[i];
-        i++;
+        if(compteur < 5)
+        {
+            do
+            {   
+                cout << endl << "\nVoulez vous ajouter une autre compétence ?" << endl ;
+                cout << "o. OUI" << endl ;
+                cout << "n. NON" << endl ;
+                cout << "Votre choix : " ;
+                choix = "" ;
+                cin.clear() ;
+                getline(cin, choix) ;
+            } while (!regex_match(choix, patternMenu));
+            if (choix == "n") stop = 1 ;
         }
-        else if (c=='N' || c=='n') i=5;
+        compteur++ ;
+    } while (stop == 0 && compteur < 6);
+
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+        cout << "\nVouslez vous ajouter des personnes à votre réseau de collègues ? " << endl ;
+        cout << "o. OUI" << endl ;
+        cout << "n. NON" << endl << endl ;
+        cout << "Votre choix : " ;
+        collegue = "" ;
+        cin.clear() ;
+        getline(cin, collegue) ;
+    } while (!regex_match(collegue, patternMenu));
+    if(collegue == "n") ;// Ne rien faire
+    else
+    {
+         // A chaque collegue saisie, on demande à l'utilisateur s'il souhaite rajouter un collegue (5 maximum)
+        compteur = 1 ;
+        stop = 0 ;
+        int dejaCollegue(0) ;
+        do
+        {
+            do
+            {
+                if (dejaCollegue == 1)
+                {
+                    dejaCollegue = 0 ;
+                    system("clear") ;
+                    cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
+                    cout << "Ce collègue appartient déjà à votre réseau." << endl ;
+                    cout << "Appuyez sur n'importe quelle touche pour saisir un autre collègue :" ;
+                    collegue = "" ;
+                    cin.clear() ;
+                    getline(cin, collegue) ;
+                }
+                
+                do
+                {
+                    do
+                    {
+                        system("clear") ;
+                        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
+                        cout << "Saississez l'identifiant de votre collègue n°" << compteur << endl ;
+                        AfficherPersonnes (gPe);
+                        cout << endl << endl << "Votre choix : " ;
+                        collegue = "" ;
+                        cin.clear() ;
+                        getline(cin, collegue) ;
+                    } while(!regex_match(collegue, patternNombre)) ;
+                    // Le nombre saisie est valide, on doit le convertir en int pour s'adapter aux fonctions
+                    verifCollegue = stoi(collegue) ;
+                } while(!ExistePersonne(gPe,verifCollegue)) ;
+                // On vérifie si le collègue n'est pas déjà dans la liste des collègues
+                for (int i = 0; i < 5; i++)
+                {
+                    if (colleguePe[i] == verifCollegue)
+                    {
+                        dejaCollegue = 1 ;
+                    }  
+                }
+            } while(dejaCollegue == 1) ;
+            // Le collègue saisie est enfin valide, on peut l'ajouter au réseau
+            colleguePe[compteur-1] = verifCollegue ;
+
+            if(compteur < 5)
+            {
+                do
+                {   
+                    cout << endl << "\nVoulez vous ajouter une autre collègue ?" << endl ;
+                    cout << "o. OUI" << endl ;
+                    cout << "n. NON" << endl ;
+                    cout << "Votre choix : " ;
+                    choix = "" ;
+                    cin.clear() ;
+                    getline(cin, choix) ;
+                } while (!regex_match(choix, patternMenu));
+                if (choix == "n") stop = 1 ;
+            }
+            compteur++ ;
+        } while (stop == 0 && compteur < 6);
     }
+
 
     // Deuxième étape : on affiche un récapitulatif des informations saisies et on demande une validation
     do
@@ -937,39 +1110,52 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
         system("clear") ;
         cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl << endl ;
         cout << endl;
-        cout << "Nom : " << nom << endl ;
-        cout << "Prenom : " << prenom << endl ;
-        cout << "Courriel : " << courriel << endl ;
+        cout << "Nom : " << nomPe << endl ;
+        cout << "Prenom : " << prenomPe << endl ;
+        cout << "Courriel : " << courrielPe << endl ;
         cout << "Code Postal : " << adresse << endl ;
-        cout << "Entreprise : " << g_indexEntreprise(gE, entreprise)->nom <<endl << endl;
+        if(entreprisePe == -1) cout << "Statut : En recherche d'emploi" << endl ;
+        else cout << "Statut : Employé dans l'entreprise " << g_indexEntreprise(gE, entreprisePe)->nom << endl ;
+        cout << "Compétences : " ;
+        for (int i = 0; i < 5; i++)
+        {
+            if (competenceResume[i] != "") cout << " | " << competenceResume[i] ;
+              
+        }
+        cout << " |"<< endl ;
+        cout << "Collègues : " ;
+        for (int i = 0; i < 5; i++)
+        {
+            if (colleguePe[i] != -1)
+            {
+                cout << " | " << g_index(gPe, colleguePe[i])->nom << " " << g_index(gPe, colleguePe[i])->prenom ;
+            }   
+        }
+        cout << " |" << endl << endl ;
+         
         cout << "Validez vous ces paramètres ?" << endl ;
         cout << "o. OUI" << endl ;
         cout << "n. NON" << endl ;
         cout << "Votre choix : " ;
-        cin >> choix ; 
-    } while ((choix != 'o' && choix != 'n')) ;
-    
-    delete nom;
-    delete prenom;
-    delete courriel;
-    
+        choix = "" ;
+        cin.clear() ;
+        getline(cin, choix) ;
+    } while (!regex_match(choix, patternMenu));
+        
     // Troisième étape : Si l'utilisateur à validé, on ajoute son profil puis on revient au menu des personnes
     //                   Si l'utilisateur n'a pas validé, on revient au menu des personnes
-    switch (choix)
-        {
-        case 'o':
-            creer_profil(nom,prenom,courriel,adresse,competence,collegue,entreprise,gPe) ;
-            return MenuPersonne(gE, gP, gPe) ;
-            break;
-        case 'n':
-            return MenuPersonne(gE, gP, gPe) ;
-            break;
-        default:
-            break;
-        }
-        
+    if(choix == "o")
+    {
+        creer_profil(nomPe,prenomPe,courrielPe,adresse,competencePe,colleguePe,entreprisePe,gPe) ;
+        return MenuPersonne(gE, gP, gPe) ;
+    }
+    else return MenuPersonne(gE, gP, gPe) ;
+
     return 0 ;
 }
+
+
+// SAISIE SECURISEE : J'EN SUIS ICI //////////////////////////////////////////////////////////////////////////////////////////////
 
 // But : Affiche le menu demandant confirmation à l'utilisateur avant d'actualiser son statut
 int MenuConfirmerQuitterEntreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
@@ -1255,7 +1441,6 @@ int MenuPersonne_quit_entreprise(groupeEntreprises* gE, groupePostes *gP, groupe
 
     return 0;
 }
-
 
 // But : Permet à une personne d'ajouter une compétence à son profil
 int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
