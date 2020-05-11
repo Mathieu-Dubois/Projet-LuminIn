@@ -782,7 +782,11 @@ int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes
         MenuPersonneMod_CodePostal(gE, gP, gPe,indexPe);
         return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
     }
-    else if(choix == "2") return A_Implementer(gE, gP, gPe) ;
+    else if(choix == "2")
+    {
+        MenuPersonneMod_mail(gE, gP, gPe,indexPe);
+        return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
+    }
     else if(choix == "3")
     {
         MenuPersonneajouter_Competence(gE, gP, gPe, indexPe) ;
