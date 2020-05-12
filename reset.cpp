@@ -41,7 +41,8 @@ int main()
         employes << "5,Scott,Monon,monon@cristalclear.com,54879,chant;abdotransat,4;2,4" << endl ;
         employes << "6,Pas,Fred,cestquilui@invisible.com,54710,sieste,5,1" << endl ;
         employes << "7,Duck,Donald,donal.duck@canardville.gov,77700,comedie;gag,2,-1" << endl ;
-        employes << "8,Pignon,Francois,pignouf@gmail.com,75020,C;SQL;Python,,-1";
+        employes << "8,Pignon,Francois,pignouf@gmail.com,75020,C;SQL;Python,,-1" << endl ;
+        employes << "9,Lourson,Winnie,winnielourson@potdemiel.com,15932,Anglais;Allemand;Latin;Cuisine;patisserie,2;3;4;5;6,1" ;
         employes.close() ;
     }
     else cout << "ERREUR 3" << endl ;

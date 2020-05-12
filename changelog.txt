@@ -2,7 +2,7 @@
 ||   Liste des bug trouvés : (si vous en corrigez un, mettez [CORRIGÉ] devant le tiret correspondant)
 ==========================================================================================================================================================================
 
-[CORRIGE]   -   Quand on supprime le profil d'une personne, ça marche parfaitement du point de vue du groupe gPe
+[CORRIGÉ]   -   Quand on supprime le profil d'une personne, ça marche parfaitement du point de vue du groupe gPe
                 (ie : la personne est supprimé et les maillons du groupe bien raccrochés)
                 Par contre ça foire complétement dans le fichier csv. Toutes les personnes qui se trouvent après la 
                 personne supprimée deviennent identiques à la dernière personne du groupe.
@@ -10,13 +10,13 @@
                 marche car il y a les bons noms, mais pas dans le csv. Et si on quitte l'application et on la relance, là
                 on voit bien que ça a bug.
     
-[CORRIGE]   -   La fonction "ajouter profil" pour une personne bug de temps en temps (pas toujours)
+[CORRIGÉ]   -   La fonction "ajouter profil" pour une personne bug de temps en temps (pas toujours)
                 Des fois elle demande si on veut ajouter une 6eme compétence alors que normalement elle s'arête à 5
                 Des fois elle affiche plusieurs fois à la suite :
                     "voulez vous ajouter une nouvelle compétence (o ou n)voulez vous ajouter une nouvelle compétence (o ou n)etc
                 Des fois elle segt fault
 
-[CORRIGE]   -   Ce bug est un peu emmerdant : Quand on veut se connecter au profil d'une personne ou d'une entreprise 10, ou 11, ou 12 etc etc (en gros > 9)
+[CORRIGÉ]   -   Ce bug est un peu emmerdant : Quand on veut se connecter au profil d'une personne ou d'une entreprise 10, ou 11, ou 12 etc etc (en gros > 9)
                 ça connecte au mauvais compte.
                 Exemple, je veux me connecter à l'entreprise 11 :
                 ça me connecte à l'entreprise 1 (premier 1)
@@ -27,13 +27,23 @@
     n'importe qui (même une personne d'une autre entreprise) or actuellement si on rajoute qqln qui ne fait pas partie de l'entreprise, ça met un
     message : " cette personne n'est pas dans la même entreprise que vous"
 
--   La fonction modifier entreprise m'a indiqué "id non valide" alors que l'id existait bien
 
--   Le  choix 2 dans menuModifierProfil n'est pas implémenté (changement d'adresse mail)
+[CORRIGÉ]   -   Le  choix 2 dans menuModifierProfil n'est pas implémenté (changement d'adresse mail)
 
 -   Faire la saisie sécurisée avec "appuyez sur n'importe quelle touche" car bug à cause du buffer
 
--   Quand on créé un profil, le fichier employes.csv est entièrement supprimé
+-   Quand on créé un profil, le fichier employes.csv est entièrement supprimé (pas systématique)
+
+[CORRIGÉ]   -   Quand on modifie le profil d'une personne, et qu'on retourne au menu "fonctionnalités d'une personne", si on veut quitter l'app, il faut appuyer sur q
+                plusieurs fois (et dans le journal ça déconnecte la personne plusieurs fois)
+
+[CORRIGÉ]   -   Dans modifier profil, quand le résumé s'affiche, il manque toujours le premier collègue. Si la personne a un seul collègue, ça affiche
+                "aucun collègue enregistré dans votre réseau"
+
+-   Quand on supprime une entreprise et qu'ensuite on se connecte à une personne employée dans cette entreprise -> segt fault
+    -> rajouter qu'à la suppression d'une entreprise, il faut passer tous ses employes en recherche d'emploi
+
+-   Une personne peut s'auto ajouter dans son réseau de collègue (Mickey est ami avec Mickey, narcissique le gars)
 
 
 
@@ -43,24 +53,34 @@
 ==========================================================================================================================================================================
 ||  Idées de choses à ajouter / modifier (si vous en faites une, mettez [FAIT] ou [CORRIGÉ] devant le tiret correspondant)
 ==========================================================================================================================================================================
--   Le récapitulatif quand on créé un profil personne est incomplet. On peut rajouter la liste des compétences et des collègues
+[FAIT]      -   Le récapitulatif quand on créé un profil personne est incomplet. On peut rajouter la liste des compétences et des collègues
 
-[FAIT]-   Actuellement quand on veut supprimer un de ses collègues, ça affiche la liste de tous les collègues et si on supprime un collègue qui
-    n'est pas notre ami, ça dit "cette personne ne fait pas partie de votre réseau" puis ça revient au menu
-    Est ce que ça ne serait pas mieux d'afficher directement QUE les collègues de la personne, et lui demander de choisir celui qu'elle veut virer
+[FAIT]      -   Actuellement quand on veut supprimer un de ses collègues, ça affiche la liste de tous les collègues et si on supprime un collègue qui
+                n'est pas notre ami, ça dit "cette personne ne fait pas partie de votre réseau" puis ça revient au menu
+                Est ce que ça ne serait pas mieux d'afficher directement QUE les collègues de la personne, et lui demander de choisir celui qu'elle veut virer
 
--   Est ce qu'on ne devrait pas tout passer en string pour gérer les entrées de l'utilisateur ? 
-    Mais attention les string du C++ (#include <string> pas <string.h>) qui sont beaucoup plus manipulable que ceux du C
-    On peut facilement faire des comparaison, des += etc (comme j'ai fait pour statut si vous voulez voir (dans un menu d'une personne par exemple))
-    Et au moins ça réglerait le problème des espaces et aussi je pense du bug se connecter au compte 11 ou 12 ou 20 etc
-    Et ça nous permettrait de faire la vérification de saisie en utilisant des regex partout
+[FAIT]      -   Est ce qu'on ne devrait pas tout passer en string pour gérer les entrées de l'utilisateur ? 
+                Mais attention les string du C++ (#include <string> pas <string.h>) qui sont beaucoup plus manipulable que ceux du C
+                On peut facilement faire des comparaison, des += etc (comme j'ai fait pour statut si vous voulez voir (dans un menu d'une personne par exemple))
+                Et au moins ça réglerait le problème des espaces et aussi je pense du bug se connecter au compte 11 ou 12 ou 20 etc
+                Et ça nous permettrait de faire la vérification de saisie en utilisant des regex partout
 
-[FAIT]-   Cette idée est juste pour simplifier l'utilisation pour l'utilisateur. En gros quand on lui demande si il veut modifier son entreprise,
-    on affiche toutes les entreprises et si il veut juste quitter son entreprise il écrit "-1". Mais c'est peut être mieux d'avoir directement dans
-    ce menu, à la suite des entreprises affichées, une option pour quitter son entreprise (c'est plus clair pour lui)
-    Et du coup pareil lorsqu'il créé son profil, une option "je suis en recherche d'emploi", un truc comme ça
+[FAIT]      -   Cette idée est juste pour simplifier l'utilisation pour l'utilisateur. En gros quand on lui demande si il veut modifier son entreprise,
+                on affiche toutes les entreprises et si il veut juste quitter son entreprise il écrit "-1". Mais c'est peut être mieux d'avoir directement dans
+                ce menu, à la suite des entreprises affichées, une option pour quitter son entreprise (c'est plus clair pour lui)
+                Et du coup pareil lorsqu'il créé son profil, une option "je suis en recherche d'emploi", un truc comme ça
 
-[FAIT]-   Quand une personne qui est en recherche d'emploi et demande a changer d'entreprise et qu'elle écrit -1, ça écrit "votre changement a été effectué
-    avec succès. En réalité, rien n'a changé puisque entreprise est resté à -1. Du coup c'est peut être mieux de mettre un message pour 
-    dire que rien ne va changer ou un truc du genre "vous etes déjà à la recherche d'un emploi
+[FAIT]      -   Quand une personne qui est en recherche d'emploi et demande a changer d'entreprise et qu'elle écrit -1, ça écrit "votre changement a été effectué
+                avec succès. En réalité, rien n'a changé puisque entreprise est resté à -1. Du coup c'est peut être mieux de mettre un message pour 
+                dire que rien ne va changer ou un truc du genre "vous etes déjà à la recherche d'un emploi
+
+-   Ajouter la fonction qui rajoute dans le journal quand une personne a modifié son adresse mail
+
+-   Imposer une majuscule (ou une minuscule) pour la première lettre des compétences (sinon ça peut foirer les recherches (comédien différent Comédien)
+    D'ailleurs pareil pour les accents en fait (comedien différent de comédien)
+    -> modifier patternCompetence + fichiers csv de départ
+
+-   Faire la saisie sécurisée pour les recherches d'une personne
+
+
 
