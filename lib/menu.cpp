@@ -1204,7 +1204,7 @@ int MenuConfirmerQuitterEntreprise(groupeEntreprises* gE, groupePostes *gP, grou
     return 0 ;
 }
 
-// A FAIRE /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SAISIE SÉCURISÉE A FAIRE /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // But : Affiche le menu permettant à une personne de chercher un emploi ou un collègue
 int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
@@ -1689,105 +1689,217 @@ int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePostes *gP, grou
                     getline(cin, choix) ;
                 } while (choix != "p");
             }
+            if(a == 0) journal_Personneajouter_Competence(g_index(gPe, indexPe), newCompetence) ;
         }
         
     }
     
     return 0 ;
-    
-    // char comp[128];
-
-    // system("clear") ;
-    // cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
-    // cout << "Ajout d'une nouvelle compétence" << endl << endl ;
-    // cout << "Saisir votre nouvelle compétence : " ;
-    // cin >> comp;
-
-    // int a = ajouter_competence(indexPe,gPe,comp);
-
-    // if(a==1) cout << "Vous avez déjà cette compétence" << endl;
-    // if(a==2) cout << "Vous avez déjà le nombre maximal de compétences" << endl;
-    // if(a==3) cout << "Désolé, votre ID n'est pas répertorié" << endl;
-    // if(a==0) 
-    // {
-    //     cout << "Opération effectuée avec succès" << endl;
-    //     journal_Personneajouter_Competence(g_index(gPe, indexPe), comp) ;
-    // }
-    // char choix(0) ;
-    // cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
-    // cin >> choix ;
-
-    // return 0 ;
 }
 
 // But : Permet à une personne d'ajouter un collègue à son profil
 int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
-    int col;
+    // Définitions des ER nécessaires à la saisie sécurisée
+    regex patternNombre {"[1-9]([0-9]*)"} ; // On vérifie si l'utilisateur entre un nombre < 0
+    regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
+    string choix ;
+    string collegue ;
+    int idCollegue(0) ;
 
-    system("clear") ;
-    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
-    cout << "Ajout d'un collègue au réseau" << endl << endl ;
-
-    AfficherPersonnes(gPe);
-
-    cout << endl << "Ecrivez l'ID correspondant au collègue à ajouter à votre réseau : " ;
-    cin >> col;
-
-    int a= ajouter_collegue(indexPe,gPe,col);
-
-    if(a==1) cout << "Ce collègue fait déjà partie de votre réseau" << endl;
-    if(a==2) cout << "Cette personne n'est pas dans la même entreprise que vous" << endl;
-    if(a==3) cout << "Désolé, cet ID n'est pas répertorié" << endl;
-    if(a==4) cout << "Désolé, vous avez atteint le nombre maximum de collègues" << endl;
-    if(a==0) 
+    cin.ignore() ;
+    
+    // On commence par regarder si cette personne est un employé ou un chercheur d'emploi (pour l'affichage)
+    std::string statut = "" ;
+    if(g_index(gPe, indexPe)->entreprise == -1) statut = "Chercheur d'emploi" ;
+    else
     {
-        cout << "Operation effectué avec succès" << endl;
-        journal_PersonneAjouter_Collegue(g_index(gPe, indexPe), g_index(gPe, col)) ;
+        statut = "Employé chez " ;
+        statut += g_indexEntreprise(gE,g_index(gPe, indexPe)->entreprise)->nom ;
     }
 
-    char choix(0) ;
-    cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
-    cin >> choix ;
+    // On compte le nombre d'amis de cette personne
+    // Si elle a déjà le nombre d'amis maximum, on lui dit
+    int compteurCollegue(0) ;
+    for (int i = 0; i < 5; i++) if(g_index(gPe, indexPe)->amis[i] != NULL) compteurCollegue++ ;
+    if(compteurCollegue == 5)
+    {
+        do
+        {
+            system("clear") ;
+            cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+            cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+            cout << "Statut : " << statut << endl << endl ;
+            cout << "Votre profil compte déjà le nombre maximum de collègues. " << endl << endl ;
+            cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+            choix = "" ;
+            cin.clear() ;
+            getline(cin, choix) ;
+        } while (choix != "p");
+    }
+    else
+    {
+        do
+        {
+            do
+            {
+                system("clear") ;
+                cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+                cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+                cout << "Statut : " << statut << endl << endl ;
+                cout << "Réseau de collègues : " ;
+                for (int i = 0; i < 5; i++)
+                {
+                    if (g_index(gPe, indexPe)->amis[i] != NULL)
+                    {
+                    cout << " | " << g_index(gPe, indexPe)->amis[i]->nom << " " << g_index(gPe, indexPe)->amis[i]->prenom ;
+                    }
+                }
+                cout << endl ;
+                cout << "\nEntrez l'identifiant de votre collègue : " << endl ;
+                AfficherPersonnes(gPe);
+                cout << endl << "Votre choix : " ;
+                collegue = "" ;
+                cin.clear() ;
+                getline(cin, collegue) ;
+            } while (!regex_match(collegue, patternNombre));
+            idCollegue = stoi(collegue) ;
+        } while(!ExistePersonne(gPe,idCollegue)) ;
 
-    return 0;
+        do
+        {
+            system("clear") ;
+            cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+            cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+            cout << "Statut : " << statut << endl << endl ;
+            cout << "Collègue à ajouter : " << g_index(gPe, idCollegue)->nom << " " << g_index(gPe, idCollegue)->prenom<< endl ;
+            cout << "Validez vous ce changement ? " << endl ;
+            cout << "o. OUI" << endl ;
+            cout << "n. NON" << endl ;
+            cout << "Votre choix : " ;
+            choix = "" ;
+            cin.clear() ;
+            getline(cin, choix) ;
+        } while (!regex_match(choix, patternMenu));
+
+        if (choix == "o")
+        {
+            int a = ajouter_collegue(indexPe,gPe,idCollegue);
+
+            if(a == 1)
+            {
+                do
+                {
+                    system("clear") ;
+                    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+                    cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+                    cout << "Statut : " << statut << endl << endl ;
+                    cout << "Ce collègue est déjà dans votre réseau. " << endl << endl ;
+                    cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+                    choix = "" ;
+                    cin.clear() ;
+                    getline(cin, choix) ;
+                } while (choix != "p");
+            }
+            if( a == 2) cout << "Cette personne n'est pas dans la même entreprise que vous [A CORRIGER ?]" << endl;
+
+            if(a == 0) journal_PersonneAjouter_Collegue(g_index(gPe, indexPe), g_index(gPe, idCollegue)) ;
+        }
+        
+    }
+    
+    return 0 ;
 
 }
 
 // But : Permet à une personne de supprimer un collègue de son profil
 int MenuPersonnesupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
-    int col;
+    // Définitions des ER nécessaires à la saisie sécurisée
+    regex patternNombre {"[1-9]([0-9]*)"} ; // On vérifie si l'utilisateur entre un nombre < 0
+    regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
+    string choix ;
+    string collegue ;
+    int idCollegue(0) ;
 
-    system("clear") ;
-    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
-    cout << "Suppression d'un collègue du réseau" << endl << endl ;
-
-    AfficherAmis(gPe, indexPe);
-
-    cout << endl << "Ecrivez l'ID correspondant au collègue à retirer de votre réseau : " ;
-    cin >> col;
-
-    int a= supprimer_collegue(indexPe,gPe,col);
-
-
-    if(a==1) cout << "Désolé, cette personne ne fait pas partie de votre réseau" << endl;
-    if(a==2) cout << "Désolé, cette identifiant n'est pas attribué" << endl;
-    if(a==0)
+    cin.ignore() ;
+    
+    // On commence par regarder si cette personne est un employé ou un chercheur d'emploi (pour l'affichage)
+    std::string statut = "" ;
+    if(g_index(gPe, indexPe)->entreprise == -1) statut = "Chercheur d'emploi" ;
+    else
     {
-        cout << "Opération effectué avec succès" << endl;
-        journal_PersonneSupprimer_Collegue(g_index(gPe, indexPe), g_index(gPe, col)) ;
+        statut = "Employé chez " ;
+        statut += g_indexEntreprise(gE,g_index(gPe, indexPe)->entreprise)->nom ;
     }
 
-    char choix(0) ;
-    cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
-    cin >> choix ;
+    do
+    {
+        do
+        {
+            system("clear") ;
+            cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+            cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+            cout << "Statut : " << statut << endl << endl ;
+            cout << "Réseau de collègues : " ;
+            for (int i = 0; i < 5; i++)
+            {
+                if (g_index(gPe, indexPe)->amis[i] != NULL)
+                {
+                cout << " | " << g_index(gPe, indexPe)->amis[i]->nom << " " << g_index(gPe, indexPe)->amis[i]->prenom ;
+                }
+            }
+            cout << endl ;
+            cout << "\nEntrez l'identifiant du collègue que vous voulez supprimer : " << endl ;
+            AfficherAmis(gPe, indexPe);
+            cout << endl << "Votre choix : " ;
+            collegue = "" ;
+            cin.clear() ;
+            getline(cin, collegue) ;
+        } while (!regex_match(collegue, patternNombre));
+        idCollegue = stoi(collegue) ;
+    } while(!ExistePersonne(gPe,idCollegue)) ;
 
-    return 0;
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+        cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+        cout << "Statut : " << statut << endl << endl ;
+        cout << "Collègue à supprimer : " << g_index(gPe, idCollegue)->nom << " " << g_index(gPe, idCollegue)->prenom<< endl ;
+        cout << "Validez vous ce changement ? " << endl ;
+        cout << "o. OUI" << endl ;
+        cout << "n. NON" << endl ;
+        cout << "Votre choix : " ;
+        choix = "" ;
+        cin.clear() ;
+        getline(cin, choix) ;
+    } while (!regex_match(choix, patternMenu));
 
+    if (choix == "o")
+    {
+        int a = supprimer_collegue(indexPe,gPe,idCollegue);
+
+        if(a == 1)
+        {
+            do
+            {
+                system("clear") ;
+                cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+                cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+                cout << "Statut : " << statut << endl << endl ;
+                cout << "Cette personne ne fait pas partie de votre réseau. " << endl << endl ;
+                cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+                choix = "" ;
+                cin.clear() ;
+                getline(cin, choix) ;
+            } while (choix != "p");
+        }
+        if(a == 0) journal_PersonneSupprimer_Collegue(g_index(gPe, indexPe), g_index(gPe, idCollegue)) ;
+    }
+
+    return 0 ;
 }
-
-
 
 
 
