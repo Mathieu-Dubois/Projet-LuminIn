@@ -1158,9 +1158,6 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
     return 0 ;
 }
 
-
-// SAISIE SECURISEE : J'EN SUIS ICI //////////////////////////////////////////////////////////////////////////////////////////////
-
 // But : Affiche le menu demandant confirmation à l'utilisateur avant d'actualiser son statut
 int MenuConfirmerQuitterEntreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
@@ -1199,6 +1196,9 @@ int MenuConfirmerQuitterEntreprise(groupeEntreprises* gE, groupePostes *gP, grou
     else if(choix == "n") return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
     else return 0 ;
 }
+
+// A FAIRE /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // But : Affiche le menu permettant à une personne de chercher un emploi ou un collègue
 int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
@@ -1367,25 +1367,67 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
     
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // But : Permet à une personne de modifier son code postal
 int MenuPersonneMod_CodePostal(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
-    int newadr;
+    // Définitions des ER nécessaires à la saisie sécurisée
+    regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
+    regex patternCodePostal {"[0-9]{5}"} ; // Un code postal doit contenir 5 chiffres
+    string choix ;
+    string code ;
 
+    // On commence par regarder si cette personne est un employé ou un chercheur d'emploi (pour l'affichage)
+    std::string statut = "" ;
+    if(g_index(gPe, indexPe)->entreprise == -1) statut = "Chercheur d'emploi" ;
+    else
+    {
+        statut = "Employé chez " ;
+        statut += g_indexEntreprise(gE,g_index(gPe, indexPe)->entreprise)->nom ;
+    }
+
+    cin.ignore() ;
     system("clear") ;
     cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
-    cout << "Changement de votre code postal" << endl << endl ;
+    cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+    cout << "Statut : " << statut << endl << endl ;
+    do
+    {
+        cout << "Code postal actuel : " << g_index(gPe, indexPe)->adresse << endl ;
+        cout << "Entrez votre nouveau code postal : " ;
+        code = "" ;
+        cin.clear() ;
+        getline(cin, code) ;
+        if(!regex_match(code, patternCodePostal)) cout << "Merci de renseigner un code postal valide" << endl << endl ;
+    } while (!regex_match(code, patternCodePostal));
 
-    cout << "Quel est votre nouveau code postal ? : " ;
-    cin >> newadr;
-
-    journal_PersonneMod_CodePostal(g_index(gPe, indexPe),g_index(gPe, indexPe)->adresse, newadr) ;
-    modifier_adresse(indexPe,gPe,newadr);
-
-    char choix(0) ;
-    cout << "Opération effectuée avec succès" << endl;
-    cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
-    cin >> choix ;
+    // Le nouveau code postal est valide, on demande confirmation
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+        cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+        cout << "Statut : " << statut << endl << endl ;
+        cout << "Ancien code postal : " << g_index(gPe, indexPe)->adresse << endl ;
+        cout << "Nouveau code postal : " << code << endl << endl ;
+        cout << "Validez vous ce changement ? " << endl ;
+        cout << "o. OUI" << endl ;
+        cout << "n. NON" << endl ;
+        cout << "Votre choix : " ;
+        choix = "" ;
+        cin.clear() ;
+        getline(cin, choix) ;
+    } while (!regex_match(choix, patternMenu));
+    
+    if(choix == "o")
+    {
+        int newadr = stoi(code) ;
+        journal_PersonneMod_CodePostal(g_index(gPe, indexPe),g_index(gPe, indexPe)->adresse, newadr) ;
+        modifier_adresse(indexPe,gPe,newadr) ;
+        return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
+    }
+    else return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
 
     return 0;
 
