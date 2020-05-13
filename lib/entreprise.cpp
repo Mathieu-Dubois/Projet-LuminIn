@@ -300,3 +300,29 @@ void EntrepriseRechercheParCompetenceEtCode(groupePersonnes* gPe, char competenc
         if(!trouve) cout << "Aucun chercheur d'emploi ne correspond à votre recherche" << endl ;
     }
 }
+
+// But : Supprimer tous les employés d'une entreprise
+groupePersonnes* LicencierToutLeMonde(groupePersonnes* gPe, groupeEntreprises* gE, int indexE)
+{
+    if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
+
+    // On parcourt tout le groupe
+    else
+    {
+        node *tmp = gPe->personnes ;
+        personne *p = (personne*)tmp->data ;
+        while (p!= NULL && tmp != NULL)
+        {
+            // Si la personne courante est un chercheur d'emploi (ie : entreprise = -1)
+            if(p->entreprise == indexE)
+            {
+                p->entreprise = -1 ;
+                journal_QuitterEntreprise(p, g_indexEntreprise(gE,indexE)) ;
+            }
+            tmp = tmp->next ;
+            if(tmp != NULL) p = (personne*)tmp->data ;
+        }
+    }
+
+    return gPe ;
+}

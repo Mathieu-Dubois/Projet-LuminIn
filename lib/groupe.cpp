@@ -87,6 +87,7 @@ groupePersonnes* g_open(FILE *db)
     return gPe;
 }
 
+
 void g_ecrire(groupePersonnes* gPe)
 {
     char tampon[100]; 
@@ -467,3 +468,62 @@ void RestaurerJournal()
     remove("journal.txt") ;
     rename("journaltmp.txt","journal.txt") ;
 }
+
+
+
+// // But : Mettre à jour le fichier employes.csv à partir du groupe passé en paramètres
+// void g_ecrire(groupePersonnes* gPe)
+// {
+//     // On ouvre en écriture le fichier tmp.csv (comme il n'existe pas, il est créé)
+//     ofstream nouveauCSV("tmp.csv") ;
+//     if(nouveauCSV)
+//     {
+//         // On ouvre en lecture le fichier entreprises.csv
+//         ifstream ancienCSV("employes.csv") ;
+//         if(ancienCSV)
+//         {
+//             // On récupère la première ligne et on l'écrit dans le nouveau fichier
+//             string ligne ;
+//             getline(ancienCSV, ligne) ;
+//             nouveauCSV << ligne << endl ;
+
+//             // Maintenant il faut lire le groupe et écrire les informations ligne par ligne
+//             node *tmp = gPe->personnes ;
+//             personne *pe = NULL ;
+//             while (tmp != NULL)
+//             {
+//                 pe = (personne*)(tmp->data) ;
+//                 nouveauCSV << pe->index << "," << pe->nom << "," << pe->prenom << "," << pe->courriel << "," << pe->adresse << "," ;  ;
+//                 if(pe->competence[0][0] != '\0') nouveauCSV << pe->competence[0] ;
+//                 for (int i = 1; i < 5; i++)
+//                 {
+//                     if(pe->competence[i][0] != '\0') nouveauCSV << ";" << pe->competence[i] ;
+//                 }
+//                 nouveauCSV << "," ;
+//                 if(pe->amis[0] != NULL) nouveauCSV << pe->amis[0]->index ;
+//                 for (int i = 1; i < 5; i++)
+//                 {
+//                     if(pe->amis[i] != NULL) nouveauCSV << ";" << pe->amis[i]->index;
+//                 }
+//                 nouveauCSV << "," << pe->entreprise ;
+//                 nouveauCSV << endl ;
+//                 tmp = tmp->next ;
+//             }
+
+//             nouveauCSV.close() ;
+//             ancienCSV.close() ;
+
+//             // Il ne reste plus qu'à supprimer l'ancien entreprises.csv et renommer tmp.csv 
+//             remove("employes.csv") ;
+//             rename("tmp.csv", "employes.csv") ;
+//         }
+//         else
+//         {
+//             cout << "ERREUR : Impossible d'ouvrir entreprises.csv" << endl ;
+//         }
+//     }
+//     else
+//     {
+//         cout << "ERREUR : Impossible d'ouvrir tmp.csv" << endl ;
+//     }
+// }

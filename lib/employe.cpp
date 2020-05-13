@@ -41,10 +41,14 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
     p->adresse = adresse;
     p->entreprise = entreprise;
     for (int i = 0; i < 5; i++){
-        for (int j = 0; j < 128; j++){
-            p->competence[i][j] = competence[i][j];
-        }
+        for (int j = 0; j < 128; j++) p->competence[i][j] = competence[i][j];
+        
     }
+    for (int i = 0; i < 5; i++)
+    {
+        p->amis[i] = NULL ;
+    }
+    
 
     //On ajoute au bon endroit
     node *parcours = gPe->personnes;
@@ -73,6 +77,7 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
             tmpami->amis[compt] = parcourami;
             compt++;
         }
+
     }
     journal_CreationPersonne(p) ;
     g_ecrire(gPe);

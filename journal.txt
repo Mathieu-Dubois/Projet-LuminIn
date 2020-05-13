@@ -129,5 +129,3 @@
     03-05-2020 12:42:06 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
 03-05-2020 12:42:06 : Fermeture de l'application 
 ***********************************************************************************************************************
-    12-05-2020 22:26:10 : Création du compte 10 - Manon sctt - 17800 - mail
-    12-05-2020 22:26:20 : Création du compte 10 - Manon sctt - 17800 - mail

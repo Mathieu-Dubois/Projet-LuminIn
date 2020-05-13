@@ -283,6 +283,7 @@ int MenuConfirmerSuppressionEntreprise(groupeEntreprises* gE, groupePostes *gP, 
     if(choix == "o")
     {
         gP = SupprimerEntreprise_postes(gP, indexE) ;
+        gPe = LicencierToutLeMonde(gPe,gE,indexE) ;
         gE = SupprimerEntreprise(gE, indexE) ;
         return MenuPrincipal(gE, gP, gPe) ;
     }
@@ -1437,6 +1438,7 @@ int MenuPersonneMod_CodePostal(groupeEntreprises* gE, groupePostes *gP, groupePe
     return 0;
 }
 
+// But : Permet à une personne de modifier son adresse mail
 int MenuPersonneMod_mail(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée

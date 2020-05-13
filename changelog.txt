@@ -32,7 +32,7 @@
 
 -   Faire la saisie sécurisée avec "appuyez sur n'importe quelle touche" car bug à cause du buffer
 
--   Quand on créé un profil, le fichier employes.csv est entièrement supprimé (pas systématique)
+[CORRIGÉ]   -   Quand on créé un profil, le fichier employes.csv est entièrement supprimé (pas systématique)
 
 [CORRIGÉ]   -   Quand on modifie le profil d'une personne, et qu'on retourne au menu "fonctionnalités d'une personne", si on veut quitter l'app, il faut appuyer sur q
                 plusieurs fois (et dans le journal ça déconnecte la personne plusieurs fois)
@@ -40,8 +40,8 @@
 [CORRIGÉ]   -   Dans modifier profil, quand le résumé s'affiche, il manque toujours le premier collègue. Si la personne a un seul collègue, ça affiche
                 "aucun collègue enregistré dans votre réseau"
 
--   Quand on supprime une entreprise et qu'ensuite on se connecte à une personne employée dans cette entreprise -> segt fault
-    -> rajouter qu'à la suppression d'une entreprise, il faut passer tous ses employes en recherche d'emploi
+[CORRIGÉ]   -   Quand on supprime une entreprise et qu'ensuite on se connecte à une personne employée dans cette entreprise -> segt fault
+                -> rajouter qu'à la suppression d'une entreprise, il faut passer tous ses employes en recherche d'emploi
 
 -   Une personne peut s'auto ajouter dans son réseau de collègue (Mickey est ami avec Mickey, narcissique le gars)
 
