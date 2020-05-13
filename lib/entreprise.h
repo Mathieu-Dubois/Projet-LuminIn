@@ -171,5 +171,17 @@ void EntrepriseRechercheParCompetence(groupePersonnes* gPe, char competence[128]
   ============================================================================================== */
 void EntrepriseRechercheParCompetenceEtCode(groupePersonnes* gPe, char competence[128], int code_postal) ;
 
-
-
+/*==============================================================================================
+ || FONCTION : EntrepriseRechercheParCompetenceEtCode
+  ==============================================================================================
+ || // But : Supprimer tous les employés d'une entreprise
+ ||     
+ || Paramètres :
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     gE : pointeur sur un groupe de type groupeEntreprises
+ ||     indexE : index de l'entreprise dont on veut licencier tous les employés
+ ||
+ || Retour :
+ ||     Aucun
+  ============================================================================================== */
+groupePersonnes* LicencierToutLeMonde(groupePersonnes* gPe, groupeEntreprises* gE, int indexE) ;

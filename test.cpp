@@ -239,13 +239,23 @@ int main()
 
 //     //  //Tests de la fonction supprimer employe
 //     // {
-        // char comp[5][128] = {'\0'};
-        // int col[5];
-        // for (int i = 0; i < 5 ; i++) col[i] = -1;
-        // char Manon[6] = {'M','a','n','o', 'n', '\0'};
-        // char nom[5] = {'s', 'c', 't', 't', '\0'};
-        // char mail[5] = {'m', 'a', 'i', 'l', '\0'};
-        // creer_profil(Manon, nom, mail, 17800, comp, col, 2, gPe);
+        char competence[5][128] = {'\0'};
+        int col[5] = {-1,-1,-1,-1,-1};
+        for (int i = 0; i < 5 ; i++) col[i] = -1;
+        char Manon[6] = {'M','a','n','o', 'n', '\0'};
+        char nom[5] = {'s', 'c', 't', 't', '\0'};
+        char mail[5] = {'m', 'a', 'i', 'l', '\0'};
+        competence[0][0] = 'd';
+        competence[0][1] = 'y';
+        competence[0][2] = 'n';
+        competence[0][3] = 'a';
+        competence[0][4] = 'm';
+        competence[0][5] = 'i';
+        competence[0][6] = 'q';
+        competence[0][7] = 'u';
+        competence[0][8] = 'e';
+        competence[0][9] = '\0';
+        creer_profil(Manon, nom, mail, 17800, competence, col, 2, gPe);
         // TEST(g_size(gPe) == 9);
         // supprimer_profil(9,gPe);
 //     // }
