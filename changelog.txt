@@ -43,7 +43,9 @@
 [CORRIGÉ]   -   Quand on supprime une entreprise et qu'ensuite on se connecte à une personne employée dans cette entreprise -> segt fault
                 -> rajouter qu'à la suppression d'une entreprise, il faut passer tous ses employes en recherche d'emploi
 
--   Une personne peut s'auto ajouter dans son réseau de collègue (Mickey est ami avec Mickey, narcissique le gars)
+[CORRIGÉ]   -   Une personne peut s'auto ajouter dans son réseau de collègue (Mickey est ami avec Mickey, narcissique le gars)
+
+-   Quand on veut supprimer un collègue d'une personne ayant 5 collègues -> segt fault
 
 
 

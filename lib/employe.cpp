@@ -263,9 +263,11 @@ int quitter_entreprise(int indice, groupePersonnes *gPe)
                     1 si la personne a déjà cette personne en ami
                     2 si la personne n'est pas dans la même entreprise
                     3 si on ne trouve pas l'indice dans le groupe  
-                    4 si la personne a deja trop d'amis                          */
+                    4 si la personne a deja trop d'amis
+                    5 si la personne veut s'ajouter elle même en collègue           */
 int ajouter_collegue(int indice, groupePersonnes *gPe, int col)
 {
+    if(indice == col) return 5 ;
     node *temp = gPe->personnes;
     personne*tmpami;
     int trouve = 0, code_retour = -1, i, fait = 0, place = 0;

@@ -1803,7 +1803,37 @@ int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupe
                     getline(cin, choix) ;
                 } while (choix != "p");
             }
-            if( a == 2) cout << "Cette personne n'est pas dans la même entreprise que vous [A CORRIGER ?]" << endl;
+            if(a == 2)
+            {
+                do
+                {
+                    system("clear") ;
+                    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+                    cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+                    cout << "Statut : " << statut << endl << endl ;
+                    cout << "Cette personne n'est pas dans la même entreprise que vous [A CORRIGER ?]" << endl << endl;
+                    cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+                    choix = "" ;
+                    cin.clear() ;
+                    getline(cin, choix) ;
+                } while (choix != "p");
+            }
+            if(a == 5)
+            {
+                do
+                {
+                    system("clear") ;
+                    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+                    cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+                    cout << "Statut : " << statut << endl << endl ;
+                    cout << "Vous ne pouvez pas vous ajouter vous même à votre réseau" << endl << endl;
+                    cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+                    choix = "" ;
+                    cin.clear() ;
+                    getline(cin, choix) ;
+                } while (choix != "p");
+            }
+            
 
             if(a == 0) journal_PersonneAjouter_Collegue(g_index(gPe, indexPe), g_index(gPe, idCollegue)) ;
         }
