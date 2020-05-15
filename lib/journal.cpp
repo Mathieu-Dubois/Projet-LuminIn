@@ -471,11 +471,25 @@ void journal_PersonneRechercheCollegueParEntreprise(personne* p, entreprise* e)
 }
 
 
-
+// But : Ajouter une entrée au journal renseignant que la personne a modifié son adresse mail
+void journal_Personne_modifier_mail(personne* p, char mail[128], char newmail[128] )
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "        " << AfficherDate() << " : " << p->nom << " " << p->prenom << " a modifié son adresse mail (" 
+        << mail << " -> " << newmail << ")" << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
 
 
 /*
 
-journal_PersonneRechercheCollegueParEntreprise(g_index(gPe, indexPe)) ;
+journal_Personne_modifier_mail(g_index(gPe, indexPe)) ;
 
 */

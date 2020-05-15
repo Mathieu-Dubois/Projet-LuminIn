@@ -35,7 +35,7 @@ int tests_reussis = 0;
 
 int main()
 {    
-    ReinitialiserCSV() ;
+    // ReinitialiserCSV() ;
     SauvegardeJournal() ;
 
     //------------------- TESTS GROUPE ------------------
@@ -91,238 +91,238 @@ int main()
         TEST(g_size(gPe) == 9);
     }
 
-    // // Tests de la fonction g_index.
-    {
-        TEST(strcmp(g_index(gPe, 1)->nom, "Untel") == 0);
-        TEST(strcmp(g_index(gPe, 1)->prenom, "Michel") == 0);
-        TEST(strcmp(g_index(gPe, 2)->courriel, "mickey@mickeyville.gov") == 0);
-        TEST(g_index(gPe, 6)->amis[0]->index == 5);
-    }
-    
-    // // Tests de la fonction g_friends.
-    {
-         TEST(g_friends(gPe, 1, 1) == false);
-         TEST(g_friends(gPe, 6, 5) == false);
-         TEST(g_friends(gPe, 3, 2) == true);
-         TEST(g_friends(gPe, 5, 4) == true);
-         TEST(g_friends(gPe, 5, 2) == true);
-    }
-    
-    // // Tests de la fonction g_bestie.
-    {
-        TEST(g_bestie(gPe, 2) == 3);
-        TEST(g_bestie(gPe, 3) == 2);
-        TEST(g_bestie(gPe, 1) == -1);
-    }
-
-    // // Tests de la fonction g_oneway.
-    {
-        TEST(g_oneway(gPe, 4, 5) == false);
-        TEST(g_oneway(gPe, 3, 2) == false);
-        TEST(g_oneway(gPe, 2, 3) == false);
-        TEST(g_oneway(gPe, 6, 5) == true);
-    }
-    
-    // // Tests de la fonction g_linked.
-    {
-        TEST(g_linked(gPe, 1, 1) == false);
-        TEST(g_linked(gPe, 2, 2) == false);
-        TEST(g_linked(gPe, 2, 6) == true);
-        TEST(g_linked(gPe, 5, 4) == true);
-        TEST(g_linked(gPe, 4, 1) == false);
-        TEST(g_linked(gPe, 6, 4) == true);
-    }
-    
-    // // Tests de la fonction g_distance.
-    {
-         TEST(g_distance(gPe, 1, 1) == 0); 
-         TEST(g_distance(gPe, 5, 4) == 1);   
-         TEST(g_distance(gPe, 1, 2) == -1);
-         TEST(g_distance(gPe, 6, 4) == 2);    
-    }
-    
-    // // Tests de la fonction g_remove.
-    {
-        // g_remove(gPe, 4);
-        // // TEST(g_size(gPe) == 8);
-        // TEST(g_index(gPe, 4) == NULL);
-        // TEST(g_friends(gPe, 5, 4) == false);
-        // TEST(g_oneway(gPe, 5, 4) == false);
-        // TEST(g_linked(gPe, 6, 4) == false);
-    }
-
-//     //------------------- TESTS EMPLOYES ------------------
-
-    // Tests de la fonction modifier adresse
-    {
-        modifier_adresse(4, gPe, 38000);
-        TEST(g_index(gPe, 4)->adresse == 38000);
-        TEST(modifier_adresse(4, gPe, 38000) == 1);
-    }
-
-    // Tests de la fonction modifier entreprise
-    {
-        modifier_entreprise(4, gPe, 3);
-        TEST(g_index(gPe, 4)->entreprise == 3);
-        TEST(modifier_entreprise(4, gPe, 3) == 1);
-    }
-
-    // Tests de la fonction ajouter compétence
-    {
-        char comp[5] = {'f', 'o', 'r', 't', '\0'};
-        ajouter_competence(4, gPe, comp);
-        TEST(strcmp(g_index(gPe, 4)->competence[1], comp) == 0);
-        TEST(ajouter_competence(4, gPe, comp) == 1);
-    }
-
-    // Tests de la fonction quitter entreprise
-    {
-        quitter_entreprise(6, gPe);
-        TEST(g_index(gPe, 6)->entreprise == -1);
-        TEST(quitter_entreprise(6, gPe) == 1);
-    }
-
-    //Tests de la fonction ajouter collègue
-    {
-        TEST(ajouter_collegue(2, gPe, 3) == 1);
-        TEST(ajouter_collegue(4, gPe, 3) == 2);
-        // TEST(ajouter_collegue(9, gPe, 3) == 3);
-        TEST(g_friends(gPe, 2, 3) == true);
-    }
-
-    // Tests de la fonction supprimer collegue
-    // {
-        // TEST(supprimer_collegue(4, gPe, 7) == 0);
-        TEST(g_friends(gPe, 4, 7) == false);
-        TEST(supprimer_collegue(4, gPe, 7) == 1);
-    // }
-
-//     //Tests de la fonction rejoindre entreprise
+//     // // Tests de la fonction g_index.
 //     {
-        TEST(rejoindre_entreprise(6, gPe, 3) == 0);
-        TEST(rejoindre_entreprise(7, gPe, 3) == 0);
-        TEST(g_oneway(gPe, 6, 4) == false);
-        TEST(g_oneway(gPe, 6, 7) == false);
-        TEST(g_friends(gPe, 6, 4) == true);
-        TEST(g_friends(gPe, 6, 7) == true);
+//         TEST(strcmp(g_index(gPe, 1)->nom, "Untel") == 0);
+//         TEST(strcmp(g_index(gPe, 1)->prenom, "Michel") == 0);
+//         TEST(strcmp(g_index(gPe, 2)->courriel, "mickey@mickeyville.gov") == 0);
+//         TEST(g_index(gPe, 6)->amis[0]->index == 5);
+//     }
+    
+//     // // Tests de la fonction g_friends.
+//     {
+//          TEST(g_friends(gPe, 1, 1) == false);
+//          TEST(g_friends(gPe, 6, 5) == false);
+//          TEST(g_friends(gPe, 3, 2) == true);
+//          TEST(g_friends(gPe, 5, 4) == true);
+//          TEST(g_friends(gPe, 5, 2) == true);
+//     }
+    
+//     // // Tests de la fonction g_bestie.
+//     {
+//         TEST(g_bestie(gPe, 2) == 3);
+//         TEST(g_bestie(gPe, 3) == 2);
+//         TEST(g_bestie(gPe, 1) == -1);
 //     }
 
-//     //Tests de la fonction rechercher poste competences
+//     // // Tests de la fonction g_oneway.
 //     {
-        TEST(recherche_poste_comp(1, gPe, gP, gE) == 1);
-        TEST(recherche_poste_comp(6, gPe, gP, gE) == 0);
-        TEST(recherche_poste_comp(8, gPe, gP, gE) == 1); //Le 8 en trouve plusieurs
+//         TEST(g_oneway(gPe, 4, 5) == false);
+//         TEST(g_oneway(gPe, 3, 2) == false);
+//         TEST(g_oneway(gPe, 2, 3) == false);
+//         TEST(g_oneway(gPe, 6, 5) == true);
+//     }
+    
+//     // // Tests de la fonction g_linked.
+//     {
+//         TEST(g_linked(gPe, 1, 1) == false);
+//         TEST(g_linked(gPe, 2, 2) == false);
+//         TEST(g_linked(gPe, 2, 6) == true);
+//         TEST(g_linked(gPe, 5, 4) == true);
+//         TEST(g_linked(gPe, 4, 1) == false);
+//         TEST(g_linked(gPe, 6, 4) == true);
+//     }
+    
+//     // // Tests de la fonction g_distance.
+//     {
+//          TEST(g_distance(gPe, 1, 1) == 0); 
+//          TEST(g_distance(gPe, 5, 4) == 1);   
+//          TEST(g_distance(gPe, 1, 2) == -1);
+//          TEST(g_distance(gPe, 6, 4) == 2);    
+//     }
+    
+//     // // Tests de la fonction g_remove.
+//     {
+//         // g_remove(gPe, 4);
+//         // // TEST(g_size(gPe) == 8);
+//         // TEST(g_index(gPe, 4) == NULL);
+//         // TEST(g_friends(gPe, 5, 4) == false);
+//         // TEST(g_oneway(gPe, 5, 4) == false);
+//         // TEST(g_linked(gPe, 6, 4) == false);
 //     }
 
-//     //Tests de la fonction rechercher poste competences
-    {
-        TEST(recherche_poste_postal(2, gPe, gP, gE) == 1);
-        TEST(recherche_poste_postal(4, gPe, gP, gE) == 0);
-        TEST(recherche_poste_postal(7, gPe, gP, gE) == 1);
-    }
+// //     //------------------- TESTS EMPLOYES ------------------
 
-//     //Tests de la fonction rechercher ancien collègue par entreprise
+//     // Tests de la fonction modifier adresse
 //     {
-        TEST(recherche_col_par_entre(2, gPe, 1)==1);
-        TEST(recherche_col_par_entre(8, gPe, 2) == 0);
-        TEST(recherche_col_par_entre(2, gPe, 11)== 0); //Il n'en trouve pas car il n'y a pas d'entreprise 11
+//         modifier_adresse(4, gPe, 38000);
+//         TEST(g_index(gPe, 4)->adresse == 38000);
+//         TEST(modifier_adresse(4, gPe, 38000) == 1);
 //     }
 
-//     //Tests de la fonction rechercher ancien collègue par compétence
+//     // Tests de la fonction modifier entreprise
 //     {
-        char src[6] = {'c','h','a','n','t','\0'};
-        TEST(recherche_col_comp(2, gPe, src)==1);
-        TEST(recherche_col_comp(8, gPe, src) == 0);
-        char src2[7] = {'t','e','n','n','i','s','\0'};
-        TEST(recherche_col_comp(2, gPe, src2)== 0); //Il n'en trouve pas car il n'y a pas de competence tennis
+//         modifier_entreprise(4, gPe, 3);
+//         TEST(g_index(gPe, 4)->entreprise == 3);
+//         TEST(modifier_entreprise(4, gPe, 3) == 1);
 //     }
 
-//     //  //Tests de la fonction supprimer employe
+//     // Tests de la fonction ajouter compétence
+//     {
+//         char comp[5] = {'f', 'o', 'r', 't', '\0'};
+//         ajouter_competence(4, gPe, comp);
+//         TEST(strcmp(g_index(gPe, 4)->competence[1], comp) == 0);
+//         TEST(ajouter_competence(4, gPe, comp) == 1);
+//     }
+
+//     // Tests de la fonction quitter entreprise
+//     {
+//         quitter_entreprise(6, gPe);
+//         TEST(g_index(gPe, 6)->entreprise == -1);
+//         TEST(quitter_entreprise(6, gPe) == 1);
+//     }
+
+//     //Tests de la fonction ajouter collègue
+//     {
+//         TEST(ajouter_collegue(2, gPe, 3) == 1);
+//         TEST(ajouter_collegue(4, gPe, 3) == 2);
+//         // TEST(ajouter_collegue(9, gPe, 3) == 3);
+//         TEST(g_friends(gPe, 2, 3) == true);
+//     }
+
+//     // Tests de la fonction supprimer collegue
 //     // {
-        char competence[5][128] = {'\0'};
-        int col[5] = {-1,-1,-1,-1,-1};
-        for (int i = 0; i < 5 ; i++) col[i] = -1;
-        char Manon[6] = {'M','a','n','o', 'n', '\0'};
-        char nom[5] = {'s', 'c', 't', 't', '\0'};
-        char mail[5] = {'m', 'a', 'i', 'l', '\0'};
-        competence[0][0] = 'd';
-        competence[0][1] = 'y';
-        competence[0][2] = 'n';
-        competence[0][3] = 'a';
-        competence[0][4] = 'm';
-        competence[0][5] = 'i';
-        competence[0][6] = 'q';
-        competence[0][7] = 'u';
-        competence[0][8] = 'e';
-        competence[0][9] = '\0';
-        creer_profil(Manon, nom, mail, 17800, competence, col, 2, gPe);
-        // TEST(g_size(gPe) == 9);
-        // supprimer_profil(9,gPe);
-//     // }
-//     // {
-//     //     supprimer_profil (6, gPe);
-//     //     char comp[5][128] = {'\0'};
-//     //     int col[5];
-//     //     for (int i = 0; i < 5 ; i++) col[i] = -1;
-//     //     char Manon[6] = {'M','a','n','o', 'n', '\0'};
-//     //     char nom[5] = {'s', 'c', 't', 't', '\0'};
-//     //     char mail[5] = {'m', 'a', 'i', 'l', '\0'};
-//     //     creer_profil(Manon, nom, mail, 17800, comp, col, 2, gPe);
+//         // TEST(supprimer_collegue(4, gPe, 7) == 0);
+//         TEST(g_friends(gPe, 4, 7) == false);
+//         TEST(supprimer_collegue(4, gPe, 7) == 1);
 //     // }
 
+// //     //Tests de la fonction rejoindre entreprise
+// //     {
+//         TEST(rejoindre_entreprise(6, gPe, 3) == 0);
+//         TEST(rejoindre_entreprise(7, gPe, 3) == 0);
+//         TEST(g_oneway(gPe, 6, 4) == false);
+//         TEST(g_oneway(gPe, 6, 7) == false);
+//         TEST(g_friends(gPe, 6, 4) == true);
+//         TEST(g_friends(gPe, 6, 7) == true);
+// //     }
+
+// //     //Tests de la fonction rechercher poste competences
+// //     {
+//         TEST(recherche_poste_comp(1, gPe, gP, gE) == 1);
+//         TEST(recherche_poste_comp(6, gPe, gP, gE) == 0);
+//         TEST(recherche_poste_comp(8, gPe, gP, gE) == 1); //Le 8 en trouve plusieurs
+// //     }
+
+// //     //Tests de la fonction rechercher poste competences
+//     {
+//         TEST(recherche_poste_postal(2, gPe, gP, gE) == 1);
+//         TEST(recherche_poste_postal(4, gPe, gP, gE) == 0);
+//         TEST(recherche_poste_postal(7, gPe, gP, gE) == 1);
+//     }
+
+// //     //Tests de la fonction rechercher ancien collègue par entreprise
+// //     {
+//         TEST(recherche_col_par_entre(2, gPe, 1)==1);
+//         TEST(recherche_col_par_entre(8, gPe, 2) == 0);
+//         TEST(recherche_col_par_entre(2, gPe, 11)== 0); //Il n'en trouve pas car il n'y a pas d'entreprise 11
+// //     }
+
+// //     //Tests de la fonction rechercher ancien collègue par compétence
+// //     {
+//         char src[6] = {'c','h','a','n','t','\0'};
+//         TEST(recherche_col_comp(2, gPe, src)==1);
+//         TEST(recherche_col_comp(8, gPe, src) == 0);
+//         char src2[7] = {'t','e','n','n','i','s','\0'};
+//         TEST(recherche_col_comp(2, gPe, src2)== 0); //Il n'en trouve pas car il n'y a pas de competence tennis
+// //     }
+
+// //     //  //Tests de la fonction supprimer employe
+// //     // {
+//         char competence[5][128] = {'\0'};
+//         int col[5] = {-1,-1,-1,-1,-1};
+//         for (int i = 0; i < 5 ; i++) col[i] = -1;
+//         char Manon[6] = {'M','a','n','o', 'n', '\0'};
+//         char nom[5] = {'s', 'c', 't', 't', '\0'};
+//         char mail[5] = {'m', 'a', 'i', 'l', '\0'};
+//         competence[0][0] = 'd';
+//         competence[0][1] = 'y';
+//         competence[0][2] = 'n';
+//         competence[0][3] = 'a';
+//         competence[0][4] = 'm';
+//         competence[0][5] = 'i';
+//         competence[0][6] = 'q';
+//         competence[0][7] = 'u';
+//         competence[0][8] = 'e';
+//         competence[0][9] = '\0';
+//         creer_profil(Manon, nom, mail, 17800, competence, col, 2, gPe);
+//         // TEST(g_size(gPe) == 9);
+//         // supprimer_profil(9,gPe);
+// //     // }
+// //     // {
+// //     //     supprimer_profil (6, gPe);
+// //     //     char comp[5][128] = {'\0'};
+// //     //     int col[5];
+// //     //     for (int i = 0; i < 5 ; i++) col[i] = -1;
+// //     //     char Manon[6] = {'M','a','n','o', 'n', '\0'};
+// //     //     char nom[5] = {'s', 'c', 't', 't', '\0'};
+// //     //     char mail[5] = {'m', 'a', 'i', 'l', '\0'};
+// //     //     creer_profil(Manon, nom, mail, 17800, comp, col, 2, gPe);
+// //     // }
+
     
 
 
-//     //------------------- TESTS ENTREPRISE ------------------
+// //     //------------------- TESTS ENTREPRISE ------------------
 
-//     // // Test de la fonction LastEntreprise et ajout AjoutEntreprise
-    {
-        TEST(LastEntreprise(gE) == 5) ;
-        char nom[40] = "Netflix" ;
-        int code = 45789 ;
-        char mail[128] = "netflixandchill@gmail.com" ;
-        AjoutEntreprise(gE,nom,code,mail) ; // ATTENTION VA MODIFER LE CSV INITIAL
-        TEST(LastEntreprise(gE) == 6) ;
-    }
-
-//     // // Test de la fonction g_indexEntreprise
+// //     // // Test de la fonction LastEntreprise et ajout AjoutEntreprise
 //     {
-        TEST(strcmp(g_indexEntreprise(gE, 1)->nom, "Disney") == 0);
-        TEST(g_indexEntreprise(gE, 1)->code_postal == 77700) ;
-        TEST(strcmp(g_indexEntreprise(gE, 2)->courriel, "emplois@google.com") == 0);
-        TEST(strcmp(g_indexEntreprise(gE, 3)->nom, "Amazon") == 0);
+//         TEST(LastEntreprise(gE) == 5) ;
+//         char nom[40] = "Netflix" ;
+//         int code = 45789 ;
+//         char mail[128] = "netflixandchill@gmail.com" ;
+//         AjoutEntreprise(gE,nom,code,mail) ; // ATTENTION VA MODIFER LE CSV INITIAL
+//         TEST(LastEntreprise(gE) == 6) ;
 //     }
 
-//     // Test de la fonction g_ecrireEntreprise
-//     {
-        // g_ecrireEntreprise(gE) ; 
-//     }
+// //     // // Test de la fonction g_indexEntreprise
+// //     {
+//         TEST(strcmp(g_indexEntreprise(gE, 1)->nom, "Disney") == 0);
+//         TEST(g_indexEntreprise(gE, 1)->code_postal == 77700) ;
+//         TEST(strcmp(g_indexEntreprise(gE, 2)->courriel, "emplois@google.com") == 0);
+//         TEST(strcmp(g_indexEntreprise(gE, 3)->nom, "Amazon") == 0);
+// //     }
 
-//     // Test de la fonction SupprimerEntreprise
-//     {
-//         SupprimerEntreprise(gE,1) ;
-//         SupprimerEntreprise(gE,2) ;
-//         SupprimerEntreprise(gE,3) ;
-//         SupprimerEntreprise(gE,4) ;
-//         SupprimerEntreprise(gE,5) ;
-//         SupprimerEntreprise(gE,6) ;
-//     }
+// //     // Test de la fonction g_ecrireEntreprise
+// //     {
+//         // g_ecrireEntreprise(gE) ; 
+// //     }
 
-//     ReinitialiserCSV() ;
+// //     // Test de la fonction SupprimerEntreprise
+// //     {
+// //         SupprimerEntreprise(gE,1) ;
+// //         SupprimerEntreprise(gE,2) ;
+// //         SupprimerEntreprise(gE,3) ;
+// //         SupprimerEntreprise(gE,4) ;
+// //         SupprimerEntreprise(gE,5) ;
+// //         SupprimerEntreprise(gE,6) ;
+// //     }
+
+// //     ReinitialiserCSV() ;
     
-//     // // Test de la fonction AfficherPostesEntreprise
-//     // {
-//     // AfficherPostesEntreprise(gE,gP,1) ;
-//     // AfficherPostesEntreprise(gE,gP,2) ;
-//     // AfficherPostesEntreprise(gE,gP,0) ;
-//     // AfficherPostesEntreprise(gE,gP,3) ;
-//     // AfficherPostesEntreprise(gE,gP,5) ;
-//     // }
+// //     // // Test de la fonction AfficherPostesEntreprise
+// //     // {
+// //     // AfficherPostesEntreprise(gE,gP,1) ;
+// //     // AfficherPostesEntreprise(gE,gP,2) ;
+// //     // AfficherPostesEntreprise(gE,gP,0) ;
+// //     // AfficherPostesEntreprise(gE,gP,3) ;
+// //     // AfficherPostesEntreprise(gE,gP,5) ;
+// //     // }
 
-//     // Test de la fonction LastPoste
-//     {
-        TEST(LastPoste(gP) == 4) ;
-//     }
+// //     // Test de la fonction LastPoste
+// //     {
+//         TEST(LastPoste(gP) == 4) ;
+// //     }
 
 //     // Test de la fonction AjoutPoste
 //     {
@@ -365,8 +365,38 @@ int main()
 //     // EntrepriseRechercheParCompetenceEtCode(gPe,hey2,codeP+1) ;
 //     // }
 
+    // Sort automatiquement TOUS les postes qui demandent une compétence que la personne possède
+    // recherche_poste_comp(2,gPe, gP,gE) ;
+    // PersonneRecherchePosteParCompetence(g_index(gPe,9), gP, gE) ;
 
-    ReinitialiserCSV() ;
+    // Sort automatiquement TOUS les postes qui demandent une compétence que la personne possède
+    // Si l'entreprise qui propose ces postes à le même code postal que la personne
+    // recherche_poste_postal(2,gPe, gP,gE) ;
+    // PersonneRecherchePosteParCompetenceEtCode(g_index(gPe,2), gP, gE) ;
+
+    // La personne entre l'index de l'entreprise, et ça lui sort tous les collègues de son réseau
+    // qui travaillent dans cette entreprise
+    // recherche_col_par_entre(9,gPe,1) ;
+    // PersonneRechercheCollegueParEntreprise(gPe, 9, 1) ;
+
+    // La personne ne rentre rien et ça lui retourne tous les collègues de son réseau qui travaillent dans une entreprise
+    // qui propose un poste avec une compétence en commum avec les compétences de la personne qui fait la recherche
+    // Exemple : Robert possède la compétence Anglais
+    //           Albert (collègue de Robert) travaille chez Netflix qui propose un poste avec de l'anglais
+    //           Odette (collègue de Robert) travaille chez Auchan qui ne propose pas de poste avec de l'anglais
+    //           La recherche affiche uniquement les coordonnées d'Albert
+    // string comp = "anglais" ;
+    // size_t size = comp.size() + 1 ;
+    // char compcomp[30] ;
+    // strncpy(compcomp, comp.c_str(), size) ;
+    // recherche_col_comp(2,gPe,compcomp) ;
+    PersonneRechercheCollegueParCompetence(g_index(gPe,2), gE, gP) ;
+
+
+
+
+
+    // ReinitialiserCSV() ;
     RestaurerJournal() ;
 
 
