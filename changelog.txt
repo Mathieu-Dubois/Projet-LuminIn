@@ -53,11 +53,11 @@
 
 [CORRIGÉ]   -   Quand une personne fait une recherche de collègue par entreprise, si cette personne a 5 amis -> segt fault
 
--   Recherche collègue par compétence -> segt fault de temps en temps (j'ai pas encore bien identifié quand) et en fait ça correspond pas bien à la consigne 
+[CORRIGÉ]   -   Recherche collègue par compétence -> segt fault de temps en temps (j'ai pas encore bien identifié quand) et en fait ça correspond pas bien à la consigne 
 
 [CORRIGÉ]   -   Si un poste à X compétences et que la personne à les mêmes X compétences, le poste va s'afficher X fois dans le résultat de la recherche
 
-- Les fonctions d'ajout au journal des recherches ne sont plus bonnes
+- Les fonctions d'ajout au journal des recherches ne sont plus bonnes et celles des menus aussi du coup
 
 
 ==========================================================================================================================================================================
@@ -86,17 +86,13 @@
 
 [FAIT]      -   Ajouter la fonction qui rajoute dans le journal quand une personne a modifié son adresse mail
 
--   Harmonisation des fonctions de recherches (pour que les recherches fassent la même chose)
+[FAIT]      -   Harmonisation des fonctions de recherches (pour que les recherches fassent la même chose)
 
 -   Imposer une majuscule (ou une minuscule) pour la première lettre des compétences (sinon ça peut foirer les recherches (comédien différent Comédien)
     D'ailleurs pareil pour les accents en fait (comedien différent de comédien)
     -> modifier patternCompetence + fichiers csv de départ
 
 -   Faire la saisie sécurisée pour les recherches d'une personne
-
--   ExistePosteEntreprise -> ExisteCollegue
-
--   Journal : le profil de machin est apparue dans la recherche de truc, le poste truc est apparu dans la recherche de machin ...
 
 
 

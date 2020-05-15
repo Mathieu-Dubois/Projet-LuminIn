@@ -390,8 +390,16 @@ int main()
     // char compcomp[30] ;
     // strncpy(compcomp, comp.c_str(), size) ;
     // recherche_col_comp(2,gPe,compcomp) ;
-    PersonneRechercheCollegueParCompetence(g_index(gPe,2), gE, gP) ;
+    // PersonneRechercheCollegueParCompetence(g_index(gPe,2), gE, gP) ;
 
+    // L'entreprise ne rentre rien et ça lui sort tous les chercheurs d'emploi qui ont une compétence qui correspond
+    // à l'un des postes proposés par l'entreprise
+    EntrepriseRecherchePersonneParCompetence(gPe,gP,5) ;
+
+    // L'entreprise ne rentre rien et ça lui sort tous les chercheurs d'emploi qui ont une compétence qui correspond
+    // à l'un des postes proposés par l'entreprise ssi l'entreprise et le chercheur d'emploi on le même code postal
+    cout << endl << endl ;
+    EntrepriseRecherchePersonneParCompetenceEtCode(gPe,gP,g_indexEntreprise(gE,5)) ;
 
 
 
