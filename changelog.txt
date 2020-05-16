@@ -96,7 +96,7 @@
 
 -   Faire en sort que lorsqu'une personne supprime un collègue, il ne peut que entrer l'index d'un de ses collègues (saisie sécurisée)
 
--   Gérer AMIS_MAX et COLLEGUES_MAX
+[FAIT]      -   Gérer AMIS_MAX et COLLEGUES_MAX
 
 
 

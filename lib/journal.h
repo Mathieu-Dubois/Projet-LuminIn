@@ -1,9 +1,5 @@
 #pragma once
-
-#include "entreprise.h"
-#include "postes.h"
-#include "groupe.h"
-
+#include "bibliotheques.h"
 
 /* ============================================================================================================
 ||

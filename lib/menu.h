@@ -1,10 +1,6 @@
 #pragma once
-
 #include <string>
-
-#include "entreprise.h"
-#include "postes.h"
-#include "groupe.h"
+#include "bibliotheques.h"
 
 /*==============================================================================================
  || FONCTION : MenuPrincipal

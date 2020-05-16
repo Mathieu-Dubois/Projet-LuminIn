@@ -1,20 +1,15 @@
 #include <iostream>
-using namespace std ;
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <malloc.h>
 #include <string.h>
-
+using namespace std ;
 #include "employe.h"
-#include "groupe.h"
-#include "postes.h"
-#include "journal.h"
 
 
-
-void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[5][128], int collegue[5], int entreprise, groupePersonnes *gPe)
+void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[MAX_COMPETENCES][128], int collegue[MAX_AMIS], int entreprise, groupePersonnes *gPe)
 { 
     int i, j, index; char poub[128];
 
@@ -40,11 +35,11 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
     strcpy(p->courriel, courriel);
     p->adresse = adresse;
     p->entreprise = entreprise;
-    for (int i = 0; i < 5; i++){
+    for (int i = 0; i < MAX_COMPETENCES; i++){
         for (int j = 0; j < 128; j++) p->competence[i][j] = competence[i][j];
         
     }
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < MAX_AMIS; i++)
     {
         p->amis[i] = NULL ;
     }
@@ -64,7 +59,7 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
     //Maintenant on link les amis
     personne* tmpami;
     int compt=0;
-    for (int j = 0 ; j < 5 ; j++){
+    for (int j = 0 ; j < MAX_AMIS ; j++){
         if (collegue[j] != -1){
             parcours = gPe->personnes;
             tmpami = (personne*)p;
@@ -202,7 +197,7 @@ int ajouter_competence(int indice, groupePersonnes *gPe, char comp[128])
         if (tmpami->index == indice){                               //Quand on atteint la personne souhaitée
             i = 0;
             trouve = 1;                          
-            while(i<5 && fait == 0){
+            while(i<MAX_COMPETENCES && fait == 0){
                 if (tmpami->competence[i][0] == '\0'){              //Si il reste de la place on ajoute la compétence
                     strcpy(tmpami->competence[i], comp);
                     g_ecrire(gPe);
@@ -417,7 +412,7 @@ void AfficherAmis(groupePersonnes* gPe, int index)
     if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
     else
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < MAX_AMIS; i++)
         {
             if(g_index(gPe,index)->amis[i] != NULL)
             {
@@ -489,7 +484,7 @@ void PersonneRecherchePosteParCompetence(personne* pe, groupePostes* gP, groupeE
         {
             posteDejaAffiche = 0 ;
             // On parcourt toutes les compétences du poste pour voir si il y a un match
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < MAX_COMPETENCES; i++)
             {
                 competenceComparee = "" ;
                 if(posteCourant->competence[i][0] != '\0') competenceComparee = string(posteCourant->competence[i]) ;
@@ -497,7 +492,7 @@ void PersonneRecherchePosteParCompetence(personne* pe, groupePostes* gP, groupeE
                 else
                 {
                     // On parcourt toutes les compétences de la personne pour voir si il y a un match
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < MAX_COMPETENCES; i++)
                     {
                         if(!posteDejaAffiche)
                         {
@@ -560,7 +555,7 @@ void PersonneRecherchePosteParCompetenceEtCode(personne* pe, groupePostes* gP, g
             if(adressePersonne == adresseEntreprise)
             {
                 // On parcourt toutes les compétences du poste pour voir si il y a un match
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < MAX_COMPETENCES; i++)
                 {
                     competenceComparee = "" ;
                     if(posteCourant->competence[i][0] != '\0') competenceComparee = string(posteCourant->competence[i]) ;
@@ -568,7 +563,7 @@ void PersonneRecherchePosteParCompetenceEtCode(personne* pe, groupePostes* gP, g
                     else
                     {
                         // On parcourt toutes les compétences de la personne pour voir si il y a un match
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < MAX_COMPETENCES; i++)
                         {
                             if(!posteDejaAffiche)
                             {
@@ -619,7 +614,7 @@ void PersonneRechercheCollegueParEntreprise(groupePersonnes* gPe, int indexPe, i
         personne *pe = g_index(gPe, indexPe) ;
 
         // On parcourt son réseau de collègue et on affiche tous ceux dont l'index de l'entreprise est le même que l'index demandé
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < MAX_AMIS; i++)
         {
             if(pe->amis[i] != NULL)
             {
@@ -653,7 +648,7 @@ void PersonneRechercheCollegueParCompetence(personne* pe, groupeEntreprises* gE,
     else if (gP->poste == NULL) cout << "Aucun poste enregistré" << endl ;
     else
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < MAX_AMIS; i++)
         {
             if(pe->amis[i] != NULL)
             {
@@ -680,7 +675,7 @@ void PersonneRechercheCollegueParCompetence(personne* pe, groupeEntreprises* gE,
                             // cout << "       poste : " << posteCourant->titre << endl ;
 
                             // Pour chaque compétence de la personne
-                            for (int i = 0; i < 5; i++)
+                            for (int i = 0; i < MAX_COMPETENCES; i++)
                             {
                                 if(!collegueDejaAffiche)
                                 {
@@ -691,7 +686,7 @@ void PersonneRechercheCollegueParCompetence(personne* pe, groupeEntreprises* gE,
                                     {
                                         // cout << "           " << competencePersonne << " : " ;
                                         // Pour chaque compétence du poste
-                                        for (int j = 0; j < 5; j++)
+                                        for (int j = 0; j < MAX_COMPETENCES; j++)
                                         {
                                             competencePoste = "" ;
                                             if(posteCourant->competence[j][0] != '\0') competencePoste = string(posteCourant->competence[j]) ;

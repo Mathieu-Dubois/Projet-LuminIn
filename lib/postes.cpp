@@ -1,5 +1,4 @@
 #include <iostream>
-using namespace std ;
 #include <fstream>
 #include <string>
 #include <stdbool.h>
@@ -8,13 +7,8 @@ using namespace std ;
 #include <assert.h>
 #include <malloc.h>
 #include <string.h>
-
-#include "entreprise.h"
-#include "groupe.h"
-#include "liste.h"
+using namespace std ;
 #include "postes.h"
-#include "journal.h"
-
 
 // But : Création d'un groupe de postes à partir d'un flux donné
 groupePostes* g_openPostesCSV(FILE* db)
@@ -26,7 +20,7 @@ groupePostes* g_openPostesCSV(FILE* db)
     char caracterelu ;
 
     //Initialisation du tableau competence
-    for (int i = 0 ; i < 5 ; i++)
+    for (int i = 0 ; i < MAX_COMPETENCES ; i++)
         for(int j = 0 ; j < 128; j++) data.competence[i][j] = '\0';
         
     
@@ -38,7 +32,7 @@ groupePostes* g_openPostesCSV(FILE* db)
      - un numéro correspondant à l'index du poste dans le fichier puis une virgule
      - une chaine de caractères correspondant au titre du poste puis une virgule
      - un numéro correspondant à l'index de l'entreprise qui propose ce poste puis une virgule
-     - entre 1 et 5 compétences avec un ; entre chaque et un retour à la ligne à la fin
+     - entre 1 et MAX_COMPETENCES compétences avec un ; entre chaque et un retour à la ligne à la fin
 
      Pour chaque ligne lue, on ajoute au groupe le poste contenant les informations lues
      Si ces conditions ne sont pas vérifiées, cela signifie que le fichier a été lu en entier
@@ -78,7 +72,7 @@ void AfficherPostes(groupePostes* gP)
         while (p!= NULL && tmp != NULL)
         {
             cout << p->index << " - " << p->titre << " - " << p->entreprise << " - | " ;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < MAX_COMPETENCES; i++)
             {
                 for (int j = 0; j < 128; j++) cout << p->competence[i][j] ;
                 if(p->competence[i][0] != '\0') cout << " | " ;
@@ -140,7 +134,7 @@ void AfficherPostesEntreprise(groupeEntreprises* gE, groupePostes* gP, int index
                     if(p->entreprise == index)
                     {
                         cout << p->index << " - " << p->titre << " - | " ;
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < MAX_COMPETENCES; i++)
                         {
                             for (int j = 0; j < 128; j++) cout << p->competence[i][j] ;
                             if(p->competence[i][0] != '\0') cout << " | " ;
@@ -163,7 +157,7 @@ void AfficherPostesEntreprise(groupeEntreprises* gE, groupePostes* gP, int index
 }
 
 // But : Ajouter un poste à un groupe de type groupePostes
-int AjoutPoste(groupePostes *gP, char titre[128], int indexE, char competence[5][128])
+int AjoutPoste(groupePostes *gP, char titre[128], int indexE, char competence[MAX_COMPETENCES][128])
 {
     // On récupère l'index du dernier poste du groupe 
     int indexP(0) ;
@@ -175,7 +169,7 @@ int AjoutPoste(groupePostes *gP, char titre[128], int indexE, char competence[5]
     nouveau->index = indexP + 1 ;
     strcpy(nouveau->titre, titre) ;
     nouveau->entreprise = indexE ;
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < MAX_COMPETENCES; i++)
     {
         for (int j = 0; j < 128; j++)
         {
@@ -192,7 +186,7 @@ int AjoutPoste(groupePostes *gP, char titre[128], int indexE, char competence[5]
     ofstream fichier("postes.csv", ios::app) ;
     fichier << indexP+1 << "," << titre << "," << indexE << "," ;
     if(competence[0][0] != '\0') fichier << competence[0] ;
-    for (int i = 1; i < 5; i++)
+    for (int i = 1; i < MAX_COMPETENCES; i++)
     {
         if(competence[i][0] != '\0') fichier << ";" << competence[i] ;
     }
@@ -266,7 +260,7 @@ void g_ecrirePoste(groupePostes* gP)
                 p = (poste*)(tmp->data) ;
                 nouveauCSV << p->index << "," << p->titre << "," << p->entreprise << "," ;
                 if(p->competence[0][0] != '\0') nouveauCSV << p->competence[0] ;
-                for (int i = 1; i < 5; i++)
+                for (int i = 1; i < MAX_COMPETENCES; i++)
                 {
                     if(p->competence[i][0] != '\0') nouveauCSV << ";" << p->competence[i] ;
                 }

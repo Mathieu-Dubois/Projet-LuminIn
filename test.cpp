@@ -1,7 +1,5 @@
 #include <iostream>
 using namespace std ;
-#include "lib/bibliotheques.h"
-
 #include <signal.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -9,6 +7,7 @@ using namespace std ;
 #include <string.h>
 #include <string>
 #include <fstream>
+#include "lib/bibliotheques.h"
 
 using namespace std ;
 
