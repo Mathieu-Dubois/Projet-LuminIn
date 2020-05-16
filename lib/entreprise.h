@@ -1,7 +1,6 @@
 #pragma once
 
 #include "liste.h"
-#include "groupe.h"
 
 typedef struct entreprise
 {
@@ -16,6 +15,8 @@ typedef struct groupeEntreprises
     node* entreprise ;
 } groupeEntreprises ;
 
+#include "groupe.h"
+#include "postes.h"
 
 /*==============================================================================================
  || FONCTION : g_openEntrepriseCSV
@@ -185,3 +186,36 @@ void EntrepriseRechercheParCompetenceEtCode(groupePersonnes* gPe, char competenc
  ||     Aucun
   ============================================================================================== */
 groupePersonnes* LicencierToutLeMonde(groupePersonnes* gPe, groupeEntreprises* gE, int indexE) ;
+
+/*==============================================================================================
+ || FONCTION : EntrepriseRecherchePersonneParCompetence
+  ==============================================================================================
+ || But : Afficher les informations de tous les chercheurs d'emploi ayant une compétence 
+ ||       en commun avec un poste de l'entreprise
+ ||     
+ || Paramètres :
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     competence : une chaine de caractère contenant la compétence demandée
+ ||
+ || Retour :
+ ||     Aucun
+  ============================================================================================== */
+void EntrepriseRecherchePersonneParCompetence(groupePersonnes* gPe, groupePostes* gP, int indexE) ;
+
+
+/*==============================================================================================
+ || FONCTION : EntrepriseRecherchePersonneParCompetenceEtCode
+  ==============================================================================================
+ || But : Afficher les informations de tous les chercheurs d'emploi ayant une compétence 
+ ||       en commun avec un poste de l'entreprise ssi l'entreprise et la personne ont le même
+ ||       code postal
+ ||     
+ || Paramètres :
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     competence : une chaine de caractère contenant la compétence demandée
+ ||     e : pointeur sur une entreprise
+ ||
+ || Retour :
+ ||     Aucun
+  ============================================================================================== */
+void EntrepriseRecherchePersonneParCompetenceEtCode(groupePersonnes* gPe, groupePostes* gP, entreprise* e) ;

@@ -326,3 +326,169 @@ groupePersonnes* LicencierToutLeMonde(groupePersonnes* gPe, groupeEntreprises* g
 
     return gPe ;
 }
+
+// But : Afficher les informations de tous les chercheurs d'emploi ayant une compétence 
+//       en commun avec un poste de l'entreprise
+void EntrepriseRecherchePersonneParCompetence(groupePersonnes* gPe, groupePostes* gP, int indexE)
+{
+    int trouve(0), personneDejaAffiche(0) ;
+    string competencePoste ;
+    string competencePersonne ;
+
+    if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
+    else if (gP->poste == NULL) cout << "Aucun poste enregistré" << endl ;
+    else
+    {
+        // On parcourt toutes les personnes
+        node *p_gPe = gPe->personnes ;
+        personne *personneCourante = (personne*)p_gPe->data ;
+        while (personneCourante!= NULL && p_gPe != NULL)
+        {
+            // Si cette personne est un chercheur d'emploi
+            if(personneCourante->entreprise == -1)
+            {
+                // On doit regarder si l'une de ses compétence match avec les compétences des postes à pourvoir de l'entreprise
+                // On doit donc regarder la liste des postes
+                node *p_gP = gP->poste ;
+                poste *posteCourant = (poste*)p_gP->data ;
+                while (posteCourant!= NULL && p_gP != NULL)
+                {
+                    // On s'interresse qu'aux postes de l'entreprise
+                    if(posteCourant->entreprise == indexE)
+                    {
+                        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                        personneDejaAffiche = 0 ;
+                        // On parcourt toutes les compétences du poste pour voir si il y a un match
+                        for (int i = 0; i < 5; i++)
+                        {
+                            competencePoste = "" ;
+                            if(posteCourant->competence[i][0] != '\0') competencePoste = string(posteCourant->competence[i]) ;
+                            if(competencePoste == "") ; // On a aucune compétence à comparer, on ne fait rien
+                            else
+                            {
+                                // On parcourt toutes les compétences de la personne pour voir si il y a un match
+                                for (int i = 0; i < 5; i++)
+                                {
+                                    if(!personneDejaAffiche)
+                                    {
+                                        competencePersonne = "" ;
+                                        if(personneCourante->competence[i][0] != '\0') competencePersonne = string(personneCourante->competence[i]) ;
+                                        if(competencePersonne == "") ; // On a aucune compétence à rechercher, on ne fait rien
+                                        else
+                                        {
+                                            if(competencePersonne == competencePoste)
+                                            {
+                                                trouve = 1 ;
+                                                personneDejaAffiche = 1 ;
+                                                 cout << "- " << personneCourante->nom << " " << personneCourante->prenom << " (" << personneCourante->courriel << ")" << endl ;
+                                                
+                                            }
+                                        }
+                                    } 
+                                }
+                            }
+                        }       
+
+                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    }
+                    // on passe au poste suivant
+                    p_gP = p_gP->next ;
+                    if(p_gP != NULL) posteCourant = (poste*)p_gP->data ;
+                }
+            }
+            // on passe à la personne suivante
+            p_gPe = p_gPe->next ;
+            if(p_gPe != NULL) personneCourante = (personne*)p_gPe->data ;
+        }
+    }
+    // Si on a rien trouvé, on l'indique à l'utilisateur
+    if(!trouve) cout << "Aucun chercheur d'emploi ne correspond à vos postes à pourvoir" << endl ;
+}
+
+// But : Afficher les informations de tous les chercheurs d'emploi ayant une compétence 
+//       en commun avec un poste de l'entreprise ssi l'entreprise et la personne ont le même code postal
+void EntrepriseRecherchePersonneParCompetenceEtCode(groupePersonnes* gPe, groupePostes* gP, entreprise* e)
+{
+    int trouve(0), personneDejaAffiche(0), indexE(0) ;
+    string competencePoste ;
+    string competencePersonne ;
+
+    if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
+    else if (gP->poste == NULL) cout << "Aucun poste enregistré" << endl ;
+    else
+    {
+        // On récupéère l'index de l'entreprise qui fait la recherche
+        indexE = e->index ;
+
+        // On parcourt toutes les personnes
+        node *p_gPe = gPe->personnes ;
+        personne *personneCourante = (personne*)p_gPe->data ;
+        while (personneCourante!= NULL && p_gPe != NULL)
+        {
+            //Si cette personne a le même code postal que l'entreprise
+            if(personneCourante->adresse == e->code_postal)
+            {
+                // Si cette personne est un chercheur d'emploi
+                if(personneCourante->entreprise == -1)
+                {
+                    // On doit regarder si l'une de ses compétence match avec les compétences des postes à pourvoir de l'entreprise
+                    // On doit donc regarder la liste des postes
+                    node *p_gP = gP->poste ;
+                    poste *posteCourant = (poste*)p_gP->data ;
+                    while (posteCourant!= NULL && p_gP != NULL)
+                    {
+                        // On s'interresse qu'aux postes de l'entreprise
+                        if(posteCourant->entreprise == indexE)
+                        {
+                            personneDejaAffiche = 0 ;
+                            // On parcourt toutes les compétences du poste pour voir si il y a un match
+                            for (int i = 0; i < 5; i++)
+                            {
+                                competencePoste = "" ;
+                                if(posteCourant->competence[i][0] != '\0') competencePoste = string(posteCourant->competence[i]) ;
+                                if(competencePoste == "") ; // On a aucune compétence à comparer, on ne fait rien
+                                else
+                                {
+                                    // On parcourt toutes les compétences de la personne pour voir si il y a un match
+                                    for (int i = 0; i < 5; i++)
+                                    {
+                                        if(!personneDejaAffiche)
+                                        {
+                                            competencePersonne = "" ;
+                                            if(personneCourante->competence[i][0] != '\0') competencePersonne = string(personneCourante->competence[i]) ;
+                                            if(competencePersonne == "") ; // On a aucune compétence à rechercher, on ne fait rien
+                                            else
+                                            {
+                                                if(competencePersonne == competencePoste)
+                                                {
+                                                    trouve = 1 ;
+                                                    personneDejaAffiche = 1 ;
+                                                    cout << "- " << personneCourante->nom << " " << personneCourante->prenom << " (" << personneCourante->courriel << ")" << endl ;
+                                                    
+                                                }
+                                            }
+                                        } 
+                                    }
+                                }
+                            }       
+                        }
+                        // on passe au poste suivant
+                        p_gP = p_gP->next ;
+                        if(p_gP != NULL) posteCourant = (poste*)p_gP->data ;
+                    }
+                }
+            }
+
+            
+            // on passe à la personne suivante
+            p_gPe = p_gPe->next ;
+            if(p_gPe != NULL) personneCourante = (personne*)p_gPe->data ;
+        }
+    }
+    // Si on a rien trouvé, on l'indique à l'utilisateur
+    if(!trouve) cout << "Aucun chercheur d'emploi ne correspond à vos postes à pourvoir" << endl ;
+}
+
+
+

@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std ;
 #include "groupe.h"
+#include "employe.h"
 #include "liste.h"
 #include <stdbool.h>
 #include <stdio.h>
@@ -184,17 +185,22 @@ int g_size(groupePersonnes* g)
 
 personne* g_index(groupePersonnes* g, int const index)
 {
-    assert(index<21);
-    assert(index>=0);
-    if (g->personnes == NULL) return NULL;
-    node *tmp = g->personnes;
-    personne *p = (personne*)tmp->data;
-    while (p->index != index && p != NULL && tmp->next !=NULL){
-        tmp = tmp -> next;
-        p = (personne*)tmp->data;
-    } 
-    if (p->index == index) return p;
-    return NULL;
+    if(ExistePersonne(g,index))
+    {
+        if (g->personnes == NULL) return NULL;
+        node *tmp = g->personnes;
+        personne *p = (personne*)tmp->data;
+        while (p->index != index && p != NULL && tmp->next !=NULL){
+            tmp = tmp -> next;
+            p = (personne*)tmp->data;
+        } 
+        if (p->index == index) return p;
+        return NULL;
+    }
+    else cout << "La personne n'existe pas" << endl ;
+    return NULL ;
+    
+    
 }
 
 bool g_friends(groupePersonnes* g, int const index_a, int const index_b)

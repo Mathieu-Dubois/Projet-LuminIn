@@ -28,7 +28,8 @@ int MenuPrincipal(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         choix = "" ;
-        cin >> choix ;
+        cin.clear() ;
+        getline(cin,choix) ;
     } while (!regex_match(choix,patternMenu));
 
     // Deuxième étape : On affiche le menu demandé par l'utilisateur
@@ -63,7 +64,8 @@ int MenuEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         choix = "" ;
-        cin >> choix ;
+        cin.clear() ;
+        getline(cin,choix) ;
     } while (!regex_match(choix,patternMenu));
 
     // Deuxième étape : On affiche le menu demandé par l'utilisateur
@@ -98,7 +100,8 @@ int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePer
             cout << "q. Quitter l'application" << endl << endl ; 
             cout << "Votre choix : " ;
             choix = "" ;
-            cin >> choix ;
+            cin.clear() ;
+            getline(cin,choix) ;
         } while (!regex_match(choix,patternNombre) && !regex_match(choix,patternMenu));
         // Deuxième étape :
         // Si l'utilisateur a saisie m, r ou q, on l'oriente au bon endroit
@@ -131,7 +134,6 @@ int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes
     string courriel ;
     
     // Première étape : l'utilisateur entre toutes les informations et on vérifie la saisie
-    cin.ignore() ;
     system("clear") ;
     cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
     do
@@ -175,7 +177,8 @@ int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes
         cout << "n. NON" << endl ;
         cout << "Votre choix : " ;
         choix = "" ;
-        cin >> choix ;
+        cin.clear() ;
+        getline(cin,choix) ;
     } while (!regex_match(choix,patternMenu));
 
     // Troisième étape : Si l'utilisateur à validé, on ajoute son entreprise puis on revient au menu des entreprises
@@ -225,7 +228,8 @@ int MenuProfilEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonne
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         choix = "" ;
-        cin >> choix ;
+        cin.clear() ;
+        getline(cin,choix) ;
     } while (!regex_match(choix,patternMenu));
 
     // Deuxième étape : on affiche le menu demandé par l'utilisateur amenant à la fonctionnalité voulue
@@ -275,7 +279,8 @@ int MenuConfirmerSuppressionEntreprise(groupeEntreprises* gE, groupePostes *gP, 
         cout << "n. NON" << endl << endl ;       
         cout << "Votre choix : " ;
         choix = "" ;
-        cin >> choix ;
+        cin.clear() ;
+        getline(cin,choix) ;
     } while (!regex_match(choix,patternMenu));
 
     // Etape 2 : Si l'utilisateur confirme on supprime tous les postes à pourvoir de son entreprise, puis on supprime l'entreprise, puis on revient au menu principal
@@ -311,7 +316,8 @@ int MenuAfficherPostesDuneEntreprise(groupeEntreprises* gE, groupePostes *gP, gr
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         choix = "" ;
-        cin >> choix ;
+        cin.clear() ;
+        getline(cin,choix) ;
     } while (!regex_match(choix,patternMenu));
 
     // Deuxième étape : on affiche le menu demandé par l'utilisateur
@@ -342,7 +348,6 @@ int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe
     char competencePoste[5][128] = {'\0'} ;
 
     // Première étape : l'utilisateur entre toutes les informations et on vérifie la saisie
-    cin.ignore() ;
     system("clear") ;
     cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
     cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl ;
@@ -455,7 +460,8 @@ int MenuSupprimerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes 
             cout << "Les postes à pourvoir dans votre entreprise : " << endl ;
             AfficherPostesEntreprise(gE, gP, indexE) ;
             cout << endl << "Entrez le numéro du poste que vous voulez supprimer ou r pour revenir à la page précédente : " ;
-            cin >> choix ;
+            cin.clear() ;
+            getline(cin,choix) ;
         } while (!regex_match(choix,patternNombre) && !regex_match(choix,patternMenu)) ;
         // Deuxième étape :
         // Si l'utilisateur a saisie r on l'oriente au bon endroit
@@ -479,11 +485,6 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
     regex patternCompetence {"[a-zA-Zéèêëïîôöàâäç'_]{1,100}"} ;
     regex patternCodePostal {"[0-9]{5}"} ; // Un code postal doit contenir 5 chiffres
     string choix ;
-    string competence ;
-    string code ;
-    int code_postal ;
-
-
 
     // Première étape : on demande à l'utilisateur quelle type de recherche il veut faire
     do
@@ -499,7 +500,8 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         choix = "" ;
-        cin >> choix ;
+        cin.clear() ;
+        getline(cin,choix) ;
     } while (!regex_match(choix,patternMenu));
 
     // Deuxième étape : on affiche le menu correspondant à la recherche demandé
@@ -510,22 +512,16 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
             system("clear") ;
             cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
             cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
-            cout << "Saisissez la compétence que vous recherchez (sans espaces) : "  ;
-            competence = "" ;
+            cout << "Liste de tous les chercheurs d'emploi ayant une compétence que vous recherchez dans vos postes à pourvoir :" << endl << endl ;
+            EntrepriseRecherchePersonneParCompetence(gPe,gP,indexE) ;
+
+        // journal_EntrepriseRechercheCompetence(g_indexEntreprise(gE, indexE), competencePoste) ;
+            cout << endl ;
+            cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+            choix = "" ;
             cin.clear() ;
-            getline(cin, competence) ;
-        } while(!regex_match(competence, patternCompetence)) ;
-
-        // La compétence saisie est valide, on doit la convertir en char* pour s'adapter aux autres fonctions
-        size_t size = competence.size() + 1 ;
-        char competencePoste[128] ;
-        strncpy(competencePoste, competence.c_str(), size) ;
-
-        journal_EntrepriseRechercheCompetence(g_indexEntreprise(gE, indexE), competencePoste) ;
-        EntrepriseRechercheParCompetence(gPe, competencePoste) ;
-        cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
-        cin >> choix ;
-        cin.ignore() ;
+            getline(cin, choix) ;
+        } while (choix != "p");
         return MenuProfilEntreprise(gE, gP, gPe, indexE) ;
     }
     else if(choix == "2") 
@@ -535,35 +531,17 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
             system("clear") ;
             cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
             cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
-            cout << "Saisissez la compétence que vous recherchez (sans espaces) : "  ;
-            competence = "" ;
+            cout << "Liste de tous les chercheurs d'emploi avec la même adresse que vous" << endl;
+            cout << "et ayant une compétence que vous recherchez dans vos postes à pourvoir :" << endl << endl ;
+                   
+        // journal_EntrepriseRechercheCompetenceEtCode(g_indexEntreprise(gE, indexE), competencePoste, code_postal) ;
+            EntrepriseRecherchePersonneParCompetenceEtCode(gPe,gP,g_indexEntreprise(gE,indexE)) ;
+            cout << endl ;
+            cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+            choix = "" ;
             cin.clear() ;
-            getline(cin, competence) ;
-        } while(!regex_match(competence, patternCompetence)) ;
-
-        // La compétence saisie est valide, on doit la convertir en char* pour s'adapter aux autres fonctions
-        size_t size = competence.size() + 1 ;
-        char competencePoste[128] ;
-        strncpy(competencePoste, competence.c_str(), size) ;       
-        
-        do
-        {
-            system("clear") ;
-            cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
-            cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
-            cout << "Saisissez le code postal que vous recherchez : "  ;
-            code = "" ;
-            cin.clear() ;
-            getline(cin,code) ;
-        } while(!regex_match(code, patternCodePostal)) ;
-
-        // Le code postal saisie est valide, on doit le convertir en int pour s'adapter aux autres fonctions
-        code_postal = stoi(code) ;
-        journal_EntrepriseRechercheCompetenceEtCode(g_indexEntreprise(gE, indexE), competencePoste, code_postal) ;
-        EntrepriseRechercheParCompetenceEtCode(gPe, competencePoste, code_postal) ;
-        cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
-        cin >> choix ;
-        cin.ignore() ;
+            getline(cin, choix) ;
+        } while (choix != "p");
         return MenuProfilEntreprise(gE, gP, gPe, indexE) ;
     }
     else if(choix == "r") return MenuProfilEntreprise(gE, gP, gPe, indexE) ;
@@ -578,8 +556,6 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
         return 0 ;
     }
 }
-
-
 
 
 
@@ -607,7 +583,8 @@ int MenuPersonne(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         choix = "" ;
-        cin >> choix ;
+        cin.clear() ;
+        getline(cin,choix) ;
     } while (!regex_match(choix,patternMenu));
 
     // Deuxième étape : On affiche le menu demandé par l'utilisateur
@@ -642,7 +619,8 @@ int MenuSeConnecterPersonne(groupeEntreprises *gE, groupePostes *gP, groupePerso
             cout << "q. Quitter l'application" << endl << endl ; 
             cout << "Votre choix : " ;
             choix = "" ;
-            cin >> choix ;
+            cin.clear() ;
+            getline(cin,choix) ;
         } while (!regex_match(choix,patternNombre) && !regex_match(choix,patternMenu));
         // Deuxième étape :
         // Si l'utilisateur a saisie m, r ou q, on l'oriente au bon endroit
@@ -691,7 +669,8 @@ int MenuProfilPersonne(groupeEntreprises *gE, groupePostes *gP, groupePersonnes 
         cout << "m. Retourner au menu principal" << endl ;                       
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
-        cin >> choix ;
+        cin.clear() ;
+        getline(cin,choix) ;
     } while (!regex_match(choix,patternMenu));
 
     // Deuxième étape : on affiche le menu demandé par l'utilisateur amenant à la fonctionnalité voulue
@@ -775,7 +754,8 @@ int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes
         cout << "m. Retourner au menu principal" << endl ;                       
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
-        cin >> choix ;
+        cin.clear() ;
+        getline(cin,choix) ;
     } while ((!regex_match(choix,patternMenu1) && max == 6 ) || (!regex_match(choix,patternMenu2) && max == 7));
 
     // On affiche le menu demandé par l'utilisateur
@@ -860,7 +840,8 @@ int MenuConfirmerSuppressionPersonne(groupeEntreprises* gE, groupePostes *gP, gr
         cout << "n. NON" << endl << endl ;       
         cout << "Votre choix : " ;
         choix = "" ;
-        cin >> choix ;
+        cin.clear() ;
+        getline(cin,choix) ;
     } while (!regex_match(choix,patternMenu));
 
     // Etape 2 : Si l'utilisateur confirme on supprime son profil, puis on revient au menu principal
@@ -906,7 +887,6 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
     
 
     // Première étape : l'utilisateur entre toutes les informations et on vérifie la saisie
-    cin.ignore() ;
     system("clear") ;
     cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
     do
@@ -1205,17 +1185,16 @@ int MenuConfirmerQuitterEntreprise(groupeEntreprises* gE, groupePostes *gP, grou
     return 0 ;
 }
 
-// SAISIE SÉCURISÉE A FAIRE /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 // But : Affiche le menu permettant à une personne de chercher un emploi ou un collègue
 int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternMenu {"q|m|r|1|2{1}"} ; // On vérifie si l'utilisateur entre q, m, r, 1 ou 2
     regex patternRecherche {"r|1|2{1}"} ; // On vérifie si l'utilisateur entre r, 1 ou 2
+    regex patternNombre {"[1-9]([0-9]*)"} ; // On vérifie si l'utilisateur entre un nombre < 0
     string choix ;
-    int a(0) ;
-    char erreur[10] = "ERREUR" ;
+    int indexE(0) ;
+
 
     // On commence par regarder si cette personne est un employé ou un chercheur d'emploi
     std::string statut = "" ;
@@ -1241,7 +1220,8 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         choix = "" ;
-        cin >> choix ;
+        cin.clear() ;
+        getline(cin,choix) ;
     } while (!regex_match(choix,patternMenu));
 
     // Deuxième étape :
@@ -1273,38 +1253,42 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
             cout << "r. Retourner sur votre profil" << endl << endl;
             cout << "Votre choix : " ;
             choix = "" ;
-            cin >> choix ;
+            cin.clear() ;
+            getline(cin,choix) ;
         } while (!regex_match(choix,patternRecherche));
         
         // On oriente à nouveau l'utilisateur vers le bon endroit
         if(choix == "1")
         {
-            system("clear") ;
-            cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
-            cout << "Résultat de la recherche :" << endl ;
-            a=recherche_poste_comp(indexPe,gPe,gP,gE);
-            journal_PersonneRecherchePosteParCompetence(g_index(gPe, indexPe),erreur ) ;
-            if(a==0) cout << "pas de poste avec cette competence" << endl;
-            if(a==1) cout << "Au moins un poste avec cet competence" << endl;
-            if(a==2) cout << "Problème d'indice non trouvé"<< endl;
-
-            cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
-            cin >> choix ;
+            do
+            {
+                system("clear") ;
+                cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+                cout << "Liste de tous les postes à pourvoir qui correspondent à vos compétences :" << endl << endl ;
+                PersonneRecherchePosteParCompetence(g_index(gPe,indexPe), gP, gE) ;
+                cout << endl ;
+                cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+                choix = "" ;
+                cin.clear() ;
+                getline(cin, choix) ;
+            } while (choix != "p");
+            
             return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
         }
         else if(choix == "2")
         {
-            system("clear") ;
-            cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
-            cout << "Résultat de la recherche :" << endl ;
-            a=recherche_poste_postal(indexPe,gPe,gP,gE);
-            journal_PersonneRecherchePosteParCompetenceEtCode(g_index(gPe, indexPe), erreur, -1 ) ;
-            if(a==0) cout << "pas de poste à cette adresse" << endl;
-            if(a==1) cout << "Au moins un poste à cette adresse" << endl;
-            if(a==2) cout << "Problème d'indice non trouvé"<< endl;
-
-            cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
-            cin >> choix ;
+            do
+            {
+                system("clear") ;
+                cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+                cout << "Liste de tous les postes à pourvoir avec la même adresse que vous et qui correspondent à vos compétences :" << endl << endl ;
+                PersonneRecherchePosteParCompetenceEtCode(g_index(gPe,indexPe), gP, gE) ;
+                cout << endl ;
+                cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+                choix = "" ;
+                cin.clear() ;
+                getline(cin, choix) ;
+            } while (choix != "p");
             return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
         }
         else return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
@@ -1323,49 +1307,58 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
             cout << "r. Retourner sur votre profil" << endl << endl ;
             cout << "Votre choix : " ;
             choix = "" ;
-            cin >> choix ;
+            cin.clear() ;
+            getline(cin,choix) ;
         } while (!regex_match(choix,patternRecherche));
 
         // On oriente à nouveau l'utilisateur vers le bon endroit
-        int col ;
         if(choix == "1")
         {
-            system("clear") ;
-            cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
-            AfficherEntreprises(gE);
-            cout << endl << "Ecrivez le numéro de l'entreprise : ";
-            cin >> col;
-            system("clear") ;
-            cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
-            cout << "Résultat de la recherche :" << endl ;
-            a = recherche_col_par_entre(indexPe,gPe,col);
-            journal_PersonneRechercheCollegueParEntreprise(g_index(gPe, indexPe), g_indexEntreprise(gE,col)) ;
-            if(a==0) cout << "Pas de collègue dans cette entreprise" << endl;
-            if(a==1) cout << "Au moins un de vos collègue travaille dans cette entreprise" << endl;
-            if(a==2) cout << "Problème d'indice non trouvé"<< endl;
-
-            cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
-            cin >> choix ;
+            do
+            {
+                do
+                {
+                    system("clear") ;
+                    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+                    cout << "Entrez l'index de l'entreprise dans laquelle vous voulez effectuer la recherche :" << endl ;
+                    AfficherEntreprises(gE) ;
+                    cout << endl ;
+                    cout << "Votre choix : " ;
+                    choix = "" ;
+                    cin.clear() ;
+                    getline(cin, choix) ;
+                } while (!regex_match(choix,patternNombre));
+                // Le nombre saisi est correct, on le convertit
+                indexE = stoi(choix) ;
+            } while(!ExisteEntreprise(gE, indexE)) ;
+            do
+            {
+                system("clear") ;
+                cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+                cout << "Liste de tous vos collègues travaillant dans l'entreprise " << g_indexEntreprise(gE,indexE)->nom << " :" << endl << endl ;
+                PersonneRechercheCollegueParEntreprise(gPe, indexPe, indexE) ;
+                cout << endl ;
+                cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+                choix = "" ;
+                cin.clear() ;
+                getline(cin, choix) ;
+            } while (choix != "p");
             return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
         }
         else if(choix == "2")
         {
-            char comp[128];
-            system("clear") ;
-            cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
-            cout << "Saisir la compétence recherchée : " ;
-            cin >> comp;
-            system("clear") ;
-            cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
-            cout << "Résultat de la recherche :" << endl ;
-            a = recherche_col_comp(indexPe,gPe,comp);
-            journal_PersonneRechercheCollegueParCompetence(g_index(gPe, indexPe), comp) ;
-            if(a==0) cout << "Pas de collègue avec cette compétence" << endl;
-            if(a==1) cout << "Au moins un de vos collègue possède cette compétence" << endl;
-            if(a==2) cout << "Problème d'indice non trouvé"<< endl;
-
-            cout << endl << "Appuyez sur n'importe quelle touche pour revenir sur votre profil : " ;
-            cin >> choix ;
+            do
+            {
+                system("clear") ;
+                cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+                cout << "Liste de tous vos collègues travaillant dans une entreprise pouvant vous proposer un poste :" << endl << endl ;
+                PersonneRechercheCollegueParCompetence(g_index(gPe,indexPe), gE, gP) ;
+                cout << endl ;
+                cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+                choix = "" ;
+                cin.clear() ;
+                getline(cin, choix) ;
+            } while (choix != "p");
             return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
         }
         else return MenuProfilPersonne(gE, gP, gPe, indexPe) ;
@@ -1374,8 +1367,6 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
     return 0 ;
     
 }
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // But : Permet à une personne de modifier son code postal
 int MenuPersonneMod_CodePostal(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
@@ -1395,7 +1386,6 @@ int MenuPersonneMod_CodePostal(groupeEntreprises* gE, groupePostes *gP, groupePe
         statut += g_indexEntreprise(gE,g_index(gPe, indexPe)->entreprise)->nom ;
     }
 
-    cin.ignore() ;
     system("clear") ;
     cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
     cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
@@ -1456,7 +1446,6 @@ int MenuPersonneMod_mail(groupeEntreprises* gE, groupePostes *gP, groupePersonne
         statut += g_indexEntreprise(gE,g_index(gPe, indexPe)->entreprise)->nom ;
     }
 
-    cin.ignore() ;
     system("clear") ;
     cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
     cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
@@ -1496,6 +1485,7 @@ int MenuPersonneMod_mail(groupeEntreprises* gE, groupePostes *gP, groupePersonne
         strncpy(newmail, mail.c_str(), size) ;
         // Il faut faire l'entrée du journal correspondant à la modification d'adresse mail
         // journal_PersonneMod_CodePostal(g_index(gPe, indexPe),g_index(gPe, indexPe)->adresse, newadr) ;
+        journal_Personne_modifier_mail(g_index(gPe, indexPe), g_index(gPe, indexPe)->courriel, newmail) ;
         modifier_mail(indexPe,gPe,newmail);
     }
 
@@ -1521,7 +1511,6 @@ int MenuPersonne_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupeP
         statut += g_indexEntreprise(gE,g_index(gPe, indexPe)->entreprise)->nom ;
     }
 
-    cin.ignore() ;
     do
     {
         do
@@ -1599,8 +1588,6 @@ int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePostes *gP, grou
     regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
     string choix ;
     string competence ;
-
-    cin.ignore() ;
     
     // On commence par regarder si cette personne est un employé ou un chercheur d'emploi (pour l'affichage)
     std::string statut = "" ;
@@ -1708,8 +1695,6 @@ int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupe
     string choix ;
     string collegue ;
     int idCollegue(0) ;
-
-    cin.ignore() ;
     
     // On commence par regarder si cette personne est un employé ou un chercheur d'emploi (pour l'affichage)
     std::string statut = "" ;
@@ -1803,7 +1788,37 @@ int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupe
                     getline(cin, choix) ;
                 } while (choix != "p");
             }
-            if( a == 2) cout << "Cette personne n'est pas dans la même entreprise que vous [A CORRIGER ?]" << endl;
+            if(a == 2)
+            {
+                do
+                {
+                    system("clear") ;
+                    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+                    cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+                    cout << "Statut : " << statut << endl << endl ;
+                    cout << "Cette personne n'est pas dans la même entreprise que vous [A CORRIGER ?]" << endl << endl;
+                    cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+                    choix = "" ;
+                    cin.clear() ;
+                    getline(cin, choix) ;
+                } while (choix != "p");
+            }
+            if(a == 5)
+            {
+                do
+                {
+                    system("clear") ;
+                    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+                    cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+                    cout << "Statut : " << statut << endl << endl ;
+                    cout << "Vous ne pouvez pas vous ajouter vous même à votre réseau" << endl << endl;
+                    cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+                    choix = "" ;
+                    cin.clear() ;
+                    getline(cin, choix) ;
+                } while (choix != "p");
+            }
+            
 
             if(a == 0) journal_PersonneAjouter_Collegue(g_index(gPe, indexPe), g_index(gPe, idCollegue)) ;
         }
@@ -1823,8 +1838,6 @@ int MenuPersonnesupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, grou
     string choix ;
     string collegue ;
     int idCollegue(0) ;
-
-    cin.ignore() ;
     
     // On commence par regarder si cette personne est un employé ou un chercheur d'emploi (pour l'affichage)
     std::string statut = "" ;
@@ -1923,9 +1936,24 @@ int A_Implementer(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
         cout << "q. Quitter l'application" << endl << endl ;        
         cout << "Votre choix : " ;
         choix = "" ;
-        cin >> choix ;
+        cin.clear() ;
+        getline(cin,choix) ;
     } while (!regex_match(choix,patternMenu));
 
     if(choix == "m") return MenuPrincipal(gE, gP, gPe) ;
     else return 0 ;
 }
+
+
+// do
+// {
+//     system("clear") ;
+//     cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+//     cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+//     cout << "Statut : " << statut << endl << endl ;
+//     cout << "Cette personne ne fait pas partie de votre réseau. " << endl << endl ;
+//     cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+//     choix = "" ;
+//     cin.clear() ;
+//     getline(cin, choix) ;
+// } while (choix != "p");

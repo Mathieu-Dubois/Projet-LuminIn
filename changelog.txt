@@ -30,7 +30,7 @@
 
 [CORRIGÉ]   -   Le  choix 2 dans menuModifierProfil n'est pas implémenté (changement d'adresse mail)
 
--   Faire la saisie sécurisée avec "appuyez sur n'importe quelle touche" car bug à cause du buffer
+[CORRIGÉ]   -   Faire la saisie sécurisée avec "appuyez sur n'importe quelle touche" car bug à cause du buffer
 
 [CORRIGÉ]   -   Quand on créé un profil, le fichier employes.csv est entièrement supprimé (pas systématique)
 
@@ -43,11 +43,21 @@
 [CORRIGÉ]   -   Quand on supprime une entreprise et qu'ensuite on se connecte à une personne employée dans cette entreprise -> segt fault
                 -> rajouter qu'à la suppression d'une entreprise, il faut passer tous ses employes en recherche d'emploi
 
--   Une personne peut s'auto ajouter dans son réseau de collègue (Mickey est ami avec Mickey, narcissique le gars)
+[CORRIGÉ]   -   Une personne peut s'auto ajouter dans son réseau de collègue (Mickey est ami avec Mickey, narcissique le gars)
 
+-   Quand on veut supprimer un collègue d'une personne ayant 5 collègues -> segt fault
 
+[CORRIGÉ]   -   Quand une personne fait une recherche de poste par compétences, si il y a plusieurs postes qui match, ne renvoit que le premier
 
+[CORRIGÉ]   -   Quand une personne fait une recherche de poste par compétences et code, si il y a plusieurs postes qui match, ne renvoit que le premier
 
+[CORRIGÉ]   -   Quand une personne fait une recherche de collègue par entreprise, si cette personne a 5 amis -> segt fault
+
+[CORRIGÉ]   -   Recherche collègue par compétence -> segt fault de temps en temps (j'ai pas encore bien identifié quand) et en fait ça correspond pas bien à la consigne 
+
+[CORRIGÉ]   -   Si un poste à X compétences et que la personne à les mêmes X compétences, le poste va s'afficher X fois dans le résultat de la recherche
+
+- Les fonctions d'ajout au journal des recherches ne sont plus bonnes et celles des menus aussi du coup
 
 
 ==========================================================================================================================================================================
@@ -74,13 +84,15 @@
                 avec succès. En réalité, rien n'a changé puisque entreprise est resté à -1. Du coup c'est peut être mieux de mettre un message pour 
                 dire que rien ne va changer ou un truc du genre "vous etes déjà à la recherche d'un emploi
 
--   Ajouter la fonction qui rajoute dans le journal quand une personne a modifié son adresse mail
+[FAIT]      -   Ajouter la fonction qui rajoute dans le journal quand une personne a modifié son adresse mail
+
+[FAIT]      -   Harmonisation des fonctions de recherches (pour que les recherches fassent la même chose)
 
 -   Imposer une majuscule (ou une minuscule) pour la première lettre des compétences (sinon ça peut foirer les recherches (comédien différent Comédien)
     D'ailleurs pareil pour les accents en fait (comedien différent de comédien)
     -> modifier patternCompetence + fichiers csv de départ
 
--   Faire la saisie sécurisée pour les recherches d'une personne
+[FAIT]      -   Faire la saisie sécurisée pour les recherches d'une personne
 
 
 

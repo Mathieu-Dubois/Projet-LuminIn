@@ -3,7 +3,6 @@
 #include <string>
 
 #include "liste.h"
-#include "entreprise.h"
 
 typedef struct poste
 {
@@ -18,6 +17,7 @@ typedef struct groupePostes
     node* poste ;
 } groupePostes ;
 
+#include "entreprise.h"
 
 /*==============================================================================================
  || FONCTION : g_openPostesCSV

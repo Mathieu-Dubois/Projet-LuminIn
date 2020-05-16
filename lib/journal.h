@@ -248,7 +248,7 @@ void journal_SuppressionPersonne(personne* p) ;
   ==============================================================================================
  || But : Ajouter une entrée au journal renseignant que la personne a quitté son entreprise
  ||
- || Paramètre :
+ || Paramètres :
  ||     p : pointeur sur une personne
  ||     e : pointeur sur l'entreprise quitté
  ||
@@ -262,7 +262,7 @@ void journal_QuitterEntreprise(personne* p, entreprise* e) ;
   ==============================================================================================
  || But : Ajouter une entrée au journal renseignant que la personne a modifié son code postal
  ||
- || Paramètre :
+ || Paramètres :
  ||     p : pointeur sur une personne
  ||     code_postal : entier contenant le nouveau code postal
  ||     new_code_postal : entier contenant le nouveau code postal
@@ -278,7 +278,7 @@ void journal_PersonneMod_CodePostal(personne* p, int code_postal, int new_code_p
  || But : Ajouter une entrée au journal renseignant que la personne a ajouté une compétence
  ||       à son profil
  ||
- || Paramètre :
+ || Paramètres :
  ||     p : pointeur sur une personne
  ||     competence : chaine de caractère contenant la nouvelle compétence
  ||
@@ -292,7 +292,7 @@ void journal_Personneajouter_Competence(personne* p, char competence[128]) ;
   ==============================================================================================
  || But : Ajouter une entrée au journal renseignant que la personne a changé d'entreprise
  ||
- || Paramètre :
+ || Paramètres :
  ||     p : pointeur sur une personne
  ||     e : pointeur sur l'entreprise actuelle de la personne
  ||     new_e : pointeur sur la nouvelle entreprise
@@ -308,7 +308,7 @@ void journal_Personne_mod_entreprise(personne* p, entreprise* e, entreprise*  ne
  || But : Ajouter une entrée au journal renseignant que la personne a ajouté un collègue à son
  ||       réseau
  ||
- || Paramètre :
+ || Paramètres :
  ||     p : pointeur sur la personne connectée
  ||    np : pointeur sur le collègue
  ||
@@ -323,7 +323,7 @@ void journal_PersonneAjouter_Collegue(personne* p, personne* np) ;
  || But : Ajouter une entrée au journal renseignant que la personne a supprimé un collègue de
  ||       son réseau
  ||
- || Paramètre :
+ || Paramètres :
  ||     p : pointeur sur la personne connectée
  ||    np : pointeur sur le collègue
  ||
@@ -338,7 +338,7 @@ void journal_PersonneSupprimer_Collegue(personne* p, personne* np) ;
  || But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche
  ||       de poste par compétence, et affiche la compétence
  ||
- || Paramètre :
+ || Paramètres :
  ||     p : pointeur sur une personne
  ||     competence : chaine de caractère contenant la compétence
  ||
@@ -353,7 +353,7 @@ void journal_PersonneRecherchePosteParCompetence(personne* p, char competence[12
  || But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche
  ||       de poste par compétence et code, et affiche la compétence et le code
  ||
- || Paramètre :
+ || Paramètres :
  ||     p : pointeur sur une personne
  ||     competence : chaine de caractère contenant la compétence
  ||     code : int contenant le code postal
@@ -369,7 +369,7 @@ void journal_PersonneRecherchePosteParCompetenceEtCode(personne* p, char compete
  || But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche
  ||       de collègue par compétence, et affiche la compétence
  ||
- || Paramètre :
+ || Paramètres :
  ||     p : pointeur sur une personne
  ||     competence : chaine de caractère contenant la compétence
  ||
@@ -384,7 +384,7 @@ void journal_PersonneRechercheCollegueParCompetence(personne* p, char competence
  || But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche
  ||       de collègue par entreprise, et affiche l'entreprise
  ||
- || Paramètre :
+ || Paramètres :
  ||     p : pointeur sur une personne
  ||     e : pointeur sur une personne
  ||
@@ -392,3 +392,18 @@ void journal_PersonneRechercheCollegueParCompetence(personne* p, char competence
  ||     Aucun 
   ============================================================================================== */
 void journal_PersonneRechercheCollegueParEntreprise(personne* p, entreprise* e) ;
+
+/*==============================================================================================
+ || FONCTION : journal_Personne_modifier_mail
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant que la personne a modifié son adresse mail
+ ||
+ || Paramètres :
+ ||     p : pointeur sur une personne
+ ||     mail : chaine de caractère contenant l'ancienne adresse mail
+ ||     newmail : chaine de caractère contenant la nouvelle adresse mail
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_Personne_modifier_mail(personne* p, char mail[128], char newmail[128]) ;
