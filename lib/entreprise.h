@@ -1,22 +1,5 @@
 #pragma once
-
-#include "liste.h"
-
-typedef struct entreprise
-{
-    int index ;
-    char nom[40] ;
-    int code_postal;
-    char courriel[128] ;
-} entreprise ;
-
-typedef struct groupeEntreprises
-{
-    node* entreprise ;
-} groupeEntreprises ;
-
-#include "groupe.h"
-#include "postes.h"
+#include "bibliotheques.h"
 
 /*==============================================================================================
  || FONCTION : g_openEntrepriseCSV

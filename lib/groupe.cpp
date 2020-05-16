@@ -1,8 +1,4 @@
 #include <iostream>
-using namespace std ;
-#include "groupe.h"
-#include "employe.h"
-#include "liste.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,25 +6,26 @@ using namespace std ;
 #include <malloc.h>
 #include <fstream>
 #include <string>
-
+using namespace std ;
+#include "groupe.h"
 
 groupePersonnes* g_open(FILE *db)
 {
     groupePersonnes *gPe = (groupePersonnes*)malloc(sizeof(groupePersonnes));
     gPe->personnes = NULL ;
-    int amis[20][5];
+    int amis[TAILLE_GPE_MAX][MAX_AMIS];
     int ami, i,j;
     personne data;
 
     //Initialisation du tableau amis
-    for (int i = 0 ; i < 20 ; i++){ 
-        for(int j = 0 ; j < 5; j++){
+    for (int i = 0 ; i < TAILLE_GPE_MAX ; i++){ 
+        for(int j = 0 ; j < MAX_AMIS; j++){
             amis[i][j] = -1;
         }
     }
 
     //Initialisation du tableau competence
-    for (int i = 0 ; i < 5 ; i++){ 
+    for (int i = 0 ; i < MAX_COMPETENCES ; i++){ 
         for(int j = 0 ; j < 128; j++){
             data.competence[i][j] = '\0';
         }
@@ -41,7 +38,7 @@ groupePersonnes* g_open(FILE *db)
     {
         personne *p = (personne*)malloc(sizeof(personne));
         *p = data;
-        for (int i = 0 ; i < 5 ; i++){
+        for (int i = 0 ; i < MAX_AMIS ; i++){
             p->amis[i] = NULL;
         }
         //Maintenant on gère competences et entreprise
@@ -68,7 +65,7 @@ groupePersonnes* g_open(FILE *db)
     i = 0;
     while(tmp != NULL){
         compt = 0;
-        for (int j = 0 ; j < 5 ; j++){
+        for (int j = 0 ; j < MAX_AMIS ; j++){
             if (amis[i][j] != -1){
                 parcours = gPe->personnes;
                 tmpami = (personne*)(tmp->data);
@@ -87,7 +84,6 @@ groupePersonnes* g_open(FILE *db)
     }
     return gPe;
 }
-
 
 void g_ecrire(groupePersonnes* gPe)
 {
@@ -127,7 +123,7 @@ void g_ecrire(groupePersonnes* gPe)
         fputc(',', tmp);
         fprintf(tmp, "%d,", tmpami->adresse);
         int virgule = 0;
-        for (int x = 0; x < 5 ; x++){
+        for (int x = 0; x < MAX_COMPETENCES ; x++){
             if (tmpami->competence[x][0] != '\0' && virgule == 0) {
                 fputs(tmpami->competence[x], tmp);
                 virgule = 1;
@@ -139,7 +135,7 @@ void g_ecrire(groupePersonnes* gPe)
         }
         fputc(',', tmp);
         virgule = 0;
-        for (int j = 0 ; j < 5 ; j++){
+        for (int j = 0 ; j < MAX_AMIS ; j++){
             if (tmpami->amis[j] != NULL){
                     if (virgule == 0 ){
                          fprintf(tmp, "%d", tmpami->amis[j]->index);
@@ -161,7 +157,6 @@ void g_ecrire(groupePersonnes* gPe)
     fclose(tmp);
     remove("tmp.txt");
 }
-
 
 int g_size(groupePersonnes* g)
 {
@@ -201,140 +196,6 @@ personne* g_index(groupePersonnes* g, int const index)
     return NULL ;
     
     
-}
-
-bool g_friends(groupePersonnes* g, int const index_a, int const index_b)
-{
-    personne* a = g_index(g,index_a);
-    personne* b = g_index(g,index_b);
-    if (a == NULL || b == NULL) return false;
-    int i;
-    bool res1=false,res2=false;
-    for(i=0;i<5;i++){
-        if(a->amis[i]->nom==b->nom){
-                res1=true;
-        }
-        if(b->amis[i]->nom==a->nom){
-                res2=true;
-        }
-    }
-    if((res1 == true) && (res2 == true)) return true;
-    return false;
-}
-
-int g_bestie(groupePersonnes* g, int const index)
-{
-    personne* origin = g_index(g, index);
-    if (origin == NULL || origin->amis[0] == NULL) return -1;
-    int b = origin->amis[0]->index;
-    personne* dest = g_index(g, b);
-    if (dest == NULL || origin->amis[0] == NULL) return -1;
-    if (dest->amis[0]->index == index) return b;
-    else return -1;
-}
-
-bool g_oneway(groupePersonnes* g, int const index_a, int const index_b)
-{
-    personne* a = g_index(g,index_a);
-    personne* b = g_index(g,index_b);
-    if (a == NULL || b == NULL) return false;
-    int i;
-    bool res1=false,res2=false;
-    for(i=0;i<5;i++){
-        if(a->amis[i]->nom==b->nom){
-                res1=true;
-        }
-        if(b->amis[i]->nom==a->nom){
-                res2=true;
-        }
-    }
-    if((res1 == true) && (res2 == false)) return true;
-    if((res1 == false) && (res2 == true)) return true;
-    return false;
-}
-
-bool g_linked(groupePersonnes* g, int const index_a, int const index_b)
-{
-    int sec[20]; //tableau d'attente
-    int wet[20];
-    for (int i = 0 ; i<20 ; i++){
-        sec[i] = 0;
-        wet[i] = 0;
-    }
-    int i;
-    if (index_a == index_b) return false;
-    personne* origin;
-    int code = 0;
-    origin = g_index(g, index_a);
-    while (code == 0){
-        if (origin==NULL) return false;
-        wet[origin->index-1] = 1;
-        sec[origin->index-1] = 0;
-        int compt=0;
-        personne*parcourami = (personne*)(origin->amis[compt]);
-        while(parcourami != NULL){
-            if (wet[parcourami->index-1] != 1) {
-                if (parcourami->index == index_b) return true;
-                else sec[parcourami->index-1] = 1;
-            }
-            compt++;
-            parcourami = (personne*)(origin->amis[compt]);
-        }
-        i = 0;
-        while (sec[i] == 0 && i < 20) i++;
-        if (i >= 20) return false;
-        else origin = g_index(g, i+1);
-    }
-    return false;
-}
-
-int g_distance(groupePersonnes* g, int const index_a, int const index_b)
-{
-    int n=1;
-   
-     if (index_a==index_b) return 0;
-     if(g_linked(g,index_a,index_b)){
-        personne* a = g_index(g,index_a);
-        personne* b = g_index(g,index_b);
-        personne* tmp = g_index(g,index_a); 
-        personne* aprev = g_index(g,index_b); 
-        int i,l,k;
-         
-        while(1){
-            int p=0;  
-            for(l=0;l<5;l++){
-                
-                if(aprev==a){
-                   if(tmp->amis[0]) tmp=tmp->amis[0];
-                    p=p+1;
-                    l=0;
-                }
-                a=tmp;
-                n=p+2;
-                if(tmp->amis[l]){
-                if(a->amis[l]->nom==b->nom) return 1;
-                a=tmp->amis[l];
-                k=0;
-                while(k<5){
-                    i=0;
-                    for(i=0;i<5;i++){
-                        if(a->amis[i]){
-                        if(a->amis[i]->nom==b->nom){
-                            return n;
-                        }
-                        }
-                     }
-                    if(tmp->amis[l]->amis[k]) a=tmp->amis[l]->amis[k];
-                    k++;
-                    if(k==1) n++;
-                }
-             }
-            aprev=a;
-            if(tmp->amis[l+1]) a=tmp->amis[l+1];
-           }
-        }
-     }
-     else return -1;
 }
 
 void g_remove(groupePersonnes* g, int const index)
@@ -532,4 +393,140 @@ void RestaurerJournal()
 //     {
 //         cout << "ERREUR : Impossible d'ouvrir tmp.csv" << endl ;
 //     }
+// }
+
+
+
+// bool g_friends(groupePersonnes* g, int const index_a, int const index_b)
+// {
+//     personne* a = g_index(g,index_a);
+//     personne* b = g_index(g,index_b);
+//     if (a == NULL || b == NULL) return false;
+//     int i;
+//     bool res1=false,res2=false;
+//     for(i=0;i<MAX_AMIS;i++){
+//         if(a->amis[i]->nom==b->nom){
+//                 res1=true;
+//         }
+//         if(b->amis[i]->nom==a->nom){
+//                 res2=true;
+//         }
+//     }
+//     if((res1 == true) && (res2 == true)) return true;
+//     return false;
+// }
+
+// int g_bestie(groupePersonnes* g, int const index)
+// {
+//     personne* origin = g_index(g, index);
+//     if (origin == NULL || origin->amis[0] == NULL) return -1;
+//     int b = origin->amis[0]->index;
+//     personne* dest = g_index(g, b);
+//     if (dest == NULL || origin->amis[0] == NULL) return -1;
+//     if (dest->amis[0]->index == index) return b;
+//     else return -1;
+// }
+
+// bool g_oneway(groupePersonnes* g, int const index_a, int const index_b)
+// {
+//     personne* a = g_index(g,index_a);
+//     personne* b = g_index(g,index_b);
+//     if (a == NULL || b == NULL) return false;
+//     int i;
+//     bool res1=false,res2=false;
+//     for(i=0;i<MAX_AMIS;i++){
+//         if(a->amis[i]->nom==b->nom){
+//                 res1=true;
+//         }
+//         if(b->amis[i]->nom==a->nom){
+//                 res2=true;
+//         }
+//     }
+//     if((res1 == true) && (res2 == false)) return true;
+//     if((res1 == false) && (res2 == true)) return true;
+//     return false;
+// }
+
+// bool g_linked(groupePersonnes* g, int const index_a, int const index_b)
+// {
+//     int sec[TAILLE_GPE_MAX]; //tableau d'attente
+//     int wet[TAILLE_GPE_MAX];
+//     for (int i = 0 ; i<TAILLE_GPE_MAX ; i++){
+//         sec[i] = 0;
+//         wet[i] = 0;
+//     }
+//     int i;
+//     if (index_a == index_b) return false;
+//     personne* origin;
+//     int code = 0;
+//     origin = g_index(g, index_a);
+//     while (code == 0){
+//         if (origin==NULL) return false;
+//         wet[origin->index-1] = 1;
+//         sec[origin->index-1] = 0;
+//         int compt=0;
+//         personne*parcourami = (personne*)(origin->amis[compt]);
+//         while(parcourami != NULL){
+//             if (wet[parcourami->index-1] != 1) {
+//                 if (parcourami->index == index_b) return true;
+//                 else sec[parcourami->index-1] = 1;
+//             }
+//             compt++;
+//             parcourami = (personne*)(origin->amis[compt]);
+//         }
+//         i = 0;
+//         while (sec[i] == 0 && i < TAILLE_GPE_MAX) i++;
+//         if (i >= TAILLE_GPE_MAX) return false;
+//         else origin = g_index(g, i+1);
+//     }
+//     return false;
+// }
+
+// int g_distance(groupePersonnes* g, int const index_a, int const index_b)
+// {
+//     int n=1;
+   
+//      if (index_a==index_b) return 0;
+//      if(g_linked(g,index_a,index_b)){
+//         personne* a = g_index(g,index_a);
+//         personne* b = g_index(g,index_b);
+//         personne* tmp = g_index(g,index_a); 
+//         personne* aprev = g_index(g,index_b); 
+//         int i,l,k;
+         
+//         while(1){
+//             int p=0;  
+//             for(l=0;l<MAX_AMIS;l++){
+                
+//                 if(aprev==a){
+//                    if(tmp->amis[0]) tmp=tmp->amis[0];
+//                     p=p+1;
+//                     l=0;
+//                 }
+//                 a=tmp;
+//                 n=p+2;
+//                 if(tmp->amis[l]){
+//                 if(a->amis[l]->nom==b->nom) return 1;
+//                 a=tmp->amis[l];
+//                 k=0;
+//                 while(k<MAX_AMIS){
+//                     i=0;
+//                     for(i=0;i<MAX_AMIS;i++){
+//                         if(a->amis[i]){
+//                         if(a->amis[i]->nom==b->nom){
+//                             return n;
+//                         }
+//                         }
+//                      }
+//                     if(tmp->amis[l]->amis[k]) a=tmp->amis[l]->amis[k];
+//                     k++;
+//                     if(k==1) n++;
+//                 }
+//              }
+//             aprev=a;
+//             if(tmp->amis[l+1]) a=tmp->amis[l+1];
+//            }
+//         }
+//      }
+//      else return -1;
 // }

@@ -1,5 +1,4 @@
 #include <iostream>
-using namespace std ;
 #include <fstream>
 #include <string>
 #include <stdbool.h>
@@ -8,12 +7,8 @@ using namespace std ;
 #include <assert.h>
 #include <malloc.h>
 #include <string.h>
-
+using namespace std ;
 #include "entreprise.h"
-#include "groupe.h"
-#include "liste.h"
-#include "journal.h"
-
 
 // But : Création d'un groupe d'entreprise à partir d'un flux donné
 groupeEntreprises* g_openEntreprisesCSV(FILE *db)
@@ -239,7 +234,7 @@ void EntrepriseRechercheParCompetence(groupePersonnes* gPe, char competence[128]
             if(p->entreprise == -1)
             {
                 // On regarde toutes ces compétences 
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < MAX_COMPETENCES; i++)
                 {
                     // Si une compétence correspond à la compétence recherchée, on affiche la personne
                     if (!strcmp(competence, p->competence[i]))
@@ -279,7 +274,7 @@ void EntrepriseRechercheParCompetenceEtCode(groupePersonnes* gPe, char competenc
                 if (p->adresse == code_postal)
                 {
                     // On regarde toutes ces compétences 
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < MAX_COMPETENCES; i++)
                     {
                         // Si une compétence correspond à la compétence recherchée, on affiche la personne
                         if (!strcmp(competence, p->competence[i]))
@@ -360,7 +355,7 @@ void EntrepriseRecherchePersonneParCompetence(groupePersonnes* gPe, groupePostes
 
                         personneDejaAffiche = 0 ;
                         // On parcourt toutes les compétences du poste pour voir si il y a un match
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < MAX_COMPETENCES; i++)
                         {
                             competencePoste = "" ;
                             if(posteCourant->competence[i][0] != '\0') competencePoste = string(posteCourant->competence[i]) ;
@@ -368,7 +363,7 @@ void EntrepriseRecherchePersonneParCompetence(groupePersonnes* gPe, groupePostes
                             else
                             {
                                 // On parcourt toutes les compétences de la personne pour voir si il y a un match
-                                for (int i = 0; i < 5; i++)
+                                for (int i = 0; i < MAX_COMPETENCES; i++)
                                 {
                                     if(!personneDejaAffiche)
                                     {
@@ -447,7 +442,7 @@ void EntrepriseRecherchePersonneParCompetenceEtCode(groupePersonnes* gPe, groupe
                         {
                             personneDejaAffiche = 0 ;
                             // On parcourt toutes les compétences du poste pour voir si il y a un match
-                            for (int i = 0; i < 5; i++)
+                            for (int i = 0; i < MAX_COMPETENCES; i++)
                             {
                                 competencePoste = "" ;
                                 if(posteCourant->competence[i][0] != '\0') competencePoste = string(posteCourant->competence[i]) ;
@@ -455,7 +450,7 @@ void EntrepriseRecherchePersonneParCompetenceEtCode(groupePersonnes* gPe, groupe
                                 else
                                 {
                                     // On parcourt toutes les compétences de la personne pour voir si il y a un match
-                                    for (int i = 0; i < 5; i++)
+                                    for (int i = 0; i < MAX_COMPETENCES; i++)
                                     {
                                         if(!personneDejaAffiche)
                                         {

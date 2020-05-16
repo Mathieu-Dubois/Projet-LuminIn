@@ -2,13 +2,10 @@
 #include <regex>
 #include <string>
 using namespace std ;
-
 #include "menu.h"
-#include "entreprise.h"
-#include "employe.h"
-#include "postes.h"
-#include "groupe.h"
-#include "journal.h"
+
+
+
 
 // But : Affiche le menu principal permettant de s'identifier en tant qu'entreprise ou utisateur
 int MenuPrincipal(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
@@ -345,7 +342,7 @@ int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe
     string titre ;
     string competence ;
 
-    char competencePoste[5][128] = {'\0'} ;
+    char competencePoste[MAX_COMPETENCES][128] = {'\0'} ;
 
     // Première étape : l'utilisateur entre toutes les informations et on vérifie la saisie
     system("clear") ;
@@ -386,7 +383,7 @@ int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe
         size = competence.size() + 1 ;
         strncpy(competencePoste[compteur-1], competence.c_str(), size) ;
 
-        if(compteur < 5)
+        if(compteur < MAX_COMPETENCES)
         {
             do
             {   
@@ -411,7 +408,7 @@ int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe
         cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
         cout << "Ajout du poste suivant : " << endl ;
         cout << "Titre : " << titrePoste << endl ;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < MAX_COMPETENCES; i++)
         {
             if(competencePoste[i][0] != '\0')
             {
@@ -716,7 +713,7 @@ int MenuModifier_Profil(groupeEntreprises* gE, groupePostes *gP, groupePersonnes
         cout << "Code postal : " << g_index(gPe, indexPe)->adresse << endl ;
         cout << "Adresse mail : " << g_index(gPe, indexPe)->courriel << endl ;
         cout << "Compétences : | " ;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < MAX_COMPETENCES; i++)
         {
             for (int j = 0; j < 128; j++) cout << g_index(gPe, indexPe)->competence[i][j] ;
             if(g_index(gPe, indexPe)->competence[i][0] != '\0') cout << " | " ;
@@ -873,14 +870,19 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
     string entreprise ;
     string competence ;
     string collegue ;
-    string competenceResume[5] ;
-    for (int i = 0; i < 5; i++)
+    string competenceResume[MAX_COMPETENCES] ;
+    for (int i = 0; i < MAX_COMPETENCES; i++)
     {
         competenceResume[i] = "" ;
     }
     
-    char competencePe[5][128]={'\0'};
-    int colleguePe[5]={-1,-1,-1,-1,-1} ;
+    char competencePe[MAX_COMPETENCES][128]={'\0'};
+    int colleguePe[MAX_AMIS] ;
+    for (int i = 0; i < MAX_AMIS; i++)
+    {
+        colleguePe[i] = -1 ;
+    }
+    
     int verifCollegue ;
     
 
@@ -993,7 +995,7 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
         size = competence.size() + 1 ;
         strncpy(competencePe[compteur-1], competence.c_str(), size) ;
 
-        if(compteur < 5)
+        if(compteur < MAX_COMPETENCES)
         {
             do
             {   
@@ -1062,7 +1064,7 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
                     verifCollegue = stoi(collegue) ;
                 } while(!ExistePersonne(gPe,verifCollegue)) ;
                 // On vérifie si le collègue n'est pas déjà dans la liste des collègues
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < MAX_AMIS; i++)
                 {
                     if (colleguePe[i] == verifCollegue)
                     {
@@ -1073,7 +1075,7 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
             // Le collègue saisie est enfin valide, on peut l'ajouter au réseau
             colleguePe[compteur-1] = verifCollegue ;
 
-            if(compteur < 5)
+            if(compteur < MAX_AMIS)
             {
                 do
                 {   
@@ -1088,7 +1090,7 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
                 if (choix == "n") stop = 1 ;
             }
             compteur++ ;
-        } while (stop == 0 && compteur < 6);
+        } while (stop == 0 && compteur < MAX_AMIS + 1);
     }
 
 
@@ -1105,14 +1107,14 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
         if(entreprisePe == -1) cout << "Statut : En recherche d'emploi" << endl ;
         else cout << "Statut : Employé dans l'entreprise " << g_indexEntreprise(gE, entreprisePe)->nom << endl ;
         cout << "Compétences : " ;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < MAX_COMPETENCES; i++)
         {
             if (competenceResume[i] != "") cout << " | " << competenceResume[i] ;
               
         }
         cout << " |"<< endl ;
         cout << "Collègues : " ;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < MAX_AMIS; i++)
         {
             if (colleguePe[i] != -1)
             {
@@ -1603,8 +1605,8 @@ int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePostes *gP, grou
     // On compte le nombre de compétence de cette personne
     // Si elle a déjà le nombre de compétence maximum, on lui dit
     int compteurDeCompetence(0) ;
-    for (int i = 0; i < 5; i++) if(g_index(gPe, indexPe)->competence[i][0] != '\0') compteurDeCompetence++ ;
-    if(compteurDeCompetence == 5)
+    for (int i = 0; i < MAX_COMPETENCES; i++) if(g_index(gPe, indexPe)->competence[i][0] != '\0') compteurDeCompetence++ ;
+    if(compteurDeCompetence == MAX_COMPETENCES)
     {
         do
         {
@@ -1626,7 +1628,7 @@ int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePostes *gP, grou
         cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
         cout << "Statut : " << statut << endl << endl ;
         cout << "Compétences : | " ;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < MAX_COMPETENCES; i++)
         {
             for (int j = 0; j < 128; j++) cout << g_index(gPe, indexPe)->competence[i][j] ;
             if(g_index(gPe, indexPe)->competence[i][0] != '\0') cout << " | " ;
@@ -1710,8 +1712,8 @@ int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupe
     // On compte le nombre d'amis de cette personne
     // Si elle a déjà le nombre d'amis maximum, on lui dit
     int compteurCollegue(0) ;
-    for (int i = 0; i < 5; i++) if(g_index(gPe, indexPe)->amis[i] != NULL) compteurCollegue++ ;
-    if(compteurCollegue == 5)
+    for (int i = 0; i < MAX_AMIS; i++) if(g_index(gPe, indexPe)->amis[i] != NULL) compteurCollegue++ ;
+    if(compteurCollegue == MAX_AMIS)
     {
         do
         {
@@ -1737,7 +1739,7 @@ int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupe
                 cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
                 cout << "Statut : " << statut << endl << endl ;
                 cout << "Réseau de collègues : " ;
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < MAX_AMIS; i++)
                 {
                     if (g_index(gPe, indexPe)->amis[i] != NULL)
                     {
@@ -1859,7 +1861,7 @@ int MenuPersonnesupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, grou
             cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
             cout << "Statut : " << statut << endl << endl ;
             cout << "Réseau de collègues : " ;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < MAX_AMIS; i++)
             {
                 if (g_index(gPe, indexPe)->amis[i] != NULL)
                 {

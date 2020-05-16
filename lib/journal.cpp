@@ -1,9 +1,8 @@
 #include <iostream>
-using namespace std ;
 #include <fstream>
 #include <ctime>
 #include <string.h>
-
+using namespace std ;
 #include "journal.h"
 
 /* ============================================================================================================
@@ -123,7 +122,7 @@ void journal_SuppressionPoste(poste* p)
     {
         FluxVersJournal << "        " << AfficherDate() << " : Suppression du poste " << 
         p->index << " - " << p->titre << " - " << p->entreprise << " - | " ;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < MAX_COMPETENCES; i++)
         {
             for (int j = 0; j < 128; j++)
             {
@@ -148,7 +147,7 @@ void journal_CreationPoste(poste* p)
     {
         FluxVersJournal << "        " << AfficherDate() << " : Création du poste " << 
         p->index << " - " << p->titre << " - " << p->entreprise << " - | " ;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < MAX_COMPETENCES; i++)
         {
             for (int j = 0; j < 128; j++)
             {

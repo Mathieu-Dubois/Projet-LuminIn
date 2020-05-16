@@ -1,23 +1,7 @@
 #pragma once
-
 #include <string>
+#include "bibliotheques.h"
 
-#include "liste.h"
-
-typedef struct poste
-{
-    int index ;
-    char titre[128] ;
-    char competence[5][128] ;
-    int entreprise ;
-} postes ;
-
-typedef struct groupePostes
-{
-    node* poste ;
-} groupePostes ;
-
-#include "entreprise.h"
 
 /*==============================================================================================
  || FONCTION : g_openPostesCSV
@@ -85,12 +69,12 @@ void AfficherPostesEntreprise(groupeEntreprises* gE, groupePostes* gP, int index
  ||     gP : pointeur sur un groupe de type groupePostes
  ||     titre : chaine de caractères contenant le titre du poste
  ||     indexE : entier contenant l'index de l'entreprise qui ajoute le poste
- ||     competence : un tableau qui peut contenir 5 compéteces maximum
+ ||     competence : un tableau qui peut contenir MAX_COMPETENCES compéteces maximum
  ||
  || Retour :
  ||     Retourne 0 si tout s'est bien passé
   ============================================================================================== */
-int AjoutPoste(groupePostes *gP, char titre[128], int index, char competence[5][128]) ;
+int AjoutPoste(groupePostes *gP, char titre[128], int index, char competence[MAX_COMPETENCES][128]) ;
 
 /*==============================================================================================
  || FONCTION : LastPoste

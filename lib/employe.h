@@ -1,14 +1,10 @@
 #pragma once
-
-#include "groupe.h"
-#include "postes.h"
-#include "entreprise.h"
-
 #include <stdbool.h>
 #include <stdio.h>
+#include "bibliotheques.h"
 
 /*Crée un profil avec le premier indice disponible*/
-void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[5][128], int *collegue, int entreprise, groupePersonnes *gPe);
+void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[MAX_COMPETENCES][128], int *collegue, int entreprise, groupePersonnes *gPe);
 
 /*Supprime le profil d'une personne à un indice donné*/
 void supprimer_profil (int index, groupePersonnes *gPe);
