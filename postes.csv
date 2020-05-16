@@ -1,5 +1,5 @@
 id,titre,entreprise,competences
 1,acteur,1,comedie;gag
-2,developpeur,2,C;SQL;Python;sport
-3,briocheur,5,patisserie;sport
-4,mascotte_Mickey,1,danse;patisserie
+2,developpeur,2,C;SQL;Python
+3,briocheur,5,patisserie
+4,mascotte_Mickey,1,danse;sport

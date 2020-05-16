@@ -30,7 +30,7 @@
 
 [CORRIGÉ]   -   Le  choix 2 dans menuModifierProfil n'est pas implémenté (changement d'adresse mail)
 
--   Faire la saisie sécurisée avec "appuyez sur n'importe quelle touche" car bug à cause du buffer
+[CORRIGÉ]   -   Faire la saisie sécurisée avec "appuyez sur n'importe quelle touche" car bug à cause du buffer
 
 [CORRIGÉ]   -   Quand on créé un profil, le fichier employes.csv est entièrement supprimé (pas systématique)
 
@@ -92,7 +92,7 @@
     D'ailleurs pareil pour les accents en fait (comedien différent de comédien)
     -> modifier patternCompetence + fichiers csv de départ
 
--   Faire la saisie sécurisée pour les recherches d'une personne
+[FAIT]      -   Faire la saisie sécurisée pour les recherches d'une personne
 
 
 
