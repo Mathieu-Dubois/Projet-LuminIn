@@ -45,7 +45,7 @@
 
 [CORRIGÉ]   -   Une personne peut s'auto ajouter dans son réseau de collègue (Mickey est ami avec Mickey, narcissique le gars)
 
--   Quand on veut supprimer un collègue d'une personne ayant 5 collègues -> segt fault
+[CORRIGÉ]   -   Quand on veut supprimer un collègue d'une personne ayant 5 collègues -> segt fault
 
 [CORRIGÉ]   -   Quand une personne fait une recherche de poste par compétences, si il y a plusieurs postes qui match, ne renvoit que le premier
 
@@ -93,6 +93,10 @@
     -> modifier patternCompetence + fichiers csv de départ
 
 [FAIT]      -   Faire la saisie sécurisée pour les recherches d'une personne
+
+-   Faire en sort que lorsqu'une personne supprime un collègue, il ne peut que entrer l'index d'un de ses collègues (saisie sécurisée)
+
+-   Gérer AMIS_MAX et COLLEGUES_MAX
 
 
 

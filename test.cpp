@@ -394,12 +394,15 @@ int main()
 
     // L'entreprise ne rentre rien et ça lui sort tous les chercheurs d'emploi qui ont une compétence qui correspond
     // à l'un des postes proposés par l'entreprise
-    EntrepriseRecherchePersonneParCompetence(gPe,gP,5) ;
+    // EntrepriseRecherchePersonneParCompetence(gPe,gP,5) ;
 
     // L'entreprise ne rentre rien et ça lui sort tous les chercheurs d'emploi qui ont une compétence qui correspond
     // à l'un des postes proposés par l'entreprise ssi l'entreprise et le chercheur d'emploi on le même code postal
-    cout << endl << endl ;
-    EntrepriseRecherchePersonneParCompetenceEtCode(gPe,gP,g_indexEntreprise(gE,5)) ;
+    // cout << endl << endl ;
+    // EntrepriseRecherchePersonneParCompetenceEtCode(gPe,gP,g_indexEntreprise(gE,5)) ;
+
+    // Test suppression collègue
+    // supprimer_collegue(9,gPe,3);
 
 
 

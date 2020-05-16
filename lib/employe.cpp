@@ -415,31 +415,18 @@ void AfficherPersonnes(groupePersonnes* gPe)
 void AfficherAmis(groupePersonnes* gPe, int index)
 {
     if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
-    else{
-        node *tmp = gPe->personnes ;
-        personne *e = (personne*)tmp->data ;
-        node * parcours = gPe->personnes;
-        personne* parcourami;
-        int trouve = 0;
-        while (parcours != NULL && trouve == 0){
-            parcourami = (personne*) parcours->data;
-            if(parcourami->index != index) parcours = parcours->next;
-            else trouve = 1;
-        }
-        if (parcours == NULL) cout << "Nous ne parvenons pas à accéder à votre profil"<<endl;
-        else{
-            int i = 0;
-            while (e!= NULL && tmp != NULL){
-                i = 0;
-                while(parcourami->amis[i] != NULL){
-                    if (parcourami->amis[i]->index == e->index) cout << e->index << " - " << e->nom << " " << e->prenom << endl ;
-                    i++;
-                }
-                tmp = tmp->next ;
-                if(tmp != NULL) e = (personne*)tmp->data ;   
+    else
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if(g_index(gPe,index)->amis[i] != NULL)
+            {
+                cout << g_index(gPe,index)->amis[i]->index << ". " << g_index(gPe,index)->amis[i]->nom << " " << g_index(gPe,index)->amis[i]->prenom << endl ;
             }
-    }
         }
+        
+    }
+    
         
 }
 
