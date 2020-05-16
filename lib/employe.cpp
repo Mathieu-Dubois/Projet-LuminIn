@@ -484,175 +484,6 @@ int printemployes(groupePersonnes* gPe)
 }
 
 
-
-/*  Entrée :        indice : indice de la personne qui veut rechercher un poste
-                    
-    Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
-                    1 Si tout se passe bien et qu'on a trouvé au moins un match
-                    2 si on ne trouve pas l'indice dans le groupe                         */
-int recherche_poste_comp(int indice, groupePersonnes *gPe, groupePostes *gPostes, groupeEntreprises *gEntre)
-{
-    int trouve = 0, code_retour = 0, i, j, fait = 0;
-    node *temp = gPe->personnes;
-    personne*tmpami;
-
-    node*temposte = gPostes->poste;
-    poste*amiposte;
-
-    
-    while(temp != NULL && trouve ==0){
-        tmpami = (personne*)(temp->data);
-        if (tmpami->index == indice){                               //Quand on atteint la personne souhaitée
-            i = 0;
-            trouve = 1;   
-            while (temposte != NULL){
-                amiposte = (poste*)(temposte->data);
-                j = 0;
-                while(j < 5){
-                    if (amiposte->competence[j][0] != '\0'){
-                        i = 0;     
-                        tmpami = (personne*)(temp->data);                  
-                        while(i<5 && fait == 0){
-                            if (tmpami->competence[i][0] != '\0'){              //Si il a une competence, on va chercher les match
-                                if (!strcmp(amiposte->competence[j], tmpami->competence[i])){
-                                    code_retour = 1;
-                                    AfficherPoste(gPostes, amiposte->index, gEntre);
-                                    fait = 1;
-                                }
-                                
-                            } 
-                            i++;
-                        }  
-                        
-                    }
-                    j++;
-                }
-                temposte = temposte->next;
-            }
-            
-
-        } else {
-            temp = temp -> next;
-        }
-    }
-    if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
-    return code_retour;
-}
-
-
-/*  Entrée :        indice : indice de la personne qui veut rechercher un poste
-                    
-    Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
-                    1 Si tout se passe bien et qu'on a trouvé au moins un match
-                    2 si on ne trouve pas l'indice dans le groupe                         */
-int recherche_poste_postal(int indice, groupePersonnes *gPe, groupePostes *gPostes, groupeEntreprises *gEntre)
-{
-    int trouve = 0, trouveentre = 0, code_retour = 0;
-    node *temp = gPe->personnes;
-    personne*tmpami;
-
-    node*temposte = gPostes->poste;
-    poste*amiposte;
-
-    node*tempentre = gEntre->entreprise;
-    entreprise*amientre;
-
-    
-    while(temp != NULL && trouve ==0){
-        tmpami = (personne*)(temp->data);
-        if (tmpami->index == indice){                               //Quand on atteint la personne souhaitée
-            trouve = 1;   
-            while (temposte != NULL){                               //On cherche parmi les postes
-                amiposte = (poste*)(temposte->data);
-                trouveentre = 0;
-                while (tempentre != NULL && trouveentre == 0){                          //On recherche parmi les entreprises
-                    amientre = (entreprise*)(tempentre->data);
-                    if(amientre->index == amiposte->entreprise){
-                        trouveentre = 1;
-                        if(amientre->code_postal == tmpami->adresse){
-                            code_retour = 1;
-                            AfficherPoste(gPostes, amiposte->index, gEntre);
-                        }
-                    } else tempentre = tempentre->next;
-                }
-                temposte = temposte->next;
-            }
-        } else temp = temp -> next;
-    }
-    if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
-    return code_retour;
-}
-
-
-/*  Entrée :        indice : indice de la personne qui fait la recherche
-                    index : indice de l'entreprise à laquelle doivent appartenir les anciens collègues
-                    
-    Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
-                    1 Si tout se passe bien et qu'on a trouvé au moins un match
-                    2 si on ne trouve pas l'indice dans le groupe                         */
-int recherche_col_par_entre(int indice, groupePersonnes *gPe, int index)
-{
-    int trouve = 0, code_retour = 0, i;
-    node *temp = gPe->personnes;
-    personne*tmpami;
-    
-    while(temp != NULL && trouve ==0){
-        tmpami = (personne*)(temp->data);
-        if (tmpami->index == indice){                               //Quand on atteint la personne souhaitée
-            i = 0;
-            trouve = 1;   
-            while (tmpami->amis[i] != NULL){                           //On recherche parmi ses amis
-                if (tmpami->amis[i]->entreprise == index){
-                    code_retour = 1;
-                    printf("- %s | %s | %s\n", tmpami->amis[i]->nom, tmpami->amis[i]->prenom, tmpami->amis[i]->courriel);
-                }
-                i++;
-            }
-        } else temp = temp -> next;
-    }
-    if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
-    return code_retour;
-}
-
-
-/*  Entrée :        indice : indice de la personne qui veut rechercher un collègue
-                    
-    Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
-                    1 Si tout se passe bien et qu'on a trouvé au moins un match
-                    2 si on ne trouve pas l'indice dans le groupe                         */
-int recherche_col_comp(int indice, groupePersonnes *gPe, char comp[128])
-{
-    int trouve = 0, code_retour = 0, i, j, fait = 0;
-    node *temp = gPe->personnes;
-    personne*tmpami;
-
-    while(temp != NULL && trouve ==0){
-        tmpami = (personne*)(temp->data);
-        if (tmpami->index == indice){                                       //Quand on atteint la personne souhaitée
-            i = 0;
-            trouve = 1;   
-            while (tmpami->amis[i] != NULL && fait ==0){
-                j = 0;
-                while(tmpami->amis[i]->competence[j][0] != '\0' && fait ==0){
-                    if (!strcmp(tmpami->amis[i]->competence[j], comp)){ //Si la personne correspond
-                        code_retour = 1;
-                        printf("- %s | %s | %s\n", tmpami->amis[i]->nom, tmpami->amis[i]->prenom, tmpami->amis[i]->courriel);
-                        fait = 1;
-                    }
-                    j++;
-                } 
-                i++;
-            }  
-            
-        } else temp = temp -> next;
-    }
-    if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
-    return code_retour;
-}
-
-
-
-
 // But : Afficher les informations de tous les postes à pourvoir ayant dans leur description
 //       au moins une compétence du chercheur d'emploi
 void PersonneRecherchePosteParCompetence(personne* pe, groupePostes* gP, groupeEntreprises* gE)
@@ -696,6 +527,7 @@ void PersonneRecherchePosteParCompetence(personne* pe, groupePostes* gP, groupeE
                                     g_indexEntreprise(gE,posteCourant->entreprise)->nom << 
                                     " (mail : " << g_indexEntreprise(gE,posteCourant->entreprise)->courriel <<
                                     " - code postal : " << g_indexEntreprise(gE,posteCourant->entreprise)->code_postal << ")" << endl ;
+                                    journal_PosteApparuRecherche(posteCourant,g_indexEntreprise(gE,posteCourant->entreprise)) ;
                                 }
                             }
                         } 
@@ -707,7 +539,11 @@ void PersonneRecherchePosteParCompetence(personne* pe, groupePostes* gP, groupeE
             if(tmp != NULL) posteCourant = (poste*)tmp->data ;
         }
         // Si on a rien trouvé, on l'indique à l'utilisateur
-        if(!trouve) cout << "Aucun poste ne correspond à votre profil" << endl ;
+        if(!trouve)
+        {
+            cout << "Aucun poste ne correspond à votre profil" << endl ;
+            journal_RechercheSansResultat() ;
+        }
     }
 }
 
@@ -762,6 +598,7 @@ void PersonneRecherchePosteParCompetenceEtCode(personne* pe, groupePostes* gP, g
                                         g_indexEntreprise(gE,posteCourant->entreprise)->nom << 
                                         " (mail : " << g_indexEntreprise(gE,posteCourant->entreprise)->courriel <<
                                         " - code postal : " << g_indexEntreprise(gE,posteCourant->entreprise)->code_postal << ")" << endl ;
+                                        journal_PosteApparuRecherche(posteCourant,g_indexEntreprise(gE,posteCourant->entreprise)) ;
                                     }
                                 }
                             } 
@@ -774,7 +611,11 @@ void PersonneRecherchePosteParCompetenceEtCode(personne* pe, groupePostes* gP, g
             if(tmp != NULL) posteCourant = (poste*)tmp->data ;
         }
         // Si on a rien trouvé, on l'indique à l'utilisateur
-        if(!trouve) cout << "Aucun poste ne correspond à votre profil" << endl ;
+        if(!trouve)
+        {
+            cout << "Aucun poste ne correspond à votre profil" << endl ;
+            journal_RechercheSansResultat() ;
+        }
     }
 }
 
@@ -798,13 +639,18 @@ void PersonneRechercheCollegueParEntreprise(groupePersonnes* gPe, int indexPe, i
                 if(pe->amis[i]->entreprise == indexE)
                 {
                     cout << "- " << pe->amis[i]->nom << " " << pe->amis[i]->prenom << " (" << pe->amis[i]->courriel << ")" << endl ;
+                    journal_PersonneApparuRecherche(pe->amis[i]) ;
                     trouve = 1 ;
                 }
             }
         }
     }
     // Si on a rien trouvé, on l'indique à l'utilisateur
-    if(!trouve) cout << "Aucun collègue de votre réseau travaille dans cette entreprise" << endl ;   
+    if(!trouve)
+    {
+        cout << "Aucun collègue de votre réseau travaille dans cette entreprise" << endl ; 
+        journal_RechercheSansResultat() ;
+    }  
 }
 
 // But : Afficher les informations de tous les collègues de son réseau qui travaillent dans une
@@ -869,6 +715,7 @@ void PersonneRechercheCollegueParCompetence(personne* pe, groupeEntreprises* gE,
                                                 if(competencePersonne == competencePoste)
                                                 {
                                                     cout << "- " << collegue->nom << " " << collegue->prenom << " (" << collegue->courriel << ")" << endl ;
+                                                    journal_PersonneApparuRecherche(collegue) ;
                                                     trouve = 1 ;
                                                     collegueDejaAffiche = 1 ;
                                                 }     
@@ -893,25 +740,14 @@ void PersonneRechercheCollegueParCompetence(personne* pe, groupeEntreprises* gE,
                 
             }
         }
-              
-
     
     }
     // Si on a rien trouvé, on l'indique à l'utilisateur
-    if(!trouve) cout << "Aucun collègue de votre réseau ne travaille dans une entreprise pouvant vous proposer un poste" << endl ;  
+    if(!trouve)
+    {
+        cout << "Aucun collègue de votre réseau ne travaille dans une entreprise pouvant vous proposer un poste" << endl ;
+    } 
     
-    
-
-
-
-    // Pour chaque entreprise, on récupère l'index
-    // On parcourt tous les collègues et on regarde si ils travaillent dans cette entreprise
-    // Si ils ne travaillent pas, on passe à l'entreprise suivante
-    // Sinon on va regarder pour chaque compétence de la personne, si une compétence des postes de cette entreprise match
-
-
-
-
 }
 
 
@@ -919,4 +755,182 @@ void PersonneRechercheCollegueParCompetence(personne* pe, groupeEntreprises* gE,
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+// Cimetière ***********************************************************************************
+
+// /*  Entrée :        indice : indice de la personne qui veut rechercher un poste
+                    
+//     Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
+//                     1 Si tout se passe bien et qu'on a trouvé au moins un match
+//                     2 si on ne trouve pas l'indice dans le groupe                         */
+// int recherche_poste_comp(int indice, groupePersonnes *gPe, groupePostes *gPostes, groupeEntreprises *gEntre)
+// {
+//     int trouve = 0, code_retour = 0, i, j, fait = 0;
+//     node *temp = gPe->personnes;
+//     personne*tmpami;
+
+//     node*temposte = gPostes->poste;
+//     poste*amiposte;
+
+    
+//     while(temp != NULL && trouve ==0){
+//         tmpami = (personne*)(temp->data);
+//         if (tmpami->index == indice){                               //Quand on atteint la personne souhaitée
+//             i = 0;
+//             trouve = 1;   
+//             while (temposte != NULL){
+//                 amiposte = (poste*)(temposte->data);
+//                 j = 0;
+//                 while(j < 5){
+//                     if (amiposte->competence[j][0] != '\0'){
+//                         i = 0;     
+//                         tmpami = (personne*)(temp->data);                  
+//                         while(i<5 && fait == 0){
+//                             if (tmpami->competence[i][0] != '\0'){              //Si il a une competence, on va chercher les match
+//                                 if (!strcmp(amiposte->competence[j], tmpami->competence[i])){
+//                                     code_retour = 1;
+//                                     AfficherPoste(gPostes, amiposte->index, gEntre);
+//                                     fait = 1;
+//                                 }
+                                
+//                             } 
+//                             i++;
+//                         }  
+                        
+//                     }
+//                     j++;
+//                 }
+//                 temposte = temposte->next;
+//             }
+            
+
+//         } else {
+//             temp = temp -> next;
+//         }
+//     }
+//     if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
+//     return code_retour;
+// }
+
+
+// /*  Entrée :        indice : indice de la personne qui veut rechercher un poste
+                    
+//     Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
+//                     1 Si tout se passe bien et qu'on a trouvé au moins un match
+//                     2 si on ne trouve pas l'indice dans le groupe                         */
+// int recherche_poste_postal(int indice, groupePersonnes *gPe, groupePostes *gPostes, groupeEntreprises *gEntre)
+// {
+//     int trouve = 0, trouveentre = 0, code_retour = 0;
+//     node *temp = gPe->personnes;
+//     personne*tmpami;
+
+//     node*temposte = gPostes->poste;
+//     poste*amiposte;
+
+//     node*tempentre = gEntre->entreprise;
+//     entreprise*amientre;
+
+    
+//     while(temp != NULL && trouve ==0){
+//         tmpami = (personne*)(temp->data);
+//         if (tmpami->index == indice){                               //Quand on atteint la personne souhaitée
+//             trouve = 1;   
+//             while (temposte != NULL){                               //On cherche parmi les postes
+//                 amiposte = (poste*)(temposte->data);
+//                 trouveentre = 0;
+//                 while (tempentre != NULL && trouveentre == 0){                          //On recherche parmi les entreprises
+//                     amientre = (entreprise*)(tempentre->data);
+//                     if(amientre->index == amiposte->entreprise){
+//                         trouveentre = 1;
+//                         if(amientre->code_postal == tmpami->adresse){
+//                             code_retour = 1;
+//                             AfficherPoste(gPostes, amiposte->index, gEntre);
+//                         }
+//                     } else tempentre = tempentre->next;
+//                 }
+//                 temposte = temposte->next;
+//             }
+//         } else temp = temp -> next;
+//     }
+//     if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
+//     return code_retour;
+// }
+
+
+// /*  Entrée :        indice : indice de la personne qui fait la recherche
+//                     index : indice de l'entreprise à laquelle doivent appartenir les anciens collègues
+                    
+//     Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
+//                     1 Si tout se passe bien et qu'on a trouvé au moins un match
+//                     2 si on ne trouve pas l'indice dans le groupe                         */
+// int recherche_col_par_entre(int indice, groupePersonnes *gPe, int index)
+// {
+//     int trouve = 0, code_retour = 0, i;
+//     node *temp = gPe->personnes;
+//     personne*tmpami;
+    
+//     while(temp != NULL && trouve ==0){
+//         tmpami = (personne*)(temp->data);
+//         if (tmpami->index == indice){                               //Quand on atteint la personne souhaitée
+//             i = 0;
+//             trouve = 1;   
+//             while (tmpami->amis[i] != NULL){                           //On recherche parmi ses amis
+//                 if (tmpami->amis[i]->entreprise == index){
+//                     code_retour = 1;
+//                     printf("- %s | %s | %s\n", tmpami->amis[i]->nom, tmpami->amis[i]->prenom, tmpami->amis[i]->courriel);
+//                 }
+//                 i++;
+//             }
+//         } else temp = temp -> next;
+//     }
+//     if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
+//     return code_retour;
+// }
+
+
+// /*  Entrée :        indice : indice de la personne qui veut rechercher un collègue
+                    
+//     Code retour:    0 Si tout se passe bien mais qu'on a pas trouvé de match
+//                     1 Si tout se passe bien et qu'on a trouvé au moins un match
+//                     2 si on ne trouve pas l'indice dans le groupe                         */
+// int recherche_col_comp(int indice, groupePersonnes *gPe, char comp[128])
+// {
+//     int trouve = 0, code_retour = 0, i, j, fait = 0;
+//     node *temp = gPe->personnes;
+//     personne*tmpami;
+
+//     while(temp != NULL && trouve ==0){
+//         tmpami = (personne*)(temp->data);
+//         if (tmpami->index == indice){                                       //Quand on atteint la personne souhaitée
+//             i = 0;
+//             trouve = 1;   
+//             while (tmpami->amis[i] != NULL && fait ==0){
+//                 j = 0;
+//                 while(tmpami->amis[i]->competence[j][0] != '\0' && fait ==0){
+//                     if (!strcmp(tmpami->amis[i]->competence[j], comp)){ //Si la personne correspond
+//                         code_retour = 1;
+//                         printf("- %s | %s | %s\n", tmpami->amis[i]->nom, tmpami->amis[i]->prenom, tmpami->amis[i]->courriel);
+//                         fait = 1;
+//                     }
+//                     j++;
+//                 } 
+//                 i++;
+//             }  
+            
+//         } else temp = temp -> next;
+//     }
+//     if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondan
+//     return code_retour;
+// }
 

@@ -513,9 +513,8 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
             cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl ;
             cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
             cout << "Liste de tous les chercheurs d'emploi ayant une compétence que vous recherchez dans vos postes à pourvoir :" << endl << endl ;
+            journal_EntrepriseRecherchePersonneParCompetence(g_indexEntreprise(gE,indexE)) ;
             EntrepriseRecherchePersonneParCompetence(gPe,gP,indexE) ;
-
-        // journal_EntrepriseRechercheCompetence(g_indexEntreprise(gE, indexE), competencePoste) ;
             cout << endl ;
             cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
             choix = "" ;
@@ -533,8 +532,7 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
             cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
             cout << "Liste de tous les chercheurs d'emploi avec la même adresse que vous" << endl;
             cout << "et ayant une compétence que vous recherchez dans vos postes à pourvoir :" << endl << endl ;
-                   
-        // journal_EntrepriseRechercheCompetenceEtCode(g_indexEntreprise(gE, indexE), competencePoste, code_postal) ;
+            journal_EntrepriseRecherchePersonneParCompetenceEtCode(g_indexEntreprise(gE,indexE)) ;
             EntrepriseRecherchePersonneParCompetenceEtCode(gPe,gP,g_indexEntreprise(gE,indexE)) ;
             cout << endl ;
             cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
@@ -1265,6 +1263,7 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
                 system("clear") ;
                 cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
                 cout << "Liste de tous les postes à pourvoir qui correspondent à vos compétences :" << endl << endl ;
+                journal_PersonneRecherchePosteParCompetence(g_index(gPe,indexPe)) ;
                 PersonneRecherchePosteParCompetence(g_index(gPe,indexPe), gP, gE) ;
                 cout << endl ;
                 cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
@@ -1282,6 +1281,7 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
                 system("clear") ;
                 cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
                 cout << "Liste de tous les postes à pourvoir avec la même adresse que vous et qui correspondent à vos compétences :" << endl << endl ;
+                journal_PersonneRecherchePosteParCompetenceEtCode(g_index(gPe,indexPe)) ;
                 PersonneRecherchePosteParCompetenceEtCode(g_index(gPe,indexPe), gP, gE) ;
                 cout << endl ;
                 cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
@@ -1336,6 +1336,7 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
                 system("clear") ;
                 cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
                 cout << "Liste de tous vos collègues travaillant dans l'entreprise " << g_indexEntreprise(gE,indexE)->nom << " :" << endl << endl ;
+                journal_PersonneRechercheCollegueParEntreprise(g_index(gPe,indexPe),g_indexEntreprise(gE,indexE)) ;
                 PersonneRechercheCollegueParEntreprise(gPe, indexPe, indexE) ;
                 cout << endl ;
                 cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
@@ -1352,6 +1353,7 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
                 system("clear") ;
                 cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
                 cout << "Liste de tous vos collègues travaillant dans une entreprise pouvant vous proposer un poste :" << endl << endl ;
+                journal_PersonneRechercheCollegueParCompetence(g_index(gPe,indexPe)) ;
                 PersonneRechercheCollegueParCompetence(g_index(gPe,indexPe), gE, gP) ;
                 cout << endl ;
                 cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;

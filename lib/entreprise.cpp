@@ -382,7 +382,7 @@ void EntrepriseRecherchePersonneParCompetence(groupePersonnes* gPe, groupePostes
                                                 trouve = 1 ;
                                                 personneDejaAffiche = 1 ;
                                                  cout << "- " << personneCourante->nom << " " << personneCourante->prenom << " (" << personneCourante->courriel << ")" << endl ;
-                                                
+                                                journal_PersonneApparuRecherche(personneCourante) ;
                                             }
                                         }
                                     } 
@@ -403,7 +403,11 @@ void EntrepriseRecherchePersonneParCompetence(groupePersonnes* gPe, groupePostes
         }
     }
     // Si on a rien trouvé, on l'indique à l'utilisateur
-    if(!trouve) cout << "Aucun chercheur d'emploi ne correspond à vos postes à pourvoir" << endl ;
+    if(!trouve)
+    {
+        cout << "Aucun chercheur d'emploi ne correspond à vos postes à pourvoir" << endl ;
+        journal_RechercheSansResultat() ;
+    }
 }
 
 // But : Afficher les informations de tous les chercheurs d'emploi ayant une compétence 
@@ -465,7 +469,7 @@ void EntrepriseRecherchePersonneParCompetenceEtCode(groupePersonnes* gPe, groupe
                                                     trouve = 1 ;
                                                     personneDejaAffiche = 1 ;
                                                     cout << "- " << personneCourante->nom << " " << personneCourante->prenom << " (" << personneCourante->courriel << ")" << endl ;
-                                                    
+                                                    journal_PersonneApparuRecherche(personneCourante) ;
                                                 }
                                             }
                                         } 
@@ -487,7 +491,11 @@ void EntrepriseRecherchePersonneParCompetenceEtCode(groupePersonnes* gPe, groupe
         }
     }
     // Si on a rien trouvé, on l'indique à l'utilisateur
-    if(!trouve) cout << "Aucun chercheur d'emploi ne correspond à vos postes à pourvoir" << endl ;
+    if(!trouve)
+    {
+        cout << "Aucun chercheur d'emploi ne correspond à vos postes à pourvoir" << endl ;
+        journal_RechercheSansResultat() ;
+    }
 }
 
 

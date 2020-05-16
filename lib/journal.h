@@ -140,35 +140,32 @@ void journal_CreationPoste(poste* p) ;
 void journal_EntrepriseConsultePostes(entreprise* e) ;
 
 /*==============================================================================================
- || FONCTION : journal_EntrepriseRechercheCompetence
+ || FONCTION : journal_EntrepriseRecherchePersonneParCompetence
   ==============================================================================================
  || But : Ajouter une entrée au journal renseignant que l'entreprise a effectué une recherche
- ||       par compétence, et affiche la compétence
+ ||       de personne par compétence
  ||
  || Paramètre :
  ||     e : pointeur sur une entreprise
- ||     competence : chaine de caractère contenant la compétence
  ||
  || Retour :
  ||     Aucun 
   ============================================================================================== */
-void journal_EntrepriseRechercheCompetence(entreprise* e, char competence[128]) ;
+void journal_EntrepriseRecherchePersonneParCompetence(entreprise* e) ;
 
 /*==============================================================================================
- || FONCTION : journal_EntrepriseRechercheCompetenceEtCode
+ || FONCTION : journal_EntrepriseRecherchePersonneParCompetenceEtCode
   ==============================================================================================
  || But : Ajouter une entrée au journal renseignant que l'entreprise a effectué une recherche
- ||       par compétence et code postal, et affiche la compétence et le code postal
+ ||       de personne par compétence et code postal
  ||
  || Paramètre :
  ||     e : pointeur sur une entreprise
- ||     competence : chaine de caractère contenant la compétence recherchée
- ||     code : entier contenant le code postal recherché
  ||
  || Retour :
  ||     Aucun 
   ============================================================================================== */
-void journal_EntrepriseRechercheCompetenceEtCode(entreprise* e, char competence[128], int code) ;
+void journal_EntrepriseRecherchePersonneParCompetenceEtCode(entreprise* e) ;
 
 /*==============================================================================================
  || FONCTION : journal_DeconnexionEntreprise
@@ -336,47 +333,43 @@ void journal_PersonneSupprimer_Collegue(personne* p, personne* np) ;
  || FONCTION : journal_PersonneRecherchePosteParCompetence
   ==============================================================================================
  || But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche
- ||       de poste par compétence, et affiche la compétence
+ ||       de poste par compétence
  ||
- || Paramètres :
+ || Paramètre :
  ||     p : pointeur sur une personne
- ||     competence : chaine de caractère contenant la compétence
  ||
  || Retour :
  ||     Aucun 
   ============================================================================================== */
-void journal_PersonneRecherchePosteParCompetence(personne* p, char competence[128]) ;
+void journal_PersonneRecherchePosteParCompetence(personne* p) ;
 
 /*==============================================================================================
  || FONCTION : journal_PersonneRecherchePosteParCompetenceEtCode
   ==============================================================================================
  || But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche
- ||       de poste par compétence et code, et affiche la compétence et le code
+ ||       de poste par compétence et code
  ||
- || Paramètres :
+ || Paramètre :
  ||     p : pointeur sur une personne
- ||     competence : chaine de caractère contenant la compétence
- ||     code : int contenant le code postal
  ||
  || Retour :
  ||     Aucun 
   ============================================================================================== */
-void journal_PersonneRecherchePosteParCompetenceEtCode(personne* p, char competence[128], int code) ;
+void journal_PersonneRecherchePosteParCompetenceEtCode(personne* p);
 
 /*==============================================================================================
  || FONCTION : journal_PersonneRechercheCollegueParCompetence
   ==============================================================================================
  || But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche
- ||       de collègue par compétence, et affiche la compétence
+ ||       de collègue par compétence
  ||
- || Paramètres :
+ || Paramètre :
  ||     p : pointeur sur une personne
- ||     competence : chaine de caractère contenant la compétence
  ||
  || Retour :
  ||     Aucun 
   ============================================================================================== */
-void journal_PersonneRechercheCollegueParCompetence(personne* p, char competence[128]) ;
+void journal_PersonneRechercheCollegueParCompetence(personne* p) ;
 
 /*==============================================================================================
  || FONCTION : journal_PersonneRechercheCollegueParEntreprise
@@ -386,7 +379,7 @@ void journal_PersonneRechercheCollegueParCompetence(personne* p, char competence
  ||
  || Paramètres :
  ||     p : pointeur sur une personne
- ||     e : pointeur sur une personne
+ ||     e : pointeur sur une entreprise
  ||
  || Retour :
  ||     Aucun 
@@ -407,3 +400,46 @@ void journal_PersonneRechercheCollegueParEntreprise(personne* p, entreprise* e) 
  ||     Aucun 
   ============================================================================================== */
 void journal_Personne_modifier_mail(personne* p, char mail[128], char newmail[128]) ;
+
+/*==============================================================================================
+ || FONCTION : journal_PersonneApparuRecherche
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant que la personne est apparu dans le résultat
+ ||       d'une recherche 
+ ||
+ || Paramètre :
+ ||     pe : pointeur sur une personne
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_PersonneApparuRecherche(personne* pe) ;
+
+  /*==============================================================================================
+ || FONCTION : journal_PosteApparuRecherche
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant que le poste est apparu dans le résultat
+ ||       d'une recherche 
+ ||
+ || Paramètres :
+ ||     p : pointeur sur un poste
+ ||     gE : pointeur sur un groupe de type groupeEntreprises
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_PosteApparuRecherche(poste* p, entreprise* e) ;
+
+  /*==============================================================================================
+ || FONCTION : journal_RechercheSansResultat
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant que la recherche n'a pas donné de résultat 
+ ||
+ || Paramètres :
+ ||     Aucun
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_RechercheSansResultat() ;
+

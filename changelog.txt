@@ -57,7 +57,7 @@
 
 [CORRIGÉ]   -   Si un poste à X compétences et que la personne à les mêmes X compétences, le poste va s'afficher X fois dans le résultat de la recherche
 
-- Les fonctions d'ajout au journal des recherches ne sont plus bonnes et celles des menus aussi du coup
+[CORRIGÉ]   - Les fonctions d'ajout au journal des recherches ne sont plus bonnes et celles des menus aussi du coup
 
 
 ==========================================================================================================================================================================
