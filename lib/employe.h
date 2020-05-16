@@ -38,20 +38,6 @@ int rejoindre_entreprise(int indice, groupePersonnes *gPe, int entre);
 /*Suppression d'un collègue donné par une personne*/
 int supprimer_collegue(int indice, groupePersonnes *gPe, int col);
 
-/*Recherche d'un poste en fonction des competences*/
-int recherche_poste_comp(int indice, groupePersonnes *gPe, groupePostes* gPostes, groupeEntreprises *gEntre);
-
-/*Recherche d'un poste en fonction du code postal*/
-int recherche_poste_postal(int indice, groupePersonnes *gPe, groupePostes *gPostes, groupeEntreprises *gEntre);
-
-/*Recherche parmi les anciens collègues de la personne d'indice donné si ily en a qui travaille dans l'entreprise d'index donné*/
-int recherche_col_par_entre(int indice, groupePersonnes *gPe, int index);
-
-/*Recherche parmi les anciens collègues ceux qui ont une compétence donnée*/
-int recherche_col_comp(int indice, groupePersonnes *gPe, char comp[128]);
-
-
-
 /*==============================================================================================
  || FONCTION : AfficherPersonnes
   ==============================================================================================
@@ -163,15 +149,26 @@ void PersonneRechercheCollegueParEntreprise(groupePersonnes* gPe, int indexPe, i
 void PersonneRechercheCollegueParCompetence(personne* pe, groupeEntreprises* gE, groupePostes* gP) ;
 
 
-
-
-
-
-
-
-
-
-
-
-
 int printemployes(groupePersonnes* gPe) ;
+
+
+
+
+
+
+
+
+
+// Cimetière ***********************************************************************************
+
+// /*Recherche d'un poste en fonction des competences*/
+// int recherche_poste_comp(int indice, groupePersonnes *gPe, groupePostes* gPostes, groupeEntreprises *gEntre);
+
+// /*Recherche d'un poste en fonction du code postal*/
+// int recherche_poste_postal(int indice, groupePersonnes *gPe, groupePostes *gPostes, groupeEntreprises *gEntre);
+
+// /*Recherche parmi les anciens collègues de la personne d'indice donné si ily en a qui travaille dans l'entreprise d'index donné*/
+// int recherche_col_par_entre(int indice, groupePersonnes *gPe, int index);
+
+// /*Recherche parmi les anciens collègues ceux qui ont une compétence donnée*/
+// int recherche_col_comp(int indice, groupePersonnes *gPe, char comp[128]);

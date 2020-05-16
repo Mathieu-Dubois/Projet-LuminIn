@@ -181,13 +181,14 @@ void journal_EntrepriseConsultePostes(entreprise* e)
     FluxVersJournal.close() ;
 }
 
-// But : Ajouter une entrée au journal renseignant que l'entreprise a effectué une recherche par compétence, et affiche la compétence
-void journal_EntrepriseRechercheCompetence(entreprise* e, char competence[128])
+// But : Ajouter une entrée au journal renseignant que l'entreprise a effectué une recherche
+//       de personne par compétence
+void journal_EntrepriseRecherchePersonneParCompetence(entreprise* e)
 { 
     ofstream FluxVersJournal("journal.txt", ios::app) ;
     if(FluxVersJournal)
     {
-        FluxVersJournal << "        " << AfficherDate() << " : " << e->nom << " a fait une recherche par compétence (" << competence << ")" << endl ;
+        FluxVersJournal << "        " << AfficherDate() << " : " << e->nom << " a fait une recherche de personne par compétence" << endl ;
     }
     else
     {
@@ -196,13 +197,14 @@ void journal_EntrepriseRechercheCompetence(entreprise* e, char competence[128])
     FluxVersJournal.close() ;
 }
 
-// But : Ajouter une entrée au journal renseignant que l'entreprise a effectué une recherche par compétence et code postal, et affiche la compétence et le code postal
-void journal_EntrepriseRechercheCompetenceEtCode(entreprise* e, char competence[128], int code)
+// But : Ajouter une entrée au journal renseignant que l'entreprise a effectué une recherche
+//       de personne par compétence et code postal
+void journal_EntrepriseRecherchePersonneParCompetenceEtCode(entreprise* e)
 { 
     ofstream FluxVersJournal("journal.txt", ios::app) ;
     if(FluxVersJournal)
     {
-        FluxVersJournal << "        " << AfficherDate() << " : " << e->nom << " a fait une recherche par compétence et code postal (" << competence << ", " << code <<  ")" << endl ;
+        FluxVersJournal << "        " << AfficherDate() << " : " << e->nom << " a fait une recherche de personne par compétence et code postal" << endl ;
     }
     else
     {
@@ -408,13 +410,13 @@ void journal_PersonneSupprimer_Collegue(personne* p, personne* np)
     FluxVersJournal.close() ;
 }
 
-// But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche de poste par compétence, et affiche la compétence
-void journal_PersonneRecherchePosteParCompetence(personne* p, char competence[128])
+// But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche de poste par compétence
+void journal_PersonneRecherchePosteParCompetence(personne* p)
 { 
     ofstream FluxVersJournal("journal.txt", ios::app) ;
     if(FluxVersJournal)
     {
-        FluxVersJournal << "        " << AfficherDate() << " : " << p->nom << " " << p->prenom << " a fait une recherche de poste par compétence (" << competence << ")" << endl ;
+        FluxVersJournal << "        " << AfficherDate() << " : " << p->nom << " " << p->prenom << " a fait une recherche de poste par compétence" << endl ;
     }
     else
     {
@@ -423,15 +425,15 @@ void journal_PersonneRecherchePosteParCompetence(personne* p, char competence[12
     FluxVersJournal.close() ;
 }
 
-/* But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche
-         de poste par compétence et code, et affiche la compétence et le code */
-void journal_PersonneRecherchePosteParCompetenceEtCode(personne* p, char competence[128], int code)
+// But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche
+//       de poste par compétence et code 
+void journal_PersonneRecherchePosteParCompetenceEtCode(personne* p)
 { 
     ofstream FluxVersJournal("journal.txt", ios::app) ;
     if(FluxVersJournal)
     {
         FluxVersJournal << "        " << AfficherDate() << " : " << p->nom << " " << p->prenom 
-        << " a fait une recherche de poste par compétence et code postal (" << competence << ", " << code << ")" << endl ;
+        << " a fait une recherche de poste par compétence et code postal" << endl ;
     }
     else
     {
@@ -440,13 +442,13 @@ void journal_PersonneRecherchePosteParCompetenceEtCode(personne* p, char compete
     FluxVersJournal.close() ;
 }
 
-// But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche de collègue par compétence, et affiche la compétence
-void journal_PersonneRechercheCollegueParCompetence(personne* p, char competence[128])
+// But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche de collègue par compétence
+void journal_PersonneRechercheCollegueParCompetence(personne* p)
 { 
     ofstream FluxVersJournal("journal.txt", ios::app) ;
     if(FluxVersJournal)
     {
-        FluxVersJournal << "        " << AfficherDate() << " : " << p->nom << " " << p->prenom << " a fait une recherche de collègue par compétence (" << competence << ")" << endl ;
+        FluxVersJournal << "        " << AfficherDate() << " : " << p->nom << " " << p->prenom << " a fait une recherche de collègue par compétence" << endl ;
     }
     else
     {
@@ -455,7 +457,7 @@ void journal_PersonneRechercheCollegueParCompetence(personne* p, char competence
     FluxVersJournal.close() ;
 }
 
-// But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche de collègue par entreprise, et affiche l'entreprise
+// But : Ajouter une entrée au journal renseignant que la personne a effectué une recherche de collègue par entreprise
 void journal_PersonneRechercheCollegueParEntreprise(personne* p, entreprise* e)
 { 
     ofstream FluxVersJournal("journal.txt", ios::app) ;
@@ -469,7 +471,6 @@ void journal_PersonneRechercheCollegueParEntreprise(personne* p, entreprise* e)
     }
     FluxVersJournal.close() ;
 }
-
 
 // But : Ajouter une entrée au journal renseignant que la personne a modifié son adresse mail
 void journal_Personne_modifier_mail(personne* p, char mail[128], char newmail[128] )
@@ -487,9 +488,48 @@ void journal_Personne_modifier_mail(personne* p, char mail[128], char newmail[12
     FluxVersJournal.close() ;
 }
 
+// But : Ajouter une entrée au journal renseignant que la personne est apparu dans le résultat d'une recherche 
+void journal_PosteApparuRecherche(poste* p, entreprise* e)
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "            " << AfficherDate() << " : " << p->titre << " pourvu par " << e->nom ;
+        FluxVersJournal << " est apparu dans le résultat de la recherche" << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
 
-/*
+// But : Ajouter une entrée au journal renseignant que le poste est apparu dans le résultat d'une recherche 
+void journal_PersonneApparuRecherche(personne* pe)
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "            " << AfficherDate() << " : " << pe->nom << " " << pe->prenom << " est apparu dans le résultat de la recherche" << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
 
-journal_Personne_modifier_mail(g_index(gPe, indexPe)) ;
-
-*/
+// But : Ajouter une entrée au journal renseignant que la recherche n'a pas donné de résultat 
+void journal_RechercheSansResultat()
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "            " << AfficherDate() << " : La recherche n'a pas donné de résultat"  << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
