@@ -1,6 +1,6 @@
 #pragma once
 
-#define MAX_AMIS 30                                                 //  5
+#define MAX_AMIS 99                                                 //  5
 #define MAX_COMPETENCES 5                                           //  5
 #define TAILLE_GPE_MAX 100                                          //  20
 
