@@ -192,10 +192,7 @@ personne* g_index(groupePersonnes* g, int const index)
         if (p->index == index) return p;
         return NULL;
     }
-    else cout << "La personne n'existe pas" << endl ;
     return NULL ;
-    
-    
 }
 
 void g_remove(groupePersonnes* g, int const index)

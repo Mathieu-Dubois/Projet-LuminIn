@@ -267,47 +267,140 @@ int main()
 
 /* ============================================================================================================
 ||
-||                                 TEST DES FONCTIONS DU FICHIER : postes.h
+||                                 TEST DES FONCTIONS DU FICHIER : employe.h
 ||
    ============================================================================================================ */
     // Test de la fonction g_open
     TEST(gPe != NULL);
     // Test de la fonction g_size
     TEST(g_size(gPe) == 19);
+    // Test de la fonction g_index
+    TEST(g_index(gPe,20) == NULL) ;
+        // On vérifie la première personne
+        TEST(g_index(gPe,1)->index == 1) ;
+        TEST(strcmp(g_index(gPe,1)->nom, "Mouse") == 0) ;
+        TEST(strcmp(g_index(gPe,1)->prenom, "Mickey") == 0) ;
+        TEST(g_index(gPe,1)->adresse == 77700) ;
+        TEST(strcmp(g_index(gPe,1)->courriel, "mickey@mickeyville.com") == 0) ;
+        TEST(strcmp(g_index(gPe,1)->amis[0]->prenom, "Minnie") == 0) ;
+        TEST(g_index(gPe,1)->amis[5] == NULL) ;
+        TEST(strcmp(g_index(gPe,1)->competence[0], "comedie") == 0) ;
+        TEST(strcmp(g_index(gPe,1)->competence[1], "chant") == 0) ;
+        TEST(g_index(gPe,1)->competence[2][0] == '\0') ;
+        // On vérifie la dernière personne
+        TEST(g_index(gPe,19)->index == 19) ;
+        TEST(strcmp(g_index(gPe,19)->nom, "Fitcat") == 0) ;
+        TEST(strcmp(g_index(gPe,19)->prenom, "Juju") == 0) ;
+        TEST(g_index(gPe,19)->adresse == 81000) ;
+        TEST(strcmp(g_index(gPe,19)->courriel, "etcafaitbimbamboum@pshitvroum") == 0) ;
+        TEST(strcmp(g_index(gPe,19)->amis[0]->prenom, "Tibo") == 0) ;
+        TEST(g_index(gPe,19)->amis[5] == NULL) ;
+        TEST(strcmp(g_index(gPe,19)->competence[0], "sport") == 0) ;
+        TEST(strcmp(g_index(gPe,19)->competence[1], "danse") == 0) ;
+        TEST(g_index(gPe,19)->competence[2][0] == '\0') ;
+        // On vérifie quelques personnes entre les deux
+        TEST(g_index(gPe,7)->index == 7) ;
+        TEST(strcmp(g_index(gPe,10)->nom, "Dumbledore") == 0) ;
+        TEST(g_index(gPe,3)->adresse == 77730) ;
+        TEST(strcmp(g_index(gPe,6)->courriel, "tidoublegreou@youpi.com") == 0) ;
+        TEST(strcmp(g_index(gPe,12)->amis[0]->prenom, "Mathieu") == 0) ;
+        TEST(strcmp(g_index(gPe,6)->amis[5]->prenom, "Theo") == 0) ;
+        TEST(strcmp(g_index(gPe,6)->amis[6]->prenom, "Monon") == 0) ;
+        TEST(g_index(gPe,7)->amis[5] == NULL) ;
+        TEST(strcmp(g_index(gPe,13)->competence[0], "perseverant") == 0) ;
+        TEST(strcmp(g_index(gPe,6)->competence[1], "chant") == 0) ;
+        TEST(g_index(gPe,17)->competence[2][0] == '\0') ;
+    // Test de la fonction LastPersonne
+    TEST(LastPersonne(gPe) == 19) ;
+    // Test de la fonction ExistePersonne
+    TEST(ExistePersonne(gPe,1) == 1) ;
+    TEST(ExistePersonne(gPe,19) == 1) ;
+    TEST(ExistePersonne(gPe,0) == 0) ;
+    TEST(ExistePersonne(gPe,32) == 0) ;
+    TEST(ExistePersonne(gPe,7) == 1) ;
+    // Test de la fonction creer_profil
+    string s_nomPe = "Delmas" ;
+    string s_prenomPe = "Albert" ;
+    string s_courrielPe = "albert.delmas@gmail.fr" ;
+    s_comp0 = "ponctuel" ;
+    s_comp1 = "patisserie" ;
+    s_comp2 = "cuisine" ;
+    char tab_comppE[MAX_COMPETENCES][128] = {'\0'} ;
+    int colleguesPe[MAX_AMIS] ;
+    for (int i = 0; i < MAX_AMIS; i++) colleguesPe[i] = -1 ;
+    for (int i = 0; i < 8; i++) colleguesPe[i] = i+1 ;
+    size = s_nomPe.size() + 1 ;
+    char c_nomPe[128];
+    strncpy(c_nomPe, s_nomPe.c_str(), size) ;
+    size = s_prenomPe.size() + 1 ;
+    char c_prenomPe[128];
+    strncpy(c_prenomPe, s_prenomPe.c_str(), size) ;
+    size = s_courrielPe.size() + 1 ;
+    char c_courrielPe[128];
+    strncpy(c_courrielPe, s_courrielPe.c_str(), size) ;
+    size = s_comp0.size() + 1 ;
+    strncpy(tab_comppE[0], s_comp0.c_str(), size) ;
+    size = s_comp1.size() + 1 ;
+    strncpy(tab_comppE[1], s_comp1.c_str(), size) ;
+    size = s_comp2.size() + 1 ;
+    strncpy(tab_comppE[2], s_comp2.c_str(), size) ;
+    creer_profil(c_nomPe,c_prenomPe,c_courrielPe,78969,tab_comppE,colleguesPe,7,gPe) ;
+    TEST(g_size(gPe) == 20);
+    TEST(LastPersonne(gPe) == 20) ;
+    TEST(g_index(gPe,20)->index == 20) ;
+    TEST(strcmp(g_index(gPe,20)->nom, "Delmas") == 0) ;
+    TEST(strcmp(g_index(gPe,20)->prenom, "Albert") == 0) ;
+    TEST(g_index(gPe,20)->adresse == 78969) ;
+    TEST(strcmp(g_index(gPe,20)->courriel, "albert.delmas@gmail.fr") == 0) ;
+    TEST(strcmp(g_index(gPe,20)->amis[0]->prenom, "Mickey") == 0) ;
+    TEST(g_index(gPe,20)->amis[5] != NULL) ;
+    TEST(strcmp(g_index(gPe,20)->competence[0], "ponctuel") == 0) ;
+    TEST(strcmp(g_index(gPe,20)->competence[1], "patisserie") == 0) ;
+    TEST(g_index(gPe,20)->competence[3][0] == '\0') ;
+    // Test de la fonction supprimer_profil
+    supprimer_profil(20,gPe) ;
+    supprimer_profil(13,gPe) ;
+    supprimer_profil(4,gPe) ;
+    TEST(g_size(gPe) == 17);
+    TEST(LastPersonne(gPe) == 19) ;
+    // Test de la fonction modifier_adresse
+    TEST(modifier_adresse(1,gPe,11111) == 0) ;
+    TEST(g_index(gPe,1)->adresse == 11111) ;
+    TEST(modifier_adresse(2,gPe,77700) == 1) ;
+    TEST(modifier_adresse(19,gPe,12345) == 0) ;
+    TEST(g_index(gPe,19)->adresse == 12345) ;
+    TEST(modifier_adresse(12,gPe,45825) == 0) ;
+    TEST(g_index(gPe,12)->adresse == 45825) ;
+    TEST(modifier_adresse(35,gPe,45825) == 2) ;
+    // Test de la fonction modifier_mail
+    string s_courrielPeme = "adressedetest@test.com" ;
+    char c_courrielPeme[128];
+    size = s_courrielPeme.size() + 1 ;
+    strncpy(c_courrielPeme, s_courrielPeme.c_str(), size) ;
+    string s_courrielPem = "minnie@mickeyville.com" ;
+    size = s_courrielPem.size() + 1 ;
+    char c_courrielPem[128];
+    strncpy(c_courrielPem, s_courrielPem.c_str(), size) ;
+    TEST(modifier_mail(1,gPe,c_courrielPeme) == 0) ;
+    TEST(strcmp(g_index(gPe,1)->courriel, "adressedetest@test.com") == 0) ;
+    TEST(modifier_mail(2,gPe,c_courrielPem) == 0) ;
+    TEST(modifier_mail(19,gPe,c_courrielPeme) == 0) ;
+    TEST(strcmp(g_index(gPe,19)->courriel, "adressedetest@test.com") == 0) ;
+    TEST(modifier_mail(12,gPe,c_courrielPeme) == 0) ;
+    TEST(strcmp(g_index(gPe,12)->courriel, "adressedetest@test.com") == 0) ;
+    TEST(modifier_mail(35,gPe,c_courrielPeme) == 2) ;
+    // Test de la fonction modifier_entreprise
+    TEST(modifier_entreprise(1,gPe,1) == 0) ;
+    TEST(modifier_entreprise(1,gPe,1) == 1) ;
+    TEST(modifier_entreprise(5,gPe,7) == 0) ;
+    TEST(modifier_entreprise(45,gPe,7) == 2) ;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-   
-//     // // Tests de la fonction g_index.
-//     {
-//         TEST(strcmp(g_index(gPe, 1)->nom, "Untel") == 0);
-//         TEST(strcmp(g_index(gPe, 1)->prenom, "Michel") == 0);
-//         TEST(strcmp(g_index(gPe, 2)->courriel, "mickey@mickeyville.gov") == 0);
-//         TEST(g_index(gPe, 6)->amis[0]->index == 5);
-//     }
     
 
 
-// //     //------------------- TESTS EMPLOYES ------------------
 
-//     // Tests de la fonction modifier adresse
-//     {
-//         modifier_adresse(4, gPe, 38000);
-//         TEST(g_index(gPe, 4)->adresse == 38000);
-//         TEST(modifier_adresse(4, gPe, 38000) == 1);
-//     }
 
 //     // Tests de la fonction modifier entreprise
 //     {

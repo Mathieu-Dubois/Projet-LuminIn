@@ -465,7 +465,6 @@ int printemployes(groupePersonnes* gPe)
     return 0 ;
 }
 
-
 // But : Afficher les informations de tous les postes à pourvoir ayant dans leur description
 //       au moins une compétence du chercheur d'emploi
 void PersonneRecherchePosteParCompetence(personne* pe, groupePostes* gP, groupeEntreprises* gE)
