@@ -23,9 +23,9 @@
                 puis directement ça m'affiche la liste des postes de cette entreprise (deuxieme 1) qui est la premiere option du profil d'une entreprise
                 et ça fait pareil pour un profil d'une personne
 
--   C'est pas vraiment un bug, mais le prof avait dit que lorsque on rajoute manuellement des collègues à notre réseau de collègue, ça peut être
-    n'importe qui (même une personne d'une autre entreprise) or actuellement si on rajoute qqln qui ne fait pas partie de l'entreprise, ça met un
-    message : " cette personne n'est pas dans la même entreprise que vous"
+[CORRIGÉ]   -   C'est pas vraiment un bug, mais le prof avait dit que lorsque on rajoute manuellement des collègues à notre réseau de collègue, ça peut être
+                n'importe qui (même une personne d'une autre entreprise) or actuellement si on rajoute qqln qui ne fait pas partie de l'entreprise, ça met un
+                message : " cette personne n'est pas dans la même entreprise que vous"
 
 
 [CORRIGÉ]   -   Le  choix 2 dans menuModifierProfil n'est pas implémenté (changement d'adresse mail)
@@ -94,9 +94,12 @@
 
 [FAIT]      -   Faire la saisie sécurisée pour les recherches d'une personne
 
--   Faire en sort que lorsqu'une personne supprime un collègue, il ne peut que entrer l'index d'un de ses collègues (saisie sécurisée)
+[FAIT]      -   Faire en sort que lorsqu'une personne supprime un collègue, il ne peut que entrer l'index d'un de ses collègues (saisie sécurisée)
 
 [FAIT]      -   Gérer AMIS_MAX et COLLEGUES_MAX
+
+-   Quand on ajoute un collègue, n'afficher que les collègues qui ne sont pas dans le réseau de la personne et faire en sorte que l'utilisateur ne 
+    puisse saisir que des personnes qui ne sont pas ses collègues
 
 
 

@@ -290,10 +290,10 @@ int ajouter_collegue(int indice, groupePersonnes *gPe, int col)
                         while (parcours != NULL && fait == 0){
                             parcourami = (personne*)(parcours->data);
                             if (parcourami->index == col){
-                                if(parcourami->entreprise == tmpami -> entreprise){
-                                    tmpami->amis[i] = parcourami;
-                                    code_retour = 0;
-                                } else code_retour= 2;
+                                // if(parcourami->entreprise == tmpami -> entreprise){
+                                tmpami->amis[i] = parcourami;
+                                code_retour = 0;
+                                // } else code_retour= 2;
                                 fait = 1;
                             } else parcours = parcours->next;
                         }
@@ -732,6 +732,20 @@ void PersonneRechercheCollegueParCompetence(personne* pe, groupeEntreprises* gE,
     
 }
 
+// But : Déterminer si une personne fait partie du réseau de collègue d'une autre personne
+int ExisteCollegue(personne* pe, int const indexCo)
+{
+    // On parcourt le réseau de collègues de la personne jusqu'à trouver (ou non) d'index du collègue
+    for (int i = 0; i < MAX_AMIS; i++)
+    {
+        if(pe->amis[i] != NULL)
+        {
+            if(pe->amis[i]->index == indexCo) return 1 ;
+        }
+    }  
+    // On l'a pas trouvé, on retourne 0
+    return 0;
+}
 
 
 
