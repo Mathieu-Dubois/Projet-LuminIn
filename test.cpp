@@ -1,5 +1,4 @@
 #include <iostream>
-using namespace std ;
 #include <signal.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -7,9 +6,8 @@ using namespace std ;
 #include <string.h>
 #include <string>
 #include <fstream>
-#include "lib/bibliotheques.h"
-
 using namespace std ;
+#include "lib/bibliotheques.h"
 
 int tests_executes = 0;
 int tests_reussis = 0;
@@ -33,12 +31,19 @@ int tests_reussis = 0;
 
 
 int main()
-{    
-    // ReinitialiserCSV() ;
+{   
+    // On commence par réinitialiser les fichiers CSV à leur état "de base"
+    ReinitialiserCSV() ;
+    // On fait une sauvegarde du journal qu'on viendra restituer à la fin du programme de test
+    // Ainsi le programme de test ne modifiera pas la journal (uniquement l'application qui peut le modifier)
     SauvegardeJournal() ;
 
-    //------------------- TESTS GROUPE ------------------
-
+    
+/* ============================================================================================================
+||
+||                                 CREATION DES TROIS GROUPES
+||
+   ============================================================================================================ */
     // Lecture de la DB vers une liste en mémoire.
     // Création du groupe d'entreprises
     groupeEntreprises *gE = NULL;
@@ -69,27 +74,222 @@ int main()
         fclose(dbPe);
     }
 
+/* ============================================================================================================
+||
+||                                 TEST DES FONCTIONS DU FICHIER : entreprise.h
+||
+   ============================================================================================================ */
+    // Test de la fonction g_openEntreprisesCSV
+    TEST(gE != NULL);
+    // Test de la fonction gEntreprise_size
+    TEST(gEntreprise_size(gE) == 11);
+    // Test de la fonction g_indexEntreprise
+    TEST(g_indexEntreprise(gE,20) == NULL) ;
+        // On vérifie la première entreprise
+        TEST(g_indexEntreprise(gE,1)->index == 1) ;
+        TEST(strcmp(g_indexEntreprise(gE,1)->nom, "Disney") == 0) ;
+        TEST(g_indexEntreprise(gE,1)->code_postal == 77700) ;
+        TEST(strcmp(g_indexEntreprise(gE,1)->courriel, "walt@disney.com") == 0) ;
+        // On vérifie la dernière entreprise
+        TEST(g_indexEntreprise(gE,11)->index == 11) ;
+        TEST(strcmp(g_indexEntreprise(gE,11)->nom, "Decathlon") == 0) ;
+        TEST(g_indexEntreprise(gE,11)->code_postal == 96521) ;
+        TEST(strcmp(g_indexEntreprise(gE,11)->courriel, "contact@decathlon.com") == 0) ;
+        // On vérifie quelques entreprises entre les deux
+        TEST(g_indexEntreprise(gE,7)->index == 7) ;
+        TEST(strcmp(g_indexEntreprise(gE,10)->nom, "La Grande Recree") == 0) ;
+        TEST(g_indexEntreprise(gE,3)->code_postal == 65058) ;
+        TEST(strcmp(g_indexEntreprise(gE,6)->courriel, "nimbusdeuxmille@patronus.com") == 0) ;
+    // Test de la fonction LastEntreprise
+    TEST(LastEntreprise(gE) == 11) ;
+    // Test de la fonction ExisteEntreprise
+    TEST(ExisteEntreprise(gE,1) == 1) ;
+    TEST(ExisteEntreprise(gE,11) == 1) ;
+    TEST(ExisteEntreprise(gE,7) == 1) ;
+    TEST(ExisteEntreprise(gE,0) == 0) ;
+    TEST(ExisteEntreprise(gE,22) == 0) ;
+    // Test de la fonction AjoutEntreprise
+    string s_nomE = "Carglass" ;
+    string s_courrielE = "contact@carglass.com" ;
+    size_t size = s_nomE.size() + 1 ;
+    char c_nomE[40];
+    strncpy(c_nomE, s_nomE.c_str(), size) ;
+    size = s_courrielE.size() + 1 ;
+    char c_courrielE[128];
+    strncpy(c_courrielE, s_courrielE.c_str(), size) ;
+    AjoutEntreprise(gE,c_nomE,54710,c_courrielE) ;
+    TEST(gEntreprise_size(gE) == 12);
+    TEST(g_indexEntreprise(gE,12)->index == 12) ;
+    TEST(strcmp(g_indexEntreprise(gE,12)->nom, "Carglass") == 0) ;
+    TEST(g_indexEntreprise(gE,12)->code_postal == 54710) ;
+    TEST(strcmp(g_indexEntreprise(gE,12)->courriel, "contact@carglass.com") == 0) ;
+    TEST(LastEntreprise(gE) == 12) ;
+    // Test des fonctions de recherche pour une entreprise
+        // L'entreprise 1 fait une recherche de personne par compétence
+        // Les compétences que propose cette entreprise sont :
+        // poste 1 : comedie et gag
+        // poste 4 : danse et sport
+        // poste 7 : chant
+        // parmi les chercheurs d'emploi :
+        // Mouse Minnie a les compétences comédie, chant et danse
+        // Lourson Winnie a la compétence comedie
+        // Mua Sissy a la compétence danse
+        // Seul ces trois personnes doivent apparaître dans le résultat de la recherche (et une seule fois)
+        cout << "======================================== Test recherche 1" << endl ;
+        EntrepriseRecherchePersonneParCompetence(gPe,gP,1) ;
+        cout << "======================================== Test recherche 1 validé" << endl ;
+        // L'entreprise 1 fait une recherche de personne par compétence et code postal
+        // Tous les paramètres sont identiques à la recherche précédente
+        // Sauf qu'il n'y a que Mouse Minnie qui a le même code postal que l'entreprise
+        // Elle doit être la seule à apparaitre dans les résultats
+        cout << "======================================== Test recherche 2" << endl ;
+        EntrepriseRecherchePersonneParCompetenceEtCode(gPe,gP,g_indexEntreprise(gE,1)) ;
+        cout << "======================================== Test recherche 2 validé" << endl ;
+        // L'entreprise 11 fait une recherche de personne par compétence
+        // L'entreprise ne propose qu'un seul poste avec la compétence sport
+        // Parmi les chercheurs d'emploi, seule Mua Sissy a la compétence sport
+        // Elle doit donc être la seule à apparaitre dans le résultat de la recherche
+        cout << "======================================== Test recherche 3" << endl ;
+        EntrepriseRecherchePersonneParCompetence(gPe,gP,11) ;
+        cout << "======================================== Test recherche 3 validé" << endl ;
+        // L'entreprise 11 fait une recherche de personne par compétence et par code postal
+        // Tous les paramètres sont identiques à la recherche précédente
+        // Cependant, Mua Sissy n'a pas le même code postal que l'entreprise 11
+        // La recherche affiche aucun résultat
+        cout << "======================================== Test recherche 4" << endl ;
+        EntrepriseRecherchePersonneParCompetenceEtCode(gPe,gP,g_indexEntreprise(gE,11)) ;
+        cout << "======================================== Test recherche 4 validé" << endl ;
+    // Test de la fonction LicencierToutLeMonde
+    LicencierToutLeMonde(gPe,gE,1) ;
+    TEST(g_index(gPe,1)->entreprise == -1) ;
+    TEST(g_index(gPe,3)->entreprise == -1) ;
+    TEST(g_index(gPe,4)->entreprise == -1) ; 
+    // Test de la fonction SupprimerEntreprise
+        // On supprime une entreprise du milieu
+        SupprimerEntreprise(gE,7) ;
+        TEST(LastEntreprise(gE) == 12) ;
+        TEST(gEntreprise_size(gE) == 11);
+        TEST(g_indexEntreprise(gE,7) == NULL) ;
+        // On supprime la première entreprise
+        SupprimerEntreprise(gE,1) ;
+        TEST(LastEntreprise(gE) == 12) ;
+        TEST(gEntreprise_size(gE) == 10);
+        TEST(g_indexEntreprise(gE,1) == NULL) ;
+        // On supprime les deux dernières entreprises
+        SupprimerEntreprise(gE,12) ;
+        SupprimerEntreprise(gE,11) ;
+        TEST(LastEntreprise(gE) == 10) ;
+        TEST(gEntreprise_size(gE) == 8);
+        TEST(g_indexEntreprise(gE,12) == NULL) ;
+        TEST(g_indexEntreprise(gE,11) == NULL) ;
+    // On fait le propre dans les fichiers csv pour tester la suite
+    ReinitialiserCSV() ;
+
+/* ============================================================================================================
+||
+||                                 TEST DES FONCTIONS DU FICHIER : postes.h
+||
+   ============================================================================================================ */
+    // Test de la fonction g_openPostesCSV
+    TEST(gP != NULL);
+    // Test de la fonction gPoste_size
+    TEST(gPoste_size(gP) == 10);
+    // Test de la fonction g_indexPoste
+    TEST(g_indexPoste(gP,20) == NULL) ;
+        // On vérifie le premier poste
+        TEST(g_indexPoste(gP,1)->index == 1) ;
+        TEST(strcmp(g_indexPoste(gP,1)->titre, "Acteur") == 0) ;
+        TEST(g_indexPoste(gP,1)->entreprise == 1) ;
+        TEST(strcmp(g_indexPoste(gP,1)->competence[1], "gag") == 0) ;
+        // On vérifie le dernier poste
+        TEST(g_indexPoste(gP,10)->index == 10) ;
+        TEST(strcmp(g_indexPoste(gP,10)->titre, "Developpeur") == 0) ;
+        TEST(g_indexPoste(gP,10)->entreprise == 2) ;
+        TEST(strcmp(g_indexPoste(gP,10)->competence[0], "informatique") == 0) ;
+        // On vérifie quelques postes entre les deux
+        TEST(g_indexPoste(gP,8)->index == 8) ;
+        TEST(strcmp(g_indexPoste(gP,8)->titre, "Professeur de sport") == 0) ;
+        TEST(g_indexPoste(gP,3)->entreprise == 5) ;
+        TEST(strcmp(g_indexPoste(gP,6)->competence[0], "magie") == 0) ;
+    // Test de la fonction LastPoste
+    TEST(LastPoste(gP) == 10) ;
+    // Test de la fonction ExistePoste
+    TEST(ExistePoste(gP,1) == 1) ;
+    TEST(ExistePoste(gP,10) == 1) ;
+    TEST(ExistePoste(gP,7) == 1) ;
+    TEST(ExistePoste(gP,0) == 0) ;
+    TEST(ExistePoste(gP,22) == 0) ;
+    // Test de la fonction ExistePosteEntreprise
+    TEST(ExistePosteEntreprise(gP,1,1) == 1) ;
+    TEST(ExistePosteEntreprise(gP,4,1) == 1) ;
+    TEST(ExistePosteEntreprise(gP,7,1) == 1) ;
+    TEST(ExistePosteEntreprise(gP,8,1) == 0) ;
+    TEST(ExistePosteEntreprise(gP,5,1) == 0) ;
+    TEST(ExistePosteEntreprise(gP,6,6) == 1) ;
+    TEST(ExistePosteEntreprise(gP,3,5) == 1) ;
+    TEST(ExistePosteEntreprise(gP,3,2) == 0) ;
+    // Test de la fonction AjoutPoste
+    string s_titreP = "Boulanger" ;
+    string s_comp0 = "ponctuel" ;
+    string s_comp1 = "patisserie" ;
+    string s_comp2 = "cuisine" ;
+    char tab_comp[MAX_COMPETENCES][128] = {'\0'} ;
+    size = s_titreP.size() + 1 ;
+    char c_titreP[128];
+    strncpy(c_titreP, s_titreP.c_str(), size) ;
+    size = s_comp0.size() + 1 ;
+    strncpy(tab_comp[0], s_comp0.c_str(), size) ;
+    size = s_comp1.size() + 1 ;
+    strncpy(tab_comp[1], s_comp1.c_str(), size) ;
+    size = s_comp2.size() + 1 ;
+    strncpy(tab_comp[2], s_comp2.c_str(), size) ;
+    AjoutPoste(gP,c_titreP,5,tab_comp) ;
+    TEST(gPoste_size(gP) == 11);
+    TEST(g_indexPoste(gP,11)->index == 11) ;
+    TEST(strcmp(g_indexPoste(gP,11)->titre, "Boulanger") == 0) ;
+    TEST(g_indexPoste(gP,11)->entreprise == 5) ;
+    TEST(strcmp(g_indexPoste(gP,11)->competence[0], "ponctuel") == 0) ;
+    TEST(strcmp(g_indexPoste(gP,11)->competence[2], "cuisine") == 0) ;
+    TEST(LastPoste(gP) == 11) ;
+    // Test de la fonction SupprimerPoste
+    SupprimerPoste(gP,8) ;
+    TEST(LastPoste(gP) == 11) ;
+    TEST(gPoste_size(gP) == 10);
+    // Test de la fonction SupprimerEntreprise_postes
+    SupprimerEntreprise_postes(gP,1) ;
+    TEST(gPoste_size(gP) == 7);
+    TEST(LastPoste(gP) == 11) ;
+    TEST(g_indexPoste(gP,1) == NULL) ;
+    TEST(g_indexPoste(gP,4) == NULL) ;
+    TEST(g_indexPoste(gP,7) == NULL) ;
+    // On fait le propre dans les fichiers csv pour tester la suite
+    ReinitialiserCSV() ;
+
+/* ============================================================================================================
+||
+||                                 TEST DES FONCTIONS DU FICHIER : postes.h
+||
+   ============================================================================================================ */
+    // Test de la fonction g_open
+    TEST(gPe != NULL);
+    // Test de la fonction g_size
+    TEST(g_size(gPe) == 19);
 
 
-    // // Test des fonctiosn g_openEntreprisesCSV et gEntreprise_size.
-    {
-        TEST(gE != NULL);
-        TEST(gEntreprise_size(gE) == 5);
-        // AfficherEntreprises(gE) ;
-    }
 
-    // // Test des fonctions g_openPostesCSV
-    {
-        TEST(gP != NULL);
-        // AfficherPostes(gP) ;
-    }
 
-    // // Test des fonctiosn g_open et g_size.
-    {
-        TEST(gPe != NULL);
-        TEST(g_size(gPe) == 9);
-    }
 
+
+
+
+
+
+
+
+
+
+
+   
 //     // // Tests de la fonction g_index.
 //     {
 //         TEST(strcmp(g_index(gPe, 1)->nom, "Untel") == 0);
@@ -98,57 +298,7 @@ int main()
 //         TEST(g_index(gPe, 6)->amis[0]->index == 5);
 //     }
     
-//     // // Tests de la fonction g_friends.
-//     {
-//          TEST(g_friends(gPe, 1, 1) == false);
-//          TEST(g_friends(gPe, 6, 5) == false);
-//          TEST(g_friends(gPe, 3, 2) == true);
-//          TEST(g_friends(gPe, 5, 4) == true);
-//          TEST(g_friends(gPe, 5, 2) == true);
-//     }
-    
-//     // // Tests de la fonction g_bestie.
-//     {
-//         TEST(g_bestie(gPe, 2) == 3);
-//         TEST(g_bestie(gPe, 3) == 2);
-//         TEST(g_bestie(gPe, 1) == -1);
-//     }
 
-//     // // Tests de la fonction g_oneway.
-//     {
-//         TEST(g_oneway(gPe, 4, 5) == false);
-//         TEST(g_oneway(gPe, 3, 2) == false);
-//         TEST(g_oneway(gPe, 2, 3) == false);
-//         TEST(g_oneway(gPe, 6, 5) == true);
-//     }
-    
-//     // // Tests de la fonction g_linked.
-//     {
-//         TEST(g_linked(gPe, 1, 1) == false);
-//         TEST(g_linked(gPe, 2, 2) == false);
-//         TEST(g_linked(gPe, 2, 6) == true);
-//         TEST(g_linked(gPe, 5, 4) == true);
-//         TEST(g_linked(gPe, 4, 1) == false);
-//         TEST(g_linked(gPe, 6, 4) == true);
-//     }
-    
-//     // // Tests de la fonction g_distance.
-//     {
-//          TEST(g_distance(gPe, 1, 1) == 0); 
-//          TEST(g_distance(gPe, 5, 4) == 1);   
-//          TEST(g_distance(gPe, 1, 2) == -1);
-//          TEST(g_distance(gPe, 6, 4) == 2);    
-//     }
-    
-//     // // Tests de la fonction g_remove.
-//     {
-//         // g_remove(gPe, 4);
-//         // // TEST(g_size(gPe) == 8);
-//         // TEST(g_index(gPe, 4) == NULL);
-//         // TEST(g_friends(gPe, 5, 4) == false);
-//         // TEST(g_oneway(gPe, 5, 4) == false);
-//         // TEST(g_linked(gPe, 6, 4) == false);
-//     }
 
 // //     //------------------- TESTS EMPLOYES ------------------
 
@@ -270,99 +420,6 @@ int main()
 // //     // }
 
     
-
-
-// //     //------------------- TESTS ENTREPRISE ------------------
-
-// //     // // Test de la fonction LastEntreprise et ajout AjoutEntreprise
-//     {
-//         TEST(LastEntreprise(gE) == 5) ;
-//         char nom[40] = "Netflix" ;
-//         int code = 45789 ;
-//         char mail[128] = "netflixandchill@gmail.com" ;
-//         AjoutEntreprise(gE,nom,code,mail) ; // ATTENTION VA MODIFER LE CSV INITIAL
-//         TEST(LastEntreprise(gE) == 6) ;
-//     }
-
-// //     // // Test de la fonction g_indexEntreprise
-// //     {
-//         TEST(strcmp(g_indexEntreprise(gE, 1)->nom, "Disney") == 0);
-//         TEST(g_indexEntreprise(gE, 1)->code_postal == 77700) ;
-//         TEST(strcmp(g_indexEntreprise(gE, 2)->courriel, "emplois@google.com") == 0);
-//         TEST(strcmp(g_indexEntreprise(gE, 3)->nom, "Amazon") == 0);
-// //     }
-
-// //     // Test de la fonction g_ecrireEntreprise
-// //     {
-//         // g_ecrireEntreprise(gE) ; 
-// //     }
-
-// //     // Test de la fonction SupprimerEntreprise
-// //     {
-// //         SupprimerEntreprise(gE,1) ;
-// //         SupprimerEntreprise(gE,2) ;
-// //         SupprimerEntreprise(gE,3) ;
-// //         SupprimerEntreprise(gE,4) ;
-// //         SupprimerEntreprise(gE,5) ;
-// //         SupprimerEntreprise(gE,6) ;
-// //     }
-
-// //     ReinitialiserCSV() ;
-    
-// //     // // Test de la fonction AfficherPostesEntreprise
-// //     // {
-// //     // AfficherPostesEntreprise(gE,gP,1) ;
-// //     // AfficherPostesEntreprise(gE,gP,2) ;
-// //     // AfficherPostesEntreprise(gE,gP,0) ;
-// //     // AfficherPostesEntreprise(gE,gP,3) ;
-// //     // AfficherPostesEntreprise(gE,gP,5) ;
-// //     // }
-
-// //     // Test de la fonction LastPoste
-// //     {
-//         TEST(LastPoste(gP) == 4) ;
-// //     }
-
-//     // Test de la fonction AjoutPoste
-//     {
-//         char titre[128] = "vendeur" ;
-//         int indexE = 4 ;
-//         char competence[5][128] = {'\0'};
-//         competence[0][0] = 'd';
-//         competence[0][1] = 'y';
-//         competence[0][2] = 'n';
-//         competence[0][3] = 'a';
-//         competence[0][4] = 'm';
-//         competence[0][5] = 'i';
-//         competence[0][6] = 'q';
-//         competence[0][7] = 'u';
-//         competence[0][8] = 'e';
-//         competence[0][9] = '\0';
-//         competence[1][0] = 'h';
-//         competence[1][1] = 'e';
-//         competence[1][2] = 'y';
-//         competence[1][3] = '\0';
-//         competence[2][0] = 'm';
-//         competence[2][1] = 'i';
-//         competence[2][2] = 'q';
-//         competence[2][3] = 'u';
-//         competence[2][4] = 'e';
-//         competence[2][5] = '\0';
-//         // competence[1] = "souriant" ;
-//         // competence[2] = "efficace" ;
-//         AjoutPoste(gP,titre,indexE,competence) ;
-//     }
-
-//     // {
-//     // char hey[128] = "comedie" ;
-//     // char hey2[128] = "Python" ;
-//     // EntrepriseRechercheParCompetence(gPe, hey) ;
-//     // EntrepriseRechercheParCompetence(gPe, hey2) ;
-
-//     // int codeP = 75020 ;
-//     // EntrepriseRechercheParCompetenceEtCode(gPe,hey2,codeP) ;
-//     // EntrepriseRechercheParCompetenceEtCode(gPe,hey2,codeP+1) ;
-//     // }
 
     // Sort automatiquement TOUS les postes qui demandent une compétence que la personne possède
     // recherche_poste_comp(2,gPe, gP,gE) ;

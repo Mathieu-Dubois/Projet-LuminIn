@@ -44,7 +44,22 @@ groupeEntreprises* g_openEntreprisesCSV(FILE *db)
 // But : Déterminer la taille d'un groupe de type : groupeEntreprises
 int gEntreprise_size(groupeEntreprises* gE)
 {
-    return l_length(gE->entreprise);
+    int compteur(0) ;
+
+    if (gE->entreprise == NULL) return 0 ;
+    else
+    {
+        
+        node *tmp = gE->entreprise ;
+        entreprise *e = (entreprise*)tmp->data ;
+        while (e!= NULL && tmp != NULL)
+        {
+            compteur++ ;
+            tmp = tmp->next ;
+            if(tmp != NULL) e = (entreprise*)tmp->data ;
+        }
+    }
+    return compteur ;
 }
 
 // But : Afficher l'index et le nom de toutes les entreprises d'un même groupe
@@ -80,7 +95,6 @@ void AjoutEntreprise(groupeEntreprises *gE, char nom[40], int code_postal, char 
     strcpy(nouveau->courriel, courriel) ;
 
     journal_CreationEntreprise(nouveau) ;
-
 
     // Ajout de la nouvelle entreprise au groupe
     l_append(&gE->entreprise, l_make_node((entreprise*)nouveau)) ;
@@ -140,13 +154,12 @@ entreprise* g_indexEntreprise(groupeEntreprises* gE, int const indexE)
         if (e->index == indexE) return e ; 
     }
 
-    // Sinon on affiche un message d'erreur et on retourne NULL
-    else cout << "ERREUR ID ENTREPRISE" ;
+    // Sinon, l'entreprise n'existe pas, on retourne NULL
     return NULL ;
 }
 
 // But : Supprimer une entreprise du groupe passé en paramètres et du fichier entreprises.csv
-groupeEntreprises* SupprimerEntreprise(groupeEntreprises* gE, int const indexE)
+void SupprimerEntreprise(groupeEntreprises* gE, int const indexE)
 {
     // On va chercher l'entreprise dans le groupe
     assert (gE) ;
@@ -169,8 +182,6 @@ groupeEntreprises* SupprimerEntreprise(groupeEntreprises* gE, int const indexE)
 
     // Puis on met à jour entreprises.csv
     g_ecrireEntreprise(gE) ;
-
-    return gE ;
 }
 
 // But : Mettre à jour le fichier entreprises.csv à partir du groupe passé en paramètres
@@ -216,88 +227,8 @@ void g_ecrireEntreprise(groupeEntreprises* gE)
     }
 }
 
-// But : Afficher le nom, le prénom et l'adresse mail de tous les chercheurs d'emploi possédant la compétence demandée
-void EntrepriseRechercheParCompetence(groupePersonnes* gPe, char competence[128])
-{
-    int trouve(0) ;
-
-    if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
-
-    // On parcourt tout le groupe
-    else
-    {
-        node *tmp = gPe->personnes ;
-        personne *p = (personne*)tmp->data ;
-        while (p!= NULL && tmp != NULL)
-        {
-            // Si la personne courante est un chercheur d'emploi (ie : entreprise = -1)
-            if(p->entreprise == -1)
-            {
-                // On regarde toutes ces compétences 
-                for (int i = 0; i < MAX_COMPETENCES; i++)
-                {
-                    // Si une compétence correspond à la compétence recherchée, on affiche la personne
-                    if (!strcmp(competence, p->competence[i]))
-                    {
-                        if(trouve == 0) cout << endl << "Liste des chercheurs d'emploi possédant la compétence " << competence << " : " << endl ;
-                        cout << p->nom << " - " << p->prenom << " - " << p->courriel << endl ;
-                        trouve = 1 ;
-                    }
-                }
-            }
-            tmp = tmp->next ;
-            if(tmp != NULL) p = (personne*)tmp->data ;
-        }
-
-        // Si on a rien trouvé, on l'indique à l'utilisateur
-        if(!trouve) cout << "Aucun chercheur d'emploi ne correspond à votre recherche" << endl ;
-    }
-}
-
-// But : Afficher le nom, le prénom et l'adresse mail de tous les chercheurs d'emploi possédant la compétence et le code postal demandée
-void EntrepriseRechercheParCompetenceEtCode(groupePersonnes* gPe, char competence[128], int code_postal)
-{
-    int trouve(0) ;
-
-    if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
-    // On parcourt tout le groupe
-    else
-    {
-        node *tmp = gPe->personnes ;
-        personne *p = (personne*)tmp->data ;
-        while (p!= NULL && tmp != NULL)
-        {
-            // Si la personne courante est un chercheur d'emploi (ie : entreprise = -1)
-            if(p->entreprise == -1)
-            {
-                // Et que le code postal de cette personne est celui demandé
-                if (p->adresse == code_postal)
-                {
-                    // On regarde toutes ces compétences 
-                    for (int i = 0; i < MAX_COMPETENCES; i++)
-                    {
-                        // Si une compétence correspond à la compétence recherchée, on affiche la personne
-                        if (!strcmp(competence, p->competence[i]))
-                        {
-                             if(trouve == 0) cout << endl << "Liste des chercheurs d'emploi possédant la compétence " << competence << " et le code postal " << code_postal << " :" << endl ;
-                            cout << p->nom << " - " << p->prenom << " - " << p->courriel << endl ;
-                            trouve = 1 ;
-                        }
-                    }
-                }
-            }
-            
-            tmp = tmp->next ;
-            if(tmp != NULL) p = (personne*)tmp->data ;
-        }
-
-        // Si on a rien trouvé, on l'indique à l'utilisateur
-        if(!trouve) cout << "Aucun chercheur d'emploi ne correspond à votre recherche" << endl ;
-    }
-}
-
 // But : Supprimer tous les employés d'une entreprise
-groupePersonnes* LicencierToutLeMonde(groupePersonnes* gPe, groupeEntreprises* gE, int indexE)
+void LicencierToutLeMonde(groupePersonnes* gPe, groupeEntreprises* gE, int indexE)
 {
     if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
 
@@ -319,7 +250,8 @@ groupePersonnes* LicencierToutLeMonde(groupePersonnes* gPe, groupeEntreprises* g
         }
     }
 
-    return gPe ;
+    // Puis on met à jour employes.csv
+    g_ecrire(gPe) ;
 }
 
 // But : Afficher les informations de tous les chercheurs d'emploi ayant une compétence 
@@ -342,6 +274,7 @@ void EntrepriseRecherchePersonneParCompetence(groupePersonnes* gPe, groupePostes
             // Si cette personne est un chercheur d'emploi
             if(personneCourante->entreprise == -1)
             {
+                personneDejaAffiche = 0 ;
                 // On doit regarder si l'une de ses compétence match avec les compétences des postes à pourvoir de l'entreprise
                 // On doit donc regarder la liste des postes
                 node *p_gP = gP->poste ;
@@ -350,10 +283,7 @@ void EntrepriseRecherchePersonneParCompetence(groupePersonnes* gPe, groupePostes
                 {
                     // On s'interresse qu'aux postes de l'entreprise
                     if(posteCourant->entreprise == indexE)
-                    {
-                        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                        personneDejaAffiche = 0 ;
+                    {                        
                         // On parcourt toutes les compétences du poste pour voir si il y a un match
                         for (int i = 0; i < MAX_COMPETENCES; i++)
                         {
@@ -384,8 +314,6 @@ void EntrepriseRecherchePersonneParCompetence(groupePersonnes* gPe, groupePostes
                                 }
                             }
                         }       
-
-                        ///////////////////////////////////////////////////////////////////////////////////////////////////////////
                     }
                     // on passe au poste suivant
                     p_gP = p_gP->next ;
@@ -431,6 +359,7 @@ void EntrepriseRecherchePersonneParCompetenceEtCode(groupePersonnes* gPe, groupe
                 // Si cette personne est un chercheur d'emploi
                 if(personneCourante->entreprise == -1)
                 {
+                    personneDejaAffiche = 0 ;
                     // On doit regarder si l'une de ses compétence match avec les compétences des postes à pourvoir de l'entreprise
                     // On doit donc regarder la liste des postes
                     node *p_gP = gP->poste ;
@@ -440,7 +369,6 @@ void EntrepriseRecherchePersonneParCompetenceEtCode(groupePersonnes* gPe, groupe
                         // On s'interresse qu'aux postes de l'entreprise
                         if(posteCourant->entreprise == indexE)
                         {
-                            personneDejaAffiche = 0 ;
                             // On parcourt toutes les compétences du poste pour voir si il y a un match
                             for (int i = 0; i < MAX_COMPETENCES; i++)
                             {

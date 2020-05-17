@@ -263,10 +263,11 @@ void ReinitialiserCSV()
         entreprise << "4,Apple,54410,contact@apple.com" << endl ;
         entreprise << "5,Doowap,42754,bonnebrioche@doowap.fr" << endl ;
         entreprise << "6,Poudlard,11499,nimbusdeuxmille@patronus.com" << endl ;
+        entreprise << "7,Nintendo,45655,contact@nintendo.jp" << endl ;
         entreprise << "8,Netflix,77548,netflixandchill@tvpopcorn.com" << endl ;
         entreprise << "9,LucasFilm,44485,inagalaxy@farfaraway.us" << endl ;
         entreprise << "10,La Grande Recree,24120,jouetspar@millier.fr" << endl ;
-        entreprise << "11,Decathlon,contact@decathlon.com" << endl ;
+        entreprise << "11,Decathlon,96521,contact@decathlon.com" << endl ;
         entreprise.close() ;
     }
     else cout << "ERREUR 1" << endl ;
@@ -280,7 +281,7 @@ void ReinitialiserCSV()
         poste << "3,Briocheur,5,patisserie" << endl ;
         poste << "4,Mascotte Mickey,1,danse;sport" << endl ;
         poste << "5,Concierge,6,autoritaire;determine" << endl ;
-        poste << "6,Professeur de défences contre les forces du mal,magie;defencesclfdm" << endl ;
+        poste << "6,Professeur de defences contre les forces du mal,6,magie;defencesclfdm" << endl ;
         poste << "7,Chanteur,1,chant" << endl ;
         poste << "8,Professeur de sport,11,sport" << endl ;
         poste << "9,Entraineur,9,jedi" << endl ;
@@ -294,14 +295,14 @@ void ReinitialiserCSV()
     {
         employes << "id,nom,prenom,mail,code-postal,competences,collegues,entreprise" << endl ;
         employes << "1,Mouse,Mickey,mickey@mickeyville.com,77700,comedie;chant,2;3;4;5;6,1" << endl ;
-        employes << "2,Mouse,Minnie,minnie@mickeyville.com,77700,comedie;chant;danse,1;3;4;6,1" << endl ;
+        employes << "2,Mouse,Minnie,minnie@mickeyville.com,77700,comedie;chant;danse,1;3;4;6,-1" << endl ;
         employes << "3,Duck,Donald,donald@canardville.com,77730,comedie;humour,1;2;4;6,1" << endl ;
         employes << "4,Duck,Daisy,daisy@canardville.com,77730,chant;danse,1;2;3;6,1" << endl ;
         employes << "5,Lourson,Winnie,potdemiel@miam.com,77752,cuisine;comedie,1;6,-1" << endl ;
         employes << "6,Dingo,Tigrou,tidoublegreou@youpi.com,77752,humour;chant;comedie;danse;cuisine,1;2;3;4;5;7;8;9;10;11;12;13;14;15;16;17;18;19,10" << endl ;
-        employes << "7,Brioche,Theo,sam.joli@coeur.fr,13120,patisserie;paschasse,8;9;6,5" << endl ;
-        employes << "8,Scott,Monon,monon@cristalclear.com,38000,chant;abdotransat,7;6,4" << endl ;
-        employes << "9,Delaforet,Mathieu,pasfred@lambda.com,13390,atr;traiderdenavet,7;8;10;11;12;6,6" << endl ;
+        employes << "7,Brioche,Theo,sam.joli@coeur.fr,13120,patisserie;paschasse;informatique,8;9;6,5" << endl ;
+        employes << "8,Scott,Monon,monon@cristalclear.com,38000,chant;abdotransat;informatique,7;6,4" << endl ;
+        employes << "9,Delaforet,Mathieu,pasfred@lambda.com,13390,atr;traiderdenavet;informatique,7;8;10;11;12;6,6" << endl ;
         employes << "10,Dumbledore,Albus,percivalwulfric@brian.uk,93400,magie;metamorphose;transplanage;chimiste;savant,9;11;12;6,6" << endl ;
         employes << "11,McGonagall,Minerva,piertotum@locomotor.uk,93400,magie;metamorphose;animagus,9;10;12;13;6,6" << endl ;
         employes << "12,Rogue,Severus,lilyevans@always.uk,93400,magie;chimiste;defencesclfdm,9;10;11;6,6" << endl ;

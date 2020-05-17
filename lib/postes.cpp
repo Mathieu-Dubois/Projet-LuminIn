@@ -209,7 +209,7 @@ int LastPoste(groupePostes* gP)
 }
 
 // But : Supprimer un poste du groupe passé en paramètres et du fichier postes.csv
-groupePostes* SupprimerPoste(groupePostes* gP, int const indexP)
+void SupprimerPoste(groupePostes* gP, int const indexP)
 {
     // On va chercher le poste dans le groupe
     assert (gP) ;
@@ -232,8 +232,6 @@ groupePostes* SupprimerPoste(groupePostes* gP, int const indexP)
 
     // Puis on met à jour postes.csv
     g_ecrirePoste(gP) ;
-
-    return gP ;
 }
 
 // But : Mettre à jour le fichier postes.csv à partir du groupe passé en paramètres
@@ -309,7 +307,7 @@ int ExistePosteEntreprise(groupePostes* gP, int const indexP, int const indexE)
 }
 
 // But : Supprimer tous les postes associés à la même entreprise
-groupePostes* SupprimerEntreprise_postes(groupePostes* gP, int const indexE)
+void SupprimerEntreprise_postes(groupePostes* gP, int const indexE)
 {
     // On récupère l'index du dernier poste
     int indexMax = LastPoste(gP) ;
@@ -320,9 +318,68 @@ groupePostes* SupprimerEntreprise_postes(groupePostes* gP, int const indexE)
         // Si le poste existe et qu'il appartient à l'entreprise, on le supprime
         if (ExistePosteEntreprise(gP, i, indexE))
         {
-            gP = SupprimerPoste(gP, i) ;
+            SupprimerPoste(gP, i) ;
         }
     }
-    
-    return gP ;
+}
+
+// But : Déterminer la taille d'un groupe de type : groupePostes
+int gPoste_size(groupePostes* gP)
+{
+    int compteur(0) ;
+
+    if (gP->poste == NULL) return 0 ;
+    else
+    {
+        node *tmp = gP->poste ;
+        poste *p = (poste*)tmp->data ;
+        while (p!= NULL && tmp != NULL)
+        {
+            compteur++ ;
+            tmp = tmp->next ;
+            if(tmp != NULL) p = (poste*)tmp->data ;
+        }
+    }
+    return compteur ;
+}
+
+// But : Accéder à un poste du groupe pour la manipuler
+poste* g_indexPoste(groupePostes* gP, int const indexP)
+{
+    // Si l'entreprise recherchée existe, on va la chercher et on la retourne
+    if(ExistePoste(gP,indexP))
+    {
+        node *tmp = gP->poste;
+        poste *p = (poste*)tmp->data;
+        while(p->index != indexP && p != NULL && tmp->next !=NULL)
+        {
+            tmp = tmp -> next;
+            p = (poste*)tmp->data;
+        }
+        if (p->index == indexP) return p ; 
+    }
+
+    // Sinon, l'entreprise n'existe pas, on retourne NULL
+    return NULL ;
+}
+
+// But : Déterminer si un poste fait partie du groupe passé en paramètres
+int ExistePoste(groupePostes* gP, int const indexP)
+{
+    // Si le groupe est vide, le poste n'existe pas, on retourne 0
+    if (gP->poste == NULL) return 0;
+
+    // Si l'index demandé est supérieur à l'index du dernier poste, le poste n'existe pas, on retourne 0
+    if(indexP > LastPoste(gP) || indexP < 0) return 0 ;
+
+    // Sinon on parcourt tout le groupe jusqu'à trouver (ou non) le poste voulue
+    node *tmp = gP->poste;
+    poste *p = (poste*)tmp->data;
+    while(p->index != indexP && p != NULL && tmp->next !=NULL){
+        tmp = tmp -> next;
+        p = (poste*)tmp->data;
+    } 
+    if (p->index == indexP) return 1 ; // On l'a trouvé, on retourne 1
+    // On l'a pas trouvé, on retourne 0
+    return 0;
 }

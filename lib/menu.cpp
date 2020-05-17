@@ -284,9 +284,9 @@ int MenuConfirmerSuppressionEntreprise(groupeEntreprises* gE, groupePostes *gP, 
     //           Si l'utilisateur se rétracte, on revient à la page précédente
     if(choix == "o")
     {
-        gP = SupprimerEntreprise_postes(gP, indexE) ;
-        gPe = LicencierToutLeMonde(gPe,gE,indexE) ;
-        gE = SupprimerEntreprise(gE, indexE) ;
+        SupprimerEntreprise_postes(gP, indexE) ;
+        LicencierToutLeMonde(gPe,gE,indexE) ;
+        SupprimerEntreprise(gE, indexE) ;
         return MenuPrincipal(gE, gP, gPe) ;
     }
     else if(choix == "n") return MenuProfilEntreprise(gE, gP, gPe, indexE) ;
@@ -468,7 +468,7 @@ int MenuSupprimerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes 
     } while(!ExistePosteEntreprise(gP, choixP, indexE)) ;
     
     // Quand le poste demandé est bien valide, on le supprime puis on revient au menu des entreprises
-    gP = SupprimerPoste(gP, choixP) ;
+    SupprimerPoste(gP, choixP) ;
     return MenuProfilEntreprise(gE, gP, gPe, indexE) ;
 
     return 0 ;
