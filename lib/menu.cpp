@@ -1877,7 +1877,7 @@ int MenuPersonnesupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, grou
             getline(cin, collegue) ;
         } while (!regex_match(collegue, patternNombre));
         idCollegue = stoi(collegue) ;
-    } while(!ExistePersonne(gPe,idCollegue)) ;
+    } while(!ExisteCollegue(g_index(gPe,indexPe),idCollegue)) ;
 
     do
     {

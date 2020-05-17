@@ -144,9 +144,22 @@ void PersonneRechercheCollegueParEntreprise(groupePersonnes* gPe, int indexPe, i
   ============================================================================================== */
 void PersonneRechercheCollegueParCompetence(personne* pe, groupeEntreprises* gE, groupePostes* gP) ;
 
-
 int printemployes(groupePersonnes* gPe) ;
 
+/*==============================================================================================
+ || FONCTION : ExisteCollegue
+  ==============================================================================================
+ || But : Déterminer si une personne fait partie du réseau de collègue d'une autre personne
+ ||
+ || Paramètres :
+ ||     pe : pointeur sur une personne (celle dont on étudie le réseau)
+ ||     indexCo : index du collègue
+ ||
+ || Retour :
+ ||     0 : la personne ne fait pas partie du groupe
+ ||     1 : la personne fait partie du groupe
+  ============================================================================================== */
+int ExisteCollegue(personne* pe, int const indexCo) ;
 
 
 
