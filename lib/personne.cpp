@@ -289,12 +289,12 @@ void PersonneRecherchePosteParCompetence(personne* pe, groupePostes* gP, groupeE
                 else
                 {
                     // On parcourt toutes les compétences de la personne pour voir si il y a un match
-                    for (int i = 0; i < MAX_COMPETENCES; i++)
+                    for (int j = 0; j < MAX_COMPETENCES; j++)
                     {
                         if(!posteDejaAffiche)
                         {
                             competenceRecherchee = "" ;
-                            if(pe->competence[i][0] != '\0') competenceRecherchee = string(pe->competence[i]) ;
+                            if(pe->competence[j][0] != '\0') competenceRecherchee = string(pe->competence[j]) ;
                             if(competenceRecherchee == "") ; // On a aucune compétence à rechercher, on ne fait rien
                             else
                             {
@@ -530,22 +530,23 @@ void PersonneRechercheCollegueParCompetence(personne* pe, groupeEntreprises* gE,
 }
 
 // But : Afficher l'index, le nom et le prénom de tous les collègues d'une personne
-void AfficherAmis(groupePersonnes* gPe, int index)
+void AfficherAmis(personne* pe)
 {
-    if (gPe->personnes == NULL) cout << "Aucune personne enregistrée" << endl ;
+    int affiche(0) ;
+
+    if (pe == NULL) cout << "Cette personne n'existe pas" << endl ;
     else
     {
         for (int i = 0; i < MAX_AMIS; i++)
         {
-            if(g_index(gPe,index)->amis[i] != NULL)
+            if(pe->amis[i] != NULL)
             {
-                cout << g_index(gPe,index)->amis[i]->index << ". " << g_index(gPe,index)->amis[i]->nom << " " << g_index(gPe,index)->amis[i]->prenom << endl ;
+                cout << pe->amis[i]->index << ". " << pe->amis[i]->nom << " " << pe->amis[i]->prenom << endl ;
+                affiche = 1 ;
             }
         }
-        
-    }
-    
-        
+    } 
+    if(!affiche) cout << "Cette personne n'a pas de collègues dans son réseau" << endl ;      
 }
 
 // But : Ajouter une personne à un groupe de type groupePersonnes au premier indice disponible
@@ -767,6 +768,8 @@ int quitter_entreprise(int indice, groupePersonnes *gPe)
 // But : Ajouter un collègue au réseau de la personne
 int ajouter_collegue(int indice, groupePersonnes *gPe, int col)
 {
+    if(!ExistePersonne(gPe,col)) return 3 ;
+    if(!ExistePersonne(gPe,indice)) return 3 ;
     if(indice == col) return 5 ;
     node *temp = gPe->personnes;
     personne*tmpami;
@@ -849,36 +852,21 @@ void g_remove(groupePersonnes* g, int const index)
 {
     assert(g);
 
-    //Suppression des relations A METTRE AVANT SUPPRESSION
-    node *tmp=g->personnes;
-    personne* ami = (personne*)(tmp->data);
-    personne* tmpami;
-    int compt = 0;
-    int flag=0;
-    tmpami = ami->amis[compt];
-    while (tmp != NULL){
-        compt = 0;
-        tmpami = ami->amis[compt];
-        while (tmpami != NULL){
-            if (tmpami->index == index){
-                flag = 1; //On supprime des relation d'ami
-                ami->amis[compt] = NULL;
-            } 
-            if (tmpami->index != index && flag == 1){ //On écrase
-                ami->amis[compt-1] = tmpami;
-                tmpami = NULL;
-            } 
-            compt++;
-            tmpami = ami->amis[compt];
-        }
-        flag = 0;
-        tmp = tmp -> next;
-        if (tmp != NULL) ami = (personne*)(tmp->data);
+    // On commence par parcourir le groupe de personnes pour supprimer la personne
+    // du réseau de collègues de tous les autres
+    node *p_gPe = g->personnes ;
+    personne *personneCourante = (personne*)p_gPe->data ;
+    while (personneCourante!= NULL && p_gPe != NULL)
+    {
+        supprimer_collegue(personneCourante->index,g,index) ;
+        // On passe à la personne suivante
+        p_gPe = p_gPe->next ;
+        if(p_gPe != NULL) personneCourante = (personne*)p_gPe->data ;
     }
     
     //Suppression dans le groupe
-    tmp=g->personnes;
-    ami = (personne*)(tmp->data);
+    node *tmp=g->personnes;
+    personne *ami = (personne*)(tmp->data);
     while(ami->index != index){
         tmp = tmp -> next;
         ami = (personne*)(tmp->data);

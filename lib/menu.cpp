@@ -1870,7 +1870,7 @@ int MenuPersonnesupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, grou
             }
             cout << endl ;
             cout << "\nEntrez l'identifiant du collègue que vous voulez supprimer : " << endl ;
-            AfficherAmis(gPe, indexPe);
+            AfficherAmis(g_index(gPe,indexPe));
             cout << endl << "Votre choix : " ;
             collegue = "" ;
             cin.clear() ;
@@ -1948,16 +1948,3 @@ int A_Implementer(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
     else return 0 ;
 }
 
-
-// do
-// {
-//     system("clear") ;
-//     cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
-//     cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
-//     cout << "Statut : " << statut << endl << endl ;
-//     cout << "Cette personne ne fait pas partie de votre réseau. " << endl << endl ;
-//     cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
-//     choix = "" ;
-//     cin.clear() ;
-//     getline(cin, choix) ;
-// } while (choix != "p");

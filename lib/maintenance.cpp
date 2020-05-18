@@ -56,7 +56,7 @@ void ReinitialiserCSV()
     if(employes)
     {
         employes << "id,nom,prenom,mail,code-postal,competences,collegues,entreprise" << endl ;
-        employes << "1,Mouse,Mickey,mickey@mickeyville.com,77700,comedie;chant,2;3;4;5;6,1" << endl ;
+        employes << "1,Mouse,Mickey,mickey@mickeyville.com,77700,comedie;chant;sport,2;3;4;5;6,1" << endl ;
         employes << "2,Mouse,Minnie,minnie@mickeyville.com,77700,comedie;chant;danse,1;3;4;6,-1" << endl ;
         employes << "3,Duck,Donald,donald@canardville.com,77730,comedie;humour,1;2;4;6,1" << endl ;
         employes << "4,Duck,Daisy,daisy@canardville.com,77730,chant;danse,1;2;3;6,1" << endl ;
@@ -69,7 +69,7 @@ void ReinitialiserCSV()
         employes << "11,McGonagall,Minerva,piertotum@locomotor.uk,93400,magie;metamorphose;animagus,9;10;12;13;6,6" << endl ;
         employes << "12,Rogue,Severus,lilyevans@always.uk,93400,magie;chimiste;defencesclfdm,9;10;11;6,6" << endl ;
         employes << "13,Argus,Rusard,cracmol@missteigne.uk,93400,perseverant;determine;autoritaire,10;6,-1" << endl ;
-        employes << "14,Dark,Vador,jesuistonpere@obscur.us,66650,force;sith;autoritaire,15;6,9" << endl ;
+        employes << "14,Dark,Vador,jesuistonpere@obscur.us,66650,force;sith,15;6,9" << endl ;
         employes << "15,Kenobi,Obiwan,monseulespoir@jedi.us,66655,force;jedi;loyal;courageux,14;6,9" << endl ;
         employes << "16,Skywalker,Rey,sithoujedi@kyloren.us,66655,force;jedi,6,-1" << endl ;
         employes << "17,Mua,Sissy,fitgens@houuh.fr,98000,sport;danse,6,-1" << endl ;
@@ -125,5 +125,40 @@ void RestaurerJournal()
     rename("journaltmp.txt","journal.txt") ;
 }
 
+// But : Réinitialiser les 3 groupes à leur état d'origine
+void ViderGroupes(groupeEntreprises* gE, groupePersonnes* gPe, groupePostes* gP)
+{
+    // On commence par supprimer les 3 groupes
+    node *tmp = gP->poste ;
+    poste *posteCourant = (poste*)tmp->data ;
+    while (posteCourant!= NULL && tmp != NULL)
+    {
+        SupprimerPoste(gP,posteCourant->index) ;
+        // on passe au poste suivant
+        tmp = tmp->next ;
+        if(tmp != NULL) posteCourant = (poste*)tmp->data ;
+    }
 
+    tmp = gE->entreprise ;
+    entreprise *entrepriseCourante = (entreprise*)tmp->data ;
+    while (entrepriseCourante!= NULL && tmp != NULL)
+    {
+        SupprimerEntreprise(gE,entrepriseCourante->index) ;
+        // on passe à l'entreprise suivante
+        tmp = tmp->next ;
+        if(tmp != NULL) entrepriseCourante = (entreprise*)tmp->data ;
+    }
+
+    tmp = gPe->personnes ;
+    personne *personneCourante = (personne*)tmp->data ;
+    while (personneCourante!= NULL && tmp != NULL)
+    {
+        supprimer_profil(personneCourante->index,gPe) ;
+        // on passe à la personne suivante
+        tmp = tmp->next ;
+        if(tmp != NULL) personneCourante = (personne*)tmp->data ;
+    }
+
+    ReinitialiserCSV() ;
+}
 

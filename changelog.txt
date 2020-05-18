@@ -61,6 +61,7 @@
 
 -   Un code postal ne peut pas commencer par un 0 sinon tous les 0 à gauche sont supprimés
 
+[CORRIGÉ]   -   Bug quand on supprime un personne, elle est mal supprimé du réseau de collègue de chaque personne (parfois elle est supprimé, parfois remplacé par un autre collègue)
 
 
 ==========================================================================================================================================================================
@@ -106,5 +107,7 @@
 
 -   Quand une personne rejoint une entreprise, rajoute à son réseau toutes les personnes de l'entreprise qu'il n'avait pas déjà dans son réseau
     et si possible, il faut aussi rajouter le nouvel arrivant au réseau de tous les employés de l'entreprise
+
+-   Vérifier que toutes les fonctionnalités sont dans le journal
 
 

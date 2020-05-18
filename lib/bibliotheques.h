@@ -53,9 +53,9 @@ typedef struct groupePostes
 } groupePostes ;
 
 
-#include "maintenance.h"
 #include "postes.h"
 #include "entreprise.h"
 #include "menu.h"
 #include "personne.h"
+#include "maintenance.h"
 #include "journal.h"

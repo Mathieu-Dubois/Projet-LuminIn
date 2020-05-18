@@ -49,3 +49,17 @@ void SauvegardeJournal() ;
   ============================================================================================== */
 void RestaurerJournal() ;
 
+/*==============================================================================================
+ || FONCTION : ViderGroupes
+  ==============================================================================================
+ || But : Vide les 3 groupes
+ ||     
+ || Paramètres :
+ ||     gE :  pointeur sur un groupe de type groupeEntreprises
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     gP : pointeur sur un groupe de type groupePostes
+ ||
+ || Retour :
+ ||     Aucun
+  ============================================================================================== */
+void ViderGroupes(groupeEntreprises* gE, groupePersonnes* gPe, groupePostes* gP) ;

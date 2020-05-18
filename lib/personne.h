@@ -185,13 +185,12 @@ void PersonneRechercheCollegueParCompetence(personne* pe, groupeEntreprises* gE,
  || But : Afficher l'index, le nom et le prénom de tous les collègues d'une personne
  ||
  || Paramètre :
- ||     gPe : pointeur sur un groupe de type groupePersonnes
- ||     index : index de la personne dont on veut afficher le réseau de collègues
+ ||     pe : pointeur sur une personne
  ||
  || Retour :
  ||     Aucun
   ============================================================================================== */
-void AfficherAmis(groupePersonnes* gPe, int index);
+void AfficherAmis(personne* pe);
 
 /*==============================================================================================
  || FONCTION : creer_profil
