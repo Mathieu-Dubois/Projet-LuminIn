@@ -109,7 +109,7 @@ entreprise* g_indexEntreprise(groupeEntreprises* gE, int const indexE) ;
  ||     indexE : index de l'entreprise que l'on doit supprimer
  ||
  || Retour :
- ||     Retourne le groupe d'entreprise mis à jour
+ ||     Aucun
   ============================================================================================== */
 void SupprimerEntreprise(groupeEntreprises* gE, int const indexE) ;
 

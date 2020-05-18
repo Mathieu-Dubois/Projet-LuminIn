@@ -267,7 +267,7 @@ int main()
 
 /* ============================================================================================================
 ||
-||                                 TEST DES FONCTIONS DU FICHIER : employe.h
+||                                 TEST DES FONCTIONS DU FICHIER : personne.h
 ||
    ============================================================================================================ */
     // Test de la fonction g_open
@@ -394,6 +394,16 @@ int main()
     TEST(modifier_entreprise(1,gPe,1) == 1) ;
     TEST(modifier_entreprise(5,gPe,7) == 0) ;
     TEST(modifier_entreprise(45,gPe,7) == 2) ;
+    // Test de la fonction quitter_entreprise
+    TEST(quitter_entreprise(1,gPe) == 0) ;
+    TEST(quitter_entreprise(19,gPe) == 0) ;
+    TEST(quitter_entreprise(2,gPe) == 1) ;
+    TEST(quitter_entreprise(117,gPe) == 2) ;
+    ReinitialiserCSV() ;
+    // Test de la fonction rejoindre_entreprise
+    // rejoindre_entreprise(13,gPe,6) ;
+
+
 
 
 
