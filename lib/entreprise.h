@@ -95,7 +95,7 @@ int ExisteEntreprise(groupeEntreprises* gE, int const indexE) ;
  ||
  || Retour :
  ||     Si l'entreprise existe : retourne cette entreprise (ie : un pointeur sur une variable de type entreprise)
- ||     Si l'entreprise n'existe pas : affiche un message d'erreur et retourne NULL
+ ||     Si l'entreprise n'existe pas : retourne NULL
   ============================================================================================== */
 entreprise* g_indexEntreprise(groupeEntreprises* gE, int const indexE) ;
 
@@ -109,9 +109,9 @@ entreprise* g_indexEntreprise(groupeEntreprises* gE, int const indexE) ;
  ||     indexE : index de l'entreprise que l'on doit supprimer
  ||
  || Retour :
- ||     Retourne le groupe d'entreprise mis à jour
+ ||     Aucun
   ============================================================================================== */
-groupeEntreprises* SupprimerEntreprise(groupeEntreprises* gE, int const indexE) ;
+void SupprimerEntreprise(groupeEntreprises* gE, int const indexE) ;
 
 /*==============================================================================================
  || FONCTION : g_ecrireEntreprise
@@ -127,36 +127,7 @@ groupeEntreprises* SupprimerEntreprise(groupeEntreprises* gE, int const indexE) 
 void g_ecrireEntreprise(groupeEntreprises* gE) ;
 
 /*==============================================================================================
- || FONCTION : EntrepriseRechercheParCompetence
-  ==============================================================================================
- || But : Afficher le nom, le prénom et l'adresse mail de tous les chercheurs d'emploi possédant la compétence demandée
- ||     
- || Paramètres :
- ||     gPe : pointeur sur un groupe de type groupePersonnes
- ||     competence : une chaine de caractère contenant la compétence demandée
- ||
- || Retour :
- ||     Aucun
-  ============================================================================================== */
-void EntrepriseRechercheParCompetence(groupePersonnes* gPe, char competence[128]) ;
-
-/*==============================================================================================
- || FONCTION : EntrepriseRechercheParCompetenceEtCode
-  ==============================================================================================
- || But : Afficher le nom, le prénom et l'adresse mail de tous les chercheurs d'emploi possédant la compétence et le code postal demandée
- ||     
- || Paramètres :
- ||     gPe : pointeur sur un groupe de type groupePersonnes
- ||     competence : une chaine de caractère contenant la compétence demandée
- ||     code_postal : un entier contenant  le code postal demandé
- ||
- || Retour :
- ||     Aucun
-  ============================================================================================== */
-void EntrepriseRechercheParCompetenceEtCode(groupePersonnes* gPe, char competence[128], int code_postal) ;
-
-/*==============================================================================================
- || FONCTION : EntrepriseRechercheParCompetenceEtCode
+ || FONCTION : LicencierToutLeMonde
   ==============================================================================================
  || // But : Supprimer tous les employés d'une entreprise
  ||     
@@ -168,7 +139,7 @@ void EntrepriseRechercheParCompetenceEtCode(groupePersonnes* gPe, char competenc
  || Retour :
  ||     Aucun
   ============================================================================================== */
-groupePersonnes* LicencierToutLeMonde(groupePersonnes* gPe, groupeEntreprises* gE, int indexE) ;
+void LicencierToutLeMonde(groupePersonnes* gPe, groupeEntreprises* gE, int indexE) ;
 
 /*==============================================================================================
  || FONCTION : EntrepriseRecherchePersonneParCompetence

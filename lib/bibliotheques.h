@@ -1,6 +1,6 @@
 #pragma once
 
-#define MAX_AMIS 30                                                 //  5
+#define MAX_AMIS 99                                                 //  5
 #define MAX_COMPETENCES 5                                           //  5
 #define TAILLE_GPE_MAX 100                                          //  20
 
@@ -53,9 +53,9 @@ typedef struct groupePostes
 } groupePostes ;
 
 
-#include "groupe.h"
 #include "postes.h"
 #include "entreprise.h"
 #include "menu.h"
-#include "employe.h"
+#include "personne.h"
+#include "maintenance.h"
 #include "journal.h"

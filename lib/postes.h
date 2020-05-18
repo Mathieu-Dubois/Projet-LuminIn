@@ -99,9 +99,9 @@ int LastPoste(groupePostes* gP) ;
  ||     indexP : index du poste que l'on doit supprimer
  ||
  || Retour :
- ||     Retourne le groupe de postes mis à jour
+ ||     Aucun
   ============================================================================================== */
-groupePostes* SupprimerPoste(groupePostes* gP, int const indexP) ;
+void SupprimerPoste(groupePostes* gP, int const indexP) ;
 
 /*==============================================================================================
  || FONCTION : g_ecrirePoste
@@ -144,4 +144,48 @@ int ExistePosteEntreprise(groupePostes* gP, int const indexP, int const indexE) 
  || Retour :
  ||     Retourne le groupe de postes mis à jour
   ============================================================================================== */
-groupePostes* SupprimerEntreprise_postes(groupePostes* gP, int const indexE) ;
+void SupprimerEntreprise_postes(groupePostes* gP, int const indexE) ;
+
+/*==============================================================================================
+ || FONCTION : gPoste_size
+  ==============================================================================================
+ || But : Déterminer la taille d'un groupe de type : groupePostes
+ ||
+ || Paramètre :
+ ||     gP : pointeur sur un groupe de type groupePostes
+ ||
+ || Retour :
+ ||     Retourne la taille du groupe sous la forme d'un entier
+  ============================================================================================== */
+int gPoste_size(groupePostes* gP) ;
+
+/*==============================================================================================
+ || FONCTION : g_indexPoste
+  ==============================================================================================
+ || But : Accéder à un poste du groupe pour la manipuler
+ ||
+ || Paramètres :
+ ||     gP : pointeur sur un groupe de type groupePostes
+ ||     indexP : index du poste que l'on cherche
+ ||
+ || Retour :
+ ||     Si le poste existe : retourne ce poste (ie : un pointeur sur une variable de type poste)
+ ||     Si le poste n'existe pas : affiche retourne NULL
+  ============================================================================================== */
+poste* g_indexPoste(groupePostes* gP, int const indexP) ;
+
+/*==============================================================================================
+ || FONCTION : ExistePoste
+  ==============================================================================================
+ || But : Déterminer si un poste fait partie du groupe passé en paramètres
+ ||
+ || Paramètres :
+ ||     gP : pointeur sur un groupe de type groupePostes
+ ||     indexE : index du poste que l'on cherche
+ ||
+ || Retour :
+ ||     0 : le poste ne fait pas partie du groupe
+ ||     1 : le poste fait partie du groupe
+  ============================================================================================== */
+int ExistePoste(groupePostes* gP, int const indexP) ;
+

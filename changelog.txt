@@ -59,6 +59,10 @@
 
 [CORRIGÉ]   - Les fonctions d'ajout au journal des recherches ne sont plus bonnes et celles des menus aussi du coup
 
+-   Un code postal ne peut pas commencer par un 0 sinon tous les 0 à gauche sont supprimés
+
+[CORRIGÉ]   -   Bug quand on supprime un personne, elle est mal supprimé du réseau de collègue de chaque personne (parfois elle est supprimé, parfois remplacé par un autre collègue)
+
 
 ==========================================================================================================================================================================
 ||  Idées de choses à ajouter / modifier (si vous en faites une, mettez [FAIT] ou [CORRIGÉ] devant le tiret correspondant)
@@ -101,5 +105,9 @@
 -   Quand on ajoute un collègue, n'afficher que les collègues qui ne sont pas dans le réseau de la personne et faire en sorte que l'utilisateur ne 
     puisse saisir que des personnes qui ne sont pas ses collègues
 
+-   Quand une personne rejoint une entreprise, rajoute à son réseau toutes les personnes de l'entreprise qu'il n'avait pas déjà dans son réseau
+    et si possible, il faut aussi rajouter le nouvel arrivant au réseau de tous les employés de l'entreprise
+
+-   Vérifier que toutes les fonctionnalités sont dans le journal
 
 

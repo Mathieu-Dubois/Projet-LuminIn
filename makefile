@@ -32,8 +32,8 @@ all: build/test_exe build/application_exe
 build/menu.o: lib/menu.cpp | build
 	$(CC) $(CCFLAGS) -c lib/menu.cpp -I ./lib -o build/menu.o
 
-build/groupe.o: lib/groupe.cpp | build
-	$(CC) $(CCFLAGS) -c lib/groupe.cpp -I ./lib -o build/groupe.o
+build/maintenance.o: lib/maintenance.cpp | build
+	$(CC) $(CCFLAGS) -c lib/maintenance.cpp -I ./lib -o build/maintenance.o
 
 build/liste.o: lib/liste.c | build
 	$(CC) $(CCFLAGS) -c lib/liste.c -I ./lib -o build/liste.o
@@ -44,14 +44,14 @@ build/entreprise.o: lib/entreprise.cpp | build
 build/postes.o: lib/postes.cpp | build
 	$(CC) $(CCFLAGS) -c lib/postes.cpp -I ./lib -o build/postes.o
 
-build/employe.o: lib/employe.cpp |build 
-	$(CC) $(CCFLAGS) -c lib/employe.cpp -I ./lib -o build/employe.o
+build/personne.o: lib/personne.cpp |build 
+	$(CC) $(CCFLAGS) -c lib/personne.cpp -I ./lib -o build/personne.o
 
 build/journal.o: lib/journal.cpp | build
 	$(CC) $(CCFLAGS) -c lib/journal.cpp -I ./lib -o build/journal.o
 
-build/libbibliotheques.a: build/menu.o build/groupe.o build/liste.o build/entreprise.o build/postes.o build/employe.o build/journal.o | build
-	ar crs build/libbibliotheques.a build/menu.o build/groupe.o build/liste.o build/entreprise.o build/postes.o build/employe.o build/journal.o
+build/libbibliotheques.a: build/menu.o build/maintenance.o build/liste.o build/entreprise.o build/postes.o build/personne.o build/journal.o | build
+	ar crs build/libbibliotheques.a build/menu.o build/maintenance.o build/liste.o build/entreprise.o build/postes.o build/personne.o build/journal.o
 
 # Programmes :
 # test : contient tous les tests
