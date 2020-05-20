@@ -1,5 +1,15 @@
 ![](https://github.com/Theo-PASQUIER/DevCommeLesPros-2020-Projet/workflows/Test%20master/badge.svg)
 
+# Manuel de l'utilisateur
+
+Bienvenue sur le manuel de l'utilisateur de l'application LuminIn réalisé par Manon Schmitt, Dubois Mathieu et Pasquier Théo.
+Ce manuel vous apprendra à utiliser cette application tout en profitant pleinement de toutes ses fonctionnalités. Bonne lecture. 
+
+
+
+
+
+
 # DevCommeLesPros-2020-Projet
 
 Modèle de départ pour le projet de programmation à effectuer en groupe de deux ou trois étudiants.
