@@ -7,10 +7,12 @@ Ce manuel vous apprendra à utiliser cette application tout en profitant pleinem
 Bonne lecture ! ;-) 
 
 # Table des matières
-- [Ouverture et fermeture de l'application]()
-- [Modes de connexion]()
-    - [Mode entreprise]()
-    - [Mode utilisateur]()
+- [Ouverture et fermeture de l'application](#Ouverture-et-fermeture-de-l'application)
+- [Modes de connexion](#Modes-de-connexion)
+    - [Mode entreprise](#Mode-entreprise)
+    - [Mode utilisateur](#Mode-utilisateur)
+- [Création d'un profil d'entreprise]()
+- [Création d'un proil d'utilisateur]()
 - [Journal]()
 
 
