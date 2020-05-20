@@ -4,7 +4,25 @@
 
 Bienvenue sur le manuel de l'utilisateur de l'application __LuminIn__ réalisé par Manon Schmitt, Dubois Mathieu et Pasquier Théo.
 Ce manuel vous apprendra à utiliser cette application tout en profitant pleinement de toutes ses fonctionnalités.  
-Bonne lecture ! ;) 
+Bonne lecture ! ;-) 
+
+# Table des matières
+- [Ouverture et fermeture de l'application]
+- [Modes de connexion]
+    - [Mode entreprise]
+    - [Mode utilisateur]
+- [Journal]
+
+
+# Ouverture et fermeture de l'application
+
+Pour lancer l'application, entrez la commande __make application__ dans un terminal. Vous arriverez dans le menu principal.  
+Quand vous voudrez quitter l'application, si vous êtes dans un menu qui vous le propose, appuyez sur la touche __q__ de votre clavier.  
+A chaque utilisation, toutes les actions que vous effectuez seront enregistrés et disponible lors des futures utilisations.  
+
+# Modes de connexion
+
+L'application __LuminIn__ propose deux modes de connexion. 
 
 
 
