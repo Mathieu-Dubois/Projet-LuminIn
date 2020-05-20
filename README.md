@@ -7,24 +7,34 @@ Ce manuel vous apprendra à utiliser cette application tout en profitant pleinem
 Bonne lecture ! ;-) 
 
 # Table des matières
-- [Ouverture et fermeture de l'application]
-- [Modes de connexion]
-    - [Mode entreprise]
-    - [Mode utilisateur]
-- [Journal]
+- [Ouverture et fermeture de l'application]()
+- [Modes de connexion]()
+    - [Mode entreprise]()
+    - [Mode utilisateur]()
+- [Journal]()
 
 
 # Ouverture et fermeture de l'application
 
 Pour lancer l'application, entrez la commande __make application__ dans un terminal. Vous arriverez dans le menu principal.  
 Quand vous voudrez quitter l'application, si vous êtes dans un menu qui vous le propose, appuyez sur la touche __q__ de votre clavier.  
-A chaque utilisation, toutes les actions que vous effectuez seront enregistrés et disponible lors des futures utilisations.  
+A chaque utilisation, toutes les actions que vous effectuez seront enregistrées et disponibles lors des futures utilisations.  
 
 # Modes de connexion
 
-L'application __LuminIn__ propose deux modes de connexion. 
+L'application __LuminIn__ propose deux modes de connexion. Un mode __entreprise__ qui permet à l'utilisateur qui s'y connecte de gérer son entreprise en proposant des postes à pourvoir ou en faisant des recherches de personnes en recherche d'emploi. Le second mode __utilisateur__ permet à un utilisatur, qu'il soit employé dans une entreprise ou actuellement en recherche d'emploi, de gérer son profil, son réseau de collègues, ou encore de faire des recherches de postes à pourvoir ou de collègues.
 
+## Mode entreprise
 
+Si vous choisissez d'utiliser l'application en mode entreprise, vous arriverez sur le __menu entreprise__. Vous aurez alors deux possibilités :  
+* Vous connecter à votre profil si votre entreprise est déjà enregistrée dans l'application.  
+* Créer le profil de votre entreprise si vous êtes un nouvel utilisateur et que votre entreprise n'est pas encore enregistrée dans l'application.
+
+## Mode utilisateur
+
+Si vous choisissez d'utiliser l'application en mode utilisateur, vous arriverez sur le __menu utilisateur__. Vous aurez alors deux possibilités :  
+* Vous connecter à votre profil si vous avez déjà créé un compte sur l'application.  
+* Créer votre profil si vous utilisez l'application pour la première fois.  
 
 
 
