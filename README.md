@@ -7,7 +7,7 @@ Ce manuel vous apprendra à utiliser cette application tout en profitant pleinem
 Bonne lecture ! ;-) 
 
 # Table des matières
-- [Ouverture et fermeture de l'application](#Ouverture-et-fermeture-de-l'application)
+- [Ouverture et fermeture de l'application](#Ouverture-et-fermeture-de-lapplication)
 - [Modes de connexion](#Modes-de-connexion)
     - [Mode entreprise](#Mode-entreprise)
     - [Mode utilisateur](#Mode-utilisateur)
