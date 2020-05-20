@@ -375,6 +375,10 @@ int main()
     TEST(ExistePersonne(gPe,0) == 0) ;
     TEST(ExistePersonne(gPe,32) == 0) ;
     TEST(ExistePersonne(gPe,7) == 1) ;
+    // Test de la fonction AfficherNonCollegues
+    AfficherNonCollegues(g_index(gPe,1),gPe) ;
+    AfficherNonCollegues(g_index(gPe,6),gPe) ;
+    AfficherNonCollegues(g_index(gPe,17),gPe) ;
     // Test de la fonction creer_profil
     string s_nomPe = "Delmas" ;
     string s_prenomPe = "Albert" ;
