@@ -11,8 +11,8 @@ Bonne lecture ! ;-)
 - [Modes de connexion](#Modes-de-connexion)
     - [Mode entreprise](#Mode-entreprise)
     - [Mode utilisateur](#Mode-utilisateur)
-- [Création d'un profil d'entreprise]()
-- [Création d'un proil d'utilisateur]()
+- [Création d'un profil d'entreprise](#Création-dun-profil-dentreprise)
+- [Création d'un profil d'utilisateur](#Création-dun-profil-dutilisateur)
 - [Journal]()
 
 
@@ -37,6 +37,12 @@ Si vous choisissez d'utiliser l'application en mode entreprise, vous arriverez s
 Si vous choisissez d'utiliser l'application en mode utilisateur, vous arriverez sur le __menu utilisateur__. Vous aurez alors deux possibilités :  
 * Vous connecter à votre profil si vous avez déjà créé un compte sur l'application.  
 * Créer votre profil si vous utilisez l'application pour la première fois.  
+
+# Création d'un profil d'entreprise
+
+
+# Création d'un proil d'utilisateur
+
 
 
 
