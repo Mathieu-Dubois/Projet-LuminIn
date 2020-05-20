@@ -122,7 +122,7 @@ int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
     regex patternNom {"[a-zA-Zéèêëïîôöàâäç'_ ]{1,40}"} ; // Un nom d'entreprise ne doit pas avoir de chiffres
-    regex patternCodePostal {"[0-9]{5}"} ; // Un code postal doit contenir 5 chiffres
+    regex patternCodePostal {"[1-9]{1}[0-9]{4}"} ; // Un code postal doit contenir 5 chiffres et ne doit pas commencer par 0
     regex patternMail {"[\\w\\._%+-]{1,30}@[\\w_]{2,20}\\.[A-Za-z]{2,3}"} ;
     string choix ;
 
@@ -480,7 +480,7 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternMenu {"q|m|r|1|2{1}"} ; // On vérifie si l'utilisateur entre q, m, r, 1 ou 2
     regex patternCompetence {"[a-zA-Zéèêëïîôöàâäç'_]{1,100}"} ;
-    regex patternCodePostal {"[0-9]{5}"} ; // Un code postal doit contenir 5 chiffres
+    regex patternCodePostal {"[1-9]{1}[0-9]{4}"} ; // Un code postal doit contenir 5 chiffres et ne doit pas commencer par 0
     string choix ;
 
     // Première étape : on demande à l'utilisateur quelle type de recherche il veut faire
@@ -858,7 +858,7 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
     regex patternNom {"[A-Z]{1}[a-zA-Zéèêëïîôöàâäç' ]{1,24}"} ; // Un nom de personne commence par une majucule et peut en contenir (25 caractères max)
     regex patternPrenom {"[A-Z]{1}[a-zéèêëïîôöàâäç']{1,24}"} ; // Un prénom de personne commence par une majucule (25 caractères max)
     regex patternMail {"[\\w\\._%+-]{1,30}@[\\w_]{2,20}\\.[A-Za-z]{2,3}"} ;
-    regex patternCodePostal {"[0-9]{5}"} ; // Un code postal doit contenir 5 chiffres
+    regex patternCodePostal {"[1-9]{1}[0-9]{4}"} ; // Un code postal doit contenir 5 chiffres et ne doit pas commencer par 0
     regex patternNombre {"[1-9]([0-9]*)"} ; // On vérifie si l'utilisateur entre un nombre < 0
     regex patternCompetence {"[a-zA-Zéèêëïîôöàâäç'_]{1,100}"} ;
     string choix ;
@@ -1137,6 +1137,7 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
     if(choix == "o")
     {
         creer_profil(nomPe,prenomPe,courrielPe,adresse,competencePe,colleguePe,entreprisePe,gPe) ;
+        ColleguesAutomatiques(gPe,g_index(gPe,LastPersonne(gPe)),g_index(gPe,LastPersonne(gPe))->entreprise) ;
         return MenuPersonne(gE, gP, gPe) ;
     }
     else return MenuPersonne(gE, gP, gPe) ;
@@ -1377,7 +1378,7 @@ int MenuPersonneMod_CodePostal(groupeEntreprises* gE, groupePostes *gP, groupePe
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
-    regex patternCodePostal {"[0-9]{5}"} ; // Un code postal doit contenir 5 chiffres
+    regex patternCodePostal {"[1-9]{1}[0-9]{4}"} ; // Un code postal doit contenir 5 chiffres et ne doit pas commencer par 0
     string choix ;
     string code ;
 
@@ -1577,6 +1578,7 @@ int MenuPersonne_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupeP
         {
             journal_Personne_mod_entreprise(g_index(gPe, indexPe), g_indexEntreprise(gE,g_index(gPe,indexPe)->entreprise),g_indexEntreprise(gE,newEntreprise)) ;
             modifier_entreprise(indexPe,gPe,newEntreprise);
+            ColleguesAutomatiques(gPe,g_index(gPe,indexPe),newEntreprise) ;
         }
     }
     
@@ -1748,14 +1750,30 @@ int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupe
                 }
                 cout << endl ;
                 cout << "\nEntrez l'identifiant de votre collègue : " << endl ;
-                AfficherPersonnes(gPe);
+                int a = AfficherNonCollegues(g_index(gPe,indexPe),gPe) ;
+                if(a == 1)
+                {
+                    do
+                    {
+                        system("clear") ;
+                        cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
+                        cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
+                        cout << "Statut : " << statut << endl << endl ;
+                        cout << "Vous ne pouvez plus ajouter de collègues à votre réseau " << endl << endl ;
+                        cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
+                        choix = "" ;
+                        cin.clear() ;
+                        getline(cin, choix) ;
+                    } while (choix != "p");
+                    return 0 ;
+                }
                 cout << endl << "Votre choix : " ;
                 collegue = "" ;
                 cin.clear() ;
                 getline(cin, collegue) ;
             } while (!regex_match(collegue, patternNombre));
             idCollegue = stoi(collegue) ;
-        } while(!ExistePersonne(gPe,idCollegue)) ;
+        } while(!ExistePersonne(gPe,idCollegue) || ExisteCollegue(g_index(gPe,indexPe),idCollegue) || idCollegue == indexPe) ;
 
         do
         {
@@ -1775,58 +1793,10 @@ int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupe
 
         if (choix == "o")
         {
-            int a = ajouter_collegue(indexPe,gPe,idCollegue);
-
-            if(a == 1)
-            {
-                do
-                {
-                    system("clear") ;
-                    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
-                    cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
-                    cout << "Statut : " << statut << endl << endl ;
-                    cout << "Ce collègue est déjà dans votre réseau. " << endl << endl ;
-                    cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
-                    choix = "" ;
-                    cin.clear() ;
-                    getline(cin, choix) ;
-                } while (choix != "p");
-            }
-            if(a == 2)
-            {
-                do
-                {
-                    system("clear") ;
-                    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
-                    cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
-                    cout << "Statut : " << statut << endl << endl ;
-                    cout << "Cette personne n'est pas dans la même entreprise que vous [A CORRIGER ?]" << endl << endl;
-                    cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
-                    choix = "" ;
-                    cin.clear() ;
-                    getline(cin, choix) ;
-                } while (choix != "p");
-            }
-            if(a == 5)
-            {
-                do
-                {
-                    system("clear") ;
-                    cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl ;
-                    cout << "Profil de : " << g_index(gPe, indexPe)->nom << " " << g_index(gPe, indexPe)->prenom<< endl ;
-                    cout << "Statut : " << statut << endl << endl ;
-                    cout << "Vous ne pouvez pas vous ajouter vous même à votre réseau" << endl << endl;
-                    cout << "Appuyez sur la touche \"p\" pour retourner sur votre profil : " ;
-                    choix = "" ;
-                    cin.clear() ;
-                    getline(cin, choix) ;
-                } while (choix != "p");
-            }
-            
+            int a = ajouter_collegue(indexPe,gPe,idCollegue);        
 
             if(a == 0) journal_PersonneAjouter_Collegue(g_index(gPe, indexPe), g_index(gPe, idCollegue)) ;
         }
-        
     }
     
     return 0 ;

@@ -360,43 +360,38 @@ int supprimer_collegue(int indice, groupePersonnes *gPe, int col);
   ============================================================================================== */
 void g_remove(groupePersonnes* g, int const index);
 
+/*==============================================================================================
+ || FONCTION : AfficherNonCollegues
+  ==============================================================================================
+ || But : Afficher l'index, le nom et le prénom de touyes les personnes qui ne font pas partie
+ ||       du réseau de la personne
+ ||
+ || Paramètre :
+ ||     pe : pointeur sur une personne
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||
+ || Retour :
+ ||     0 si tout s'est bien passé
+ ||     1 si il y a aucune personne à afficher
+  ============================================================================================== */
+int AfficherNonCollegues(personne* pe, groupePersonnes* gPe) ;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*==============================================================================================
+ || FONCTION : ColleguesAutomatiques
+  ==============================================================================================
+ || But : Quand une personne rejoint une entreprise, ajouter l'index de la personne au réseau de
+ ||       collègues de tous les employés de l'entreprise.
+ ||       Ajoute également l'index de tous les employés de l'entreprise au réseau de la personne
+ ||       si ils n'en faisaitent pas déjà partie
+ ||
+ || Paramètre :
+ ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     pe : pointeur sur une personne
+ ||     indexE : index de l'entreprise qu'a rejoint la personne
+ ||
+ || Retour :
+ ||     Aucun
+  ============================================================================================== */
+void ColleguesAutomatiques(groupePersonnes* gPe, personne* pe, int indexE) ;
 
 

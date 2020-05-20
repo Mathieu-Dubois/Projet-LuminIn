@@ -525,6 +525,7 @@ void PersonneRechercheCollegueParCompetence(personne* pe, groupeEntreprises* gE,
     if(!trouve)
     {
         cout << "Aucun collègue de votre réseau ne travaille dans une entreprise pouvant vous proposer un poste" << endl ;
+        journal_RechercheSansResultat() ;
     } 
     
 }
@@ -702,6 +703,10 @@ int modifier_entreprise(int indice, groupePersonnes *gPe, int nouv_entre)
         }
     }
     if (trouve == 0) code_retour = 2;                               //Si on ne trouve pas l'index correspondant
+
+    // Si la nouvelle entreprise n'est pas -1
+    // On oublie pas d'ajouter toutes les personnes employé à cette entreprise dans le réseau de collègues de la personne
+    // Puis on ajoute cette personne au réseau de tous ses collègues
     g_ecrire(gPe);
     return code_retour;
 }
@@ -882,3 +887,81 @@ void g_remove(groupePersonnes* g, int const index)
     return;
 }
 
+// But : Afficher l'index, le nom et le prénom de touyes les personnes qui ne font pas partie du réseau de la personne
+int AfficherNonCollegues(personne* pe, groupePersonnes* gPe)
+{
+    int affiche(0) ;
+    int indexPersonneCourante(0) ;
+    int appartientAuReseau(0) ;
+
+   
+    // On parcourt tout le groupe de personnes pour comparer les index avec les index du réseau de collègues 
+    node *tmp = gPe->personnes ;
+    personne *personneCourante = (personne*)tmp->data ;
+    while (personneCourante!= NULL && tmp != NULL)
+    {
+        appartientAuReseau = 0 ;
+        indexPersonneCourante = personneCourante->index ;
+        // On parcourt tous les amis de la personne pe pour voir si la personne courante est dans son réseau
+        for (int i = 0; i < MAX_AMIS; i++)
+        {
+            if(pe->amis[i] != NULL && (indexPersonneCourante == pe->amis[i]->index || indexPersonneCourante == pe->index)) appartientAuReseau = 1 ;
+        }
+        
+        if(!appartientAuReseau)
+        {
+            cout << personneCourante->index << ". " << personneCourante->nom << " " << personneCourante->prenom << endl ;
+            affiche = 1 ;
+        }
+
+        // on passe à la personne suivante
+        tmp = tmp->next ;
+        if(tmp != NULL) personneCourante = (personne*)tmp->data ;
+    }
+
+    if(!affiche) return 1 ;
+
+    return 0 ;
+}
+
+// But : Quand une personne rejoint une entreprise, ajouter l'index de la personne au réseau de
+//       collègues de tous les employés de l'entreprise.
+//       Ajoute également l'index de tous les employés de l'entreprise au réseau de la personne
+//       si ils n'en faisaitent pas déjà partie
+void ColleguesAutomatiques(groupePersonnes* gPe, personne* pe, int indexE)
+{
+    // On parcourt le réseau de personnes
+    // Pour chaque personne :
+    // Si ce n'est pas la personne qui vient de rejoindre l'entreprise
+    // Alors on regarde son entreprise
+    // Si l'entreprise de la personne courante est la même que la personne indexE
+    // Si la personne courante n'est pas collègue avec la personne, on la rajoute à son réseau
+    // Puis si la personne n'est pas dans le réseau de la personne courante, on la rajoute aussi
+
+    // Pour toute autre personne qui n'est pas dans la même entreprise
+    // Si cette personne est dans le réseau de collègue de la nouvelle personne, alors on l'ajoute à son réseau
+    // Cela permet à la création d'un profil, d'ajouter automatiquement tous les collègues
+
+    node *tmp = gPe->personnes ;
+    personne *personneCourante = (personne*)tmp->data ;
+    while (personneCourante!= NULL && tmp != NULL)
+    {
+        if(personneCourante->index != pe->index)
+        {
+            if(personneCourante->entreprise == pe->entreprise)
+            {
+                if(!ExisteCollegue(personneCourante,pe->index)) ajouter_collegue(personneCourante->index,gPe,pe->index) ;
+                if(!ExisteCollegue(pe,personneCourante->index)) ajouter_collegue(pe->index,gPe,personneCourante->index) ;
+            }
+            if(personneCourante->entreprise != pe->entreprise)
+            {
+                if(ExisteCollegue(pe,personneCourante->index)) ajouter_collegue(personneCourante->index,gPe,pe->index) ;
+            }
+        }
+
+
+        // on passe à la personne suivante
+        tmp = tmp->next ;
+        if(tmp != NULL) personneCourante = (personne*)tmp->data ;
+    }
+}
