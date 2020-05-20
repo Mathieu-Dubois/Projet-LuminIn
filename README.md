@@ -2,7 +2,7 @@
 
 # Manuel de l'utilisateur
 
-Bienvenue sur le manuel de l'utilisateur de l'application *LuminIn* réalisé par Manon Schmitt, Dubois Mathieu et Pasquier Théo.
+Bienvenue sur le manuel de l'utilisateur de l'application __LuminIn__ réalisé par Manon Schmitt, Dubois Mathieu et Pasquier Théo.
 Ce manuel vous apprendra à utiliser cette application tout en profitant pleinement de toutes ses fonctionnalités. 
 Bonne lecture ! ;) 
 
