@@ -13,6 +13,16 @@ Bonne lecture ! ;-)
     - [Mode utilisateur](#Mode-utilisateur)
 - [Création d'un profil d'entreprise](#Création-dun-profil-dentreprise)
 - [Création d'un profil d'utilisateur](#Création-dun-profil-dutilisateur)
+- [Fonctionalités disponibles pour une entreprise](#Fonctionalités-disponibles-pour-une-entreprise)
+    -[Consulter les postes à pourvoir de votre entreprise](#Consulter-les-postes-à-pourvoir-de-votre-entreprise)
+    -[Ajouter un poste à pourvoir](#Ajouter-un-poste-à-pourvoir)
+    -[Supprimer un poste à pourvoir](#Supprimer-un-poste-à-pourvoir)
+    -[Faire une recherche parmi les chercheurs d'emploi](#[Faire-une-recherche-parmi-les-chercheurs-demploi)
+    -[Supprimer le profil de votre entreprise](#Supprimer-le-profil-de-votre-entreprise)  
+- [Fonctionalités disponibles pour un utilisateur](#Fonctionalités-disponibles-pour-un-utilisateur)
+    -[Modifier votre profil](#Modifier-votre-profil)
+    -[Supprimer votre profil](#Supprimer-votre-profil)
+    -[Faire une recherche d'emploi ou de collègue](#Faire-une-recherche-demploi-ou-de-collègue)
 - [Journal]()
 
 
@@ -62,6 +72,19 @@ Si vous ne respectez pas ces indications, une nouvelle saisie vous sera demandé
   
 \* Vous devez saisir au minimim 1 compétence. Le nombre maximum de compétences peut être modifié par l'administrateur de l'application. Le maximum par défaut est 5 compétences.  
 \*\* L'administrateur de l'application peut choisir la taille maximale d'un réseau de collègues. Le maximum par défaut est 99 collègues. L'application peut également supporter jusqu'à 100 profils enregistrés simultanément (également modifiable par l'administrateur).
+
+# Fonctionalités disponibles pour une entreprise
+
+## Consulter les postes à pourvoir de votre entreprise
+## Ajouter un poste à pourvoir
+## Supprimer un poste à pourvoir
+## Faire une recherche parmi les chercheurs d'emploi
+
+# Fonctionalités disponibles pour un utilisateur
+## Modifier votre profil
+## Modifier votre profil
+## Faire une recherche d'emploi ou de collègue
+
 
 # DevCommeLesPros-2020-Projet
 

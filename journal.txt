@@ -140,3 +140,9 @@
     21-05-2020 17:57:28 : Création de l'entreprise 14 - Fubini - 74585 - mamama747@mdmd.com
 21-05-2020 17:57:34 : Fermeture de l'application 
 21-05-2020 18:04:52 : Ouverture de l'application 
+21-05-2020 18:30:06 : Ouverture de l'application 
+    21-05-2020 18:30:47 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
+    21-05-2020 18:39:10 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
+    21-05-2020 18:39:14 : Connexion du compte 1 - Mouse  Mickey - 77700 - mickey@mickeyville.com
+    21-05-2020 18:47:27 : Déconnexion du compte 1 - Mouse  Mickey - 77700 - mickey@mickeyville.com
+21-05-2020 18:47:27 : Fermeture de l'application 

@@ -5,6 +5,7 @@
 #define TAILLE_GPE_MAX 100                                          //  20
 
 #include "liste.h"
+#include <regex>
 
 // Structure d'une entreprise et d'un groupe d'entreprises
 typedef struct entreprise
@@ -62,9 +63,9 @@ typedef struct groupePostes
 
 // Définitions des ER nécessaires à la saisie sécurisée
 
-regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
-regex patternNom {"[a-zA-Z]{1}[a-zA-Zéèêëïîôöàâäç'_ ]{0,39}"} ; // Un nom d'entreprise ne doit pas avoir de chiffres et ne peut pas commencer par un caractère spécial
-regex patternCodePostal {"[1-9]{1}[0-9]{4}"} ; // Un code postal doit contenir 5 chiffres et ne doit pas commencer par 0
-regex patternMail {"[\\w\\._%+-]{1,30}@[\\w_]{2,20}\\.[A-Za-z]{2,3}"} ;
+// regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
+// regex patternNom {"[a-zA-Z]{1}[a-zA-Zéèêëïîôöàâäç'_ ]{0,39}"} ; // Un nom d'entreprise ne doit pas avoir de chiffres et ne peut pas commencer par un caractère spécial
+// regex patternCodePostal {"[1-9]{1}[0-9]{4}"} ; // Un code postal doit contenir 5 chiffres et ne doit pas commencer par 0
+// regex patternMail {"[\\w\\._%+-]{1,30}@[\\w_]{2,20}\\.[A-Za-z]{2,3}"} ;
 
 // Prénom d'une personne Jean-Jacques ok Jean Jacques pas ok

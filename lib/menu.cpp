@@ -120,6 +120,10 @@ int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePer
 // But : Affiche le menu permettant à l'utilisateur de créer le profil de son entreprise
 int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
 {
+    regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
+    regex patternNom {"[a-zA-Z]{1}[a-zA-Zéèêëïîôöàâäç'_ ]{0,39}"} ; // Un nom d'entreprise ne doit pas avoir de chiffres et ne peut pas commencer par un caractère spécial
+    regex patternCodePostal {"[1-9]{1}[0-9]{4}"} ; // Un code postal doit contenir 5 chiffres et ne doit pas commencer par 0
+    regex patternMail {"[\\w\\._%+-]{1,30}@[\\w_]{2,20}\\.[A-Za-z]{2,3}"} ;
     string choix ;
     string nom ;
     string code ;
