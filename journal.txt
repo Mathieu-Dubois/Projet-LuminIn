@@ -131,3 +131,12 @@
 ***********************************************************************************************************************
 20-05-2020 18:20:43 : Ouverture de l'application 
 20-05-2020 18:22:50 : Fermeture de l'application 
+21-05-2020 17:32:41 : Ouverture de l'application 
+21-05-2020 17:48:25 : Ouverture de l'application 
+    21-05-2020 17:49:11 : Création de l'entreprise 12 - Casino - 74854 - ddd18@gmail.com
+    21-05-2020 17:49:49 : Création de l'entreprise 13 - ébonjour - 78541 - mm@mm.fr
+21-05-2020 17:55:16 : Ouverture de l'application 
+21-05-2020 17:57:05 : Ouverture de l'application 
+    21-05-2020 17:57:28 : Création de l'entreprise 14 - Fubini - 74585 - mamama747@mdmd.com
+21-05-2020 17:57:34 : Fermeture de l'application 
+21-05-2020 18:04:52 : Ouverture de l'application 
