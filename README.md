@@ -43,7 +43,7 @@ Si vous choisissez d'utiliser l'application en mode utilisateur, vous arriverez 
 Pour créer le profil d'une entreprise, vous aurez besoin de renseigner :
 * Le nom de l'entreprise : 40 caractères maximum, ne doit pas contenir de chiffre et le premier caractère ne doit pas être un caractère accentué.
 * Un code postal : 5 chiffres
-* Une adresse mail
+* Une adresse mail  
 Si vous ne respectez pas ces indications, une nouvelle saisie vous sera demandée.
 
 # Création d'un profil d'utilisateur
@@ -55,7 +55,7 @@ Pour créer le profil d'un utilisateur, vous aurez besoin de renseigner :
 * Un code postal : 5 chiffres
 * L'index de votre entreprise si vous êtes un employé (pas d'inquiétude si vous ne vous souvenez plus de l'identifiant de votre entreprise, ils seront tous affichés)
 * Vos compétences (jusqu'à 5\* maximum)
-* Si vous le voulez, l'index de vos collègues pour commencer à former votre réseau\*\*
+* Si vous le voulez, l'index de vos collègues pour commencer à former votre réseau\*\*  
 Si vous ne respectez pas ces indications, une nouvelle saisie vous sera demandée.  
   
 \* Vous devez saisir au minimim 1 compétence. Le nombre maximum de compétences peut être modifié par l'administrateur de l'application. Le maximum par défaut est 5 compétences.  
