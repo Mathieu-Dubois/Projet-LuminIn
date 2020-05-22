@@ -142,13 +142,13 @@ Ce menu vous permet d'effectuer deux types de recherches. Des recherches de post
 
 # Administration et maintenance de l'application
 
-# Journal
+## Journal
 
-# Réglages des paramètres
+## Réglages des paramètres
 
-# Commandes console
+## Commandes console
 
-# Programme de test
+## Programme de test
 
 
 
