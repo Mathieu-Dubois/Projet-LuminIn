@@ -162,3 +162,25 @@
             22-05-2020 17:46:21 : Mua Sissy est apparu dans le résultat de la recherche
     22-05-2020 17:49:10 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
 22-05-2020 17:49:10 : Fermeture de l'application 
+22-05-2020 17:57:09 : Ouverture de l'application 
+    22-05-2020 18:00:05 : Connexion du compte 1 - Mouse  Mickey - 77700 - mickey@mickeyville.com
+        22-05-2020 18:03:29 : Suppression du profil  1 - Mouse Mickey - 77700 - mickey@mickeyville.com
+22-05-2020 18:03:46 : Fermeture de l'application 
+22-05-2020 18:06:07 : Ouverture de l'application 
+    22-05-2020 18:06:10 : Connexion du compte 1 - Mouse  Mickey - 77700 - mickey@mickeyville.com
+        22-05-2020 18:13:39 : Mouse Mickey a fait une recherche de poste par compétence
+            22-05-2020 18:13:39 : Acteur pourvu par Disney est apparu dans le résultat de la recherche
+            22-05-2020 18:13:39 : Mascotte Mickey pourvu par Disney est apparu dans le résultat de la recherche
+            22-05-2020 18:13:39 : Chanteur pourvu par Disney est apparu dans le résultat de la recherche
+            22-05-2020 18:13:39 : Professeur de sport pourvu par Decathlon est apparu dans le résultat de la recherche
+        22-05-2020 18:18:07 : Mouse Mickey a fait une recherche de poste par compétence et code postal
+            22-05-2020 18:18:07 : Acteur pourvu par Disney est apparu dans le résultat de la recherche
+            22-05-2020 18:18:07 : Mascotte Mickey pourvu par Disney est apparu dans le résultat de la recherche
+            22-05-2020 18:18:07 : Chanteur pourvu par Disney est apparu dans le résultat de la recherche
+        22-05-2020 18:20:40 : Mouse Mickey a fait une recherche de collègue par entreprise (Decathlon)
+            22-05-2020 18:20:40 : La recherche n'a pas donné de résultat
+        22-05-2020 18:20:45 : Mouse Mickey a fait une recherche de collègue par compétence
+            22-05-2020 18:20:45 : Duck Donald est apparu dans le résultat de la recherche
+            22-05-2020 18:20:45 : Duck Daisy est apparu dans le résultat de la recherche
+    22-05-2020 18:22:05 : Déconnexion du compte 1 - Mouse  Mickey - 77700 - mickey@mickeyville.com
+22-05-2020 18:27:34 : Fermeture de l'application 

@@ -23,7 +23,11 @@ Bonne lecture ! ;-)
     - [Modifier votre profil](#Modifier-votre-profil)
     - [Supprimer votre profil](#Supprimer-votre-profil)
     - [Faire une recherche d'emploi ou de collègue](#Faire-une-recherche-demploi-ou-de-collègue)
-- [Journal]()
+- [Administration et maintenance de l'application](#Administration-et-maintenance-de-l-application)
+    - [Journal](#Journal)
+    - [Réglages des paramètres](#Réglages-des-paramètres)
+    - [Commandes console](#Commandes-console)
+    - [Programme de test](#Programme-de-test)
 
 
 # Ouverture et fermeture de l'application
@@ -101,13 +105,52 @@ Ce menu vous permet d'effectuer une recherche parmi tous les chercheurs d'emploi
 * Recherche par compétences : Cette recherche va comparer les compétences de tous les chercheurs d'emploi avec les compétences requises dans vos postes à pourvoir. Si le profil d'un chercheur d'emploi correspond à l'un de vos postes, ses coordonnées seront affichées.  
 * Recherche par compétences et par code postal : Cette recherche va comparer les compétences de tous les chercheurs d'emploi avec les compétences requises dans vos postes à pourvoir. Si le profil d'un chercheur d'emploi correspond à l'un de vos postes et que son code postal est identique à celui de votre entreprise, ses coordonnées seront affichées.
 
+## Supprimer le profil de votre entreprise
+
+Ce menu vous permet de supprimer le profil de votre entreprise de l'application. Si vous supprimez votre profil, tous les postes à pourvoir par votre entreprise seront également supprimés. Toutes les personnes employés dans votre entreprises passeront automatiquement en chercheur d'emploi.  
+Attention la suppression de votre profil est irréversible.
+
 # Fonctionalités disponibles pour un utilisateur
 
 Si vous utilisez l'application en mode utilisateur, une fois sur votre profil, vous aurez accès aux fonctionalités présentés ci-dessous.  
 
 ## Modifier votre profil
-## Modifier votre profil
+
+Ce menu vous permet à tout moment de modifier toutes les informations de votre profil. Vous pouvez ainsi :  
+* Modifier votre code postal
+* Modifier votre adresse mail
+* Ajouter une compétence (jusqu'à 5\* maximum)
+* Ajouter un collègue à votre réseau. Vous devrez saisir son index. Les index de toutes les personnes enregistrés et qui ne font pas partie de votre réseau seront affichés
+* Supprimer un collègue de votre réseau. Vous devrez saisir son index. L'index de tous vos collègues seront affichés.
+* Modifier votre entreprise. Vous devrez saisir son index. L'index de toutes les entreprises seront affichés.
+* Démissioner de votre entreprise. Cette option ne sera disponible uniquement si vous êtes employé dans une entreprise. Si vous choisissez de démissionner, votre profil passera automatiquement en chercheur d'emploi.  
+
+\* Le nombre maximum de compétences peut être modifié par l'administrateur de l'application. Le maximum par défaut est 5 compétences.  
+
+## Supprimer votre profil
+
+Ce menu vous permet de supprimer votre profil de l'application. Si vous supprimez votre profil, vous serez effacé du réseau de tout vos collègues.  
+Attention la suppression de votre profil est irréversible.
+
 ## Faire une recherche d'emploi ou de collègue
+
+Ce menu vous permet d'effectuer deux types de recherches. Des recherches de postes à pourvoir et des recherches de collègues.
+* Recherche de postes par compétence : Cette recherche va comparer vos compétences avec tous les postes à pourvoir. Pour chaque poste correspondant à votre profil et vos compétences, seront affichés : le titre du poste, l'entreprise qui le propose ainsi que les coordonnées de l'entreprise.
+* Recherche de postes par compétence et code postal : Cette recherche va comparer vos compétences avec tous les postes à pourvoir. Pour chaque poste correspondant à votre profil et vos compétences, si l'entreprise qui le propose a le même code postal que vous, seront affichés : le titre du poste, l'entreprise qui le propose ainsi que les coordonnées de l'entreprise.
+* Recherche de collègue par entreprise : Affiche tous les collègues de votre réseau qui travaillent dans une entreprise. Vous devrez saisir l'index de l'entreprise dans laquelle vous voulez effectuer la recherche. Tous les index des entreprises seront affichés.
+* Recherche de collègue par compétence : Cette recherche affichera les coordonnées de tous vos collègues travaillant actuellement dans une entreprise pouvant vous proposer un poste.
+
+# Administration et maintenance de l'application
+
+# Journal
+
+# Réglages des paramètres
+
+# Commandes console
+
+# Programme de test
+
+
 
 
 # DevCommeLesPros-2020-Projet
