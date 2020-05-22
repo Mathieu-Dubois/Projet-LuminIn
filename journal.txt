@@ -146,3 +146,19 @@
     21-05-2020 18:39:14 : Connexion du compte 1 - Mouse  Mickey - 77700 - mickey@mickeyville.com
     21-05-2020 18:47:27 : Déconnexion du compte 1 - Mouse  Mickey - 77700 - mickey@mickeyville.com
 21-05-2020 18:47:27 : Fermeture de l'application 
+22-05-2020 17:35:03 : Ouverture de l'application 
+    22-05-2020 17:35:06 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        22-05-2020 17:35:08 : Disney a consulté sa liste des postes à pourvoir 
+    22-05-2020 17:37:01 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
+    22-05-2020 17:37:05 : Connexion de l'entreprise 7 - Nintendo - 45655 - contact@nintendo.jp
+        22-05-2020 17:37:06 : Nintendo a consulté sa liste des postes à pourvoir 
+        22-05-2020 17:46:08 : Nintendo a fait une recherche de personne par compétence
+            22-05-2020 17:46:08 : La recherche n'a pas donné de résultat
+    22-05-2020 17:46:14 : Déconnexion de l'entreprise 7 - Nintendo - 45655 - contact@nintendo.jp
+    22-05-2020 17:46:17 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        22-05-2020 17:46:21 : Disney a fait une recherche de personne par compétence
+            22-05-2020 17:46:21 : Mouse Minnie est apparu dans le résultat de la recherche
+            22-05-2020 17:46:21 : Lourson Winnie est apparu dans le résultat de la recherche
+            22-05-2020 17:46:21 : Mua Sissy est apparu dans le résultat de la recherche
+    22-05-2020 17:49:10 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
+22-05-2020 17:49:10 : Fermeture de l'application 

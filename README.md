@@ -75,12 +75,36 @@ Si vous ne respectez pas ces indications, une nouvelle saisie vous sera demandé
 
 # Fonctionalités disponibles pour une entreprise
 
+Si vous utilisez l'application en mode entreprise, une fois sur votre profil, vous aurez accès aux fonctionalités présentés ci-dessous.  
+
 ## Consulter les postes à pourvoir de votre entreprise
+
+Ce menu vous permet de visualiser l'ensemble des postes à pourvoir de votre entreprise sous forme de liste. Pour chaque poste vous verrez : son index dans la base de données, son titre, ainsi que les compétences requises pour chaque poste. Si votre entreprise ne possède pas de poste à pourvoir, cette section sera vide. Si vous ajoutez ou supprimez des postes, la liste sera automatiquement mise à jour sans aucune action de votre part.  
+
 ## Ajouter un poste à pourvoir
+
+Ce menu vous permet d'ajouter un poste à pourvoir par votre entreprise. Vous aurez besoin de renseigner :
+* Le titre du poste : 40 caractères maximum, avec possibilités d'inclure des chiffres. Le premier caractère ne peut être accentué
+* Les compétences requises pour le poste (jusqu'à 5\* maximum)  
+
+Si vous ne respectez pas ces indications, une nouvelle saisie vous sera demandée.  
+  
+\* Vous devez saisir au minimim 1 compétence. Le nombre maximum de compétences peut être modifié par l'administrateur de l'application. Le maximum par défaut est 5 compétences. 
+
 ## Supprimer un poste à pourvoir
+
+Ce menu vous permet de supprimer un poste à pourvoir de votre entreprise. Vous devrez renseigner l'index du poste que vous voulez supprimer.
+
 ## Faire une recherche parmi les chercheurs d'emploi
 
+Ce menu vous permet d'effectuer une recherche parmi tous les chercheurs d'emploi. Il y a deux types de recherche disponible :
+* Recherche par compétences : Cette recherche va comparer les compétences de tous les chercheurs d'emploi avec les compétences requises dans vos postes à pourvoir. Si le profil d'un chercheur d'emploi correspond à l'un de vos postes, ses coordonnées seront affichées.  
+* Recherche par compétences et par code postal : Cette recherche va comparer les compétences de tous les chercheurs d'emploi avec les compétences requises dans vos postes à pourvoir. Si le profil d'un chercheur d'emploi correspond à l'un de vos postes et que son code postal est identique à celui de votre entreprise, ses coordonnées seront affichées.
+
 # Fonctionalités disponibles pour un utilisateur
+
+Si vous utilisez l'application en mode utilisateur, une fois sur votre profil, vous aurez accès aux fonctionalités présentés ci-dessous.  
+
 ## Modifier votre profil
 ## Modifier votre profil
 ## Faire une recherche d'emploi ou de collègue
