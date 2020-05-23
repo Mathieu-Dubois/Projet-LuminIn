@@ -184,3 +184,5 @@
             22-05-2020 18:20:45 : Duck Daisy est apparu dans le résultat de la recherche
     22-05-2020 18:22:05 : Déconnexion du compte 1 - Mouse  Mickey - 77700 - mickey@mickeyville.com
 22-05-2020 18:27:34 : Fermeture de l'application 
+23-05-2020 10:56:01 : Ouverture de l'application 
+23-05-2020 10:56:07 : Fermeture de l'application 
