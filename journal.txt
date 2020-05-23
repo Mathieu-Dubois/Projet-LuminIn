@@ -186,3 +186,14 @@
 22-05-2020 18:27:34 : Fermeture de l'application 
 23-05-2020 10:56:01 : Ouverture de l'application 
 23-05-2020 10:56:07 : Fermeture de l'application 
+23-05-2020 11:09:15 : Ouverture de l'application 
+23-05-2020 11:09:46 : Fermeture de l'application 
+23-05-2020 11:35:51 : Ouverture de l'application 
+    23-05-2020 11:35:56 : Connexion de l'entreprise 4 - Apple - 54410 - contact@apple.com
+        23-05-2020 11:36:05 : Scott Monon quitte l'entreprise Apple
+        23-05-2020 11:36:05 : Suppression de l'entreprise 4 - Apple - 54410 - contact@apple.com
+    23-05-2020 11:36:10 : Connexion du compte 8 - Scott  Monon - 38000 - monon@cristalclear.com
+        23-05-2020 11:36:15 : Suppression du profil  8 - Scott Monon - 38000 - monon@cristalclear.com
+23-05-2020 11:36:17 : Fermeture de l'application 
+23-05-2020 11:36:23 : Ouverture de l'application 
+23-05-2020 11:36:36 : Fermeture de l'application 

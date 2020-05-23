@@ -162,3 +162,93 @@ void ViderGroupes(groupeEntreprises* gE, groupePersonnes* gPe, groupePostes* gP)
     ReinitialiserCSV() ;
 }
 
+// But : Réaliser une sauvegarde des fichiers csv
+void SauvegardeCSV()
+{
+    ifstream source1("employes.csv");  // Flux de lecture
+    ofstream sauvegarde1("employestmp.txt"); // Flux d'ecriture
+    if(source1) // Si le fichier existe bien
+    {
+        string ligne;
+    
+        while(getline(source1, ligne)) // On le lis ligne par ligne
+        {
+                if(sauvegarde1) // Si le lieu de destination existe
+                {
+                    sauvegarde1 << ligne << endl; // On ecrit dans le fichier de destination
+                }                      
+                else
+                {
+                    cout << "ERREUR: Impossible d'ouvrir employestmp.txt." << endl;
+                }
+        }
+    }
+    else
+    {
+        cout << "ERREUR: Impossible d'ouvrir employes.csv." << endl;
+    }
+    source1.close() ;
+    sauvegarde1.close() ;
+
+    ifstream source2("entreprises.csv");  // Flux de lecture
+    ofstream sauvegarde2("entreprisestmp.txt"); // Flux d'ecriture
+    if(source2) // Si le fichier existe bien
+    {
+        string ligne;
+    
+        while(getline(source2, ligne)) // On le lis ligne par ligne
+        {
+                if(sauvegarde2) // Si le lieu de destination existe
+                {
+                    sauvegarde2 << ligne << endl; // On ecrit dans le fichier de destination
+                }                      
+                else
+                {
+                    cout << "ERREUR: Impossible d'ouvrir entreprisestmp.txt." << endl;
+                }
+        }
+    }
+    else
+    {
+        cout << "ERREUR: Impossible d'ouvrir entreprises.csv." << endl;
+    }
+    source2.close() ;
+    sauvegarde2.close() ;
+
+    ifstream source3("postes.csv");  // Flux de lecture
+    ofstream sauvegarde3("postestmp.txt"); // Flux d'ecriture
+    if(source3) // Si le fichier existe bien
+    {
+        string ligne;
+    
+        while(getline(source3, ligne)) // On le lis ligne par ligne
+        {
+                if(sauvegarde3) // Si le lieu de destination existe
+                {
+                    sauvegarde3 << ligne << endl; // On ecrit dans le fichier de destination
+                }                      
+                else
+                {
+                    cout << "ERREUR: Impossible d'ouvrir postestmp.txt." << endl;
+                }
+        }
+    }
+    else
+    {
+        cout << "ERREUR: Impossible d'ouvrir entreprises.csv." << endl;
+    }
+    source3.close() ;
+    sauvegarde3.close() ;
+}
+
+// But : Permet de restaurer la sauvegarde des fichiers CSV 
+//       Cela permet d'éviter que la base de données soit modifié quand on lance le programme de test.
+void RestaurerCSV()
+{
+    remove("employes.csv") ;
+    rename("employestmp.txt","employes.csv") ;
+    remove("entreprises.csv") ;
+    rename("entreprisestmp.txt","entreprises.csv") ;
+    remove("postes.csv") ;
+    rename("postestmp.txt","postes.csv") ;
+}

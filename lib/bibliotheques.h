@@ -2,7 +2,7 @@
 
 #define MAX_AMIS 99                                                 //  5
 #define MAX_COMPETENCES 5                                           //  5
-#define TAILLE_GPE_MAX 100                                          //  20
+#define TAILLE_GPE_MAX MAX_AMIS+1                                   //  20
 
 #include "liste.h"
 

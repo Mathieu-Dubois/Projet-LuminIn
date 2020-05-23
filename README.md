@@ -144,14 +144,30 @@ Ce menu vous permet d'effectuer deux types de recherches. Des recherches de post
 
 ## Journal
 
+Toutes les actions effectuées dans l'application sont sauvegardées dans le fichier __journal.txt__. Afin de mieux se repérer dans le journal, un système d'indentation a été mis en place. Il est ainsi plus facile de repérer les actions effectuées lors d'une seule utilisation de l'application. La date et l'heure de chaque action est également enregistré.
+
 ## Réglages des paramètres
+
+L'administrateur de l'application peut choisir de modifier le nombre de compétences maximum qu'une personne peut enregistrer dans son profil. De même, il est également possible de modifier le nombre de collègues maximum qu'une personne peut avoir dans son réseau. Pour cela, il suffit de modifier la valeur des macros __MAX_AMIS__ et __MAX_COMPETENCES__ dans le fichier __bibliotheques.h__.
 
 ## Commandes console
 
+* __make clean__ : supprime le dossier build contenant tous les fichiers objets et les exécutables
+* __make application__ : lance l'application
+* __make check__ : lance le programme de test
+* __make reset__ : réinitialise les fichiers csv à leur état d'origine  (tel qu'ils ont été distribué initilament)
+
 ## Programme de test
 
+Il existe un deuxième programme exécutable qui est un programme de test des fonctions internes à l'application. A chaque fois que ce programme est lancé, une sauvegarde du journal ainsi que des fichiers csv est effectuée, puis restituée à la fin de l'exécution. Cela permet d'éviter de modifier le journal et la base de donnée si l'on veut effectuer des tests. De plus, quand le programme de test s'exécute, il utilise la base de donnée "modele", celle qui est enregistrée quand on utilise la commande "make reset".  
+  
+    
 
 
+
+
+
+    
 
 # DevCommeLesPros-2020-Projet
 
