@@ -624,7 +624,6 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
 // But : Supprimer une personne du groupe passé en paramètres et du fichier employes.csv
 void supprimer_profil (int index, groupePersonnes *gPe){
     //On supprime du groupe
-    journal_SuppressionPersonne(g_index(gPe, index)) ;
     g_remove(gPe, index);
     g_ecrire(gPe);
 }
@@ -863,12 +862,17 @@ void g_remove(groupePersonnes* g, int const index)
     personne *personneCourante = (personne*)p_gPe->data ;
     while (personneCourante!= NULL && p_gPe != NULL)
     {
-        supprimer_collegue(personneCourante->index,g,index) ;
+        if(ExisteCollegue(g_index(g,index),personneCourante->index))
+        {
+            journal_SupprimerCollegue(personneCourante, g_index(g,index)) ;
+            supprimer_collegue(personneCourante->index,g,index) ;
+        }
         // On passe à la personne suivante
         p_gPe = p_gPe->next ;
         if(p_gPe != NULL) personneCourante = (personne*)p_gPe->data ;
     }
     
+    journal_SuppressionPersonne(g_index(g, index)) ;
     //Suppression dans le groupe
     node *tmp=g->personnes;
     personne *ami = (personne*)(tmp->data);
@@ -950,12 +954,24 @@ void ColleguesAutomatiques(groupePersonnes* gPe, personne* pe, int indexE)
         {
             if(personneCourante->entreprise == pe->entreprise)
             {
-                if(!ExisteCollegue(personneCourante,pe->index)) ajouter_collegue(personneCourante->index,gPe,pe->index) ;
-                if(!ExisteCollegue(pe,personneCourante->index)) ajouter_collegue(pe->index,gPe,personneCourante->index) ;
+                if(!ExisteCollegue(personneCourante,pe->index))
+                {
+                    ajouter_collegue(personneCourante->index,gPe,pe->index) ;
+                    journal_PersonneAjouter_Collegue(personneCourante,pe) ;
+                }
+                if(!ExisteCollegue(pe,personneCourante->index))
+                {
+                    ajouter_collegue(pe->index,gPe,personneCourante->index) ;
+                    journal_PersonneAjouter_Collegue(pe,personneCourante) ;
+                }
             }
             if(personneCourante->entreprise != pe->entreprise)
             {
-                if(ExisteCollegue(pe,personneCourante->index)) ajouter_collegue(personneCourante->index,gPe,pe->index) ;
+                if(ExisteCollegue(pe,personneCourante->index)) 
+                {
+                    ajouter_collegue(personneCourante->index,gPe,pe->index) ;
+                    journal_PersonneAjouter_Collegue(personneCourante,pe) ;
+                }
             }
         }
 

@@ -63,3 +63,30 @@ void RestaurerJournal() ;
  ||     Aucun
   ============================================================================================== */
 void ViderGroupes(groupeEntreprises* gE, groupePersonnes* gPe, groupePostes* gP) ;
+
+/*==============================================================================================
+ || FONCTION : SauvegardeCSV
+  ==============================================================================================
+ || But : Réaliser une sauvegarde des fichiers csv
+ ||     
+ || Paramètres :
+ ||     Aucun
+ ||
+ || Retour :
+ ||     Aucun
+  ============================================================================================== */
+void SauvegardeCSV() ;
+
+/*==============================================================================================
+ || FONCTION : RestaurerCSV
+  ==============================================================================================
+ || But : Permet de restaurer la sauvegarde des fichiers CSV 
+ || Cela permet d'éviter que la base de données soit modifié quand on lance le programme de test.
+ ||     
+ || Paramètres :
+ ||     Aucun
+ ||
+ || Retour :
+ ||     Aucun
+  ============================================================================================== */
+void RestaurerCSV() ;

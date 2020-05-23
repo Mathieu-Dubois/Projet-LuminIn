@@ -92,9 +92,9 @@
 
 [FAIT]      -   Harmonisation des fonctions de recherches (pour que les recherches fassent la même chose)
 
--   Imposer une majuscule (ou une minuscule) pour la première lettre des compétences (sinon ça peut foirer les recherches (comédien différent Comédien)
-    D'ailleurs pareil pour les accents en fait (comedien différent de comédien)
-    -> modifier patternCompetence + fichiers csv de départ
+[FAIT]      -   Imposer une majuscule (ou une minuscule) pour la première lettre des compétences (sinon ça peut foirer les recherches (comédien différent Comédien)
+                D'ailleurs pareil pour les accents en fait (comedien différent de comédien)
+                -> modifier patternCompetence + fichiers csv de départ
 
 [FAIT]      -   Faire la saisie sécurisée pour les recherches d'une personne
 
@@ -106,21 +106,11 @@
                 puisse saisir que des personnes qui ne sont pas ses collègues
 
 [FAIT]      -   Quand une personne rejoint une entreprise, rajoute à son réseau toutes les personnes de l'entreprise qu'il n'avait pas déjà dans son réseau
-    et si possible, il faut aussi rajouter le nouvel arrivant au réseau de tous les employés de l'entreprise
+                et si possible, il faut aussi rajouter le nouvel arrivant au réseau de tous les employés de l'entreprise
 
 [FAIT]      -   Vérifier que toutes les fonctionnalités sont dans le journal
 
--   Quand une personne est supprimé, il faut ajouter au journal "Suppression de Machin Truc du réseau de collègues de bidule"
+[FAIT]      -   Quand une personne supprime son profil, rajouter au journal "truc a été retiré du réseau de collègues machin"pour tout ses collègues
 
--   Quand une personne ajoute manuellement qqln à son réseau de collègues, il faut ajouter cette personne au réseau du collègue
-
--   Faire le journal pour le truc au dessus "machin a été ajouté au réseau de truc"
-
--   Quand une personne rejoint une entreprise ajouter au journal que tous les employés de cette entreprise ont étés rajouté à son réseau et 
-    que cette personne a été rajouté au réseau de tous les employés
-
--   Quand une personne supprime son profil, rajouter au journal "truc a été retiré du réseau de collègues machin"pour tout ses collègues
-
-
-
-
+[FAIT]      -   Quand une personne rejoint une entreprise ajouter au journal que tous les employés de cette entreprise ont été rajouté à son réseau et 
+                que cette personne a été rajouté au réseau de tous les employés

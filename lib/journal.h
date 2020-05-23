@@ -439,3 +439,16 @@ void journal_PosteApparuRecherche(poste* p, entreprise* e) ;
   ============================================================================================== */
 void journal_RechercheSansResultat() ;
 
+/*==============================================================================================
+ || FONCTION : journal_SupprimerCollegue
+  ==============================================================================================
+ || But : Ajouter une entrée au journal renseignant qu'un collègue a été supprimé du réseau 
+ ||       de collègues d'une personne
+ ||
+ || Paramètre :
+ ||     p : pointeur sur une personne
+ ||
+ || Retour :
+ ||     Aucun 
+  ============================================================================================== */
+void journal_SupprimerCollegue(personne* pe, personne* collegue) ;

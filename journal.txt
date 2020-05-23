@@ -129,3 +129,39 @@
     03-05-2020 12:42:06 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
 03-05-2020 12:42:06 : Fermeture de l'application 
 ***********************************************************************************************************************
+23-05-2020 15:57:48 : Ouverture de l'application 
+23-05-2020 15:58:21 : Ouverture de l'application 
+23-05-2020 16:04:36 : Ouverture de l'application 
+23-05-2020 16:05:17 : Fermeture de l'application 
+23-05-2020 16:05:22 : Ouverture de l'application 
+    23-05-2020 16:05:56 : Création de l'entreprise 12 - Casibo - 74854 - amam@ffm.com
+23-05-2020 16:06:01 : Fermeture de l'application 
+23-05-2020 16:49:21 : Ouverture de l'application 
+    23-05-2020 16:51:07 : Création du compte 20 - sandro salé-ocarino - 45821 - ammaam@dmdm.cd
+        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Mouse Mickey
+        23-05-2020 16:51:07 : Mouse Mickey a été ajouté au réseau de collègues de sandro salé-ocarino
+        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Duck Donald
+        23-05-2020 16:51:07 : Duck Donald a été ajouté au réseau de collègues de sandro salé-ocarino
+        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Duck Daisy
+        23-05-2020 16:51:07 : Duck Daisy a été ajouté au réseau de collègues de sandro salé-ocarino
+        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Argus Rusard
+        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Dark Vador
+        23-05-2020 16:51:07 : Dark Vador a été ajouté au réseau de collègues de sandro salé-ocarino
+23-05-2020 16:51:13 : Fermeture de l'application 
+23-05-2020 16:51:42 : Ouverture de l'application 
+23-05-2020 16:52:48 : Fermeture de l'application 
+23-05-2020 16:52:56 : Ouverture de l'application 
+    23-05-2020 16:53:34 : Création du compte 21 - Salé Sandor - 48555 - dkd@ell.com
+        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Mouse Minnie
+        23-05-2020 16:53:34 : Mouse Minnie a été ajouté au réseau de collègues de Salé Sandor
+        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Lourson Winnie
+        23-05-2020 16:53:34 : Lourson Winnie a été ajouté au réseau de collègues de Salé Sandor
+        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Argus Rusard
+        23-05-2020 16:53:34 : Argus Rusard a été ajouté au réseau de collègues de Salé Sandor
+        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Skywalker Rey
+        23-05-2020 16:53:34 : Skywalker Rey a été ajouté au réseau de collègues de Salé Sandor
+        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Mua Sissy
+        23-05-2020 16:53:34 : Mua Sissy a été ajouté au réseau de collègues de Salé Sandor
+    23-05-2020 16:53:38 : Connexion du compte 21 - Salé  Sandor - 48555 - dkd@ell.com
+    23-05-2020 16:53:41 : Déconnexion du compte 21 - Salé  Sandor - 48555 - dkd@ell.com
+23-05-2020 16:53:41 : Fermeture de l'application 

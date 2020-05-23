@@ -1,6 +1,7 @@
 #include <iostream>
 #include <regex>
 #include <string>
+#include <cctype>
 using namespace std ;
 #include "menu.h"
 
@@ -119,13 +120,11 @@ int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePer
 // But : Affiche le menu permettant à l'utilisateur de créer le profil de son entreprise
 int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe)
 {
-    // Définitions des ER nécessaires à la saisie sécurisée
     regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
-    regex patternNom {"[a-zA-Zéèêëïîôöàâäç'_ ]{1,40}"} ; // Un nom d'entreprise ne doit pas avoir de chiffres
+    regex patternNom {"[a-zA-Z]{1}[a-zA-Zéèêëïîôöàâäç'_\\- ]{0,39}"} ; // Un nom d'entreprise ne doit pas avoir de chiffres et ne peut pas commencer par un caractère spécial
     regex patternCodePostal {"[1-9]{1}[0-9]{4}"} ; // Un code postal doit contenir 5 chiffres et ne doit pas commencer par 0
     regex patternMail {"[\\w\\._%+-]{1,30}@[\\w_]{2,20}\\.[A-Za-z]{2,3}"} ;
     string choix ;
-
     string nom ;
     string code ;
     string courriel ;
@@ -139,16 +138,16 @@ int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes
         nom = "" ;
         cin.clear() ;
         getline(cin, nom) ;
-        if(!regex_match(nom, patternNom)) cout << "Merci de renseigner un nom valide." << endl ;
+        if(!regex_match(nom, patternNom)) cout << "Merci de renseigner un nom valide (description dans le manuel de l'utilisateur)." << endl ;
     } while (!regex_match(nom, patternNom));
-
+    nom[0] = toupper(nom[0]) ;
     do
     {
         cout << "\nCode Postal (5 chiffres) : " ;
         code = "" ;
         cin.clear() ;
         getline(cin, code) ;
-        if(!regex_match(code, patternCodePostal)) cout << "Merci de renseigner un code postal valide." << endl ;
+        if(!regex_match(code, patternCodePostal)) cout << "Merci de renseigner un code postal valide (description dans le manuel de l'utilisateur)." << endl ;
     } while (!regex_match(code, patternCodePostal));
     
     do
@@ -336,8 +335,8 @@ int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
-    regex patternTitre {"[a-zA-Z0-9éèêëïîôöàâäç'_ ]{1,100}"} ; 
-    regex patternCompetence {"[a-zA-Zéèêëïîôöàâäç'_]{1,100}"} ;
+    regex patternTitre {"[a-zA-Z0-9]{1}[a-zA-Z0-9éèêëïîôöàâäç'_\\- ]{0,39}"} ; 
+    regex patternCompetence {"[a-z' \\-]{1,100}"} ;
     string choix ;
     string titre ;
     string competence ;
@@ -354,12 +353,13 @@ int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe
         titre = "" ;
         cin.clear() ;
         getline(cin, titre) ;
-        if(!regex_match(titre, patternTitre)) cout << "Merci de renseigner un intitulé de poste valide." << endl ;
+        if(!regex_match(titre, patternTitre)) cout << "Merci de renseigner un intitulé de poste valide (description dans le manuel de l'utilisateur)." << endl ;
     } while (!regex_match(titre, patternTitre)) ;
 
     // L'intitulé saisi est valide, on doit le convertir en char* pour s'adapter aux fonctions
     size_t size = titre.size() + 1 ;
     char titrePoste[128];
+    titrePoste[0] = toupper(titrePoste[0]) ;
     strncpy(titrePoste, titre.c_str(), size) ;
 
     // A chaque compétence saisie, on demande à l'utilisateur s'il souhaite rajouter une compétence (5 maximum)
@@ -372,11 +372,11 @@ int MenuCreerPoste(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gPe
             system("clear") ;
             cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
             cout << "Profil de : " << g_indexEntreprise(gE, indexE)->nom << endl << endl ;
-            cout << "Compétence n°" << compteur << " (sans espaces) : " ;
+            cout << "Compétence n°" << compteur << " : " ;
             competence = "" ;
             cin.clear() ;
             getline(cin, competence) ;
-            if(!regex_match(competence, patternCompetence)) cout << "Merci de renseigner une competence valide." << endl ;
+            if(!regex_match(competence, patternCompetence)) cout << "Merci de renseigner une compétence valide (description dans le manuel de l'utilisateur)." << endl ;
         } while(!regex_match(competence, patternCompetence)) ;
         
         // La compétence saisie est valide, on doit la convertir en char* pour s'adapter aux fonctions
@@ -479,7 +479,7 @@ int MenuEntrepriseCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePers
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternMenu {"q|m|r|1|2{1}"} ; // On vérifie si l'utilisateur entre q, m, r, 1 ou 2
-    regex patternCompetence {"[a-zA-Zéèêëïîôöàâäç'_]{1,100}"} ;
+    regex patternCompetence {"[a-z' \\-]{1,100}"} ;
     regex patternCodePostal {"[1-9]{1}[0-9]{4}"} ; // Un code postal doit contenir 5 chiffres et ne doit pas commencer par 0
     string choix ;
 
@@ -855,12 +855,12 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
-    regex patternNom {"[A-Z]{1}[a-zA-Zéèêëïîôöàâäç' ]{1,24}"} ; // Un nom de personne commence par une majucule et peut en contenir (25 caractères max)
-    regex patternPrenom {"[A-Z]{1}[a-zéèêëïîôöàâäç']{1,24}"} ; // Un prénom de personne commence par une majucule (25 caractères max)
+    regex patternNom {"[a-zA-Z]{1}[a-zA-Zéèêëïîôöàâäç' ]{1,24}"} ; 
+    regex patternPrenom {"[a-zA-Z]{1}[a-zéèêëïîôöàâäç'\\-]{1,24}"} ; 
     regex patternMail {"[\\w\\._%+-]{1,30}@[\\w_]{2,20}\\.[A-Za-z]{2,3}"} ;
     regex patternCodePostal {"[1-9]{1}[0-9]{4}"} ; // Un code postal doit contenir 5 chiffres et ne doit pas commencer par 0
     regex patternNombre {"[1-9]([0-9]*)"} ; // On vérifie si l'utilisateur entre un nombre < 0
-    regex patternCompetence {"[a-zA-Zéèêëïîôöàâäç'_]{1,100}"} ;
+    regex patternCompetence {"[a-z' \\-]{1,100}"} ;
     string choix ;
 
     string nom ;
@@ -895,12 +895,13 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
         nom = "" ;
         cin.clear() ;
         getline(cin, nom) ;
-        if(!regex_match(nom, patternNom)) cout << "Merci de renseigner un nom valide." << endl ;
+        if(!regex_match(nom, patternNom)) cout << "Merci de renseigner un nom valide (description dans le manuel de l'utilisateur)." << endl ;
     } while (!regex_match(nom, patternNom));
     // Le nom saisie est valide, il faut le convertir en char* pour s'adapter aux autres fonctions
     size_t size = nom.size() + 1 ;
     char nomPe[30] ;
     strncpy(nomPe, nom.c_str(), size) ;
+    nomPe[0] = toupper(nomPe[0]) ;
 
     do
     {
@@ -908,12 +909,13 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
         prenom = "" ;
         cin.clear() ;
         getline(cin, prenom) ;
-        if(!regex_match(prenom, patternPrenom)) cout << "Merci de renseigner un nom valide." << endl ;
+        if(!regex_match(prenom, patternPrenom)) cout << "Merci de renseigner un prénom valide (description dans le manuel de l'utilisateur)." << endl ;
     } while (!regex_match(prenom, patternPrenom));
     // Le prenom saisie est valide, il faut le convertir en char* pour s'adapter aux autres fonctions
     size = prenom.size() + 1 ;
     char prenomPe[30] ;
     strncpy(prenomPe, prenom.c_str(), size) ;
+    prenomPe[0] = toupper(prenomPe[0]) ;
 
     do
     {
@@ -921,7 +923,7 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
         courriel = "" ;
         cin.clear() ;
         getline(cin, courriel) ;
-        if(!regex_match(courriel, patternMail)) cout << "Merci de renseigner une adresse mail valide." << endl ;
+        if(!regex_match(courriel, patternMail)) cout << "Merci de renseigner une adresse mail valide (description dans le manuel de l'utilisateur)." << endl ;
     } while (!regex_match(courriel, patternMail));
     // L'adresse mail saisie est valide, il faut la convertir en char* pour s'adapter aux autres fonctions
     size = courriel.size() + 1 ;
@@ -934,7 +936,7 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
         code = "" ;
         cin.clear() ;
         getline(cin, code) ;
-        if(!regex_match(code, patternCodePostal)) cout << "Merci de renseigner un code postal valide." << endl ;
+        if(!regex_match(code, patternCodePostal)) cout << "Merci de renseigner un code postal valide (description dans le manuel de l'utilisateur)." << endl ;
     } while (!regex_match(code, patternCodePostal));
     // Le code postal saisie est valide, on le convertit en int pour s'adapter aux autre fonctions
     int adresse ;
@@ -1590,7 +1592,7 @@ int MenuPersonne_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupeP
 int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée
-    regex patternCompetence {"[a-zA-Zéèêëïîôöàâäç'_]{1,100}"} ;
+    regex patternCompetence {"[a-z' \\-]{1,100}"} ;
     regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
     string choix ;
     string competence ;

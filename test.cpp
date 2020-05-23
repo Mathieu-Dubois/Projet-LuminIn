@@ -32,10 +32,12 @@ int tests_reussis = 0;
 
 int main()
 {   
-    // On commence par réinitialiser les fichiers CSV à leur état "de base"
+
+    // On fait une sauvegarde des fichiers csv
+    SauvegardeCSV() ;
+    // Puis on réinitialise les fichiers CSV à leur état "de base" pour les tests
     ReinitialiserCSV() ;
-    // On fait une sauvegarde du journal qu'on viendra restituer à la fin du programme de test
-    // Ainsi le programme de test ne modifiera pas la journal (uniquement l'application qui peut le modifier)
+    // On fait également une sauvegarde du journal
     SauvegardeJournal() ;
 
     
@@ -573,8 +575,8 @@ int main()
             cout << "======================================== Test de recherche 11 validé" << endl ;
    
 
-    ReinitialiserCSV() ;
     RestaurerJournal() ;
+    RestaurerCSV() ;
 
 
     printf("\nNombre de test passés : %d/%d\n\n", tests_reussis, tests_executes);
