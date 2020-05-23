@@ -129,71 +129,39 @@
     03-05-2020 12:42:06 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
 03-05-2020 12:42:06 : Fermeture de l'application 
 ***********************************************************************************************************************
-20-05-2020 18:20:43 : Ouverture de l'application 
-20-05-2020 18:22:50 : Fermeture de l'application 
-21-05-2020 17:32:41 : Ouverture de l'application 
-21-05-2020 17:48:25 : Ouverture de l'application 
-    21-05-2020 17:49:11 : Création de l'entreprise 12 - Casino - 74854 - ddd18@gmail.com
-    21-05-2020 17:49:49 : Création de l'entreprise 13 - ébonjour - 78541 - mm@mm.fr
-21-05-2020 17:55:16 : Ouverture de l'application 
-21-05-2020 17:57:05 : Ouverture de l'application 
-    21-05-2020 17:57:28 : Création de l'entreprise 14 - Fubini - 74585 - mamama747@mdmd.com
-21-05-2020 17:57:34 : Fermeture de l'application 
-21-05-2020 18:04:52 : Ouverture de l'application 
-21-05-2020 18:30:06 : Ouverture de l'application 
-    21-05-2020 18:30:47 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-    21-05-2020 18:39:10 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-    21-05-2020 18:39:14 : Connexion du compte 1 - Mouse  Mickey - 77700 - mickey@mickeyville.com
-    21-05-2020 18:47:27 : Déconnexion du compte 1 - Mouse  Mickey - 77700 - mickey@mickeyville.com
-21-05-2020 18:47:27 : Fermeture de l'application 
-22-05-2020 17:35:03 : Ouverture de l'application 
-    22-05-2020 17:35:06 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-        22-05-2020 17:35:08 : Disney a consulté sa liste des postes à pourvoir 
-    22-05-2020 17:37:01 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-    22-05-2020 17:37:05 : Connexion de l'entreprise 7 - Nintendo - 45655 - contact@nintendo.jp
-        22-05-2020 17:37:06 : Nintendo a consulté sa liste des postes à pourvoir 
-        22-05-2020 17:46:08 : Nintendo a fait une recherche de personne par compétence
-            22-05-2020 17:46:08 : La recherche n'a pas donné de résultat
-    22-05-2020 17:46:14 : Déconnexion de l'entreprise 7 - Nintendo - 45655 - contact@nintendo.jp
-    22-05-2020 17:46:17 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-        22-05-2020 17:46:21 : Disney a fait une recherche de personne par compétence
-            22-05-2020 17:46:21 : Mouse Minnie est apparu dans le résultat de la recherche
-            22-05-2020 17:46:21 : Lourson Winnie est apparu dans le résultat de la recherche
-            22-05-2020 17:46:21 : Mua Sissy est apparu dans le résultat de la recherche
-    22-05-2020 17:49:10 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-22-05-2020 17:49:10 : Fermeture de l'application 
-22-05-2020 17:57:09 : Ouverture de l'application 
-    22-05-2020 18:00:05 : Connexion du compte 1 - Mouse  Mickey - 77700 - mickey@mickeyville.com
-        22-05-2020 18:03:29 : Suppression du profil  1 - Mouse Mickey - 77700 - mickey@mickeyville.com
-22-05-2020 18:03:46 : Fermeture de l'application 
-22-05-2020 18:06:07 : Ouverture de l'application 
-    22-05-2020 18:06:10 : Connexion du compte 1 - Mouse  Mickey - 77700 - mickey@mickeyville.com
-        22-05-2020 18:13:39 : Mouse Mickey a fait une recherche de poste par compétence
-            22-05-2020 18:13:39 : Acteur pourvu par Disney est apparu dans le résultat de la recherche
-            22-05-2020 18:13:39 : Mascotte Mickey pourvu par Disney est apparu dans le résultat de la recherche
-            22-05-2020 18:13:39 : Chanteur pourvu par Disney est apparu dans le résultat de la recherche
-            22-05-2020 18:13:39 : Professeur de sport pourvu par Decathlon est apparu dans le résultat de la recherche
-        22-05-2020 18:18:07 : Mouse Mickey a fait une recherche de poste par compétence et code postal
-            22-05-2020 18:18:07 : Acteur pourvu par Disney est apparu dans le résultat de la recherche
-            22-05-2020 18:18:07 : Mascotte Mickey pourvu par Disney est apparu dans le résultat de la recherche
-            22-05-2020 18:18:07 : Chanteur pourvu par Disney est apparu dans le résultat de la recherche
-        22-05-2020 18:20:40 : Mouse Mickey a fait une recherche de collègue par entreprise (Decathlon)
-            22-05-2020 18:20:40 : La recherche n'a pas donné de résultat
-        22-05-2020 18:20:45 : Mouse Mickey a fait une recherche de collègue par compétence
-            22-05-2020 18:20:45 : Duck Donald est apparu dans le résultat de la recherche
-            22-05-2020 18:20:45 : Duck Daisy est apparu dans le résultat de la recherche
-    22-05-2020 18:22:05 : Déconnexion du compte 1 - Mouse  Mickey - 77700 - mickey@mickeyville.com
-22-05-2020 18:27:34 : Fermeture de l'application 
-23-05-2020 10:56:01 : Ouverture de l'application 
-23-05-2020 10:56:07 : Fermeture de l'application 
-23-05-2020 11:09:15 : Ouverture de l'application 
-23-05-2020 11:09:46 : Fermeture de l'application 
-23-05-2020 11:35:51 : Ouverture de l'application 
-    23-05-2020 11:35:56 : Connexion de l'entreprise 4 - Apple - 54410 - contact@apple.com
-        23-05-2020 11:36:05 : Scott Monon quitte l'entreprise Apple
-        23-05-2020 11:36:05 : Suppression de l'entreprise 4 - Apple - 54410 - contact@apple.com
-    23-05-2020 11:36:10 : Connexion du compte 8 - Scott  Monon - 38000 - monon@cristalclear.com
-        23-05-2020 11:36:15 : Suppression du profil  8 - Scott Monon - 38000 - monon@cristalclear.com
-23-05-2020 11:36:17 : Fermeture de l'application 
-23-05-2020 11:36:23 : Ouverture de l'application 
-23-05-2020 11:36:36 : Fermeture de l'application 
+23-05-2020 15:57:48 : Ouverture de l'application 
+23-05-2020 15:58:21 : Ouverture de l'application 
+23-05-2020 16:04:36 : Ouverture de l'application 
+23-05-2020 16:05:17 : Fermeture de l'application 
+23-05-2020 16:05:22 : Ouverture de l'application 
+    23-05-2020 16:05:56 : Création de l'entreprise 12 - Casibo - 74854 - amam@ffm.com
+23-05-2020 16:06:01 : Fermeture de l'application 
+23-05-2020 16:49:21 : Ouverture de l'application 
+    23-05-2020 16:51:07 : Création du compte 20 - sandro salé-ocarino - 45821 - ammaam@dmdm.cd
+        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Mouse Mickey
+        23-05-2020 16:51:07 : Mouse Mickey a été ajouté au réseau de collègues de sandro salé-ocarino
+        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Duck Donald
+        23-05-2020 16:51:07 : Duck Donald a été ajouté au réseau de collègues de sandro salé-ocarino
+        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Duck Daisy
+        23-05-2020 16:51:07 : Duck Daisy a été ajouté au réseau de collègues de sandro salé-ocarino
+        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Argus Rusard
+        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Dark Vador
+        23-05-2020 16:51:07 : Dark Vador a été ajouté au réseau de collègues de sandro salé-ocarino
+23-05-2020 16:51:13 : Fermeture de l'application 
+23-05-2020 16:51:42 : Ouverture de l'application 
+23-05-2020 16:52:48 : Fermeture de l'application 
+23-05-2020 16:52:56 : Ouverture de l'application 
+    23-05-2020 16:53:34 : Création du compte 21 - Salé Sandor - 48555 - dkd@ell.com
+        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Mouse Minnie
+        23-05-2020 16:53:34 : Mouse Minnie a été ajouté au réseau de collègues de Salé Sandor
+        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Lourson Winnie
+        23-05-2020 16:53:34 : Lourson Winnie a été ajouté au réseau de collègues de Salé Sandor
+        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Argus Rusard
+        23-05-2020 16:53:34 : Argus Rusard a été ajouté au réseau de collègues de Salé Sandor
+        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Skywalker Rey
+        23-05-2020 16:53:34 : Skywalker Rey a été ajouté au réseau de collègues de Salé Sandor
+        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Mua Sissy
+        23-05-2020 16:53:34 : Mua Sissy a été ajouté au réseau de collègues de Salé Sandor
+    23-05-2020 16:53:38 : Connexion du compte 21 - Salé  Sandor - 48555 - dkd@ell.com
+    23-05-2020 16:53:41 : Déconnexion du compte 21 - Salé  Sandor - 48555 - dkd@ell.com
+23-05-2020 16:53:41 : Fermeture de l'application 

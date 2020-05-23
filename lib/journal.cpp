@@ -383,8 +383,9 @@ void journal_PersonneAjouter_Collegue(personne* p, personne* np)
     ofstream FluxVersJournal("journal.txt", ios::app) ;
     if(FluxVersJournal)
     {
-        FluxVersJournal << "        " << AfficherDate()  << " : " << p->nom << " " << p->prenom << " a ajouté " <<
-        np->nom << " " << np->prenom << " à son réseau de collègue" << endl ;
+        
+        FluxVersJournal << "        " << AfficherDate()  << " : " <<  np->nom << " " <<
+        np->prenom << " a été ajouté au réseau de collègues de " << p->nom << " " << p->prenom << endl ;
     }
     else
     {
@@ -525,6 +526,22 @@ void journal_RechercheSansResultat()
     if(FluxVersJournal)
     {
         FluxVersJournal << "            " << AfficherDate() << " : La recherche n'a pas donné de résultat"  << endl ;
+    }
+    else
+    {
+        cout << "Erreur : Impossible d'accéder au journal" << endl ;
+    }
+    FluxVersJournal.close() ;
+}
+
+// But : Ajouter une entrée au journal renseignant qu'un collègue a été supprimé du réseau de collègues d'une personne
+void journal_SupprimerCollegue(personne* pe, personne* collegue)
+{ 
+    ofstream FluxVersJournal("journal.txt", ios::app) ;
+    if(FluxVersJournal)
+    {
+        FluxVersJournal << "            " << AfficherDate() << " : " << collegue->nom << " " << collegue->prenom << " a été retiré du réseau de collègues de " ;
+        FluxVersJournal << pe->nom << " " << pe->prenom  << endl ;
     }
     else
     {

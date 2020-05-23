@@ -64,12 +64,12 @@ Si vous ne respectez pas ces indications, une nouvelle saisie vous sera demandé
 # Création d'un profil d'utilisateur
 
 Pour créer le profil d'un utilisateur, vous aurez besoin de renseigner : 
-* Le nom de l'utilisateur : 40 caractères maximum, ne peut pas contenir de chiffre et le premier caractère ne doit pas être un caractère accentué.
-* Le prénom de l'utilisateur : 40 caractères maximum, ne peut pas contenir de chiffre et le premier caractère ne doit pas être un caractère accentué.
+* Le nom de l'utilisateur : 25 caractères maximum, ne peut pas contenir de chiffre et le premier caractère ne doit pas être un caractère accentué.
+* Le prénom de l'utilisateur : 25 caractères maximum, ne peut pas contenir de chiffre et le premier caractère ne doit pas être un caractère accentué.
 * Une adresse mail
 * Un code postal : 5 chiffres
 * L'index de votre entreprise si vous êtes un employé (pas d'inquiétude si vous ne vous souvenez plus de l'identifiant de votre entreprise, ils seront tous affichés)
-* Vos compétences (jusqu'à 5\* maximum)
+* Vos compétences (jusqu'à 5\* maximum) : uniquement des lettres minuscules et des chiffres. Pas de caractères accentué.
 * Si vous le voulez, l'index de vos collègues pour commencer à former votre réseau\*\*  
 
 Si vous ne respectez pas ces indications, une nouvelle saisie vous sera demandée.  
@@ -89,7 +89,7 @@ Ce menu vous permet de visualiser l'ensemble des postes à pourvoir de votre ent
 
 Ce menu vous permet d'ajouter un poste à pourvoir par votre entreprise. Vous aurez besoin de renseigner :
 * Le titre du poste : 40 caractères maximum, avec possibilités d'inclure des chiffres. Le premier caractère ne peut être accentué
-* Les compétences requises pour le poste (jusqu'à 5\* maximum)  
+* Les compétences requises pour le poste (jusqu'à 5\* maximum). Uniquement des lettres minuscules et des chiffres. Pas de caractères accentué.
 
 Si vous ne respectez pas ces indications, une nouvelle saisie vous sera demandée.  
   
@@ -119,8 +119,8 @@ Si vous utilisez l'application en mode utilisateur, une fois sur votre profil, v
 Ce menu vous permet à tout moment de modifier toutes les informations de votre profil. Vous pouvez ainsi :  
 * Modifier votre code postal
 * Modifier votre adresse mail
-* Ajouter une compétence (jusqu'à 5\* maximum)
-* Ajouter un collègue à votre réseau. Vous devrez saisir son index. Les index de toutes les personnes enregistrés et qui ne font pas partie de votre réseau seront affichés
+* Ajouter une compétence (jusqu'à 5\* maximum). Uniquement des lettres minuscules et des chiffres. Pas de caractères accentué.
+* Ajouter un collègue à votre réseau. Vous devrez saisir son index. Les index de toutes les personnes enregistrés et qui ne font pas partie de votre réseau seront affichés.
 * Supprimer un collègue de votre réseau. Vous devrez saisir son index. L'index de tous vos collègues seront affichés.
 * Modifier votre entreprise. Vous devrez saisir son index. L'index de toutes les entreprises seront affichés.
 * Démissioner de votre entreprise. Cette option ne sera disponible uniquement si vous êtes employé dans une entreprise. Si vous choisissez de démissionner, votre profil passera automatiquement en chercheur d'emploi.  

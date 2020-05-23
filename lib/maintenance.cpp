@@ -39,7 +39,7 @@ void ReinitialiserCSV()
     {
         poste << "id,titre,entreprise,competences" << endl ;
         poste << "1,Acteur,1,comedie;gag" << endl ;
-        poste << "2,Developpeur,2,C;SQL;Python" << endl ;
+        poste << "2,Developpeur,2,c;sql;python" << endl ;
         poste << "3,Briocheur,5,patisserie" << endl ;
         poste << "4,Mascotte Mickey,1,danse;sport" << endl ;
         poste << "5,Concierge,6,autoritaire;determine" << endl ;
