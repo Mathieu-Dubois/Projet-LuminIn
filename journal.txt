@@ -3,165 +3,81 @@
 01-05-2020 12:35:02 : Création du Journal
 01-05-2020 14:34:54 : Ouverture de l'application 
 01-05-2020 14:34:54 : Fermeture de l'application 
-01-05-2020 14:52:40 : Ouverture de l'application 
-    01-05-2020 14:53:29 : Création de l'entreprise 6 - Netflix - 15486 - netflixandchill@party.com
-01-05-2020 14:53:57 : Fermeture de l'application 
-01-05-2020 15:01:09 : Ouverture de l'application 
-    01-05-2020 15:01:21 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-    01-05-2020 15:01:17 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-    01-05-2020 15:01:31 : Connexion de l'entreprise 6 - Netflix - 15486 - netflixandchill@party.com
-    01-05-2020 15:01:38 : Déconnexion de l'entreprise 6 - Netflix - 15486 - netflixandchill@party.com
-    01-05-2020 15:01:54 : Connexion de l'entreprise 4 - Apple - 54410 - contact@apple.com
-    01-05-2020 15:01:59 : Déconnexion de l'entreprise 4 - Apple - 54410 - contact@apple.com
-01-05-2020 15:02:01 : Fermeture de l'application 
-01-05-2020 15:10:03 : Ouverture de l'application 
-    01-05-2020 15:10:14 : Connexion de l'entreprise 6 - Netflix - 15486 - netflixandchill@party.com
-        01-05-2020 15:10:28 : Suppression de l'entreprise 6 - Netflix - 15486 - netflixandchill@party.com
-01-05-2020 15:10:55 : Fermeture de l'application 
-01-05-2020 16:39:31 : Ouverture de l'application 
-    01-05-2020 16:39:35 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-        01-05-2020 16:39:42 : Suppression du poste 1 - acteur - 1 - | comedie | gag | 
-        01-05-2020 16:39:42 : Suppression du poste 4 - mascotte_Mickey - 1 - | danse | sport | 
-        01-05-2020 16:39:42 : Suppression de l'entreprise 1 - Disney - 77700 - walt@disney.com
-01-05-2020 16:40:34 : Fermeture de l'application 
-01-05-2020 19:10:16 : Ouverture de l'application 
-    01-05-2020 19:10:20 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-        01-05-2020 19:11:55 : Création du poste 5 - artificier - 1 - | diplome_artificier | EtÇaFaitBimBamBoum | 
-    01-05-2020 19:12:17 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-01-05-2020 19:13:56 : Fermeture de l'application 
-01-05-2020 19:22:39 : Ouverture de l'application 
-    01-05-2020 19:22:44 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-        01-05-2020 19:22:47 : Disney a consulté sa liste des postes à pourvoir
-    01-05-2020 19:23:17 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com 
-01-05-2020 19:23:09 : Fermeture de l'application 
-01-05-2020 19:32:00 : Ouverture de l'application 
-    01-05-2020 19:32:05 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-        01-05-2020 19:32:27 : Disney a fait une recherche par compétence (C++)
-    01-05-2020 19:33:17 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-01-05-2020 19:32:45 : Fermeture de l'application 
-01-05-2020 19:37:52 : Ouverture de l'application 
-    01-05-2020 19:37:55 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-        01-05-2020 19:38:44 : Disney a fait une recherche par compétence et code postal (EtÇaFaitBimBamBoum, 77700)
-    01-05-2020 19:38:17 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-01-05-2020 19:38:56 : Fermeture de l'application 
-01-05-2020 19:49:59 : Ouverture de l'application 
-    01-05-2020 19:50:11 : Connexion de l'entreprise 2 - Google - 75009 - emplois@google.com
-        01-05-2020 19:50:15 : Google a consulté sa liste des postes à pourvoir 
-    01-05-2020 19:50:19 : Déconnexion de l'entreprise 2 - Google - 75009 - emplois@google.com
-    01-05-2020 19:51:49 : Création de l'entreprise 6 - Youtube - 34841 - contactyoutube@gmail.com
-    01-05-2020 19:51:55 : Connexion de l'entreprise 6 - Youtube - 34841 - contactyoutube@gmail.com
-        01-05-2020 19:53:48 : Création du poste 5 - ResponsablePlacementDeProduits - 6 - | marketing | maitriseBureautique | commercial | 
-        01-05-2020 19:54:11 : Youtube a consulté sa liste des postes à pourvoir 
-        01-05-2020 19:54:38 : Youtube a fait une recherche par compétence (marketing)
-        01-05-2020 19:55:11 : Youtube a fait une recherche par compétence et code postal (commercial, 34841)
-    01-05-2020 19:55:28 : Déconnexion de l'entreprise 6 - Youtube - 34841 - contactyoutube@gmail.com
-    01-05-2020 19:55:36 : Connexion de l'entreprise 5 - Doowap - 42754 - bonnebrioche@doowap.com
-        01-05-2020 19:55:42 : Doowap a consulté sa liste des postes à pourvoir 
-    01-05-2020 19:56:03 : Déconnexion de l'entreprise 5 - Doowap - 42754 - bonnebrioche@doowap.com
-    01-05-2020 19:56:17 : Connexion de l'entreprise 6 - Youtube - 34841 - contactyoutube@gmail.com
-        01-05-2020 19:58:11 : Création du poste 6 - Réalisateur - 6 - | Créatif | Sérieux | Passionné | 
-        01-05-2020 19:58:28 : Suppression du poste 6 - Réalisateur - 6 - | Créatif | Sérieux | Passionné | 
-        01-05-2020 19:58:38 : Suppression du poste 5 - ResponsablePlacementDeProduits - 6 - | marketing | maitriseBureautique | commercial | 
-        01-05-2020 19:58:38 : Suppression de l'entreprise 6 - Youtube - 34841 - contactyoutube@gmail.com
-    01-05-2020 19:58:50 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-        01-05-2020 19:58:57 : Disney a consulté sa liste des postes à pourvoir 
-    01-05-2020 19:59:08 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-01-05-2020 19:59:14 : Fermeture de l'application 
-01-05-2020 20:13:38 : Ouverture de l'application 
-    01-05-2020 20:13:42 : Connexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-        01-05-2020 20:13:54 : Disney a consulté sa liste des postes à pourvoir 
-    01-05-2020 20:14:00 : Déconnexion de l'entreprise 1 - Disney - 77700 - walt@disney.com
-01-05-2020 20:14:00 : Fermeture de l'application 
-03-05-2020 09:44:06 : Ouverture de l'application 
-    03-05-2020 09:44:56 : Création du compte 9 - Avatar Aang - 84265 - momoetappa@katara.com
-    03-05-2020 09:46:17 : Connexion du compte 9 - Avatar  Aang - 84265 - momoetappa@katara.com
-    03-05-2020 09:46:18 : Déconnexion du compte 9 - Avatar  Aang - 84265 - momoetappa@katara.com
-03-05-2020 09:46:18 : Fermeture de l'application 
-03-05-2020 09:57:07 : Ouverture de l'application 
-    03-05-2020 09:57:13 : Connexion du compte 9 - Avatar  Aang - 84265 - momoetappa@katara.com
-        03-05-2020 09:57:20 : Suppression du profil  9 - Avatar Aang - 84265 - momoetappa@katara.com
-03-05-2020 09:57:26 : Fermeture de l'application 
-03-05-2020 10:11:51 : Ouverture de l'application 
-    03-05-2020 10:12:04 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-        03-05-2020 10:12:24 : Mouse Mickey quitte l'entreprise Disney
-    03-05-2020 10:12:30 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-03-05-2020 10:12:30 : Fermeture de l'application 
-03-05-2020 11:31:25 : Ouverture de l'application 
-    03-05-2020 11:31:31 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-        03-05-2020 11:31:40 : Mouse Mickey quitte l'entreprise Disney
-        03-05-2020 11:32:11 : Mouse Mickey a rejoint l'entreprise Google
-        03-05-2020 11:32:32 : Mouse Mickey quitte l'entreprise Google
-        03-05-2020 11:32:32 : Mouse Mickey a rejoint l'entreprise Disney
-    03-05-2020 11:32:39 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-03-05-2020 11:32:39 : Fermeture de l'application 
-03-05-2020 11:36:17 : Ouverture de l'application 
-    03-05-2020 11:36:24 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-    03-05-2020 12:02:54 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-03-05-2020 12:02:54 : Fermeture de l'application 
-03-05-2020 12:02:58 : Ouverture de l'application 
-    03-05-2020 12:03:01 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-        03-05-2020 12:03:11 : Mouse Mickey a ajouté une compétence à son profil (chant)
-    03-05-2020 12:03:18 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-03-05-2020 12:03:18 : Fermeture de l'application 
-03-05-2020 12:05:13 : Ouverture de l'application 
-    03-05-2020 12:05:18 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-    03-05-2020 12:10:31 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-03-05-2020 12:10:31 : Fermeture de l'application 
-03-05-2020 12:10:39 : Ouverture de l'application 
-    03-05-2020 12:10:44 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-    03-05-2020 12:13:03 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-03-05-2020 12:13:03 : Fermeture de l'application 
-03-05-2020 12:18:20 : Ouverture de l'application 
-    03-05-2020 12:18:25 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-        03-05-2020 12:18:44 : Mouse Mickey a supprimé Mouse Minnie de son réseau de collègue
-    03-05-2020 12:19:13 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-03-05-2020 12:19:13 : Fermeture de l'application 
-03-05-2020 12:19:59 : Ouverture de l'application 
-    03-05-2020 12:20:03 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-    03-05-2020 12:20:18 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-03-05-2020 12:20:18 : Fermeture de l'application 
-03-05-2020 12:40:41 : Ouverture de l'application 
-    03-05-2020 12:40:47 : Connexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-        03-05-2020 12:41:02 : Mouse Mickey a fait une recherche de collègue par entreprise (Google)
-        03-05-2020 12:41:20 : Mouse Mickey a fait une recherche de collègue par compétence (chant)
-        03-05-2020 12:41:35 : Mouse Mickey a fait une recherche de poste par compétence (ERREUR)
-        03-05-2020 12:41:55 : Mouse Mickey a fait une recherche de poste par compétence et code postal (ERREUR, -1)
-    03-05-2020 12:42:06 : Déconnexion du compte 2 - Mouse  Mickey - 77700 - mickey@mickeyville.gov
-03-05-2020 12:42:06 : Fermeture de l'application 
-***********************************************************************************************************************
-23-05-2020 15:57:48 : Ouverture de l'application 
-23-05-2020 15:58:21 : Ouverture de l'application 
-23-05-2020 16:04:36 : Ouverture de l'application 
-23-05-2020 16:05:17 : Fermeture de l'application 
-23-05-2020 16:05:22 : Ouverture de l'application 
-    23-05-2020 16:05:56 : Création de l'entreprise 12 - Casibo - 74854 - amam@ffm.com
-23-05-2020 16:06:01 : Fermeture de l'application 
-23-05-2020 16:49:21 : Ouverture de l'application 
-    23-05-2020 16:51:07 : Création du compte 20 - sandro salé-ocarino - 45821 - ammaam@dmdm.cd
-        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Mouse Mickey
-        23-05-2020 16:51:07 : Mouse Mickey a été ajouté au réseau de collègues de sandro salé-ocarino
-        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Duck Donald
-        23-05-2020 16:51:07 : Duck Donald a été ajouté au réseau de collègues de sandro salé-ocarino
-        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Duck Daisy
-        23-05-2020 16:51:07 : Duck Daisy a été ajouté au réseau de collègues de sandro salé-ocarino
-        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Argus Rusard
-        23-05-2020 16:51:07 : sandro salé-ocarino a été ajouté au réseau de collègues de Dark Vador
-        23-05-2020 16:51:07 : Dark Vador a été ajouté au réseau de collègues de sandro salé-ocarino
-23-05-2020 16:51:13 : Fermeture de l'application 
-23-05-2020 16:51:42 : Ouverture de l'application 
-23-05-2020 16:52:48 : Fermeture de l'application 
-23-05-2020 16:52:56 : Ouverture de l'application 
-    23-05-2020 16:53:34 : Création du compte 21 - Salé Sandor - 48555 - dkd@ell.com
-        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Mouse Minnie
-        23-05-2020 16:53:34 : Mouse Minnie a été ajouté au réseau de collègues de Salé Sandor
-        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Lourson Winnie
-        23-05-2020 16:53:34 : Lourson Winnie a été ajouté au réseau de collègues de Salé Sandor
-        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Argus Rusard
-        23-05-2020 16:53:34 : Argus Rusard a été ajouté au réseau de collègues de Salé Sandor
-        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Skywalker Rey
-        23-05-2020 16:53:34 : Skywalker Rey a été ajouté au réseau de collègues de Salé Sandor
-        23-05-2020 16:53:34 : Salé Sandor a été ajouté au réseau de collègues de Mua Sissy
-        23-05-2020 16:53:34 : Mua Sissy a été ajouté au réseau de collègues de Salé Sandor
-    23-05-2020 16:53:38 : Connexion du compte 21 - Salé  Sandor - 48555 - dkd@ell.com
-    23-05-2020 16:53:41 : Déconnexion du compte 21 - Salé  Sandor - 48555 - dkd@ell.com
-23-05-2020 16:53:41 : Fermeture de l'application 
+24-05-2020 18:43:08 : Ouverture de l'application 
+25-05-2020 22:10:59 : Ouverture de l'application 
+    25-05-2020 22:11:43 : Création de l'entreprise 12 - Instagram - 98961 - contact@instagram.fr
+    25-05-2020 22:11:49 : Connexion de l'entreprise 12 - Instagram - 98961 - contact@instagram.fr
+        25-05-2020 22:13:45 : Création du poste 11 - community manager - 12 - | reseaux sociaux | bureautique | humour | informatique | photographie | 
+        25-05-2020 22:14:37 : Création du poste 12 - influenceuse - 12 - | lifestyle | danse | sport | 
+        25-05-2020 22:15:01 : Instagram a fait une recherche de personne par compétence
+            25-05-2020 22:15:01 : Mouse Minnie est apparu dans le résultat de la recherche
+            25-05-2020 22:15:01 : Mua Sissy est apparu dans le résultat de la recherche
+        25-05-2020 22:15:13 : Instagram a fait une recherche de personne par compétence et code postal
+            25-05-2020 22:15:13 : La recherche n'a pas donné de résultat
+    25-05-2020 22:15:19 : Déconnexion de l'entreprise 12 - Instagram - 98961 - contact@instagram.fr
+25-05-2020 22:15:26 : Fermeture de l'application 
+25-05-2020 22:15:53 : Ouverture de l'application 
+    25-05-2020 22:16:17 : Connexion du compte 2 - Mouse  Minnie - 77700 - minnie@mickeyville.com
+        25-05-2020 22:16:29 : Mouse Minnie a rejoint l'entreprise Instagram
+        25-05-2020 22:17:09 : Mouse Minnie a modifié son code postal (77700 -> 13390)
+        25-05-2020 22:17:39 : Mouse Minnie a modifié son adresse mail (minnie@mickeyville.com -> minnie@minnieville.com)
+        25-05-2020 22:17:57 : Mouse Minnie a ajouté une compétence à son profil (influenceuse)
+        25-05-2020 22:18:21 : Lourson Winnie a été ajouté au réseau de collègues de Mouse Minnie
+        25-05-2020 22:18:35 : Mouse Minnie a supprimé Duck Daisy de son réseau de collègue
+    25-05-2020 22:18:42 : Déconnexion du compte 2 - Mouse  Minnie - 13390 - minnie@minnieville.com
+    25-05-2020 22:18:57 : Connexion du compte 17 - Mua  Sissy - 98000 - fitgens@houuh.fr
+        25-05-2020 22:19:08 : Mua Sissy a fait une recherche de poste par compétence
+            25-05-2020 22:19:08 : Mascotte Mickey pourvu par Disney est apparu dans le résultat de la recherche
+            25-05-2020 22:19:08 : Professeur de sport pourvu par Decathlon est apparu dans le résultat de la recherche
+            25-05-2020 22:19:08 : influenceuse pourvu par Instagram est apparu dans le résultat de la recherche
+        25-05-2020 22:19:34 : Mua Sissy a fait une recherche de poste par compétence et code postal
+            25-05-2020 22:19:34 : La recherche n'a pas donné de résultat
+        25-05-2020 22:19:58 : Mua Sissy a rejoint l'entreprise Instagram
+        25-05-2020 22:19:58 : Mua Sissy a été ajouté au réseau de collègues de Mouse Minnie
+        25-05-2020 22:19:58 : Mouse Minnie a été ajouté au réseau de collègues de Mua Sissy
+        25-05-2020 22:20:13 : Mua Sissy a fait une recherche de collègue par entreprise (Disney)
+            25-05-2020 22:20:13 : La recherche n'a pas donné de résultat
+        25-05-2020 22:20:27 : Mua Sissy a fait une recherche de collègue par entreprise (Instagram)
+            25-05-2020 22:20:27 : Mouse Minnie est apparu dans le résultat de la recherche
+        25-05-2020 22:20:39 : Mua Sissy a fait une recherche de collègue par compétence
+            25-05-2020 22:20:39 : Mouse Minnie est apparu dans le résultat de la recherche
+    25-05-2020 22:21:05 : Déconnexion du compte 17 - Mua  Sissy - 98000 - fitgens@houuh.fr
+25-05-2020 22:21:05 : Fermeture de l'application 
+25-05-2020 22:21:09 : Ouverture de l'application 
+    25-05-2020 22:23:00 : Création du compte 20 - Pan Peter - 10487 - enfantsperdu@clochette.ri
+        25-05-2020 22:23:00 : Pan Peter a été ajouté au réseau de collègues de Mouse Mickey
+        25-05-2020 22:23:00 : Mouse Mickey a été ajouté au réseau de collègues de Pan Peter
+        25-05-2020 22:23:00 : Pan Peter a été ajouté au réseau de collègues de Duck Donald
+        25-05-2020 22:23:00 : Duck Donald a été ajouté au réseau de collègues de Pan Peter
+        25-05-2020 22:23:00 : Pan Peter a été ajouté au réseau de collègues de Duck Daisy
+        25-05-2020 22:23:00 : Duck Daisy a été ajouté au réseau de collègues de Pan Peter
+        25-05-2020 22:23:00 : Pan Peter a été ajouté au réseau de collègues de Dingo Tigrou
+    25-05-2020 22:23:14 : Connexion du compte 20 - Pan  Peter - 10487 - enfantsperdu@clochette.ri
+        25-05-2020 22:23:36 : Dumbledore Albus a été ajouté au réseau de collègues de Pan Peter
+        25-05-2020 22:23:48 : Pan Peter a fait une recherche de collègue par compétence
+            25-05-2020 22:23:48 : Mouse Mickey est apparu dans le résultat de la recherche
+            25-05-2020 22:23:48 : Duck Donald est apparu dans le résultat de la recherche
+            25-05-2020 22:23:48 : Duck Daisy est apparu dans le résultat de la recherche
+        25-05-2020 22:24:02 : Pan Peter a fait une recherche de poste par compétence
+            25-05-2020 22:24:02 : Mascotte Mickey pourvu par Disney est apparu dans le résultat de la recherche
+            25-05-2020 22:24:02 : Professeur de sport pourvu par Decathlon est apparu dans le résultat de la recherche
+            25-05-2020 22:24:02 : influenceuse pourvu par Instagram est apparu dans le résultat de la recherche
+        25-05-2020 22:24:17 : Pan Peter quitte l'entreprise Disney
+        25-05-2020 22:24:37 : Pan Peter a rejoint l'entreprise Poudlard
+        25-05-2020 22:24:37 : Pan Peter a été ajouté au réseau de collègues de Delaforet Mathieu
+        25-05-2020 22:24:37 : Delaforet Mathieu a été ajouté au réseau de collègues de Pan Peter
+        25-05-2020 22:24:37 : Pan Peter a été ajouté au réseau de collègues de Dumbledore Albus
+        25-05-2020 22:24:37 : Pan Peter a été ajouté au réseau de collègues de McGonagall Minerva
+        25-05-2020 22:24:37 : McGonagall Minerva a été ajouté au réseau de collègues de Pan Peter
+        25-05-2020 22:24:37 : Pan Peter a été ajouté au réseau de collègues de Rogue Severus
+        25-05-2020 22:24:37 : Rogue Severus a été ajouté au réseau de collègues de Pan Peter
+            25-05-2020 22:24:51 : Pan Peter a été retiré du réseau de collègues de Mouse Mickey
+            25-05-2020 22:24:51 : Pan Peter a été retiré du réseau de collègues de Duck Donald
+            25-05-2020 22:24:51 : Pan Peter a été retiré du réseau de collègues de Duck Daisy
+            25-05-2020 22:24:51 : Pan Peter a été retiré du réseau de collègues de Dingo Tigrou
+            25-05-2020 22:24:51 : Pan Peter a été retiré du réseau de collègues de Delaforet Mathieu
+            25-05-2020 22:24:51 : Pan Peter a été retiré du réseau de collègues de Dumbledore Albus
+            25-05-2020 22:24:51 : Pan Peter a été retiré du réseau de collègues de McGonagall Minerva
+            25-05-2020 22:24:51 : Pan Peter a été retiré du réseau de collègues de Rogue Severus
+        25-05-2020 22:24:51 : Suppression du profil  20 - Pan Peter - 10487 - enfantsperdu@clochette.ri
+25-05-2020 22:25:03 : Fermeture de l'application 
