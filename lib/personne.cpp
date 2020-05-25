@@ -934,6 +934,7 @@ int AfficherNonCollegues(personne* pe, groupePersonnes* gPe)
 //       si ils n'en faisaitent pas déjà partie
 void ColleguesAutomatiques(groupePersonnes* gPe, personne* pe, int indexE)
 {
+
     // On parcourt le réseau de personnes
     // Pour chaque personne :
     // Si ce n'est pas la personne qui vient de rejoindre l'entreprise
@@ -946,38 +947,47 @@ void ColleguesAutomatiques(groupePersonnes* gPe, personne* pe, int indexE)
     // Si cette personne est dans le réseau de collègue de la nouvelle personne, alors on l'ajoute à son réseau
     // Cela permet à la création d'un profil, d'ajouter automatiquement tous les collègues
 
-    node *tmp = gPe->personnes ;
-    personne *personneCourante = (personne*)tmp->data ;
-    while (personneCourante!= NULL && tmp != NULL)
+    // Attention, si l'index de l'entreprise de la personne est -1, elle n'a pas rejoint d'entreprise, donc on a rien à faire
+    if(pe->entreprise != -1)
     {
-        if(personneCourante->index != pe->index)
+        node *tmp = gPe->personnes ;
+        personne *personneCourante = (personne*)tmp->data ;
+       
+        while (personneCourante!= NULL && tmp != NULL)
         {
-            if(personneCourante->entreprise == pe->entreprise)
+            if(personneCourante->index != pe->index)
             {
-                if(!ExisteCollegue(personneCourante,pe->index))
+                if(personneCourante->entreprise == pe->entreprise)
                 {
-                    ajouter_collegue(personneCourante->index,gPe,pe->index) ;
-                    journal_PersonneAjouter_Collegue(personneCourante,pe) ;
+                    if(!ExisteCollegue(personneCourante,pe->index))
+                    {
+                        ajouter_collegue(personneCourante->index,gPe,pe->index) ;
+                        journal_PersonneAjouter_Collegue(personneCourante,pe) ;
+                    }
+                    if(!ExisteCollegue(pe,personneCourante->index))
+                    {
+                        ajouter_collegue(pe->index,gPe,personneCourante->index) ;
+                        journal_PersonneAjouter_Collegue(pe,personneCourante) ;
+                    }
                 }
-                if(!ExisteCollegue(pe,personneCourante->index))
+                if(personneCourante->entreprise != pe->entreprise)
                 {
-                    ajouter_collegue(pe->index,gPe,personneCourante->index) ;
-                    journal_PersonneAjouter_Collegue(pe,personneCourante) ;
+                    if(ExisteCollegue(pe,personneCourante->index)) 
+                    {
+                        if(!ExisteCollegue(personneCourante,pe->index))
+                        {
+                            ajouter_collegue(personneCourante->index,gPe,pe->index) ;
+                            journal_PersonneAjouter_Collegue(personneCourante,pe) ;
+                        }
+                        
+                    }
                 }
             }
-            if(personneCourante->entreprise != pe->entreprise)
-            {
-                if(ExisteCollegue(pe,personneCourante->index)) 
-                {
-                    ajouter_collegue(personneCourante->index,gPe,pe->index) ;
-                    journal_PersonneAjouter_Collegue(personneCourante,pe) ;
-                }
-            }
+
+
+            // on passe à la personne suivante
+            tmp = tmp->next ;
+            if(tmp != NULL) personneCourante = (personne*)tmp->data ;
         }
-
-
-        // on passe à la personne suivante
-        tmp = tmp->next ;
-        if(tmp != NULL) personneCourante = (personne*)tmp->data ;
     }
 }

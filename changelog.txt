@@ -63,6 +63,9 @@
 
 [CORRIGÉ]   -   Bug quand on supprime un personne, elle est mal supprimé du réseau de collègue de chaque personne (parfois elle est supprimé, parfois remplacé par un autre collègue)
 
+[CORRIGÉ]   -   Si une personne qui n'a pas d'ancien collègue essayes de supprimer un collègue, elle sera bloqué dans l'application dans le menu supprimer collegue car elle ne pourra entrer aucun index valide
+
+[CORRIGÉ]   -   Quand une personne créée son profil, si elle est chercheur d'emploi, tous les chercheurs d'emploi seront ajoutés à son réseau de collègues
 
 ==========================================================================================================================================================================
 ||  Idées de choses à ajouter / modifier (si vous en faites une, mettez [FAIT] ou [CORRIGÉ] devant le tiret correspondant)
