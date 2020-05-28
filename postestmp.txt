@@ -1,0 +1,11 @@
+id,titre,entreprise,competences
+1,Acteur,1,comedie;gag
+2,Developpeur,2,c;sql;python
+3,Briocheur,5,patisserie
+4,Mascotte Mickey,1,danse;sport
+5,Concierge,6,autoritaire;determine
+6,Professeur de defences contre les forces du mal,6,magie;defencesclfdm
+7,Chanteur,1,chant
+8,Professeur de sport,11,sport
+9,Entraineur,9,jedi
+10,Developpeur,2,informatique;c;python;java;html

@@ -5,6 +5,7 @@
 #include <assert.h>
 #include <malloc.h>
 #include <string.h>
+#include <fstream>
 using namespace std ;
 #include "personne.h"
 
@@ -52,7 +53,8 @@ groupePersonnes* g_open(FILE *db)
             amis[i][j] = ami;
             j++;
         }
-        fscanf(db, ",%d\n", &p->entreprise);
+        fscanf(db, ",%d,", &p->entreprise);
+        fscanf(db, "%lud\n", &p->mdp);
         l_append(&gPe->personnes, l_make_node((personne *)p)); //Ca n'a pas l'air de linker
         i++;
     }
@@ -88,75 +90,129 @@ groupePersonnes* g_open(FILE *db)
 // But : Mettre à jour le fichier employes.csv à partir du groupe passé en paramètres
 void g_ecrire(groupePersonnes* gPe)
 {
-    char tampon[100]; 
-    FILE *db = fopen("employes.csv", "r");
-    fscanf(db, "%s\n", tampon);
-    fclose(db);
-    FILE *tmp = fopen("employes.csv", "w");
-    fputs(tampon, tmp);
-    fputc('\n', tmp);
-    node *temp = gPe->personnes;
-    personne*tmpami;
-    node*rappel = gPe->personnes;
-    int i = 1, consecutif = 0;
+    // On ouvre en écriture le fichier tmp.csv (comme il n'existe pas, il est créé)
+    ofstream nouveauCSV("tmp.csv") ;
+    if(nouveauCSV)
+    {
+        // On ouvre en lecture le fichier employes.csv
+        ifstream ancienCSV("employes.csv") ;
+        if(ancienCSV)
+        {
+            // On récupère la première ligne et on l'écrit dans le nouveau fichier
+            string ligne ;
+            getline(ancienCSV, ligne) ;
+            nouveauCSV << ligne << endl ;
 
-    while(temp != NULL){
-        tmpami = (personne*)(temp->data);
-        //Exception si numéros pas consécutifs
-        if(tmpami->index != i){
-            consecutif = 0;
-            while(temp != NULL && tmpami->index != i){
-                temp = temp->next;
-                if (temp != NULL) tmpami = (personne*)(temp->data);
+            // Maintenant il faut lire le groupe et écrire les informations ligne par ligne
+            node *tmp = gPe->personnes ;
+            personne *pe = NULL ;
+            while (tmp != NULL)
+            {
+                pe = (personne*)(tmp->data) ;
+                //id,nom,prenom,mail,code-postal,competences,collegues,entreprise,mot_de_passe
+                nouveauCSV << pe->index << "," << pe->nom << "," << pe->prenom << "," << pe->courriel << "," << pe->adresse << "," ;
+                if(pe->competence[0][0] != '\0') nouveauCSV << pe->competence[0] ;
+                for (int i = 1; i < MAX_COMPETENCES; i++)
+                {
+                    if(pe->competence[i][0] != '\0') nouveauCSV << ";" << pe->competence[i] ;
+                }
+                nouveauCSV << "," ;
+                if(pe->amis[0] != NULL) nouveauCSV << pe->amis[0]->index ;
+                for (int i = 1; i < MAX_AMIS; i++)
+                {
+                    if(pe->amis[i] != NULL) nouveauCSV << ";" << pe->amis[i]->index ;
+                }
+                nouveauCSV << "," << pe->entreprise << "," << pe->mdp << endl ;
+                tmp = tmp->next ;
             }
-            if (temp != NULL) consecutif = 1;
-            else {
-                temp = rappel;
-                tmpami = (personne*)(temp->data);
-            }
+            nouveauCSV.close() ;
+            ancienCSV.close() ;
+
+            // Il ne reste plus qu'à supprimer l'ancien employes.csv et renommer tmp.csv 
+            remove("emplotes.csv") ;
+            rename("tmp.csv", "employes.csv") ;
         }
-        fprintf(tmp, "%d,", tmpami->index);
-        fputs(tmpami->nom, tmp);
-        fputc(',', tmp);
-        fputs(tmpami->prenom, tmp);
-        fputc(',', tmp);
-        fputs(tmpami->courriel, tmp);
-        fputc(',', tmp);
-        fprintf(tmp, "%d,", tmpami->adresse);
-        int virgule = 0;
-        for (int x = 0; x < MAX_COMPETENCES ; x++){
-            if (tmpami->competence[x][0] != '\0' && virgule == 0) {
-                fputs(tmpami->competence[x], tmp);
-                virgule = 1;
-            }
-            else if (tmpami->competence[x][0] != '\0' && virgule == 1) {
-                fputc(';', tmp);
-                fputs(tmpami->competence[x], tmp);
-            }
+        else
+        {
+            cout << "ERREUR : Impossible d'ouvrir employes.csv" << endl ;
         }
-        fputc(',', tmp);
-        virgule = 0;
-        for (int j = 0 ; j < MAX_AMIS ; j++){
-            if (tmpami->amis[j] != NULL){
-                    if (virgule == 0 ){
-                         fprintf(tmp, "%d", tmpami->amis[j]->index);
-                         virgule = 1;
-                    }
-                    else if (virgule == 1) fprintf(tmp, ";%d", tmpami->amis[j]->index);
-                
-            }
-        }
-        fprintf(tmp, ",%d", tmpami->entreprise);
-        fputc('\n', tmp);
-        if (consecutif == 1) temp = rappel;
-        else {
-            temp = temp->next;
-            rappel = rappel->next;
-        }
-        i++;
     }
-    fclose(tmp);
-    remove("tmp.txt");
+    else
+    {
+        cout << "ERREUR : Impossible d'ouvrir tmp.csv" << endl ;
+    }
+
+
+    // char tampon[100]; 
+    // FILE *db = fopen("employes.csv", "r");
+    // fscanf(db, "%s\n", tampon);
+    // fclose(db);
+    // FILE *tmp = fopen("employes.csv", "w");
+    // fputs(tampon, tmp);
+    // fputc('\n', tmp);
+    // node *temp = gPe->personnes;
+    // personne*tmpami;
+    // node*rappel = gPe->personnes;
+    // int i = 1, consecutif = 0;
+
+    // while(temp != NULL){
+    //     tmpami = (personne*)(temp->data);
+    //     //Exception si numéros pas consécutifs
+    //     if(tmpami->index != i){
+    //         consecutif = 0;
+    //         while(temp != NULL && tmpami->index != i){
+    //             temp = temp->next;
+    //             if (temp != NULL) tmpami = (personne*)(temp->data);
+    //         }
+    //         if (temp != NULL) consecutif = 1;
+    //         else {
+    //             temp = rappel;
+    //             tmpami = (personne*)(temp->data);
+    //         }
+    //     }
+    //     fprintf(tmp, "%d,", tmpami->index);
+    //     fputs(tmpami->nom, tmp);
+    //     fputc(',', tmp);
+    //     fputs(tmpami->prenom, tmp);
+    //     fputc(',', tmp);
+    //     fputs(tmpami->courriel, tmp);
+    //     fputc(',', tmp);
+    //     fprintf(tmp, "%d,", tmpami->adresse);
+    //     int virgule = 0;
+    //     for (int x = 0; x < MAX_COMPETENCES ; x++){
+    //         if (tmpami->competence[x][0] != '\0' && virgule == 0) {
+    //             fputs(tmpami->competence[x], tmp);
+    //             virgule = 1;
+    //         }
+    //         else if (tmpami->competence[x][0] != '\0' && virgule == 1) {
+    //             fputc(';', tmp);
+    //             fputs(tmpami->competence[x], tmp);
+    //         }
+    //     }
+    //     fputc(',', tmp);
+    //     virgule = 0;
+    //     for (int j = 0 ; j < MAX_AMIS ; j++){
+    //         if (tmpami->amis[j] != NULL){
+    //                 if (virgule == 0 ){
+    //                      fprintf(tmp, "%d", tmpami->amis[j]->index);
+    //                      virgule = 1;
+    //                 }
+    //                 else if (virgule == 1) fprintf(tmp, ";%d", tmpami->amis[j]->index);
+                
+    //         }
+    //     }
+    //     fprintf(tmp, ",%d", tmpami->entreprise);
+    //     fprintf(tmp,",%lu", tmpami->mdp) ;
+    //     fputc('\n', tmp);
+    //     if (consecutif == 1) temp = rappel;
+    //     else {
+    //         temp = temp->next;
+    //         rappel = rappel->next;
+    //     }
+    //     i++;
+    // }
+    // fclose(tmp);
+    // remove("tmp.txt");
 }
 
 // But : Déterminer la taille d'un groupe de type : groupePersonnes
@@ -551,7 +607,7 @@ void AfficherAmis(personne* pe)
 }
 
 // But : Ajouter une personne à un groupe de type groupePersonnes au premier indice disponible
-void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[MAX_COMPETENCES][128], int collegue[MAX_AMIS], int entreprise, groupePersonnes *gPe)
+void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[MAX_COMPETENCES][128], int collegue[MAX_AMIS], int entreprise, groupePersonnes *gPe, size_t mdphache)
 { 
     int i, j, index; char poub[128];
 
@@ -575,6 +631,7 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
     strcpy(p->nom, nom);
     strcpy(p->prenom, prenom);
     strcpy(p->courriel, courriel);
+    p->mdp = mdphache ;
     p->adresse = adresse;
     p->entreprise = entreprise;
     for (int i = 0; i < MAX_COMPETENCES; i++){
@@ -618,7 +675,6 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
     }
     journal_CreationPersonne(p) ;
     g_ecrire(gPe);
-    return;
 }
 
 // But : Supprimer une personne du groupe passé en paramètres et du fichier employes.csv

@@ -26,12 +26,13 @@ groupeEntreprises* g_openEntreprisesCSV(FILE *db)
      - un numéro correspondant à l'index de l'entreprise dans le fichier puis une virgule
      - une chaine de caractères correspondant au nom de l'entreprise puis une virgule
      - un numéro à 5 chiffres correspondant au code postale de l'entreprise puis une virgule
-     - une chaine de caractères correspondant à l'adresse mail de l'entreprise puis un retour à la ligne
+     - une chaine de caractères correspondant à l'adresse mail de l'entreprise puis une virgule
+     - un size_t correspondant au mot de passe crypté de l'entreprise puis un retour à la ligne
 
      Pour chaque ligne lue, on ajoute au groupe l'entreprise contenant les informations lues
      Si ces conditions ne sont pas vérifiées, cela signifie que le fichier a été lu en entier
      On retourne alors le groupe créé */
-    while(fscanf(db, "%d,%128[^,],%d,%128[^\n]\n", &data.index, data.nom, &data.code_postal, data.courriel) == 4)
+    while(fscanf(db, "%d,%128[^,],%d,%128[^,],%lud\n", &data.index, data.nom, &data.code_postal, data.courriel, &data.mdp) == 5)
     {
         entreprise *e = (entreprise*)malloc(sizeof(entreprise));
         *e = data;
@@ -80,7 +81,7 @@ void AfficherEntreprises(groupeEntreprises* g)
 }
 
 // But : Ajouter une entreprise à un groupe de type groupeEntreprises
-void AjoutEntreprise(groupeEntreprises *gE, char nom[40], int code_postal, char courriel[128])
+void AjoutEntreprise(groupeEntreprises *gE, char nom[40], int code_postal, char courriel[128], size_t mdphache)
 {
     // On récupère l'index de la dernière entreprise du groupe
     int index(0) ;
@@ -93,6 +94,7 @@ void AjoutEntreprise(groupeEntreprises *gE, char nom[40], int code_postal, char 
     strcpy(nouveau->nom, nom) ;
     nouveau->code_postal = code_postal;
     strcpy(nouveau->courriel, courriel) ;
+    nouveau->mdp = mdphache ;
 
     journal_CreationEntreprise(nouveau) ;
 
@@ -101,7 +103,7 @@ void AjoutEntreprise(groupeEntreprises *gE, char nom[40], int code_postal, char 
 
     // Ajout de la nouvelle entreprise dans le fichier CSV
     ofstream fichier("entreprises.csv", ios::app) ;
-    fichier << index+1 << "," << nom << "," << code_postal << "," << courriel << endl ;
+    fichier << index+1 << "," << nom << "," << code_postal << "," << courriel << "," << mdphache << endl ;
     fichier.close() ;
 }
 
@@ -206,7 +208,7 @@ void g_ecrireEntreprise(groupeEntreprises* gE)
             while (tmp != NULL)
             {
                 e = (entreprise*)(tmp->data) ;
-                nouveauCSV << e->index << "," << e->nom << "," << e->code_postal << "," << e->courriel << endl ;
+                nouveauCSV << e->index << "," << e->nom << "," << e->code_postal << "," << e->courriel << "," << e->mdp << endl ;
                 tmp = tmp->next ;
             }
             nouveauCSV.close() ;
