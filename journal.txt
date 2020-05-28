@@ -2020,3 +2020,831 @@
         28-05-2020 18:56:48 : Suppression du profil  18 - Inshape Tibo - 81000 - daamlesgens@whey
         28-05-2020 18:56:48 : Suppression du profil  19 - Fitcat Juju - 81000 - etcafaitbimbamboum@pshitvroum
     28-05-2020 18:56:48 : Création du compte 6 - Delmas Albert - 78969 - albert.delmas@gmail.fr
+    28-05-2020 19:02:13 : Création de l'entreprise 12 - Carglass - 54710 - contact@carglass.com
+            28-05-2020 19:02:13 : Mouse Minnie est apparu dans le résultat de la recherche
+            28-05-2020 19:02:13 : Lourson Winnie est apparu dans le résultat de la recherche
+            28-05-2020 19:02:13 : Mua Sissy est apparu dans le résultat de la recherche
+            28-05-2020 19:02:13 : Mouse Minnie est apparu dans le résultat de la recherche
+            28-05-2020 19:02:13 : Mua Sissy est apparu dans le résultat de la recherche
+            28-05-2020 19:02:13 : La recherche n'a pas donné de résultat
+        28-05-2020 19:02:13 : Mouse Mickey quitte l'entreprise Disney
+        28-05-2020 19:02:13 : Duck Donald quitte l'entreprise Disney
+        28-05-2020 19:02:13 : Duck Daisy quitte l'entreprise Disney
+        28-05-2020 19:02:13 : Suppression de l'entreprise 7 - Nintendo - 45655 - contact@nintendo.jp
+        28-05-2020 19:02:13 : Suppression de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        28-05-2020 19:02:13 : Suppression de l'entreprise 12 - Carglass - 54710 - contact@carglass.com
+        28-05-2020 19:02:13 : Suppression de l'entreprise 11 - Decathlon - 96521 - contact@decathlon.com
+        28-05-2020 19:02:15 : Suppression du poste 1 - Acteur - 1 - | comedie | gag | 
+        28-05-2020 19:02:15 : Suppression du poste 2 - Developpeur - 2 - | c | sql | python | 
+        28-05-2020 19:02:15 : Suppression du poste 3 - Briocheur - 5 - | patisserie | 
+        28-05-2020 19:02:15 : Suppression du poste 4 - Mascotte Mickey - 1 - | danse | sport | 
+        28-05-2020 19:02:15 : Suppression du poste 5 - Concierge - 6 - | autoritaire | determine | 
+        28-05-2020 19:02:15 : Suppression du poste 6 - Professeur de defences contre les forces du mal - 6 - | magie | defencesclfdm | 
+        28-05-2020 19:02:15 : Suppression du poste 7 - Chanteur - 1 - | chant | 
+        28-05-2020 19:02:15 : Suppression du poste 8 - Professeur de sport - 11 - | sport | 
+        28-05-2020 19:02:15 : Suppression du poste 9 - Entraineur - 9 - | jedi | 
+        28-05-2020 19:02:15 : Suppression du poste 10 - Developpeur - 2 - | informatique | c | python | java | html | 
+        28-05-2020 19:02:15 : Suppression de l'entreprise 2 - Google - 75009 - emplois@google.com
+        28-05-2020 19:02:15 : Suppression de l'entreprise 3 - Amazon - 65058 - contact@amazon.com
+        28-05-2020 19:02:15 : Suppression de l'entreprise 4 - Apple - 54410 - contact@apple.com
+        28-05-2020 19:02:15 : Suppression de l'entreprise 5 - Doowap - 42754 - bonnebrioche@doowap.fr
+        28-05-2020 19:02:15 : Suppression de l'entreprise 6 - Poudlard - 11499 - nimbusdeuxmille@patronus.com
+        28-05-2020 19:02:15 : Suppression de l'entreprise 8 - Netflix - 77548 - netflixandchill@tvpopcorn.com
+        28-05-2020 19:02:15 : Suppression de l'entreprise 9 - LucasFilm - 44485 - inagalaxy@farfaraway.us
+        28-05-2020 19:02:15 : Suppression de l'entreprise 10 - La Grande Recree - 24120 - jouetspar@millier.fr
+            28-05-2020 19:02:15 : Mouse Mickey a été retiré du réseau de collègues de Mouse Minnie
+            28-05-2020 19:02:15 : Mouse Mickey a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:02:15 : Mouse Mickey a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:02:15 : Mouse Mickey a été retiré du réseau de collègues de Lourson Winnie
+            28-05-2020 19:02:15 : Mouse Mickey a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:15 : Suppression du profil  1 - Mouse Mickey - 77700 - mickey@mickeyville.com
+            28-05-2020 19:02:15 : Mouse Minnie a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:02:15 : Mouse Minnie a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:02:15 : Mouse Minnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:15 : Suppression du profil  2 - Mouse Minnie - 77700 - minnie@mickeyville.com
+            28-05-2020 19:02:15 : Duck Donald a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:02:15 : Duck Donald a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:15 : Suppression du profil  3 - Duck Donald - 77730 - donald@canardville.com
+            28-05-2020 19:02:15 : Duck Daisy a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:15 : Suppression du profil  4 - Duck Daisy - 77730 - daisy@canardville.com
+            28-05-2020 19:02:15 : Lourson Winnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:15 : Suppression du profil  5 - Lourson Winnie - 77752 - potdemiel@miam.com
+            28-05-2020 19:02:15 : Dingo Tigrou a été retiré du réseau de collègues de Brioche Theo
+            28-05-2020 19:02:15 : Dingo Tigrou a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:02:15 : Dingo Tigrou a été retiré du réseau de collègues de Delaforet Mathieu
+            28-05-2020 19:02:15 : Dingo Tigrou a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:02:15 : Dingo Tigrou a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:02:15 : Dingo Tigrou a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:02:15 : Dingo Tigrou a été retiré du réseau de collègues de Argus Rusard
+            28-05-2020 19:02:15 : Dingo Tigrou a été retiré du réseau de collègues de Dark Vador
+            28-05-2020 19:02:15 : Dingo Tigrou a été retiré du réseau de collègues de Kenobi Obiwan
+            28-05-2020 19:02:15 : Dingo Tigrou a été retiré du réseau de collègues de Skywalker Rey
+            28-05-2020 19:02:15 : Dingo Tigrou a été retiré du réseau de collègues de Mua Sissy
+            28-05-2020 19:02:15 : Dingo Tigrou a été retiré du réseau de collègues de Inshape Tibo
+            28-05-2020 19:02:15 : Dingo Tigrou a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:02:15 : Suppression du profil  6 - Dingo Tigrou - 77752 - tidoublegreou@youpi.com
+            28-05-2020 19:02:15 : Brioche Theo a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:02:15 : Brioche Theo a été retiré du réseau de collègues de Delaforet Mathieu
+        28-05-2020 19:02:15 : Suppression du profil  7 - Brioche Theo - 13120 - sam.joli@coeur.fr
+        28-05-2020 19:02:15 : Suppression du profil  8 - Scott Monon - 38000 - monon@cristalclear.com
+            28-05-2020 19:02:15 : Delaforet Mathieu a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:02:15 : Delaforet Mathieu a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:02:15 : Delaforet Mathieu a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:02:15 : Suppression du profil  9 - Delaforet Mathieu - 13390 - pasfred@lambda.com
+            28-05-2020 19:02:15 : Dumbledore Albus a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:02:15 : Dumbledore Albus a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:02:15 : Suppression du profil  10 - Dumbledore Albus - 93400 - percivalwulfric@brian.uk
+            28-05-2020 19:02:15 : McGonagall Minerva a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:02:15 : McGonagall Minerva a été retiré du réseau de collègues de Argus Rusard
+        28-05-2020 19:02:15 : Suppression du profil  11 - McGonagall Minerva - 93400 - piertotum@locomotor.uk
+        28-05-2020 19:02:15 : Suppression du profil  12 - Rogue Severus - 93400 - lilyevans@always.uk
+        28-05-2020 19:02:15 : Suppression du profil  13 - Argus Rusard - 93400 - cracmol@missteigne.uk
+            28-05-2020 19:02:15 : Dark Vador a été retiré du réseau de collègues de Kenobi Obiwan
+        28-05-2020 19:02:15 : Suppression du profil  14 - Dark Vador - 66650 - jesuistonpere@obscur.us
+        28-05-2020 19:02:15 : Suppression du profil  15 - Kenobi Obiwan - 66655 - monseulespoir@jedi.us
+        28-05-2020 19:02:15 : Suppression du profil  16 - Skywalker Rey - 66655 - sithoujedi@kyloren.us
+        28-05-2020 19:02:15 : Suppression du profil  17 - Mua Sissy - 98000 - fitgens@houuh.fr
+            28-05-2020 19:02:15 : Inshape Tibo a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:02:15 : Suppression du profil  18 - Inshape Tibo - 81000 - daamlesgens@whey
+        28-05-2020 19:02:15 : Suppression du profil  19 - Fitcat Juju - 81000 - etcafaitbimbamboum@pshitvroum
+        28-05-2020 19:02:16 : Création du poste 11 - Boulanger - 5 - | ponctuel | patisserie | cuisine | 
+        28-05-2020 19:02:16 : Suppression du poste 8 - Professeur de sport - 11 - | sport | 
+        28-05-2020 19:02:16 : Suppression du poste 1 - Acteur - 1 - | comedie | gag | 
+        28-05-2020 19:02:16 : Suppression du poste 4 - Mascotte Mickey - 1 - | danse | sport | 
+        28-05-2020 19:02:16 : Suppression du poste 7 - Chanteur - 1 - | chant | 
+        28-05-2020 19:02:16 : Suppression du poste 2 - Developpeur - 2 - | c | sql | python | 
+        28-05-2020 19:02:16 : Suppression du poste 3 - Briocheur - 5 - | patisserie | 
+        28-05-2020 19:02:16 : Suppression du poste 5 - Concierge - 6 - | autoritaire | determine | 
+        28-05-2020 19:02:16 : Suppression du poste 6 - Professeur de defences contre les forces du mal - 6 - | magie | defencesclfdm | 
+        28-05-2020 19:02:16 : Suppression du poste 9 - Entraineur - 9 - | jedi | 
+        28-05-2020 19:02:16 : Suppression du poste 10 - Developpeur - 2 - | informatique | c | python | java | html | 
+        28-05-2020 19:02:16 : Suppression du poste 11 - Boulanger - 5 - | ponctuel | patisserie | cuisine | 
+        28-05-2020 19:02:16 : Suppression de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        28-05-2020 19:02:16 : Suppression de l'entreprise 2 - Google - 75009 - emplois@google.com
+        28-05-2020 19:02:16 : Suppression de l'entreprise 3 - Amazon - 65058 - contact@amazon.com
+        28-05-2020 19:02:16 : Suppression de l'entreprise 4 - Apple - 54410 - contact@apple.com
+        28-05-2020 19:02:16 : Suppression de l'entreprise 5 - Doowap - 42754 - bonnebrioche@doowap.fr
+        28-05-2020 19:02:16 : Suppression de l'entreprise 6 - Poudlard - 11499 - nimbusdeuxmille@patronus.com
+        28-05-2020 19:02:16 : Suppression de l'entreprise 7 - Nintendo - 45655 - contact@nintendo.jp
+        28-05-2020 19:02:16 : Suppression de l'entreprise 8 - Netflix - 77548 - netflixandchill@tvpopcorn.com
+        28-05-2020 19:02:16 : Suppression de l'entreprise 9 - LucasFilm - 44485 - inagalaxy@farfaraway.us
+        28-05-2020 19:02:16 : Suppression de l'entreprise 10 - La Grande Recree - 24120 - jouetspar@millier.fr
+        28-05-2020 19:02:16 : Suppression de l'entreprise 11 - Decathlon - 96521 - contact@decathlon.com
+            28-05-2020 19:02:16 : Mouse Mickey a été retiré du réseau de collègues de Mouse Minnie
+            28-05-2020 19:02:16 : Mouse Mickey a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:02:16 : Mouse Mickey a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:02:16 : Mouse Mickey a été retiré du réseau de collègues de Lourson Winnie
+            28-05-2020 19:02:16 : Mouse Mickey a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:16 : Suppression du profil  1 - Mouse Mickey - 77700 - mickey@mickeyville.com
+            28-05-2020 19:02:16 : Mouse Minnie a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:02:16 : Mouse Minnie a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:02:16 : Mouse Minnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:16 : Suppression du profil  2 - Mouse Minnie - 77700 - minnie@mickeyville.com
+            28-05-2020 19:02:16 : Duck Donald a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:02:16 : Duck Donald a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:16 : Suppression du profil  3 - Duck Donald - 77730 - donald@canardville.com
+            28-05-2020 19:02:16 : Duck Daisy a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:16 : Suppression du profil  4 - Duck Daisy - 77730 - daisy@canardville.com
+            28-05-2020 19:02:16 : Lourson Winnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:16 : Suppression du profil  5 - Lourson Winnie - 77752 - potdemiel@miam.com
+            28-05-2020 19:02:16 : Dingo Tigrou a été retiré du réseau de collègues de Brioche Theo
+            28-05-2020 19:02:16 : Dingo Tigrou a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:02:16 : Dingo Tigrou a été retiré du réseau de collègues de Delaforet Mathieu
+            28-05-2020 19:02:16 : Dingo Tigrou a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:02:16 : Dingo Tigrou a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:02:16 : Dingo Tigrou a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:02:16 : Dingo Tigrou a été retiré du réseau de collègues de Argus Rusard
+            28-05-2020 19:02:16 : Dingo Tigrou a été retiré du réseau de collègues de Dark Vador
+            28-05-2020 19:02:16 : Dingo Tigrou a été retiré du réseau de collègues de Kenobi Obiwan
+            28-05-2020 19:02:16 : Dingo Tigrou a été retiré du réseau de collègues de Skywalker Rey
+            28-05-2020 19:02:16 : Dingo Tigrou a été retiré du réseau de collègues de Mua Sissy
+            28-05-2020 19:02:16 : Dingo Tigrou a été retiré du réseau de collègues de Inshape Tibo
+            28-05-2020 19:02:16 : Dingo Tigrou a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:02:16 : Suppression du profil  6 - Dingo Tigrou - 77752 - tidoublegreou@youpi.com
+            28-05-2020 19:02:16 : Brioche Theo a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:02:16 : Brioche Theo a été retiré du réseau de collègues de Delaforet Mathieu
+        28-05-2020 19:02:16 : Suppression du profil  7 - Brioche Theo - 13120 - sam.joli@coeur.fr
+        28-05-2020 19:02:16 : Suppression du profil  8 - Scott Monon - 38000 - monon@cristalclear.com
+            28-05-2020 19:02:16 : Delaforet Mathieu a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:02:16 : Delaforet Mathieu a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:02:16 : Delaforet Mathieu a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:02:16 : Suppression du profil  9 - Delaforet Mathieu - 13390 - pasfred@lambda.com
+            28-05-2020 19:02:16 : Dumbledore Albus a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:02:16 : Dumbledore Albus a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:02:16 : Suppression du profil  10 - Dumbledore Albus - 93400 - percivalwulfric@brian.uk
+            28-05-2020 19:02:16 : McGonagall Minerva a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:02:16 : McGonagall Minerva a été retiré du réseau de collègues de Argus Rusard
+        28-05-2020 19:02:16 : Suppression du profil  11 - McGonagall Minerva - 93400 - piertotum@locomotor.uk
+        28-05-2020 19:02:16 : Suppression du profil  12 - Rogue Severus - 93400 - lilyevans@always.uk
+        28-05-2020 19:02:16 : Suppression du profil  13 - Argus Rusard - 93400 - cracmol@missteigne.uk
+            28-05-2020 19:02:16 : Dark Vador a été retiré du réseau de collègues de Kenobi Obiwan
+        28-05-2020 19:02:16 : Suppression du profil  14 - Dark Vador - 66650 - jesuistonpere@obscur.us
+        28-05-2020 19:02:16 : Suppression du profil  15 - Kenobi Obiwan - 66655 - monseulespoir@jedi.us
+        28-05-2020 19:02:16 : Suppression du profil  16 - Skywalker Rey - 66655 - sithoujedi@kyloren.us
+        28-05-2020 19:02:16 : Suppression du profil  17 - Mua Sissy - 98000 - fitgens@houuh.fr
+            28-05-2020 19:02:16 : Inshape Tibo a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:02:16 : Suppression du profil  18 - Inshape Tibo - 81000 - daamlesgens@whey
+        28-05-2020 19:02:16 : Suppression du profil  19 - Fitcat Juju - 81000 - etcafaitbimbamboum@pshitvroum
+    28-05-2020 19:02:37 : Création du compte 6 - Delmas Albert - 78969 - albert.delmas@gmail.fr
+    28-05-2020 19:02:56 : Création de l'entreprise 12 - Carglass - 54710 - contact@carglass.com
+            28-05-2020 19:02:56 : Mouse Minnie est apparu dans le résultat de la recherche
+            28-05-2020 19:02:56 : Lourson Winnie est apparu dans le résultat de la recherche
+            28-05-2020 19:02:56 : Mua Sissy est apparu dans le résultat de la recherche
+            28-05-2020 19:02:56 : Mouse Minnie est apparu dans le résultat de la recherche
+            28-05-2020 19:02:56 : Mua Sissy est apparu dans le résultat de la recherche
+            28-05-2020 19:02:56 : La recherche n'a pas donné de résultat
+        28-05-2020 19:02:56 : Mouse Mickey quitte l'entreprise Disney
+        28-05-2020 19:02:56 : Duck Donald quitte l'entreprise Disney
+        28-05-2020 19:02:56 : Duck Daisy quitte l'entreprise Disney
+        28-05-2020 19:02:56 : Suppression de l'entreprise 7 - Nintendo - 45655 - contact@nintendo.jp
+        28-05-2020 19:02:56 : Suppression de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        28-05-2020 19:02:56 : Suppression de l'entreprise 12 - Carglass - 54710 - contact@carglass.com
+        28-05-2020 19:02:56 : Suppression de l'entreprise 11 - Decathlon - 96521 - contact@decathlon.com
+        28-05-2020 19:02:57 : Suppression du poste 1 - Acteur - 1 - | comedie | gag | 
+        28-05-2020 19:02:57 : Suppression du poste 2 - Developpeur - 2 - | c | sql | python | 
+        28-05-2020 19:02:57 : Suppression du poste 3 - Briocheur - 5 - | patisserie | 
+        28-05-2020 19:02:57 : Suppression du poste 4 - Mascotte Mickey - 1 - | danse | sport | 
+        28-05-2020 19:02:57 : Suppression du poste 5 - Concierge - 6 - | autoritaire | determine | 
+        28-05-2020 19:02:57 : Suppression du poste 6 - Professeur de defences contre les forces du mal - 6 - | magie | defencesclfdm | 
+        28-05-2020 19:02:57 : Suppression du poste 7 - Chanteur - 1 - | chant | 
+        28-05-2020 19:02:57 : Suppression du poste 8 - Professeur de sport - 11 - | sport | 
+        28-05-2020 19:02:57 : Suppression du poste 9 - Entraineur - 9 - | jedi | 
+        28-05-2020 19:02:57 : Suppression du poste 10 - Developpeur - 2 - | informatique | c | python | java | html | 
+        28-05-2020 19:02:57 : Suppression de l'entreprise 2 - Google - 75009 - emplois@google.com
+        28-05-2020 19:02:57 : Suppression de l'entreprise 3 - Amazon - 65058 - contact@amazon.com
+        28-05-2020 19:02:57 : Suppression de l'entreprise 4 - Apple - 54410 - contact@apple.com
+        28-05-2020 19:02:57 : Suppression de l'entreprise 5 - Doowap - 42754 - bonnebrioche@doowap.fr
+        28-05-2020 19:02:57 : Suppression de l'entreprise 6 - Poudlard - 11499 - nimbusdeuxmille@patronus.com
+        28-05-2020 19:02:57 : Suppression de l'entreprise 8 - Netflix - 77548 - netflixandchill@tvpopcorn.com
+        28-05-2020 19:02:57 : Suppression de l'entreprise 9 - LucasFilm - 44485 - inagalaxy@farfaraway.us
+        28-05-2020 19:02:57 : Suppression de l'entreprise 10 - La Grande Recree - 24120 - jouetspar@millier.fr
+            28-05-2020 19:02:57 : Mouse Mickey a été retiré du réseau de collègues de Mouse Minnie
+            28-05-2020 19:02:57 : Mouse Mickey a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:02:57 : Mouse Mickey a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:02:57 : Mouse Mickey a été retiré du réseau de collègues de Lourson Winnie
+            28-05-2020 19:02:57 : Mouse Mickey a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:57 : Suppression du profil  1 - Mouse Mickey - 77700 - mickey@mickeyville.com
+            28-05-2020 19:02:57 : Mouse Minnie a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:02:57 : Mouse Minnie a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:02:57 : Mouse Minnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:57 : Suppression du profil  2 - Mouse Minnie - 77700 - minnie@mickeyville.com
+            28-05-2020 19:02:57 : Duck Donald a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:02:57 : Duck Donald a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:57 : Suppression du profil  3 - Duck Donald - 77730 - donald@canardville.com
+            28-05-2020 19:02:57 : Duck Daisy a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:57 : Suppression du profil  4 - Duck Daisy - 77730 - daisy@canardville.com
+            28-05-2020 19:02:57 : Lourson Winnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:57 : Suppression du profil  5 - Lourson Winnie - 77752 - potdemiel@miam.com
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Brioche Theo
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Delaforet Mathieu
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Argus Rusard
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Dark Vador
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Kenobi Obiwan
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Skywalker Rey
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Mua Sissy
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Inshape Tibo
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:02:57 : Suppression du profil  6 - Dingo Tigrou - 77752 - tidoublegreou@youpi.com
+            28-05-2020 19:02:57 : Brioche Theo a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:02:57 : Brioche Theo a été retiré du réseau de collègues de Delaforet Mathieu
+        28-05-2020 19:02:57 : Suppression du profil  7 - Brioche Theo - 13120 - sam.joli@coeur.fr
+        28-05-2020 19:02:57 : Suppression du profil  8 - Scott Monon - 38000 - monon@cristalclear.com
+            28-05-2020 19:02:57 : Delaforet Mathieu a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:02:57 : Delaforet Mathieu a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:02:57 : Delaforet Mathieu a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:02:57 : Suppression du profil  9 - Delaforet Mathieu - 13390 - pasfred@lambda.com
+            28-05-2020 19:02:57 : Dumbledore Albus a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:02:57 : Dumbledore Albus a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:02:57 : Suppression du profil  10 - Dumbledore Albus - 93400 - percivalwulfric@brian.uk
+            28-05-2020 19:02:57 : McGonagall Minerva a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:02:57 : McGonagall Minerva a été retiré du réseau de collègues de Argus Rusard
+        28-05-2020 19:02:57 : Suppression du profil  11 - McGonagall Minerva - 93400 - piertotum@locomotor.uk
+        28-05-2020 19:02:57 : Suppression du profil  12 - Rogue Severus - 93400 - lilyevans@always.uk
+        28-05-2020 19:02:57 : Suppression du profil  13 - Argus Rusard - 93400 - cracmol@missteigne.uk
+            28-05-2020 19:02:57 : Dark Vador a été retiré du réseau de collègues de Kenobi Obiwan
+        28-05-2020 19:02:57 : Suppression du profil  14 - Dark Vador - 66650 - jesuistonpere@obscur.us
+        28-05-2020 19:02:57 : Suppression du profil  15 - Kenobi Obiwan - 66655 - monseulespoir@jedi.us
+        28-05-2020 19:02:57 : Suppression du profil  16 - Skywalker Rey - 66655 - sithoujedi@kyloren.us
+        28-05-2020 19:02:57 : Suppression du profil  17 - Mua Sissy - 98000 - fitgens@houuh.fr
+            28-05-2020 19:02:57 : Inshape Tibo a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:02:57 : Suppression du profil  18 - Inshape Tibo - 81000 - daamlesgens@whey
+        28-05-2020 19:02:57 : Suppression du profil  19 - Fitcat Juju - 81000 - etcafaitbimbamboum@pshitvroum
+        28-05-2020 19:02:57 : Création du poste 11 - Boulanger - 5 - | ponctuel | patisserie | cuisine | 
+        28-05-2020 19:02:57 : Suppression du poste 8 - Professeur de sport - 11 - | sport | 
+        28-05-2020 19:02:57 : Suppression du poste 1 - Acteur - 1 - | comedie | gag | 
+        28-05-2020 19:02:57 : Suppression du poste 4 - Mascotte Mickey - 1 - | danse | sport | 
+        28-05-2020 19:02:57 : Suppression du poste 7 - Chanteur - 1 - | chant | 
+        28-05-2020 19:02:57 : Suppression du poste 2 - Developpeur - 2 - | c | sql | python | 
+        28-05-2020 19:02:57 : Suppression du poste 3 - Briocheur - 5 - | patisserie | 
+        28-05-2020 19:02:57 : Suppression du poste 5 - Concierge - 6 - | autoritaire | determine | 
+        28-05-2020 19:02:57 : Suppression du poste 6 - Professeur de defences contre les forces du mal - 6 - | magie | defencesclfdm | 
+        28-05-2020 19:02:57 : Suppression du poste 9 - Entraineur - 9 - | jedi | 
+        28-05-2020 19:02:57 : Suppression du poste 10 - Developpeur - 2 - | informatique | c | python | java | html | 
+        28-05-2020 19:02:57 : Suppression du poste 11 - Boulanger - 5 - | ponctuel | patisserie | cuisine | 
+        28-05-2020 19:02:57 : Suppression de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        28-05-2020 19:02:57 : Suppression de l'entreprise 2 - Google - 75009 - emplois@google.com
+        28-05-2020 19:02:57 : Suppression de l'entreprise 3 - Amazon - 65058 - contact@amazon.com
+        28-05-2020 19:02:57 : Suppression de l'entreprise 4 - Apple - 54410 - contact@apple.com
+        28-05-2020 19:02:57 : Suppression de l'entreprise 5 - Doowap - 42754 - bonnebrioche@doowap.fr
+        28-05-2020 19:02:57 : Suppression de l'entreprise 6 - Poudlard - 11499 - nimbusdeuxmille@patronus.com
+        28-05-2020 19:02:57 : Suppression de l'entreprise 7 - Nintendo - 45655 - contact@nintendo.jp
+        28-05-2020 19:02:57 : Suppression de l'entreprise 8 - Netflix - 77548 - netflixandchill@tvpopcorn.com
+        28-05-2020 19:02:57 : Suppression de l'entreprise 9 - LucasFilm - 44485 - inagalaxy@farfaraway.us
+        28-05-2020 19:02:57 : Suppression de l'entreprise 10 - La Grande Recree - 24120 - jouetspar@millier.fr
+        28-05-2020 19:02:57 : Suppression de l'entreprise 11 - Decathlon - 96521 - contact@decathlon.com
+            28-05-2020 19:02:57 : Mouse Mickey a été retiré du réseau de collègues de Mouse Minnie
+            28-05-2020 19:02:57 : Mouse Mickey a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:02:57 : Mouse Mickey a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:02:57 : Mouse Mickey a été retiré du réseau de collègues de Lourson Winnie
+            28-05-2020 19:02:57 : Mouse Mickey a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:57 : Suppression du profil  1 - Mouse Mickey - 77700 - mickey@mickeyville.com
+            28-05-2020 19:02:57 : Mouse Minnie a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:02:57 : Mouse Minnie a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:02:57 : Mouse Minnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:57 : Suppression du profil  2 - Mouse Minnie - 77700 - minnie@mickeyville.com
+            28-05-2020 19:02:57 : Duck Donald a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:02:57 : Duck Donald a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:57 : Suppression du profil  3 - Duck Donald - 77730 - donald@canardville.com
+            28-05-2020 19:02:57 : Duck Daisy a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:57 : Suppression du profil  4 - Duck Daisy - 77730 - daisy@canardville.com
+            28-05-2020 19:02:57 : Lourson Winnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:02:57 : Suppression du profil  5 - Lourson Winnie - 77752 - potdemiel@miam.com
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Brioche Theo
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Delaforet Mathieu
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Argus Rusard
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Dark Vador
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Kenobi Obiwan
+            28-05-2020 19:02:57 : Dingo Tigrou a été retiré du réseau de collègues de Skywalker Rey
+            28-05-2020 19:02:58 : Dingo Tigrou a été retiré du réseau de collègues de Mua Sissy
+            28-05-2020 19:02:58 : Dingo Tigrou a été retiré du réseau de collègues de Inshape Tibo
+            28-05-2020 19:02:58 : Dingo Tigrou a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:02:58 : Suppression du profil  6 - Dingo Tigrou - 77752 - tidoublegreou@youpi.com
+            28-05-2020 19:02:58 : Brioche Theo a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:02:58 : Brioche Theo a été retiré du réseau de collègues de Delaforet Mathieu
+        28-05-2020 19:02:58 : Suppression du profil  7 - Brioche Theo - 13120 - sam.joli@coeur.fr
+        28-05-2020 19:02:58 : Suppression du profil  8 - Scott Monon - 38000 - monon@cristalclear.com
+            28-05-2020 19:02:58 : Delaforet Mathieu a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:02:58 : Delaforet Mathieu a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:02:58 : Delaforet Mathieu a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:02:58 : Suppression du profil  9 - Delaforet Mathieu - 13390 - pasfred@lambda.com
+            28-05-2020 19:02:58 : Dumbledore Albus a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:02:58 : Dumbledore Albus a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:02:58 : Suppression du profil  10 - Dumbledore Albus - 93400 - percivalwulfric@brian.uk
+            28-05-2020 19:02:58 : McGonagall Minerva a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:02:58 : McGonagall Minerva a été retiré du réseau de collègues de Argus Rusard
+        28-05-2020 19:02:58 : Suppression du profil  11 - McGonagall Minerva - 93400 - piertotum@locomotor.uk
+        28-05-2020 19:02:58 : Suppression du profil  12 - Rogue Severus - 93400 - lilyevans@always.uk
+        28-05-2020 19:02:58 : Suppression du profil  13 - Argus Rusard - 93400 - cracmol@missteigne.uk
+            28-05-2020 19:02:58 : Dark Vador a été retiré du réseau de collègues de Kenobi Obiwan
+        28-05-2020 19:02:58 : Suppression du profil  14 - Dark Vador - 66650 - jesuistonpere@obscur.us
+        28-05-2020 19:02:58 : Suppression du profil  15 - Kenobi Obiwan - 66655 - monseulespoir@jedi.us
+        28-05-2020 19:02:58 : Suppression du profil  16 - Skywalker Rey - 66655 - sithoujedi@kyloren.us
+        28-05-2020 19:02:58 : Suppression du profil  17 - Mua Sissy - 98000 - fitgens@houuh.fr
+            28-05-2020 19:02:58 : Inshape Tibo a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:02:58 : Suppression du profil  18 - Inshape Tibo - 81000 - daamlesgens@whey
+        28-05-2020 19:02:58 : Suppression du profil  19 - Fitcat Juju - 81000 - etcafaitbimbamboum@pshitvroum
+    28-05-2020 19:05:43 : Création du compte 6 - Delmas Albert - 78969 - albert.delmas@gmail.fr
+    28-05-2020 19:07:15 : Création de l'entreprise 12 - Carglass - 54710 - contact@carglass.com
+            28-05-2020 19:07:15 : Mouse Minnie est apparu dans le résultat de la recherche
+            28-05-2020 19:07:15 : Lourson Winnie est apparu dans le résultat de la recherche
+            28-05-2020 19:07:15 : Mua Sissy est apparu dans le résultat de la recherche
+            28-05-2020 19:07:15 : Mouse Minnie est apparu dans le résultat de la recherche
+            28-05-2020 19:07:15 : Mua Sissy est apparu dans le résultat de la recherche
+            28-05-2020 19:07:15 : La recherche n'a pas donné de résultat
+        28-05-2020 19:07:15 : Mouse Mickey quitte l'entreprise Disney
+        28-05-2020 19:07:15 : Duck Donald quitte l'entreprise Disney
+        28-05-2020 19:07:15 : Duck Daisy quitte l'entreprise Disney
+        28-05-2020 19:07:15 : Suppression de l'entreprise 7 - Nintendo - 45655 - contact@nintendo.jp
+        28-05-2020 19:07:15 : Suppression de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        28-05-2020 19:07:15 : Suppression de l'entreprise 12 - Carglass - 54710 - contact@carglass.com
+        28-05-2020 19:07:15 : Suppression de l'entreprise 11 - Decathlon - 96521 - contact@decathlon.com
+        28-05-2020 19:07:16 : Suppression du poste 1 - Acteur - 1 - | comedie | gag | 
+        28-05-2020 19:07:16 : Suppression du poste 2 - Developpeur - 2 - | c | sql | python | 
+        28-05-2020 19:07:16 : Suppression du poste 3 - Briocheur - 5 - | patisserie | 
+        28-05-2020 19:07:16 : Suppression du poste 4 - Mascotte Mickey - 1 - | danse | sport | 
+        28-05-2020 19:07:16 : Suppression du poste 5 - Concierge - 6 - | autoritaire | determine | 
+        28-05-2020 19:07:16 : Suppression du poste 6 - Professeur de defences contre les forces du mal - 6 - | magie | defencesclfdm | 
+        28-05-2020 19:07:16 : Suppression du poste 7 - Chanteur - 1 - | chant | 
+        28-05-2020 19:07:16 : Suppression du poste 8 - Professeur de sport - 11 - | sport | 
+        28-05-2020 19:07:16 : Suppression du poste 9 - Entraineur - 9 - | jedi | 
+        28-05-2020 19:07:16 : Suppression du poste 10 - Developpeur - 2 - | informatique | c | python | java | html | 
+        28-05-2020 19:07:16 : Suppression de l'entreprise 2 - Google - 75009 - emplois@google.com
+        28-05-2020 19:07:16 : Suppression de l'entreprise 3 - Amazon - 65058 - contact@amazon.com
+        28-05-2020 19:07:16 : Suppression de l'entreprise 4 - Apple - 54410 - contact@apple.com
+        28-05-2020 19:07:16 : Suppression de l'entreprise 5 - Doowap - 42754 - bonnebrioche@doowap.fr
+        28-05-2020 19:07:16 : Suppression de l'entreprise 6 - Poudlard - 11499 - nimbusdeuxmille@patronus.com
+        28-05-2020 19:07:16 : Suppression de l'entreprise 8 - Netflix - 77548 - netflixandchill@tvpopcorn.com
+        28-05-2020 19:07:16 : Suppression de l'entreprise 9 - LucasFilm - 44485 - inagalaxy@farfaraway.us
+        28-05-2020 19:07:16 : Suppression de l'entreprise 10 - La Grande Recree - 24120 - jouetspar@millier.fr
+            28-05-2020 19:07:16 : Mouse Mickey a été retiré du réseau de collègues de Mouse Minnie
+            28-05-2020 19:07:16 : Mouse Mickey a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:07:16 : Mouse Mickey a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:07:16 : Mouse Mickey a été retiré du réseau de collègues de Lourson Winnie
+            28-05-2020 19:07:16 : Mouse Mickey a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:07:16 : Suppression du profil  1 - Mouse Mickey - 77700 - mickey@mickeyville.com
+            28-05-2020 19:07:16 : Mouse Minnie a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:07:16 : Mouse Minnie a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:07:16 : Mouse Minnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:07:16 : Suppression du profil  2 - Mouse Minnie - 77700 - minnie@mickeyville.com
+            28-05-2020 19:07:16 : Duck Donald a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:07:16 : Duck Donald a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:07:16 : Suppression du profil  3 - Duck Donald - 77730 - donald@canardville.com
+            28-05-2020 19:07:16 : Duck Daisy a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:07:16 : Suppression du profil  4 - Duck Daisy - 77730 - daisy@canardville.com
+            28-05-2020 19:07:16 : Lourson Winnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:07:16 : Suppression du profil  5 - Lourson Winnie - 77752 - potdemiel@miam.com
+            28-05-2020 19:07:16 : Dingo Tigrou a été retiré du réseau de collègues de Brioche Theo
+            28-05-2020 19:07:16 : Dingo Tigrou a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:07:16 : Dingo Tigrou a été retiré du réseau de collègues de Delaforet Mathieu
+            28-05-2020 19:07:16 : Dingo Tigrou a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:07:16 : Dingo Tigrou a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:07:16 : Dingo Tigrou a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:07:16 : Dingo Tigrou a été retiré du réseau de collègues de Argus Rusard
+            28-05-2020 19:07:16 : Dingo Tigrou a été retiré du réseau de collègues de Dark Vador
+            28-05-2020 19:07:16 : Dingo Tigrou a été retiré du réseau de collègues de Kenobi Obiwan
+            28-05-2020 19:07:16 : Dingo Tigrou a été retiré du réseau de collègues de Skywalker Rey
+            28-05-2020 19:07:16 : Dingo Tigrou a été retiré du réseau de collègues de Mua Sissy
+            28-05-2020 19:07:16 : Dingo Tigrou a été retiré du réseau de collègues de Inshape Tibo
+            28-05-2020 19:07:16 : Dingo Tigrou a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:07:16 : Suppression du profil  6 - Dingo Tigrou - 77752 - tidoublegreou@youpi.com
+            28-05-2020 19:07:16 : Brioche Theo a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:07:16 : Brioche Theo a été retiré du réseau de collègues de Delaforet Mathieu
+        28-05-2020 19:07:16 : Suppression du profil  7 - Brioche Theo - 13120 - sam.joli@coeur.fr
+        28-05-2020 19:07:16 : Suppression du profil  8 - Scott Monon - 38000 - monon@cristalclear.com
+            28-05-2020 19:07:16 : Delaforet Mathieu a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:07:16 : Delaforet Mathieu a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:07:16 : Delaforet Mathieu a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:07:16 : Suppression du profil  9 - Delaforet Mathieu - 13390 - pasfred@lambda.com
+            28-05-2020 19:07:16 : Dumbledore Albus a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:07:16 : Dumbledore Albus a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:07:16 : Suppression du profil  10 - Dumbledore Albus - 93400 - percivalwulfric@brian.uk
+            28-05-2020 19:07:16 : McGonagall Minerva a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:07:16 : McGonagall Minerva a été retiré du réseau de collègues de Argus Rusard
+        28-05-2020 19:07:16 : Suppression du profil  11 - McGonagall Minerva - 93400 - piertotum@locomotor.uk
+        28-05-2020 19:07:16 : Suppression du profil  12 - Rogue Severus - 93400 - lilyevans@always.uk
+        28-05-2020 19:07:16 : Suppression du profil  13 - Argus Rusard - 93400 - cracmol@missteigne.uk
+            28-05-2020 19:07:16 : Dark Vador a été retiré du réseau de collègues de Kenobi Obiwan
+        28-05-2020 19:07:16 : Suppression du profil  14 - Dark Vador - 66650 - jesuistonpere@obscur.us
+        28-05-2020 19:07:16 : Suppression du profil  15 - Kenobi Obiwan - 66655 - monseulespoir@jedi.us
+        28-05-2020 19:07:16 : Suppression du profil  16 - Skywalker Rey - 66655 - sithoujedi@kyloren.us
+        28-05-2020 19:07:16 : Suppression du profil  17 - Mua Sissy - 98000 - fitgens@houuh.fr
+            28-05-2020 19:07:16 : Inshape Tibo a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:07:16 : Suppression du profil  18 - Inshape Tibo - 81000 - daamlesgens@whey
+        28-05-2020 19:07:16 : Suppression du profil  19 - Fitcat Juju - 81000 - etcafaitbimbamboum@pshitvroum
+        28-05-2020 19:07:17 : Création du poste 11 - Boulanger - 5 - | ponctuel | patisserie | cuisine | 
+        28-05-2020 19:07:17 : Suppression du poste 8 - Professeur de sport - 11 - | sport | 
+        28-05-2020 19:07:17 : Suppression du poste 1 - Acteur - 1 - | comedie | gag | 
+        28-05-2020 19:07:17 : Suppression du poste 4 - Mascotte Mickey - 1 - | danse | sport | 
+        28-05-2020 19:07:17 : Suppression du poste 7 - Chanteur - 1 - | chant | 
+        28-05-2020 19:07:17 : Suppression du poste 2 - Developpeur - 2 - | c | sql | python | 
+        28-05-2020 19:07:17 : Suppression du poste 3 - Briocheur - 5 - | patisserie | 
+        28-05-2020 19:07:17 : Suppression du poste 5 - Concierge - 6 - | autoritaire | determine | 
+        28-05-2020 19:07:17 : Suppression du poste 6 - Professeur de defences contre les forces du mal - 6 - | magie | defencesclfdm | 
+        28-05-2020 19:07:17 : Suppression du poste 9 - Entraineur - 9 - | jedi | 
+        28-05-2020 19:07:17 : Suppression du poste 10 - Developpeur - 2 - | informatique | c | python | java | html | 
+        28-05-2020 19:07:17 : Suppression du poste 11 - Boulanger - 5 - | ponctuel | patisserie | cuisine | 
+        28-05-2020 19:07:17 : Suppression de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        28-05-2020 19:07:17 : Suppression de l'entreprise 2 - Google - 75009 - emplois@google.com
+        28-05-2020 19:07:17 : Suppression de l'entreprise 3 - Amazon - 65058 - contact@amazon.com
+        28-05-2020 19:07:17 : Suppression de l'entreprise 4 - Apple - 54410 - contact@apple.com
+        28-05-2020 19:07:17 : Suppression de l'entreprise 5 - Doowap - 42754 - bonnebrioche@doowap.fr
+        28-05-2020 19:07:17 : Suppression de l'entreprise 6 - Poudlard - 11499 - nimbusdeuxmille@patronus.com
+        28-05-2020 19:07:17 : Suppression de l'entreprise 7 - Nintendo - 45655 - contact@nintendo.jp
+        28-05-2020 19:07:17 : Suppression de l'entreprise 8 - Netflix - 77548 - netflixandchill@tvpopcorn.com
+        28-05-2020 19:07:17 : Suppression de l'entreprise 9 - LucasFilm - 44485 - inagalaxy@farfaraway.us
+        28-05-2020 19:07:17 : Suppression de l'entreprise 10 - La Grande Recree - 24120 - jouetspar@millier.fr
+        28-05-2020 19:07:17 : Suppression de l'entreprise 11 - Decathlon - 96521 - contact@decathlon.com
+            28-05-2020 19:07:17 : Mouse Mickey a été retiré du réseau de collègues de Mouse Minnie
+            28-05-2020 19:07:17 : Mouse Mickey a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:07:17 : Mouse Mickey a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:07:17 : Mouse Mickey a été retiré du réseau de collègues de Lourson Winnie
+            28-05-2020 19:07:17 : Mouse Mickey a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:07:17 : Suppression du profil  1 - Mouse Mickey - 77700 - mickey@mickeyville.com
+            28-05-2020 19:07:17 : Mouse Minnie a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:07:17 : Mouse Minnie a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:07:17 : Mouse Minnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:07:17 : Suppression du profil  2 - Mouse Minnie - 77700 - minnie@mickeyville.com
+            28-05-2020 19:07:17 : Duck Donald a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:07:17 : Duck Donald a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:07:17 : Suppression du profil  3 - Duck Donald - 77730 - donald@canardville.com
+            28-05-2020 19:07:17 : Duck Daisy a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:07:17 : Suppression du profil  4 - Duck Daisy - 77730 - daisy@canardville.com
+            28-05-2020 19:07:17 : Lourson Winnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:07:17 : Suppression du profil  5 - Lourson Winnie - 77752 - potdemiel@miam.com
+            28-05-2020 19:07:17 : Dingo Tigrou a été retiré du réseau de collègues de Brioche Theo
+            28-05-2020 19:07:17 : Dingo Tigrou a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:07:17 : Dingo Tigrou a été retiré du réseau de collègues de Delaforet Mathieu
+            28-05-2020 19:07:17 : Dingo Tigrou a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:07:17 : Dingo Tigrou a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:07:17 : Dingo Tigrou a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:07:17 : Dingo Tigrou a été retiré du réseau de collègues de Argus Rusard
+            28-05-2020 19:07:17 : Dingo Tigrou a été retiré du réseau de collègues de Dark Vador
+            28-05-2020 19:07:17 : Dingo Tigrou a été retiré du réseau de collègues de Kenobi Obiwan
+            28-05-2020 19:07:17 : Dingo Tigrou a été retiré du réseau de collègues de Skywalker Rey
+            28-05-2020 19:07:17 : Dingo Tigrou a été retiré du réseau de collègues de Mua Sissy
+            28-05-2020 19:07:17 : Dingo Tigrou a été retiré du réseau de collègues de Inshape Tibo
+            28-05-2020 19:07:17 : Dingo Tigrou a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:07:17 : Suppression du profil  6 - Dingo Tigrou - 77752 - tidoublegreou@youpi.com
+            28-05-2020 19:07:17 : Brioche Theo a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:07:17 : Brioche Theo a été retiré du réseau de collègues de Delaforet Mathieu
+        28-05-2020 19:07:17 : Suppression du profil  7 - Brioche Theo - 13120 - sam.joli@coeur.fr
+        28-05-2020 19:07:17 : Suppression du profil  8 - Scott Monon - 38000 - monon@cristalclear.com
+            28-05-2020 19:07:17 : Delaforet Mathieu a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:07:17 : Delaforet Mathieu a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:07:17 : Delaforet Mathieu a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:07:17 : Suppression du profil  9 - Delaforet Mathieu - 13390 - pasfred@lambda.com
+            28-05-2020 19:07:17 : Dumbledore Albus a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:07:17 : Dumbledore Albus a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:07:17 : Suppression du profil  10 - Dumbledore Albus - 93400 - percivalwulfric@brian.uk
+            28-05-2020 19:07:17 : McGonagall Minerva a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:07:17 : McGonagall Minerva a été retiré du réseau de collègues de Argus Rusard
+        28-05-2020 19:07:17 : Suppression du profil  11 - McGonagall Minerva - 93400 - piertotum@locomotor.uk
+        28-05-2020 19:07:17 : Suppression du profil  12 - Rogue Severus - 93400 - lilyevans@always.uk
+        28-05-2020 19:07:17 : Suppression du profil  13 - Argus Rusard - 93400 - cracmol@missteigne.uk
+            28-05-2020 19:07:17 : Dark Vador a été retiré du réseau de collègues de Kenobi Obiwan
+        28-05-2020 19:07:17 : Suppression du profil  14 - Dark Vador - 66650 - jesuistonpere@obscur.us
+        28-05-2020 19:07:17 : Suppression du profil  15 - Kenobi Obiwan - 66655 - monseulespoir@jedi.us
+        28-05-2020 19:07:17 : Suppression du profil  16 - Skywalker Rey - 66655 - sithoujedi@kyloren.us
+        28-05-2020 19:07:17 : Suppression du profil  17 - Mua Sissy - 98000 - fitgens@houuh.fr
+            28-05-2020 19:07:17 : Inshape Tibo a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:07:17 : Suppression du profil  18 - Inshape Tibo - 81000 - daamlesgens@whey
+        28-05-2020 19:07:17 : Suppression du profil  19 - Fitcat Juju - 81000 - etcafaitbimbamboum@pshitvroum
+    28-05-2020 19:09:14 : Création de l'entreprise 12 - Carglass - 54710 - contact@carglass.com
+            28-05-2020 19:09:14 : Mouse Minnie est apparu dans le résultat de la recherche
+            28-05-2020 19:09:14 : Lourson Winnie est apparu dans le résultat de la recherche
+            28-05-2020 19:09:14 : Mua Sissy est apparu dans le résultat de la recherche
+            28-05-2020 19:09:14 : Mouse Minnie est apparu dans le résultat de la recherche
+            28-05-2020 19:09:14 : Mua Sissy est apparu dans le résultat de la recherche
+            28-05-2020 19:09:14 : La recherche n'a pas donné de résultat
+        28-05-2020 19:09:14 : Mouse Mickey quitte l'entreprise Disney
+        28-05-2020 19:09:14 : Duck Donald quitte l'entreprise Disney
+        28-05-2020 19:09:14 : Duck Daisy quitte l'entreprise Disney
+        28-05-2020 19:09:14 : Suppression de l'entreprise 7 - Nintendo - 45655 - contact@nintendo.jp
+        28-05-2020 19:09:14 : Suppression de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        28-05-2020 19:09:14 : Suppression de l'entreprise 12 - Carglass - 54710 - contact@carglass.com
+        28-05-2020 19:09:14 : Suppression de l'entreprise 11 - Decathlon - 96521 - contact@decathlon.com
+        28-05-2020 19:09:14 : Suppression du poste 1 - Acteur - 1 - | comedie | gag | 
+        28-05-2020 19:09:14 : Suppression du poste 2 - Developpeur - 2 - | c | sql | python | 
+        28-05-2020 19:09:14 : Suppression du poste 3 - Briocheur - 5 - | patisserie | 
+        28-05-2020 19:09:14 : Suppression du poste 4 - Mascotte Mickey - 1 - | danse | sport | 
+        28-05-2020 19:09:14 : Suppression du poste 5 - Concierge - 6 - | autoritaire | determine | 
+        28-05-2020 19:09:14 : Suppression du poste 6 - Professeur de defences contre les forces du mal - 6 - | magie | defencesclfdm | 
+        28-05-2020 19:09:14 : Suppression du poste 7 - Chanteur - 1 - | chant | 
+        28-05-2020 19:09:14 : Suppression du poste 8 - Professeur de sport - 11 - | sport | 
+        28-05-2020 19:09:14 : Suppression du poste 9 - Entraineur - 9 - | jedi | 
+        28-05-2020 19:09:14 : Suppression du poste 10 - Developpeur - 2 - | informatique | c | python | java | html | 
+        28-05-2020 19:09:14 : Suppression de l'entreprise 2 - Google - 75009 - emplois@google.com
+        28-05-2020 19:09:14 : Suppression de l'entreprise 3 - Amazon - 65058 - contact@amazon.com
+        28-05-2020 19:09:14 : Suppression de l'entreprise 4 - Apple - 54410 - contact@apple.com
+        28-05-2020 19:09:14 : Suppression de l'entreprise 5 - Doowap - 42754 - bonnebrioche@doowap.fr
+        28-05-2020 19:09:14 : Suppression de l'entreprise 6 - Poudlard - 11499 - nimbusdeuxmille@patronus.com
+        28-05-2020 19:09:14 : Suppression de l'entreprise 8 - Netflix - 77548 - netflixandchill@tvpopcorn.com
+        28-05-2020 19:09:14 : Suppression de l'entreprise 9 - LucasFilm - 44485 - inagalaxy@farfaraway.us
+        28-05-2020 19:09:14 : Suppression de l'entreprise 10 - La Grande Recree - 24120 - jouetspar@millier.fr
+            28-05-2020 19:09:14 : Mouse Mickey a été retiré du réseau de collègues de Mouse Minnie
+            28-05-2020 19:09:14 : Mouse Mickey a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:09:14 : Mouse Mickey a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:09:14 : Mouse Mickey a été retiré du réseau de collègues de Lourson Winnie
+            28-05-2020 19:09:14 : Mouse Mickey a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:09:14 : Suppression du profil  1 - Mouse Mickey - 77700 - mickey@mickeyville.com
+            28-05-2020 19:09:14 : Mouse Minnie a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:09:14 : Mouse Minnie a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:09:14 : Mouse Minnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:09:14 : Suppression du profil  2 - Mouse Minnie - 77700 - minnie@mickeyville.com
+            28-05-2020 19:09:14 : Duck Donald a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:09:14 : Duck Donald a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:09:14 : Suppression du profil  3 - Duck Donald - 77730 - donald@canardville.com
+            28-05-2020 19:09:14 : Duck Daisy a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:09:14 : Suppression du profil  4 - Duck Daisy - 77730 - daisy@canardville.com
+            28-05-2020 19:09:14 : Lourson Winnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:09:14 : Suppression du profil  5 - Lourson Winnie - 77752 - potdemiel@miam.com
+            28-05-2020 19:09:14 : Dingo Tigrou a été retiré du réseau de collègues de Brioche Theo
+            28-05-2020 19:09:14 : Dingo Tigrou a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:09:14 : Dingo Tigrou a été retiré du réseau de collègues de Delaforet Mathieu
+            28-05-2020 19:09:14 : Dingo Tigrou a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:09:14 : Dingo Tigrou a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:09:14 : Dingo Tigrou a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:09:14 : Dingo Tigrou a été retiré du réseau de collègues de Argus Rusard
+            28-05-2020 19:09:14 : Dingo Tigrou a été retiré du réseau de collègues de Dark Vador
+            28-05-2020 19:09:14 : Dingo Tigrou a été retiré du réseau de collègues de Kenobi Obiwan
+            28-05-2020 19:09:14 : Dingo Tigrou a été retiré du réseau de collègues de Skywalker Rey
+            28-05-2020 19:09:14 : Dingo Tigrou a été retiré du réseau de collègues de Mua Sissy
+            28-05-2020 19:09:14 : Dingo Tigrou a été retiré du réseau de collègues de Inshape Tibo
+            28-05-2020 19:09:14 : Dingo Tigrou a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:09:14 : Suppression du profil  6 - Dingo Tigrou - 77752 - tidoublegreou@youpi.com
+            28-05-2020 19:09:14 : Brioche Theo a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:09:14 : Brioche Theo a été retiré du réseau de collègues de Delaforet Mathieu
+        28-05-2020 19:09:14 : Suppression du profil  7 - Brioche Theo - 13120 - sam.joli@coeur.fr
+        28-05-2020 19:09:14 : Suppression du profil  8 - Scott Monon - 38000 - monon@cristalclear.com
+            28-05-2020 19:09:14 : Delaforet Mathieu a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:09:14 : Delaforet Mathieu a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:09:14 : Delaforet Mathieu a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:09:14 : Suppression du profil  9 - Delaforet Mathieu - 13390 - pasfred@lambda.com
+            28-05-2020 19:09:14 : Dumbledore Albus a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:09:14 : Dumbledore Albus a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:09:14 : Suppression du profil  10 - Dumbledore Albus - 93400 - percivalwulfric@brian.uk
+            28-05-2020 19:09:14 : McGonagall Minerva a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:09:14 : McGonagall Minerva a été retiré du réseau de collègues de Argus Rusard
+        28-05-2020 19:09:14 : Suppression du profil  11 - McGonagall Minerva - 93400 - piertotum@locomotor.uk
+        28-05-2020 19:09:14 : Suppression du profil  12 - Rogue Severus - 93400 - lilyevans@always.uk
+        28-05-2020 19:09:14 : Suppression du profil  13 - Argus Rusard - 93400 - cracmol@missteigne.uk
+            28-05-2020 19:09:14 : Dark Vador a été retiré du réseau de collègues de Kenobi Obiwan
+        28-05-2020 19:09:14 : Suppression du profil  14 - Dark Vador - 66650 - jesuistonpere@obscur.us
+        28-05-2020 19:09:14 : Suppression du profil  15 - Kenobi Obiwan - 66655 - monseulespoir@jedi.us
+        28-05-2020 19:09:14 : Suppression du profil  16 - Skywalker Rey - 66655 - sithoujedi@kyloren.us
+        28-05-2020 19:09:14 : Suppression du profil  17 - Mua Sissy - 98000 - fitgens@houuh.fr
+            28-05-2020 19:09:14 : Inshape Tibo a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:09:14 : Suppression du profil  18 - Inshape Tibo - 81000 - daamlesgens@whey
+        28-05-2020 19:09:14 : Suppression du profil  19 - Fitcat Juju - 81000 - etcafaitbimbamboum@pshitvroum
+        28-05-2020 19:09:16 : Création du poste 11 - Boulanger - 5 - | ponctuel | patisserie | cuisine | 
+        28-05-2020 19:09:16 : Suppression du poste 8 - Professeur de sport - 11 - | sport | 
+        28-05-2020 19:09:16 : Suppression du poste 1 - Acteur - 1 - | comedie | gag | 
+        28-05-2020 19:09:16 : Suppression du poste 4 - Mascotte Mickey - 1 - | danse | sport | 
+        28-05-2020 19:09:16 : Suppression du poste 7 - Chanteur - 1 - | chant | 
+        28-05-2020 19:09:16 : Suppression du poste 2 - Developpeur - 2 - | c | sql | python | 
+        28-05-2020 19:09:16 : Suppression du poste 3 - Briocheur - 5 - | patisserie | 
+        28-05-2020 19:09:16 : Suppression du poste 5 - Concierge - 6 - | autoritaire | determine | 
+        28-05-2020 19:09:16 : Suppression du poste 6 - Professeur de defences contre les forces du mal - 6 - | magie | defencesclfdm | 
+        28-05-2020 19:09:16 : Suppression du poste 9 - Entraineur - 9 - | jedi | 
+        28-05-2020 19:09:16 : Suppression du poste 10 - Developpeur - 2 - | informatique | c | python | java | html | 
+        28-05-2020 19:09:16 : Suppression du poste 11 - Boulanger - 5 - | ponctuel | patisserie | cuisine | 
+        28-05-2020 19:09:16 : Suppression de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        28-05-2020 19:09:16 : Suppression de l'entreprise 2 - Google - 75009 - emplois@google.com
+        28-05-2020 19:09:16 : Suppression de l'entreprise 3 - Amazon - 65058 - contact@amazon.com
+        28-05-2020 19:09:16 : Suppression de l'entreprise 4 - Apple - 54410 - contact@apple.com
+        28-05-2020 19:09:16 : Suppression de l'entreprise 5 - Doowap - 42754 - bonnebrioche@doowap.fr
+        28-05-2020 19:09:16 : Suppression de l'entreprise 6 - Poudlard - 11499 - nimbusdeuxmille@patronus.com
+        28-05-2020 19:09:16 : Suppression de l'entreprise 7 - Nintendo - 45655 - contact@nintendo.jp
+        28-05-2020 19:09:16 : Suppression de l'entreprise 8 - Netflix - 77548 - netflixandchill@tvpopcorn.com
+        28-05-2020 19:09:16 : Suppression de l'entreprise 9 - LucasFilm - 44485 - inagalaxy@farfaraway.us
+        28-05-2020 19:09:16 : Suppression de l'entreprise 10 - La Grande Recree - 24120 - jouetspar@millier.fr
+        28-05-2020 19:09:16 : Suppression de l'entreprise 11 - Decathlon - 96521 - contact@decathlon.com
+            28-05-2020 19:09:16 : Mouse Mickey a été retiré du réseau de collègues de Mouse Minnie
+            28-05-2020 19:09:16 : Mouse Mickey a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:09:16 : Mouse Mickey a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:09:16 : Mouse Mickey a été retiré du réseau de collègues de Lourson Winnie
+            28-05-2020 19:09:16 : Mouse Mickey a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:09:16 : Suppression du profil  1 - Mouse Mickey - 77700 - mickey@mickeyville.com
+            28-05-2020 19:09:16 : Mouse Minnie a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:09:16 : Mouse Minnie a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:09:16 : Mouse Minnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:09:16 : Suppression du profil  2 - Mouse Minnie - 77700 - minnie@mickeyville.com
+            28-05-2020 19:09:16 : Duck Donald a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:09:16 : Duck Donald a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:09:16 : Suppression du profil  3 - Duck Donald - 77730 - donald@canardville.com
+            28-05-2020 19:09:16 : Duck Daisy a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:09:16 : Suppression du profil  4 - Duck Daisy - 77730 - daisy@canardville.com
+            28-05-2020 19:09:16 : Lourson Winnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:09:16 : Suppression du profil  5 - Lourson Winnie - 77752 - potdemiel@miam.com
+            28-05-2020 19:09:16 : Dingo Tigrou a été retiré du réseau de collègues de Brioche Theo
+            28-05-2020 19:09:16 : Dingo Tigrou a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:09:16 : Dingo Tigrou a été retiré du réseau de collègues de Delaforet Mathieu
+            28-05-2020 19:09:16 : Dingo Tigrou a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:09:16 : Dingo Tigrou a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:09:16 : Dingo Tigrou a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:09:16 : Dingo Tigrou a été retiré du réseau de collègues de Argus Rusard
+            28-05-2020 19:09:16 : Dingo Tigrou a été retiré du réseau de collègues de Dark Vador
+            28-05-2020 19:09:16 : Dingo Tigrou a été retiré du réseau de collègues de Kenobi Obiwan
+            28-05-2020 19:09:16 : Dingo Tigrou a été retiré du réseau de collègues de Skywalker Rey
+            28-05-2020 19:09:16 : Dingo Tigrou a été retiré du réseau de collègues de Mua Sissy
+            28-05-2020 19:09:16 : Dingo Tigrou a été retiré du réseau de collègues de Inshape Tibo
+            28-05-2020 19:09:16 : Dingo Tigrou a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:09:16 : Suppression du profil  6 - Dingo Tigrou - 77752 - tidoublegreou@youpi.com
+            28-05-2020 19:09:16 : Brioche Theo a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:09:16 : Brioche Theo a été retiré du réseau de collègues de Delaforet Mathieu
+        28-05-2020 19:09:16 : Suppression du profil  7 - Brioche Theo - 13120 - sam.joli@coeur.fr
+        28-05-2020 19:09:16 : Suppression du profil  8 - Scott Monon - 38000 - monon@cristalclear.com
+            28-05-2020 19:09:16 : Delaforet Mathieu a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:09:16 : Delaforet Mathieu a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:09:16 : Delaforet Mathieu a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:09:16 : Suppression du profil  9 - Delaforet Mathieu - 13390 - pasfred@lambda.com
+            28-05-2020 19:09:16 : Dumbledore Albus a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:09:16 : Dumbledore Albus a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:09:16 : Suppression du profil  10 - Dumbledore Albus - 93400 - percivalwulfric@brian.uk
+            28-05-2020 19:09:16 : McGonagall Minerva a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:09:16 : McGonagall Minerva a été retiré du réseau de collègues de Argus Rusard
+        28-05-2020 19:09:16 : Suppression du profil  11 - McGonagall Minerva - 93400 - piertotum@locomotor.uk
+        28-05-2020 19:09:16 : Suppression du profil  12 - Rogue Severus - 93400 - lilyevans@always.uk
+        28-05-2020 19:09:16 : Suppression du profil  13 - Argus Rusard - 93400 - cracmol@missteigne.uk
+            28-05-2020 19:09:16 : Dark Vador a été retiré du réseau de collègues de Kenobi Obiwan
+        28-05-2020 19:09:16 : Suppression du profil  14 - Dark Vador - 66650 - jesuistonpere@obscur.us
+        28-05-2020 19:09:16 : Suppression du profil  15 - Kenobi Obiwan - 66655 - monseulespoir@jedi.us
+        28-05-2020 19:09:16 : Suppression du profil  16 - Skywalker Rey - 66655 - sithoujedi@kyloren.us
+        28-05-2020 19:09:16 : Suppression du profil  17 - Mua Sissy - 98000 - fitgens@houuh.fr
+            28-05-2020 19:09:16 : Inshape Tibo a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:09:16 : Suppression du profil  18 - Inshape Tibo - 81000 - daamlesgens@whey
+        28-05-2020 19:09:16 : Suppression du profil  19 - Fitcat Juju - 81000 - etcafaitbimbamboum@pshitvroum
+    28-05-2020 19:15:35 : Création de l'entreprise 12 - Carglass - 54710 - contact@carglass.com
+            28-05-2020 19:15:35 : Mouse Minnie est apparu dans le résultat de la recherche
+            28-05-2020 19:15:35 : Lourson Winnie est apparu dans le résultat de la recherche
+            28-05-2020 19:15:35 : Mua Sissy est apparu dans le résultat de la recherche
+            28-05-2020 19:15:35 : Mouse Minnie est apparu dans le résultat de la recherche
+            28-05-2020 19:15:35 : Mua Sissy est apparu dans le résultat de la recherche
+            28-05-2020 19:15:35 : La recherche n'a pas donné de résultat
+        28-05-2020 19:15:35 : Mouse Mickey quitte l'entreprise Disney
+        28-05-2020 19:15:35 : Duck Donald quitte l'entreprise Disney
+        28-05-2020 19:15:35 : Duck Daisy quitte l'entreprise Disney
+        28-05-2020 19:15:35 : Suppression de l'entreprise 7 - Nintendo - 45655 - contact@nintendo.jp
+        28-05-2020 19:15:35 : Suppression de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        28-05-2020 19:15:35 : Suppression de l'entreprise 12 - Carglass - 54710 - contact@carglass.com
+        28-05-2020 19:15:35 : Suppression de l'entreprise 11 - Decathlon - 96521 - contact@decathlon.com
+        28-05-2020 19:15:36 : Suppression du poste 1 - Acteur - 1 - | comedie | gag | 
+        28-05-2020 19:15:36 : Suppression du poste 2 - Developpeur - 2 - | c | sql | python | 
+        28-05-2020 19:15:36 : Suppression du poste 3 - Briocheur - 5 - | patisserie | 
+        28-05-2020 19:15:36 : Suppression du poste 4 - Mascotte Mickey - 1 - | danse | sport | 
+        28-05-2020 19:15:36 : Suppression du poste 5 - Concierge - 6 - | autoritaire | determine | 
+        28-05-2020 19:15:36 : Suppression du poste 6 - Professeur de defences contre les forces du mal - 6 - | magie | defencesclfdm | 
+        28-05-2020 19:15:36 : Suppression du poste 7 - Chanteur - 1 - | chant | 
+        28-05-2020 19:15:36 : Suppression du poste 8 - Professeur de sport - 11 - | sport | 
+        28-05-2020 19:15:36 : Suppression du poste 9 - Entraineur - 9 - | jedi | 
+        28-05-2020 19:15:36 : Suppression du poste 10 - Developpeur - 2 - | informatique | c | python | java | html | 
+        28-05-2020 19:15:36 : Suppression de l'entreprise 2 - Google - 75009 - emplois@google.com
+        28-05-2020 19:15:36 : Suppression de l'entreprise 3 - Amazon - 65058 - contact@amazon.com
+        28-05-2020 19:15:36 : Suppression de l'entreprise 4 - Apple - 54410 - contact@apple.com
+        28-05-2020 19:15:36 : Suppression de l'entreprise 5 - Doowap - 42754 - bonnebrioche@doowap.fr
+        28-05-2020 19:15:36 : Suppression de l'entreprise 6 - Poudlard - 11499 - nimbusdeuxmille@patronus.com
+        28-05-2020 19:15:36 : Suppression de l'entreprise 8 - Netflix - 77548 - netflixandchill@tvpopcorn.com
+        28-05-2020 19:15:36 : Suppression de l'entreprise 9 - LucasFilm - 44485 - inagalaxy@farfaraway.us
+        28-05-2020 19:15:36 : Suppression de l'entreprise 10 - La Grande Recree - 24120 - jouetspar@millier.fr
+            28-05-2020 19:15:36 : Mouse Mickey a été retiré du réseau de collègues de Mouse Minnie
+            28-05-2020 19:15:36 : Mouse Mickey a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:15:36 : Mouse Mickey a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:15:36 : Mouse Mickey a été retiré du réseau de collègues de Lourson Winnie
+            28-05-2020 19:15:36 : Mouse Mickey a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:15:36 : Suppression du profil  1 - Mouse Mickey - 77700 - mickey@mickeyville.com
+            28-05-2020 19:15:36 : Mouse Minnie a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:15:36 : Mouse Minnie a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:15:36 : Mouse Minnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:15:36 : Suppression du profil  2 - Mouse Minnie - 77700 - minnie@mickeyville.com
+            28-05-2020 19:15:36 : Duck Donald a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:15:36 : Duck Donald a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:15:36 : Suppression du profil  3 - Duck Donald - 77730 - donald@canardville.com
+            28-05-2020 19:15:36 : Duck Daisy a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:15:36 : Suppression du profil  4 - Duck Daisy - 77730 - daisy@canardville.com
+            28-05-2020 19:15:36 : Lourson Winnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:15:36 : Suppression du profil  5 - Lourson Winnie - 77752 - potdemiel@miam.com
+            28-05-2020 19:15:36 : Dingo Tigrou a été retiré du réseau de collègues de Brioche Theo
+            28-05-2020 19:15:36 : Dingo Tigrou a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:15:36 : Dingo Tigrou a été retiré du réseau de collègues de Delaforet Mathieu
+            28-05-2020 19:15:36 : Dingo Tigrou a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:15:36 : Dingo Tigrou a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:15:36 : Dingo Tigrou a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:15:36 : Dingo Tigrou a été retiré du réseau de collègues de Argus Rusard
+            28-05-2020 19:15:36 : Dingo Tigrou a été retiré du réseau de collègues de Dark Vador
+            28-05-2020 19:15:36 : Dingo Tigrou a été retiré du réseau de collègues de Kenobi Obiwan
+            28-05-2020 19:15:36 : Dingo Tigrou a été retiré du réseau de collègues de Skywalker Rey
+            28-05-2020 19:15:36 : Dingo Tigrou a été retiré du réseau de collègues de Mua Sissy
+            28-05-2020 19:15:36 : Dingo Tigrou a été retiré du réseau de collègues de Inshape Tibo
+            28-05-2020 19:15:36 : Dingo Tigrou a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:15:36 : Suppression du profil  6 - Dingo Tigrou - 77752 - tidoublegreou@youpi.com
+            28-05-2020 19:15:36 : Brioche Theo a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:15:36 : Brioche Theo a été retiré du réseau de collègues de Delaforet Mathieu
+        28-05-2020 19:15:36 : Suppression du profil  7 - Brioche Theo - 13120 - sam.joli@coeur.fr
+        28-05-2020 19:15:36 : Suppression du profil  8 - Scott Monon - 38000 - monon@cristalclear.com
+            28-05-2020 19:15:36 : Delaforet Mathieu a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:15:36 : Delaforet Mathieu a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:15:36 : Delaforet Mathieu a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:15:36 : Suppression du profil  9 - Delaforet Mathieu - 13390 - pasfred@lambda.com
+            28-05-2020 19:15:36 : Dumbledore Albus a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:15:36 : Dumbledore Albus a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:15:36 : Suppression du profil  10 - Dumbledore Albus - 93400 - percivalwulfric@brian.uk
+            28-05-2020 19:15:36 : McGonagall Minerva a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:15:36 : McGonagall Minerva a été retiré du réseau de collègues de Argus Rusard
+        28-05-2020 19:15:36 : Suppression du profil  11 - McGonagall Minerva - 93400 - piertotum@locomotor.uk
+        28-05-2020 19:15:36 : Suppression du profil  12 - Rogue Severus - 93400 - lilyevans@always.uk
+        28-05-2020 19:15:36 : Suppression du profil  13 - Argus Rusard - 93400 - cracmol@missteigne.uk
+            28-05-2020 19:15:36 : Dark Vador a été retiré du réseau de collègues de Kenobi Obiwan
+        28-05-2020 19:15:36 : Suppression du profil  14 - Dark Vador - 66650 - jesuistonpere@obscur.us
+        28-05-2020 19:15:36 : Suppression du profil  15 - Kenobi Obiwan - 66655 - monseulespoir@jedi.us
+        28-05-2020 19:15:36 : Suppression du profil  16 - Skywalker Rey - 66655 - sithoujedi@kyloren.us
+        28-05-2020 19:15:36 : Suppression du profil  17 - Mua Sissy - 98000 - fitgens@houuh.fr
+            28-05-2020 19:15:36 : Inshape Tibo a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:15:36 : Suppression du profil  18 - Inshape Tibo - 81000 - daamlesgens@whey
+        28-05-2020 19:15:36 : Suppression du profil  19 - Fitcat Juju - 81000 - etcafaitbimbamboum@pshitvroum
+        28-05-2020 19:15:37 : Création du poste 11 - Boulanger - 5 - | ponctuel | patisserie | cuisine | 
+        28-05-2020 19:15:37 : Suppression du poste 8 - Professeur de sport - 11 - | sport | 
+        28-05-2020 19:15:37 : Suppression du poste 1 - Acteur - 1 - | comedie | gag | 
+        28-05-2020 19:15:37 : Suppression du poste 4 - Mascotte Mickey - 1 - | danse | sport | 
+        28-05-2020 19:15:37 : Suppression du poste 7 - Chanteur - 1 - | chant | 
+        28-05-2020 19:15:37 : Suppression du poste 2 - Developpeur - 2 - | c | sql | python | 
+        28-05-2020 19:15:37 : Suppression du poste 3 - Briocheur - 5 - | patisserie | 
+        28-05-2020 19:15:37 : Suppression du poste 5 - Concierge - 6 - | autoritaire | determine | 
+        28-05-2020 19:15:37 : Suppression du poste 6 - Professeur de defences contre les forces du mal - 6 - | magie | defencesclfdm | 
+        28-05-2020 19:15:37 : Suppression du poste 9 - Entraineur - 9 - | jedi | 
+        28-05-2020 19:15:37 : Suppression du poste 10 - Developpeur - 2 - | informatique | c | python | java | html | 
+        28-05-2020 19:15:37 : Suppression du poste 11 - Boulanger - 5 - | ponctuel | patisserie | cuisine | 
+        28-05-2020 19:15:37 : Suppression de l'entreprise 1 - Disney - 77700 - walt@disney.com
+        28-05-2020 19:15:37 : Suppression de l'entreprise 2 - Google - 75009 - emplois@google.com
+        28-05-2020 19:15:37 : Suppression de l'entreprise 3 - Amazon - 65058 - contact@amazon.com
+        28-05-2020 19:15:37 : Suppression de l'entreprise 4 - Apple - 54410 - contact@apple.com
+        28-05-2020 19:15:37 : Suppression de l'entreprise 5 - Doowap - 42754 - bonnebrioche@doowap.fr
+        28-05-2020 19:15:37 : Suppression de l'entreprise 6 - Poudlard - 11499 - nimbusdeuxmille@patronus.com
+        28-05-2020 19:15:37 : Suppression de l'entreprise 7 - Nintendo - 45655 - contact@nintendo.jp
+        28-05-2020 19:15:37 : Suppression de l'entreprise 8 - Netflix - 77548 - netflixandchill@tvpopcorn.com
+        28-05-2020 19:15:37 : Suppression de l'entreprise 9 - LucasFilm - 44485 - inagalaxy@farfaraway.us
+        28-05-2020 19:15:37 : Suppression de l'entreprise 10 - La Grande Recree - 24120 - jouetspar@millier.fr
+        28-05-2020 19:15:37 : Suppression de l'entreprise 11 - Decathlon - 96521 - contact@decathlon.com
+            28-05-2020 19:15:37 : Mouse Mickey a été retiré du réseau de collègues de Mouse Minnie
+            28-05-2020 19:15:37 : Mouse Mickey a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:15:37 : Mouse Mickey a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:15:37 : Mouse Mickey a été retiré du réseau de collègues de Lourson Winnie
+            28-05-2020 19:15:37 : Mouse Mickey a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:15:37 : Suppression du profil  1 - Mouse Mickey - 77700 - mickey@mickeyville.com
+            28-05-2020 19:15:37 : Mouse Minnie a été retiré du réseau de collègues de Duck Donald
+            28-05-2020 19:15:37 : Mouse Minnie a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:15:37 : Mouse Minnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:15:37 : Suppression du profil  2 - Mouse Minnie - 77700 - minnie@mickeyville.com
+            28-05-2020 19:15:37 : Duck Donald a été retiré du réseau de collègues de Duck Daisy
+            28-05-2020 19:15:37 : Duck Donald a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:15:37 : Suppression du profil  3 - Duck Donald - 77730 - donald@canardville.com
+            28-05-2020 19:15:37 : Duck Daisy a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:15:37 : Suppression du profil  4 - Duck Daisy - 77730 - daisy@canardville.com
+            28-05-2020 19:15:37 : Lourson Winnie a été retiré du réseau de collègues de Dingo Tigrou
+        28-05-2020 19:15:37 : Suppression du profil  5 - Lourson Winnie - 77752 - potdemiel@miam.com
+            28-05-2020 19:15:37 : Dingo Tigrou a été retiré du réseau de collègues de Brioche Theo
+            28-05-2020 19:15:37 : Dingo Tigrou a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:15:37 : Dingo Tigrou a été retiré du réseau de collègues de Delaforet Mathieu
+            28-05-2020 19:15:37 : Dingo Tigrou a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:15:37 : Dingo Tigrou a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:15:37 : Dingo Tigrou a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:15:37 : Dingo Tigrou a été retiré du réseau de collègues de Argus Rusard
+            28-05-2020 19:15:37 : Dingo Tigrou a été retiré du réseau de collègues de Dark Vador
+            28-05-2020 19:15:37 : Dingo Tigrou a été retiré du réseau de collègues de Kenobi Obiwan
+            28-05-2020 19:15:37 : Dingo Tigrou a été retiré du réseau de collègues de Skywalker Rey
+            28-05-2020 19:15:37 : Dingo Tigrou a été retiré du réseau de collègues de Mua Sissy
+            28-05-2020 19:15:37 : Dingo Tigrou a été retiré du réseau de collègues de Inshape Tibo
+            28-05-2020 19:15:37 : Dingo Tigrou a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:15:37 : Suppression du profil  6 - Dingo Tigrou - 77752 - tidoublegreou@youpi.com
+            28-05-2020 19:15:37 : Brioche Theo a été retiré du réseau de collègues de Scott Monon
+            28-05-2020 19:15:37 : Brioche Theo a été retiré du réseau de collègues de Delaforet Mathieu
+        28-05-2020 19:15:37 : Suppression du profil  7 - Brioche Theo - 13120 - sam.joli@coeur.fr
+        28-05-2020 19:15:37 : Suppression du profil  8 - Scott Monon - 38000 - monon@cristalclear.com
+            28-05-2020 19:15:37 : Delaforet Mathieu a été retiré du réseau de collègues de Dumbledore Albus
+            28-05-2020 19:15:37 : Delaforet Mathieu a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:15:37 : Delaforet Mathieu a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:15:37 : Suppression du profil  9 - Delaforet Mathieu - 13390 - pasfred@lambda.com
+            28-05-2020 19:15:37 : Dumbledore Albus a été retiré du réseau de collègues de McGonagall Minerva
+            28-05-2020 19:15:37 : Dumbledore Albus a été retiré du réseau de collègues de Rogue Severus
+        28-05-2020 19:15:37 : Suppression du profil  10 - Dumbledore Albus - 93400 - percivalwulfric@brian.uk
+            28-05-2020 19:15:37 : McGonagall Minerva a été retiré du réseau de collègues de Rogue Severus
+            28-05-2020 19:15:37 : McGonagall Minerva a été retiré du réseau de collègues de Argus Rusard
+        28-05-2020 19:15:37 : Suppression du profil  11 - McGonagall Minerva - 93400 - piertotum@locomotor.uk
+        28-05-2020 19:15:37 : Suppression du profil  12 - Rogue Severus - 93400 - lilyevans@always.uk
+        28-05-2020 19:15:37 : Suppression du profil  13 - Argus Rusard - 93400 - cracmol@missteigne.uk
+            28-05-2020 19:15:37 : Dark Vador a été retiré du réseau de collègues de Kenobi Obiwan
+        28-05-2020 19:15:37 : Suppression du profil  14 - Dark Vador - 66650 - jesuistonpere@obscur.us
+        28-05-2020 19:15:37 : Suppression du profil  15 - Kenobi Obiwan - 66655 - monseulespoir@jedi.us
+        28-05-2020 19:15:37 : Suppression du profil  16 - Skywalker Rey - 66655 - sithoujedi@kyloren.us
+        28-05-2020 19:15:37 : Suppression du profil  17 - Mua Sissy - 98000 - fitgens@houuh.fr
+            28-05-2020 19:15:37 : Inshape Tibo a été retiré du réseau de collègues de Fitcat Juju
+        28-05-2020 19:15:37 : Suppression du profil  18 - Inshape Tibo - 81000 - daamlesgens@whey
+        28-05-2020 19:15:37 : Suppression du profil  19 - Fitcat Juju - 81000 - etcafaitbimbamboum@pshitvroum
+    28-05-2020 19:15:51 : Création du compte 20 - Delmas Albert - 78969 - albert.delmas@gmail.fr

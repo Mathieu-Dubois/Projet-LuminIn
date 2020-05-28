@@ -221,7 +221,7 @@ int g_size(groupePersonnes* g)
      int x=0;
   
     if(g->personnes){
-        //x=1;
+        x=1;
         while(g->personnes->next != NULL){
             g->personnes=g->personnes->next;  
         }
@@ -615,11 +615,13 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
     FILE *employes = fopen("employes.csv", "r");
     fscanf(employes, "%s\n", poub);
     i = 0;
+    int k = 0;
     do {
         i++;
         fscanf(employes, "%d,", &j);
+        k = j;                              //Sert à résoudre une erreur incompréhensible selon laquelle j est parfois modifié à la ligne suivante
         fscanf(employes, "%s\n", poub);
-    } while (i == j && !feof(employes));
+    } while (i == k && !feof(employes));
     if (i != j){
         index = i;
     } 

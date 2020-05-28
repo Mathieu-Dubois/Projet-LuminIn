@@ -416,8 +416,8 @@ int main()
     strncpy(tab_comppE[2], s_comp2.c_str(), size) ;
     printf("\n--------------  la\n");
     creer_profil(c_nomPe,c_prenomPe,c_courrielPe,78969,tab_comppE,colleguesPe,7,gPe,mdpchiffre) ;
-    TEST(g_size(gPe) == 19);
-    TEST(LastPersonne(gPe) == 19) ;
+    TEST(g_size(gPe) == 20);
+    TEST(LastPersonne(gPe) == 20) ;
     TEST(g_index(gPe,20)->index == 20) ;
     TEST(strcmp(g_index(gPe,20)->nom, "Delmas") == 0) ;
     TEST(strcmp(g_index(gPe,20)->prenom, "Albert") == 0) ;
