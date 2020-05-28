@@ -120,6 +120,7 @@ int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePer
     {
         system("clear") ;
         cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl;
+        cout << "Il vous reste " << (3-compteur) << " tentatives." << endl << endl;
         cout << "Identifiant : " << g_indexEntreprise(gE, choixE)->nom << endl ;
         cout << "Mot de passe : " ;
         choix = "" ;
@@ -644,6 +645,7 @@ int MenuSeConnecterPersonne(groupeEntreprises *gE, groupePostes *gP, groupePerso
         {
             system("clear") ;
             cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl << endl ;
+            cout << "Il vous reste " << (3-compteur) << " tentatives." << endl << endl;
             cout << "Sélectionnez votre id :" << endl ;
             AfficherPersonnes(gPe) ;
             cout << endl << "r. Retourner à la page précédente" << endl ;    
