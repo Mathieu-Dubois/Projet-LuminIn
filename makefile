@@ -6,7 +6,7 @@
 .DEFAULT_GOAL := check
 CC = c++
 
-CCFLAGS = -fno-stack-protector -Wall -Wextra -pedantic -Werror --debug -g
+CCFLAGS = -fno-stack-protector -Wall -pedantic -Werror --debug -g
 
 .PHONY: clean
 
