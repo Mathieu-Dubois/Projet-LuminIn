@@ -135,7 +135,7 @@ void ViderGroupes(groupeEntreprises* gE, groupePersonnes* gPe, groupePostes* gP)
     {
         SupprimerPoste(gP,posteCourant->index) ;
         // on passe au poste suivant
-        tmp = tmp->next ;
+        tmp = gP->poste ;
         if(tmp != NULL) posteCourant = (poste*)tmp->data ;
     }
 
@@ -145,7 +145,7 @@ void ViderGroupes(groupeEntreprises* gE, groupePersonnes* gPe, groupePostes* gP)
     {
         SupprimerEntreprise(gE,entrepriseCourante->index) ;
         // on passe à l'entreprise suivante
-        tmp = tmp->next ;
+        tmp = gE->entreprise ;
         if(tmp != NULL) entrepriseCourante = (entreprise*)tmp->data ;
     }
 
@@ -155,7 +155,7 @@ void ViderGroupes(groupeEntreprises* gE, groupePersonnes* gPe, groupePostes* gP)
     {
         supprimer_profil(personneCourante->index,gPe) ;
         // on passe à la personne suivante
-        tmp = tmp->next ;
+        tmp = gPe->personnes ;
         if(tmp != NULL) personneCourante = (personne*)tmp->data ;
     }
 

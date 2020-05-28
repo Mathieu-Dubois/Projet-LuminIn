@@ -221,7 +221,7 @@ int g_size(groupePersonnes* g)
      int x=0;
   
     if(g->personnes){
-        x=1;
+        //x=1;
         while(g->personnes->next != NULL){
             g->personnes=g->personnes->next;  
         }
