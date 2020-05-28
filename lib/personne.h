@@ -205,11 +205,12 @@ void AfficherAmis(personne* pe);
  ||     collegue : tableau d'entier contenant les index des collègues de la personne
  ||     entreprise : entier contenant l'index de l'entreprise de la personne (ou -1 si chercheur)
  ||     gPe : pointeur sur un groupe de type groupePersonnes
+ ||     mdphache : contient le mot de passe crypté de la personne
  ||
  || Retour :
  ||     Aucun
   ============================================================================================== */
-void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[MAX_COMPETENCES][128], int *collegue, int entreprise, groupePersonnes *gPe);
+void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[MAX_COMPETENCES][128], int *collegue, int entreprise, groupePersonnes *gPe, size_t mdphache);
 
 /*==============================================================================================
  || FONCTION : supprimer_profil

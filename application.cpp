@@ -36,6 +36,14 @@ int main()
 
     MenuPrincipal(gE, gP, gPe) ;
 
+    // cout << "TEST DE HACHAGE" << endl << endl ;
+    // string clair = "" ;
+    // cout << "Le mot de passe : " ;
+    // cin >> clair ;
+    // size_t chiffre = std::hash<std::string>{}(clair) ;
+    // cout << "Le clair est '" << clair << "' et le chiffré est :   " << chiffre << endl ;
+   
+
     journal_FermetureApplication() ;
 
     return 0 ;

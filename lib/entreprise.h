@@ -50,11 +50,12 @@ void AfficherEntreprises(groupeEntreprises* gE) ;
  ||     nom : chaine de caractères contenant le nom de l'entreprise
  ||     code_postal : entier contenant le code postal de l'entreprise
  ||     courriel : chaine de caractères contenant l'adresse mail de l'entreprise
+ ||     mdp : contient le mot de passe crypté de l'entreprise
  ||
  || Retour :
  ||     Aucun
   ============================================================================================== */
-void AjoutEntreprise(groupeEntreprises *gE, char nom[40], int code_postal, char courriel[128]) ;
+void AjoutEntreprise(groupeEntreprises *gE, char nom[40], int code_postal, char courriel[128], size_t mdphache) ;
 
 /*==============================================================================================
  || FONCTION : LastEntreprise

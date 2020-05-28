@@ -13,6 +13,7 @@ typedef struct entreprise
     char nom[40] ;
     int code_postal;
     char courriel[128] ;
+    size_t mdp ;
 } entreprise ;
 
 typedef struct groupeEntreprises
@@ -31,6 +32,7 @@ typedef struct personne
     char competence[MAX_COMPETENCES][128];
     struct personne *amis[MAX_AMIS];
     int entreprise;
+    size_t mdp ;
 } personne;
 
 typedef struct groupePersonnes

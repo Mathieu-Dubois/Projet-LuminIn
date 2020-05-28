@@ -82,6 +82,7 @@ int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePer
     regex patternNombre {"[1-9]([0-9]*)"} ; // On vérifie si l'utilisateur entre un nombre < 0
     string choix ;
     int choixE(0) ;
+    int mdpvalide(0) ;
 
     // Première étape : on affiche index et nom de toutes les entreprises du groupe d'entreprises
     // on vérifie sa saisie en vérifiant si l'entreprise demandée existe dans le groupe
@@ -110,10 +111,32 @@ int MenuSeConnecterEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePer
         else choixE = stoi(choix) ;
     } while(!ExisteEntreprise(gE,choixE)) ;
 
-    // Troisième étape : Si l'utilisateur a renseigné un index d'entreprise valide, on affiche le menu de cette entreprise
-    journal_ConnexionEntreprise(g_indexEntreprise(gE, choixE)) ;
-    return MenuProfilEntreprise(gE, gP, gPe, choixE) ;
-
+    // Troisième étape : Si l'utilisateur a renseigné un index d'entreprise valide
+    // on lui demande de rentrer son mot de passe (il a trois essais)
+    // si il se trompe, ça revient au menu
+    int compteur(0) ;
+    
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl;
+        cout << "Identifiant : " << g_indexEntreprise(gE, choixE)->nom << endl ;
+        cout << "Mot de passe : " ;
+        choix = "" ;
+        cin.clear() ;
+        getline(cin,choix) ;
+        size_t chiffre = std::hash<std::string>{}(choix) ;
+        if(chiffre == g_indexEntreprise(gE,choixE)->mdp) mdpvalide = 1 ;
+        compteur++ ;
+    } while (!mdpvalide && compteur < 3);
+        
+    if(mdpvalide)
+    {
+        journal_ConnexionEntreprise(g_indexEntreprise(gE, choixE)) ;
+        return MenuProfilEntreprise(gE, gP, gPe, choixE) ;
+    }
+    else return MenuPrincipal(gE, gP, gPe) ;
+    
     return 0 ;
 }
 
@@ -124,10 +147,12 @@ int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes
     regex patternNom {"[a-zA-Z]{1}[a-zA-Zéèêëïîôöàâäç'_\\- ]{0,39}"} ; // Un nom d'entreprise ne doit pas avoir de chiffres et ne peut pas commencer par un caractère spécial
     regex patternCodePostal {"[1-9]{1}[0-9]{4}"} ; // Un code postal doit contenir 5 chiffres et ne doit pas commencer par 0
     regex patternMail {"[\\w\\._%+-]{1,30}@[\\w_]{2,20}\\.[A-Za-z]{2,3}"} ;
+    regex patternmdp {"[a-zA-z0-9!@+\\-$£&\\*_-]{8,20}"} ;
     string choix ;
     string nom ;
     string code ;
     string courriel ;
+    string mdp ;
     
     // Première étape : l'utilisateur entre toutes les informations et on vérifie la saisie
     system("clear") ;
@@ -159,6 +184,15 @@ int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes
         if(!regex_match(courriel, patternMail)) cout << "Merci de renseigner une adresse mail valide." << endl ;
     } while (!regex_match(courriel, patternMail));
 
+    do
+    {
+        cout << "\nMot de passe : " ;
+        mdp = "" ;
+        cin.clear() ;
+        getline(cin, mdp) ;
+        if(!regex_match(mdp, patternmdp)) cout << "Merci de renseigner un mot de passe valide (description dans le manuel de l'utilisateur)." << endl ;
+    } while (!regex_match(mdp, patternmdp));
+
 
     // Deuxième étape : on affiche un récapitulatif des informations saisies et on demande une validation
     do
@@ -167,7 +201,8 @@ int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes
         cout << "* * * * * * * * * ENTREPRISE * * * * * * * * *" << endl << endl ;
         cout << "Nom : " << nom << endl ;
         cout << "Code postal : " << code << endl ;
-        cout << "Adresse mail : " << courriel << endl << endl ; 
+        cout << "Adresse mail : " << courriel << endl ;
+        cout << "Mot de passe : " << mdp << endl << endl ; 
         cout << "Validez vous ces paramètres ?" << endl ;
         cout << "o. OUI" << endl ;
         cout << "n. NON" << endl ;
@@ -190,8 +225,9 @@ int MenuCreerEntreprise(groupeEntreprises *gE, groupePostes *gP, groupePersonnes
         size = courriel.size() + 1 ;
         char courrielE[128]; ;
         strncpy(courrielE, courriel.c_str(), size) ;
+        size_t mdphache = std::hash<std::string>{}(mdp) ;
 
-        AjoutEntreprise(gE, nomE, code_postal, courrielE) ;
+        AjoutEntreprise(gE, nomE, code_postal, courrielE, mdphache) ;
         return MenuEntreprise(gE, gP, gPe) ;
     }
     else if(choix == "n") return MenuEntreprise(gE, gP, gPe) ;
@@ -598,6 +634,7 @@ int MenuSeConnecterPersonne(groupeEntreprises *gE, groupePostes *gP, groupePerso
     regex patternNombre {"[1-9]([0-9]*)"} ; // On vérifie si l'utilisateur entre un nombre < 0
     string choix ;
     int choixPe(0) ;
+    int mdpvalide(0) ;
 
     // Première étape : on affiche index et nom de toutes les personnes du groupe de personnes
     //                  on vérifie sa saisie en vérifiant si la personne demandée existe dans le groupe
@@ -626,9 +663,31 @@ int MenuSeConnecterPersonne(groupeEntreprises *gE, groupePostes *gP, groupePerso
         else choixPe = stoi(choix) ;
     } while(!ExistePersonne(gPe, choixPe)) ;
 
-    // Troisième étape : Si l'utilisateur a renseigné un index de personne valide, on affiche le menu de cette personne
-    journal_ConnexionPersonne(g_index(gPe, choixPe)) ;
-    return MenuProfilPersonne(gE, gP, gPe, choixPe) ;
+    // Troisième étape : Si l'utilisateur a renseigné un index de personne valide
+    // on lui demande de rentrer son mot de passe (il a trois essais)
+    // si il se trompe, ça revient au menu
+    int compteur(0) ;
+    
+    do
+    {
+        system("clear") ;
+        cout << "* * * * * * * * * UTILISATEUR * * * * * * * * *" << endl << endl;
+        cout << "Identifiant : " << g_index(gPe, choixPe)->nom << " " << g_index(gPe, choixPe)->prenom << endl ;
+        cout << "Mot de passe : " ;
+        choix = "" ;
+        cin.clear() ;
+        getline(cin,choix) ;
+        size_t chiffre = std::hash<std::string>{}(choix) ;
+        if(chiffre == g_index(gPe,choixPe)->mdp) mdpvalide = 1 ;
+        compteur++ ;
+    } while (!mdpvalide && compteur < 3);
+        
+    if(mdpvalide)
+    {
+        journal_ConnexionPersonne(g_index(gPe, choixPe)) ;
+        return MenuProfilPersonne(gE, gP, gPe, choixPe) ;
+    }
+    else return MenuPrincipal(gE, gP, gPe) ;    
     
     return 0 ;
 }
@@ -861,12 +920,14 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
     regex patternCodePostal {"[1-9]{1}[0-9]{4}"} ; // Un code postal doit contenir 5 chiffres et ne doit pas commencer par 0
     regex patternNombre {"[1-9]([0-9]*)"} ; // On vérifie si l'utilisateur entre un nombre < 0
     regex patternCompetence {"[a-z' \\-]{1,100}"} ;
+    regex patternmdp {"[a-zA-z0-9!@+\\-$£&\\*_-]{8,20}"} ;
     string choix ;
 
     string nom ;
     string prenom ;
     string code ;
     string courriel ;
+    string mdp ;
     string entreprise ;
     string competence ;
     string collegue ;
@@ -942,6 +1003,16 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
     // Le code postal saisie est valide, on le convertit en int pour s'adapter aux autre fonctions
     int adresse ;
     adresse = stoi(code) ;
+
+    do
+    {
+        cout << "\nMot de passe : " ;
+        mdp = "" ;
+        cin.clear() ;
+        getline(cin, mdp) ;
+        if(!regex_match(mdp, patternmdp)) cout << "Merci de renseigner un mot de passe valide (description dans le manuel de l'utilisateur)." << endl ;
+    } while (!regex_match(mdp, patternmdp));
+    size_t mdphache = std::hash<std::string>{}(mdp) ;
     
     int entreprisePe ;
     do
@@ -1109,6 +1180,7 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
         cout << "Nom : " << nomPe << endl ;
         cout << "Prenom : " << prenomPe << endl ;
         cout << "Courriel : " << courrielPe << endl ;
+        cout << "Mot de passe : " << mdp << endl ;
         cout << "Code Postal : " << adresse << endl ;
         if(entreprisePe == -1) cout << "Statut : En recherche d'emploi" << endl ;
         else cout << "Statut : Employé dans l'entreprise " << g_indexEntreprise(gE, entreprisePe)->nom << endl ;
@@ -1146,7 +1218,7 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
     //                   Si l'utilisateur n'a pas validé, on revient au menu des personnes
     if(choix == "o")
     {
-        creer_profil(nomPe,prenomPe,courrielPe,adresse,competencePe,colleguePe,entreprisePe,gPe) ;
+        creer_profil(nomPe,prenomPe,courrielPe,adresse,competencePe,colleguePe,entreprisePe,gPe,mdphache) ;
         ColleguesAutomatiques(gPe,g_index(gPe,LastPersonne(gPe)),g_index(gPe,LastPersonne(gPe))->entreprise) ;
         return MenuPersonne(gE, gP, gPe) ;
     }
@@ -1156,7 +1228,7 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
 }
 
 // But : Affiche le menu demandant confirmation à l'utilisateur avant d'actualiser son statut
-int MenuConfirmerQuitterEntreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+int MenuConfirmerQuitterEntreprise(groupeEntreprises* gE,groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
@@ -1607,7 +1679,7 @@ int MenuPersonne_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupeP
 }
 
 // But : Permet à une personne d'ajouter une compétence à son profil
-int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+int MenuPersonneajouter_Competence(groupeEntreprises* gE,groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternCompetence {"[a-z' \\-]{1,100}"} ;
@@ -1714,7 +1786,7 @@ int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePostes *gP, grou
 }
 
 // But : Permet à une personne d'ajouter un collègue à son profil
-int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+int MenuPersonneAjouter_collegue(groupeEntreprises* gE,groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternNombre {"[1-9]([0-9]*)"} ; // On vérifie si l'utilisateur entre un nombre < 0
@@ -1825,7 +1897,7 @@ int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupe
 }
 
 // But : Permet à une personne de supprimer un collègue de son profil
-int MenuPersonnesupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+int MenuPersonnesupprimer_collegue(groupeEntreprises* gE,groupePostes *gP, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternNombre {"[1-9]([0-9]*)"} ; // On vérifie si l'utilisateur entre un nombre < 0

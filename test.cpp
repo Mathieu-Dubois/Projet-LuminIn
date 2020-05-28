@@ -6,6 +6,9 @@
 #include <string.h>
 #include <string>
 #include <fstream>
+
+
+
 using namespace std ;
 #include "lib/bibliotheques.h"
 
@@ -75,7 +78,6 @@ int main()
         gPe = g_open(dbPe);
         fclose(dbPe);
     }
-
 /* ============================================================================================================
 ||
 ||                                 TEST DES FONCTIONS DU FICHIER : entreprise.h
@@ -117,13 +119,15 @@ int main()
     // Test de la fonction AjoutEntreprise
     string s_nomE = "Carglass" ;
     string s_courrielE = "contact@carglass.com" ;
+    string s_mdp = "XX_carglass_XX" ;
+    size_t mdpchiffre = std::hash<std::string>{}(s_mdp) ;
     size_t size = s_nomE.size() + 1 ;
     char c_nomE[40];
     strncpy(c_nomE, s_nomE.c_str(), size) ;
     size = s_courrielE.size() + 1 ;
     char c_courrielE[128];
     strncpy(c_courrielE, s_courrielE.c_str(), size) ;
-    AjoutEntreprise(gE,c_nomE,54710,c_courrielE) ;
+    AjoutEntreprise(gE,c_nomE,54710,c_courrielE,mdpchiffre) ;
     TEST(gEntreprise_size(gE) == 12);
     TEST(g_indexEntreprise(gE,12)->index == 12) ;
     TEST(strcmp(g_indexEntreprise(gE,12)->nom, "Carglass") == 0) ;
@@ -382,9 +386,12 @@ int main()
     AfficherNonCollegues(g_index(gPe,6),gPe) ;
     AfficherNonCollegues(g_index(gPe,17),gPe) ;
     // Test de la fonction creer_profil
+    printf("\n--------------  ici\n");
     string s_nomPe = "Delmas" ;
     string s_prenomPe = "Albert" ;
     string s_courrielPe = "albert.delmas@gmail.fr" ;
+    s_mdp = "XX_Albert_XX" ;
+    mdpchiffre = std::hash<std::string>{}(s_mdp) ;
     s_comp0 = "ponctuel" ;
     s_comp1 = "patisserie" ;
     s_comp2 = "cuisine" ;
@@ -407,7 +414,8 @@ int main()
     strncpy(tab_comppE[1], s_comp1.c_str(), size) ;
     size = s_comp2.size() + 1 ;
     strncpy(tab_comppE[2], s_comp2.c_str(), size) ;
-    creer_profil(c_nomPe,c_prenomPe,c_courrielPe,78969,tab_comppE,colleguesPe,7,gPe) ;
+    printf("\n--------------  la\n");
+    creer_profil(c_nomPe,c_prenomPe,c_courrielPe,78969,tab_comppE,colleguesPe,7,gPe,mdpchiffre) ;
     TEST(g_size(gPe) == 20);
     TEST(LastPersonne(gPe) == 20) ;
     TEST(g_index(gPe,20)->index == 20) ;
