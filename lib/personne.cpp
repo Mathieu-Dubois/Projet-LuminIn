@@ -990,7 +990,7 @@ int AfficherNonCollegues(personne* pe, groupePersonnes* gPe)
 //       collègues de tous les employés de l'entreprise.
 //       Ajoute également l'index de tous les employés de l'entreprise au réseau de la personne
 //       si ils n'en faisaitent pas déjà partie
-void ColleguesAutomatiques(groupePersonnes* gPe, personne* pe, int indexE)
+void ColleguesAutomatiques(groupePersonnes* gPe, personne* pe)
 {
 
     // On parcourt le réseau de personnes

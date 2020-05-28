@@ -1229,7 +1229,7 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
 }
 
 // But : Affiche le menu demandant confirmation à l'utilisateur avant d'actualiser son statut
-int MenuConfirmerQuitterEntreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+int MenuConfirmerQuitterEntreprise(groupeEntreprises* gE, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
@@ -1467,7 +1467,7 @@ int MenuPersonneCherchePar(groupeEntreprises *gE, groupePostes *gP, groupePerson
 }
 
 // But : Permet à une personne de modifier son code postal
-int MenuPersonneMod_CodePostal(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+int MenuPersonneMod_CodePostal(groupeEntreprises* gE, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
@@ -1527,7 +1527,7 @@ int MenuPersonneMod_CodePostal(groupeEntreprises* gE, groupePostes *gP, groupePe
 }
 
 // But : Permet à une personne de modifier son adresse mail
-int MenuPersonneMod_mail(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+int MenuPersonneMod_mail(groupeEntreprises* gE, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
@@ -1592,7 +1592,7 @@ int MenuPersonneMod_mail(groupeEntreprises* gE, groupePostes *gP, groupePersonne
 }
 
 // But : Permet à une personne de modifier son entreprise (si il change ou quitte son emploi)
-int MenuPersonne_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+int MenuPersonne_mod_entreprise(groupeEntreprises* gE, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternMenu {"o|n{1}"} ; // On vérifie si l'utilisateur entre o ou n
@@ -1680,7 +1680,7 @@ int MenuPersonne_mod_entreprise(groupeEntreprises* gE, groupePostes *gP, groupeP
 }
 
 // But : Permet à une personne d'ajouter une compétence à son profil
-int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternCompetence {"[a-z' \\-]{1,100}"} ;
@@ -1787,7 +1787,7 @@ int MenuPersonneajouter_Competence(groupeEntreprises* gE, groupePostes *gP, grou
 }
 
 // But : Permet à une personne d'ajouter un collègue à son profil
-int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternNombre {"[1-9]([0-9]*)"} ; // On vérifie si l'utilisateur entre un nombre < 0
@@ -1898,7 +1898,7 @@ int MenuPersonneAjouter_collegue(groupeEntreprises* gE, groupePostes *gP, groupe
 }
 
 // But : Permet à une personne de supprimer un collègue de son profil
-int MenuPersonnesupprimer_collegue(groupeEntreprises* gE, groupePostes *gP, groupePersonnes *gPe, int indexPe)
+int MenuPersonnesupprimer_collegue(groupeEntreprises* gE, groupePersonnes *gPe, int indexPe)
 {
     // Définitions des ER nécessaires à la saisie sécurisée
     regex patternNombre {"[1-9]([0-9]*)"} ; // On vérifie si l'utilisateur entre un nombre < 0
