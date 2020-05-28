@@ -1219,7 +1219,6 @@ int MenuCreerProfil(groupeEntreprises *gE, groupePostes *gP, groupePersonnes *gP
     if(choix == "o")
     {
         creer_profil(nomPe,prenomPe,courrielPe,adresse,competencePe,colleguePe,entreprisePe,gPe,mdphache) ;
-        cout << "BANANA LA MOULAGA !!!!" << endl ;
         ColleguesAutomatiques(gPe,g_index(gPe,LastPersonne(gPe)),g_index(gPe,LastPersonne(gPe))->entreprise) ;
         return MenuPersonne(gE, gP, gPe) ;
     }

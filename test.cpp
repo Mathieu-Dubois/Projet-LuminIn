@@ -589,15 +589,5 @@ int main()
 
     printf("\nNombre de test passés : %d/%d\n\n", tests_reussis, tests_executes);
 
-
-    cout << "TEST DE HACHAGE" << endl << endl ;
-    string clair = "Mathieu" ;
-    string clair1 = "message" ;
-    size_t chiffre = std::hash<std::string>{}(clair) ;
-    size_t chiffre1 = std::hash<std::string>{}(clair1) ;
-    cout << "Le clair est '" << clair << "' et le chiffré est '" << chiffre <<"'"<< endl ;
-    cout << "Le clair est '" << clair1 << "' et le chiffré est '" << chiffre1 <<"'"<< endl ;
-
-
     return tests_executes - tests_reussis;
 }
