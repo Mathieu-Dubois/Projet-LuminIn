@@ -58,6 +58,7 @@ Pour créer le profil d'une entreprise, vous aurez besoin de renseigner :
 * Le nom de l'entreprise : 40 caractères maximum, ne doit pas contenir de chiffre et le premier caractère ne doit pas être un caractère accentué.
 * Un code postal : 5 chiffres
 * Une adresse mail  
+* Un mot de passe : minimum 8 caractères et maximum 20. Majuscules et minuscules autorisés, ainsi que quelques caractères spéciaux.
 
 Si vous ne respectez pas ces indications, une nouvelle saisie vous sera demandée.
 
@@ -68,6 +69,7 @@ Pour créer le profil d'un utilisateur, vous aurez besoin de renseigner :
 * Le prénom de l'utilisateur : 25 caractères maximum, ne peut pas contenir de chiffre et le premier caractère ne doit pas être un caractère accentué.
 * Une adresse mail
 * Un code postal : 5 chiffres
+* Un mot de passe : minimum 8 caractères et maximum 20. Majuscules et minuscules autorisés, ainsi que quelques caractères spéciaux.
 * L'index de votre entreprise si vous êtes un employé (pas d'inquiétude si vous ne vous souvenez plus de l'identifiant de votre entreprise, ils seront tous affichés)
 * Vos compétences (jusqu'à 5\* maximum) : uniquement des lettres minuscules et des chiffres. Pas de caractères accentué.
 * Si vous le voulez, l'index de vos collègues pour commencer à former votre réseau\*\*  
@@ -160,6 +162,8 @@ L'administrateur de l'application peut choisir de modifier le nombre de compéte
 ## Programme de test
 
 Il existe un deuxième programme exécutable qui est un programme de test des fonctions internes à l'application. A chaque fois que ce programme est lancé, une sauvegarde du journal ainsi que des fichiers csv est effectuée, puis restituée à la fin de l'exécution. Cela permet d'éviter de modifier le journal et la base de donnée si l'on veut effectuer des tests. De plus, quand le programme de test s'exécute, il utilise la base de donnée "modele", celle qui est enregistrée quand on utilise la commande "make reset".  
+
+Remarque : L'application livrée est une démonstration. Les fichiers csv sont pré-remplis. Le mot de passe d'une entreprise est son nom suivie de sont index (Disney1). Le mot de passe d'une personne est son prénom suivie de son index (Tigrou6).
   
     
 
