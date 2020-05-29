@@ -117,3 +117,5 @@
 
 [FAIT]      -   Quand une personne rejoint une entreprise ajouter au journal que tous les employés de cette entreprise ont été rajouté à son réseau et 
                 que cette personne a été rajouté au réseau de tous les employés
+
+[FAIT]      -   BONUS sur les mots de passes
