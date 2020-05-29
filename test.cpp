@@ -386,7 +386,6 @@ int main()
     AfficherNonCollegues(g_index(gPe,6),gPe) ;
     AfficherNonCollegues(g_index(gPe,17),gPe) ;
     // Test de la fonction creer_profil
-    printf("\n--------------  ici\n");
     string s_nomPe = "Delmas" ;
     string s_prenomPe = "Albert" ;
     string s_courrielPe = "albert.delmas@gmail.fr" ;
@@ -414,7 +413,6 @@ int main()
     strncpy(tab_comppE[1], s_comp1.c_str(), size) ;
     size = s_comp2.size() + 1 ;
     strncpy(tab_comppE[2], s_comp2.c_str(), size) ;
-    printf("\n--------------  la\n");
     creer_profil(c_nomPe,c_prenomPe,c_courrielPe,78969,tab_comppE,colleguesPe,7,gPe,mdpchiffre) ;
     TEST(g_size(gPe) == 20);
     TEST(LastPersonne(gPe) == 20) ;
@@ -588,16 +586,6 @@ int main()
 
 
     printf("\nNombre de test passés : %d/%d\n\n", tests_reussis, tests_executes);
-
-
-    cout << "TEST DE HACHAGE" << endl << endl ;
-    string clair = "Mathieu" ;
-    string clair1 = "message" ;
-    size_t chiffre = std::hash<std::string>{}(clair) ;
-    size_t chiffre1 = std::hash<std::string>{}(clair1) ;
-    cout << "Le clair est '" << clair << "' et le chiffré est '" << chiffre <<"'"<< endl ;
-    cout << "Le clair est '" << clair1 << "' et le chiffré est '" << chiffre1 <<"'"<< endl ;
-
 
     return tests_executes - tests_reussis;
 }

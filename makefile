@@ -6,8 +6,8 @@
 .DEFAULT_GOAL := check
 CC = c++
 
-CCFLAGS =-Wall -pedantic -Werror --debug -g
-#CCFLAGS = -Wall -pedantic -Werror --debug -g
+CCFLAGS = -Wall -pedantic -Werror --debug -g
+#CCFLAGS = -fsanitize=address -fno-omit-frame-pointer -Wall -pedantic -Werror --debug -g
 
 .PHONY: clean
 
