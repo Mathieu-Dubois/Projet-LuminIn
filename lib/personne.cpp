@@ -88,7 +88,7 @@ groupePersonnes* g_open(FILE *db)
 }
 
 // But : Mettre à jour le fichier employes.csv à partir du groupe passé en paramètres
-void g_ecrire(groupePersonnes* gPe)
+int g_ecrire(groupePersonnes* gPe)
 {
     // On ouvre en écriture le fichier tmp.csv (comme il n'existe pas, il est créé)
     ofstream nouveauCSV("tmp.csv") ;
@@ -129,7 +129,7 @@ void g_ecrire(groupePersonnes* gPe)
             ancienCSV.close() ;
 
             // Il ne reste plus qu'à supprimer l'ancien employes.csv et renommer tmp.csv 
-            remove("emplotes.csv") ;
+            remove("employes.csv") ;
             rename("tmp.csv", "employes.csv") ;
         }
         else
@@ -141,7 +141,6 @@ void g_ecrire(groupePersonnes* gPe)
     {
         cout << "ERREUR : Impossible d'ouvrir tmp.csv" << endl ;
     }
-
 
     // char tampon[100]; 
     // FILE *db = fopen("employes.csv", "r");
@@ -213,6 +212,7 @@ void g_ecrire(groupePersonnes* gPe)
     // }
     // fclose(tmp);
     // remove("tmp.txt");
+    return 0 ;
 }
 
 // But : Déterminer la taille d'un groupe de type : groupePersonnes
@@ -676,7 +676,9 @@ void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char com
 
     }
     journal_CreationPersonne(p) ;
+    cout << "PREMIER" << endl ;
     g_ecrire(gPe);
+    cout << "DEUXIEME" << endl ;
 }
 
 // But : Supprimer une personne du groupe passé en paramètres et du fichier employes.csv

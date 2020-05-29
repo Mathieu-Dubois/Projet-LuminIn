@@ -7,6 +7,7 @@
 CC = c++
 
 CCFLAGS = -fno-stack-protector -Wall -pedantic -Werror --debug -g
+#CCFLAGS = -Wall -pedantic -Werror --debug -g
 
 .PHONY: clean
 

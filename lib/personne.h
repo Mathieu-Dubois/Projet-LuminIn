@@ -27,7 +27,7 @@ groupePersonnes* g_open(FILE* db);
  || Retour :
  ||     Aucun
   ============================================================================================== */
-void g_ecrire(groupePersonnes* gPe);
+int g_ecrire(groupePersonnes* gPe);
 
 /*==============================================================================================
  || FONCTION : g_size
