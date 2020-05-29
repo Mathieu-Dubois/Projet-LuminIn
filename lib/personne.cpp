@@ -609,7 +609,7 @@ void AfficherAmis(personne* pe)
 // But : Ajouter une personne à un groupe de type groupePersonnes au premier indice disponible
 void creer_profil(char *nom, char *prenom, char *courriel, int adresse, char competence[MAX_COMPETENCES][128], int collegue[MAX_AMIS], int entreprise, groupePersonnes *gPe, size_t mdphache)
 { 
-    int i, j, index; char poub[128];
+    int i, j, index; char poub[256];
 
     //Il faut récupérer en premier lieu l'indice
     FILE *employes = fopen("employes.csv", "r");
