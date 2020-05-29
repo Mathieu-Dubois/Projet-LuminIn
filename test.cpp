@@ -389,7 +389,6 @@ int main()
 //     AfficherNonCollegues(g_index(gPe,6),gPe) ;
 //     AfficherNonCollegues(g_index(gPe,17),gPe) ;
 //     // Test de la fonction creer_profil
-//     printf("\n--------------  ici\n");
     string s_nomPe = "Delmas" ;
     string s_prenomPe = "Albert" ;
     string s_courrielPe = "albert.delmas@gmail.fr" ;
@@ -417,7 +416,6 @@ int main()
     strncpy(tab_comppE[1], s_comp1.c_str(), size) ;
     size = s_comp2.size() + 1 ;
     strncpy(tab_comppE[2], s_comp2.c_str(), size) ;
-    printf("\n--------------  la\n");
     creer_profil(c_nomPe,c_prenomPe,c_courrielPe,78969,tab_comppE,colleguesPe,7,gPe,mdpchiffre) ;
 //     printf("\n--------------  haut\n");
 //     TEST(g_size(gPe) == 20);
