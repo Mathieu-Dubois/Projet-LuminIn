@@ -1,4 +1,4 @@
-![](https://github.com/Theo-PASQUIER/DevCommeLesPros-2020-Projet/workflows/Test%20master/badge.svg)
+![](https://github.com/Mathieu-Dubois/Projet_LuminIn/workflows/Test%20master/badge.svg)
 
 # Manuel de l'utilisateur
 

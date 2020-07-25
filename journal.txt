@@ -98,3 +98,5 @@
     28-05-2020 21:36:14 : Déconnexion du compte 20 - Watson  Emma - 12384 - emma@watson.com
 28-05-2020 21:36:14 : Fermeture de l'application 
 29-05-2020 13:55:17 : Ouverture de l'application 
+04-06-2020 17:35:04 : Ouverture de l'application 
+04-06-2020 17:35:06 : Fermeture de l'application 
